@@ -25,6 +25,14 @@ builder.Services.AddAuthentication()
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 
+// Add service to enable CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("CorsPolicy", policy => policy.AllowAnyOrigin()
+                                                    .AllowAnyMethod()
+                                                    .AllowAnyHeader());
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -50,6 +58,8 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller}/{action=Index}/{id?}");
 app.MapRazorPages();
+
+app.UseCors("CorsPolicy");
 
 app.MapFallbackToFile("index.html"); ;
 
