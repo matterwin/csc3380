@@ -1,3 +1,5 @@
 # csc3380
 Group 3 (Team MMM): Bryce, Nicholas, Marvin, Matthew, Noah, Mohammad
-1
+
+# Compilation Steps
+Run Update-database in PM console.
