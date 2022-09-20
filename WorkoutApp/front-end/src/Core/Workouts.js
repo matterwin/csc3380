@@ -34,20 +34,10 @@ class Workouts extends React.Component{
                 <h1>Loading Workouts</h1>
             </div>
         )
-        
-        let workoutsHTML = [];
-
-        for(let workout = 0; workout < workouts.length; workout++){
-            for(const [key, value] of Object.entries(workouts)){
-                console.log(JSON.stringify(value));
-                console.log(JSON.stringify(value[0]));
-                //console.log(workouts[0].steps[0].instruction);
-            }
-        }
 
         return(
             <div>
-                {JSON.stringify(workouts)}
+                <div><pre>{ JSON.stringify(workouts, null, 2) }</pre></div>;
             </div>
         )
     };
