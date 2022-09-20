@@ -24,7 +24,11 @@ function MyProfile() {
 
   useEffect(() => {
     if (loading) return;
-    if (!user) return navigate("/");
+    if (!user) {
+        alert("User must be loggin in to access this page!");
+        return navigate("/login");
+    }
+    
     fetchUserName();
   }, [user, loading]);
 
