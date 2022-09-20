@@ -1,6 +1,7 @@
 import { render } from "@testing-library/react";
 import React, { useEffect } from "react";
 import { act } from "react-dom/test-utils";
+import "./Workouts.css"
 
 class step{
     constructor(time, instruction){
@@ -41,22 +42,26 @@ class Workouts extends React.Component{
             </div>
         )
 
-        let workoutsHTML = [];
-
-        let stepNumber = 0;
-        workouts.forEach((workout) => {
-            workoutsHTML.push(<h3>{workout.title}</h3>);
-            let steps = workout.steps;
-            steps.forEach((step) => {
-                workoutsHTML.push(<p>Step {++stepNumber}: | {step.time} min | {step.instruction}</p>);
-            })
-        })
-
         return(
             <div>
-                {
-                    workoutsHTML
-                }
+                <center>
+                    {
+                        Object.keys(workouts).map((workout, i) => (
+                            <div className="workout" key={i++}>
+                                <h1>{workouts[workout].title}</h1>
+                                {
+                                    Object.keys(workouts[workout]).map((step, j) => (
+                                        <div className="workoutSteps" key={j}>
+                                            <span>
+                                                <p>Step {j + 1}: | {workouts[workout].steps[j].time} min | {workouts[workout].steps[j].instruction}</p>
+                                            </span>
+                                        </div> 
+                                    ))
+                                }
+                            </div>
+                        ))
+                    }
+                </center>
             </div>
         )
     };
