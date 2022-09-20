@@ -2,17 +2,24 @@ import { render } from "@testing-library/react";
 import React, { useEffect } from "react";
 import { act } from "react-dom/test-utils";
 
+class step{
+    constructor(time, instruction){
+        this.time = time;
+        this.instruction = instruction;
+    }
+}
+
 class Workouts extends React.Component{    
     constructor(props){
         super(props);
 
         this.state = {
-            workouts: [],
+            workouts: [{"steps": [{}]}],
             workoutsLoaded: false
         }
     }
 
-    componentDidMount(){
+    async componentDidMount(){
         fetch('https://localhost:7025/Workouts')
             .then((res) => res.json())
             .then((json) => {
@@ -23,7 +30,6 @@ class Workouts extends React.Component{
             })
             .catch((err) => {
                 console.log(err);
-                alert("Error fecthing all workouts!");
             })
     }
 
@@ -35,9 +41,22 @@ class Workouts extends React.Component{
             </div>
         )
 
+        let workoutsHTML = [];
+
+        let stepNumber = 0;
+        workouts.forEach((workout) => {
+            workoutsHTML.push(<h3>{workout.title}</h3>);
+            let steps = workout.steps;
+            steps.forEach((step) => {
+                workoutsHTML.push(<p>Step {++stepNumber}: | {step.time} min | {step.instruction}</p>);
+            })
+        })
+
         return(
             <div>
-                <div><pre>{ JSON.stringify(workouts, null, 2) }</pre></div>;
+                {
+                    workoutsHTML
+                }
             </div>
         )
     };

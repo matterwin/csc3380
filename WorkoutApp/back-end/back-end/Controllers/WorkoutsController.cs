@@ -14,19 +14,26 @@ namespace back_end.Controllers
         }
 
         [HttpGet]
-        public List<Workout> Get()
+        public IActionResult Get()
         {
 
             //THIS IS JUST DUMMY DATA FOR NOW
             //SHOUDL BE QUERYING FROM DATABASE FROM UTILITY FUNCTION
-            WorkoutStep step1 = new WorkoutStep("Lay down on the floor", 50);
-            WorkoutStep step2 = new WorkoutStep("Do a pushup", 20);
+            List<WorkoutStep> list1 = new List<WorkoutStep>() { 
+                new WorkoutStep("10 pushups", 4), 
+                new WorkoutStep("60 situps", 4) 
+            };
 
-            List<WorkoutStep> list = new List<WorkoutStep>() { step1, step2 };
-            Workout workout1 = new Workout(list);
+            List<WorkoutStep> list2 = new List<WorkoutStep>() {
+                new WorkoutStep("4x10 curls", 20),
+                new WorkoutStep("4x10 bench", 20)
+            };
 
-            List<Workout> listWorkout = new List<Workout> { workout1 };
-            return listWorkout;
+            Workout workout1 = new Workout(list1, "Example Workout 1");
+            Workout workout2 = new Workout(list2, "Example Workout 2");
+
+            List<Workout> listWorkout = new List<Workout> { workout1, workout2 };
+            return Ok(listWorkout);
         }
     }
 }
