@@ -1,18 +1,26 @@
 import { render } from "@testing-library/react";
 import React, { useEffect } from "react";
 import { act } from "react-dom/test-utils";
+import "./Workouts.css"
+
+class step{
+    constructor(time, instruction){
+        this.time = time;
+        this.instruction = instruction;
+    }
+}
 
 class Workouts extends React.Component{    
     constructor(props){
         super(props);
 
         this.state = {
-            workouts: [],
+            workouts: [{"steps": [{}]}],
             workoutsLoaded: false
         }
     }
 
-    componentDidMount(){
+    async componentDidMount(){
         fetch('https://localhost:7025/Workouts')
             .then((res) => res.json())
             .then((json) => {
@@ -23,7 +31,6 @@ class Workouts extends React.Component{
             })
             .catch((err) => {
                 console.log(err);
-                alert("Error fecthing all workouts!");
             })
     }
 
@@ -37,7 +44,24 @@ class Workouts extends React.Component{
 
         return(
             <div>
-                <div><pre>{ JSON.stringify(workouts, null, 2) }</pre></div>;
+                <center>
+                    {
+                        Object.keys(workouts).map((workout, i) => (
+                            <div className="workout" key={i}>
+                                <h1>{workouts[workout].title}</h1>
+                                {
+                                    Object.keys(workouts[workout].steps).map((step, j) => (
+                                        <div className="workoutSteps" key={j}>
+                                            <span>
+                                                <p>Step {j + 1}: | {workouts[workout].steps[j].time} min | {workouts[workout].steps[j].instruction}</p>
+                                            </span>
+                                        </div> 
+                                    ))
+                                }
+                            </div>
+                        ))
+                    }
+                </center>
             </div>
         )
     };
