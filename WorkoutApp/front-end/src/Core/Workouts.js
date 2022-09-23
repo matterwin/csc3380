@@ -46,7 +46,7 @@ class Workouts extends React.Component{
                                     Object.keys(workouts[workout].steps).map((step, j) => (
                                         <div className="workoutSteps" key={j}>
                                             <span>
-                                                <p>Step {j + 1}: | {workouts[workout].steps[j].time} min | {workouts[workout].steps[j].instruction}</p>
+                                                <p>Step {j + 1}: | {workouts[workout].steps[j].workoutTime} min | {workouts[workout].steps[j].instruction}</p>
                                             </span>
                                         </div> 
                                     ))

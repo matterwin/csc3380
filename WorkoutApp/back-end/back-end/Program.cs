@@ -16,6 +16,10 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<WorkoutAppContext>(
             options => options.UseSqlServer("name=ConnectionStrings:DefaultConnection"));
 
+builder.Services.AddControllers().AddNewtonsoftJson(options =>
+    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+);
+
 // Add service to enable CORS
 builder.Services.AddCors(options =>
 {

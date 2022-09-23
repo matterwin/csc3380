@@ -23,11 +23,12 @@ namespace back_end.Repositories
                     );
 
                 List<int> workoutStepIds = new List<int> { 1, 2, 3, 4, 5 };
+                List<int> workoutWorkoutTimes = new List<int> { 1, 2, 3, 4, 5};
                 for(int j = 1; j <= workoutStepIds.Count(); j++)
                 {
                     string instruction = $"Instruction #{j}";
                     modelBuilder.Entity<Workout>().OwnsMany(workout => workout.Steps).HasData(
-                        new WorkoutStep { ID = workoutStepIds[j - 1], WorkoutID = workoutIds[i - 1], Instruction = instruction }
+                        new WorkoutStep { ID = workoutStepIds[j - 1], WorkoutID = workoutIds[i - 1], Instruction = instruction, WorkoutTime = workoutWorkoutTimes[i - 1] }
                     );
                 }
             }
