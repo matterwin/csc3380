@@ -1,14 +1,8 @@
 ﻿namespace back_end.Domain
 {
-    public class Workout
+    public class Workout : BaseEntity
     {
-        public string title { get; set; }
-        public List<WorkoutStep> steps { get; set; }
-
-        public Workout(List<WorkoutStep> steps, string title)
-        {
-            this.steps = steps;
-            this.title = title;
-        }
+        public string Title { get; set; }
+        public ICollection<WorkoutStep> Steps { get; set; }
     }
 }

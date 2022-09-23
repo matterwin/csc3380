@@ -1,5 +1,7 @@
 ﻿using back_end.Domain;
+using back_end.DTO;
 using Microsoft.AspNetCore.Mvc;
+using back_end.Repositories;
 
 namespace back_end.Controllers
 {
@@ -7,37 +9,26 @@ namespace back_end.Controllers
     [Route("[controller]")]
     public class WorkoutsController : ControllerBase{
         private readonly ILogger<WorkoutsController> _logger;
+        private WorkoutAppContext _context;
 
-        public WorkoutsController(ILogger<WorkoutsController> logger)
+        public WorkoutsController(ILogger<WorkoutsController> logger, WorkoutAppContext context)
         {
             _logger = logger;
+            _context = context;
         }
 
         [HttpGet]
         public IActionResult Get()
         {
+            var workouts = _context.Workouts.Where(p => p.ID <= 5 && p.ID > 0).ToList();
+            List<WorkoutDTO> workoutDTOs = new List<WorkoutDTO>();
 
-            //THIS IS JUST DUMMY DATA FOR NOW
-            //SHOUDL BE QUERYING FROM DATABASE FROM UTILITY FUNCTION
-            List<WorkoutStep> list1 = new List<WorkoutStep>() {
-                new WorkoutStep("10 pushups", 4),
-                new WorkoutStep("60 situps", 4),
-                new WorkoutStep("5 smilies", 2)
-            };
+            for(int i = 0; i < workouts.Count(); i++)
+            {
+                workoutDTOs.Add(new WorkoutDTO(workouts[i]));
+            }
 
-            List<WorkoutStep> list2 = new List<WorkoutStep>() {
-                new WorkoutStep("4x10 curls", 20),
-                new WorkoutStep("4x10 bench", 20),
-                new WorkoutStep("5 smilies", 2),
-                new WorkoutStep("5 smilies", 2),
-                new WorkoutStep("5 smilies", 2),
-            };
-
-            Workout workout1 = new Workout(list1, "Example Workout 1");
-            Workout workout2 = new Workout(list2, "Example Workout 2");
-
-            List<Workout> listWorkout = new List<Workout> { workout1, workout2, workout1 };
-            return Ok(listWorkout);
+            return Ok(workoutDTOs);
         }
     }
 }

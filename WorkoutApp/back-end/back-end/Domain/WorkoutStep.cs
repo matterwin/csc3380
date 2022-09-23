@@ -1,14 +1,13 @@
-﻿namespace back_end.Domain
-{
-    public class WorkoutStep
-    {
-        public string instruction { get; set; }
-        public int time { get; set; }
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
-        public WorkoutStep(string instruction, int time)
-        {
-            this.instruction = instruction;
-            this.time = time;
-        }
+namespace back_end.Domain
+{
+    
+    public class WorkoutStep : BaseEntity
+    {
+        public string Instruction { get; set; }
+        public int WorkoutTime { get; set; }
+        public Workout Workout { get; set; }
+        public int WorkoutID { get; set; }
     }
 }

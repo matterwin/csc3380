@@ -3,13 +3,6 @@ import React, { useEffect } from "react";
 import { act } from "react-dom/test-utils";
 import "./Workouts.css"
 
-class step{
-    constructor(time, instruction){
-        this.time = time;
-        this.instruction = instruction;
-    }
-}
-
 class Workouts extends React.Component{    
     constructor(props){
         super(props);
@@ -53,7 +46,7 @@ class Workouts extends React.Component{
                                     Object.keys(workouts[workout].steps).map((step, j) => (
                                         <div className="workoutSteps" key={j}>
                                             <span>
-                                                <p>Step {j + 1}: | {workouts[workout].steps[j].time} min | {workouts[workout].steps[j].instruction}</p>
+                                                <p>Step {j + 1}: | {workouts[workout].steps[j].workoutTime} min | {workouts[workout].steps[j].instruction}</p>
                                             </span>
                                         </div> 
                                     ))
