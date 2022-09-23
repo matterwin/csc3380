@@ -1,3 +1,7 @@
+using back_end.Repositories;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Internal;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,6 +10,11 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// configure ef
+
+builder.Services.AddDbContext<WorkoutAppContext>(
+            options => options.UseSqlServer("name=ConnectionStrings:DefaultConnection"));
 
 // Add service to enable CORS
 builder.Services.AddCors(options =>

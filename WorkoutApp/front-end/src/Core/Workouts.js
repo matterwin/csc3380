@@ -3,13 +3,6 @@ import React, { useEffect } from "react";
 import { act } from "react-dom/test-utils";
 import "./Workouts.css"
 
-class step{
-    constructor(time, instruction){
-        this.time = time;
-        this.instruction = instruction;
-    }
-}
-
 class Workouts extends React.Component{    
     constructor(props){
         super(props);
