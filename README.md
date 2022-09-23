@@ -8,12 +8,12 @@ Run: npm install react-components
 
 # backend installation
 Download Visual Studio 2022:https://visualstudio.microsoft.com/vs/ NOTE IT MUST BE THIS VERSION OF VS
-Inside Visual Studio's Package manager run the following commands:
-    cd .\back-end //NOTE THIS DEPENDS ON CUR DIR
-    Install-Package Microsoft.EntityFrameworkCore.SqlServer
-    dotnet add package Microsoft.EntityFrameworkCore
-    Update-database 
-    
+   
+# controlling the backend
+Some commands to keep in mind for updating backend:
+	dotnet ef add migrations "MigrationName"
+	dotnet ef database update
+   
 # things to note
 Just keep in mind in order for the front end to work correctly 
 it has to be able to fetch data from the backend so just make
@@ -23,9 +23,10 @@ unless you are working on a part that does not require an endpoint
 ALSO NOTE TO NOT LAUNCH THIS ON FIREFOX... I (Noah) Have not setup
 https certificates with Firefox yet so if you attemp to fetch from 
 backend while using Firefox you will get a CORS error.
-
-# controlling the backend
-Some commands to keep in mind for updating backend:
-	dotnet ef add migrations "MigrationName"
-	dotnet ef database update
 	
+Push Commands:
+	git pull
+	git add .
+	git commit -m "message"
+	git push
+	git checkout main
