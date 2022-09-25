@@ -24,7 +24,7 @@
 	https certificates with Firefox yet so if you attemp to fetch from 
 	backend while using Firefox you will get a CORS error.
 	
-Push Commands:
+# Push Commands
 	* git pull
 	* git add .
 	* git commit -m "message"
