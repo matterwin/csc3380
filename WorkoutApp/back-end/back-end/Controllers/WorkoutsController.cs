@@ -1,13 +1,13 @@
-﻿using back_end.Domain;
-using back_end.DTO;
-using Microsoft.AspNetCore.Mvc;
+﻿using back_end.DTO;
 using back_end.Repositories;
+using Microsoft.AspNetCore.Mvc;
 
 namespace back_end.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class WorkoutsController : ControllerBase{
+    public class WorkoutsController : ControllerBase
+    {
         private readonly ILogger<WorkoutsController> _logger;
         private WorkoutAppContext _context;
 
@@ -17,13 +17,41 @@ namespace back_end.Controllers
             _context = context;
         }
 
+
         [HttpGet]
-        public IActionResult Get()
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<WorkoutDTO>))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [Route("InRange/{start}/{end}")]
+        public IActionResult GetInRange(int start, int end)
         {
-            var workouts = _context.Workouts.Where(p => p.ID <= 5 && p.ID > 0).ToList();
+            if (start > end)
+                return BadRequest();
+
+            var workouts = _context.Workouts.Where(p => p.ID >= start && p.ID <= end).ToArray();
             List<WorkoutDTO> workoutDTOs = new List<WorkoutDTO>();
 
-            for(int i = 0; i < workouts.Count(); i++)
+            for (int i = 0; i < workouts.Count(); i++)
+            {
+                workoutDTOs.Add(new WorkoutDTO(workouts[i]));
+            }
+
+            return Ok(workoutDTOs);
+        }
+
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<WorkoutDTO>))]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public IActionResult Get()
+        {
+            var workouts = _context.Workouts.ToList();
+            List<WorkoutDTO> workoutDTOs = new List<WorkoutDTO>();
+
+            //if no workouts queries then something is seriously wrong
+            //just throw internal server error
+            if (workouts.Count <= 0)
+                return StatusCode(500);
+
+            for (int i = 0; i < workouts.Count(); i++)
             {
                 workoutDTOs.Add(new WorkoutDTO(workouts[i]));
             }

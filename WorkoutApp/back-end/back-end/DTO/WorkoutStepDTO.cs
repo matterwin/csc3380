@@ -1,4 +1,5 @@
 ﻿using back_end.Domain;
+using Newtonsoft.Json;
 
 namespace back_end.DTO
 {
@@ -9,8 +10,11 @@ namespace back_end.DTO
 
         public WorkoutStepDTO(WorkoutStep step)
         {
-            this.Instruction = step.Instruction;
-            this.WorkoutTime = step.WorkoutTime;
+            if (step == null)
+                return;
+
+            Instruction = step.Instruction;
+            WorkoutTime = step.WorkoutTime;
         }
     }
 }
