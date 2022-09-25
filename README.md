@@ -10,9 +10,8 @@
 	Download Visual Studio 2022:https://visualstudio.microsoft.com/vs/ NOTE IT MUST BE THIS VERSION OF VS
    
 # controlling the backend
-	Some commands to keep in mind for updating backend:
-		* dotnet ef add migrations "MigrationName"
-		* dotnet ef database update
+	* dotnet ef add migrations "MigrationName"
+	* dotnet ef database update
    
 # things to note
 	Just keep in mind in order for the front end to work correctly 
