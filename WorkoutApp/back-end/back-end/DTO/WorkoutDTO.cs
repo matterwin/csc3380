@@ -16,7 +16,9 @@ namespace back_end.DTO
 
             Steps = new List<WorkoutStepDTO>();
             foreach (var step in workout.Steps)
+            {
                 Steps.Add(new WorkoutStepDTO(step));
+            }
         }
 
         [JsonConstructor]

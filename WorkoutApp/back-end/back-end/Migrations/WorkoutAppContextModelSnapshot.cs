@@ -29,8 +29,9 @@ namespace back_end.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
 
-                    b.Property<int>("FirebaseID")
-                        .HasColumnType("int");
+                    b.Property<string>("FirebaseID")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
@@ -48,13 +49,13 @@ namespace back_end.Migrations
 
                     b.HasAlternateKey("FirebaseID");
 
-                    b.ToTable("User");
+                    b.ToTable("Users");
 
                     b.HasData(
                         new
                         {
                             ID = 1,
-                            FirebaseID = 1,
+                            FirebaseID = "1",
                             FirstName = "FirstName1",
                             LastName = "LastName1",
                             MiddleName = "MiddleName1"
@@ -62,7 +63,7 @@ namespace back_end.Migrations
                         new
                         {
                             ID = 2,
-                            FirebaseID = 2,
+                            FirebaseID = "2",
                             FirstName = "FirstName2",
                             LastName = "LastName2",
                             MiddleName = "MiddleName2"
@@ -70,7 +71,7 @@ namespace back_end.Migrations
                         new
                         {
                             ID = 3,
-                            FirebaseID = 3,
+                            FirebaseID = "3",
                             FirstName = "FirstName3",
                             LastName = "LastName3",
                             MiddleName = "MiddleName3"
@@ -78,7 +79,7 @@ namespace back_end.Migrations
                         new
                         {
                             ID = 4,
-                            FirebaseID = 4,
+                            FirebaseID = "4",
                             FirstName = "FirstName4",
                             LastName = "LastName4",
                             MiddleName = "MiddleName4"
@@ -86,7 +87,7 @@ namespace back_end.Migrations
                         new
                         {
                             ID = 5,
-                            FirebaseID = 5,
+                            FirebaseID = "5",
                             FirstName = "FirstName4",
                             LastName = "LastName5",
                             MiddleName = "MiddleName5"
@@ -101,8 +102,9 @@ namespace back_end.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
 
-                    b.Property<int>("FirebaseID")
-                        .HasColumnType("int");
+                    b.Property<string>("FirebaseID")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -116,31 +118,31 @@ namespace back_end.Migrations
                         new
                         {
                             ID = 1,
-                            FirebaseID = 1,
+                            FirebaseID = "1",
                             Title = "Workout #1"
                         },
                         new
                         {
                             ID = 2,
-                            FirebaseID = 2,
+                            FirebaseID = "2",
                             Title = "Workout #2"
                         },
                         new
                         {
                             ID = 3,
-                            FirebaseID = 3,
+                            FirebaseID = "3",
                             Title = "Workout #3"
                         },
                         new
                         {
                             ID = 4,
-                            FirebaseID = 4,
+                            FirebaseID = "4",
                             Title = "Workout #4"
                         },
                         new
                         {
                             ID = 5,
-                            FirebaseID = 5,
+                            FirebaseID = "5",
                             Title = "Workout #5"
                         });
                 });

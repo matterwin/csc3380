@@ -47,12 +47,12 @@ namespace back_end.Repositories
             {
                 modelBuilder.Entity<User>().HasAlternateKey(p => p.FirebaseID);
                 modelBuilder.Entity<User>().HasData(
-                        new User { ID = userID++, FirebaseID = firebaseIds[i - 1], FirstName = firstNames[i - 1], MiddleName = middleNames[i - 1], LastName = lastNames[i - 1] }
+                        new User { ID = userID++, FirebaseID = $"{firebaseIds[i - 1]}", FirstName = firstNames[i - 1], MiddleName = middleNames[i - 1], LastName = lastNames[i - 1] }
                 );
 
                 string title = $"Workout #{i}";
                 modelBuilder.Entity<Workout>().HasData(
-                        new Workout {ID = workoutID++, FirebaseID = firebaseIds[i - 1], Title = title }
+                        new Workout { ID = workoutID++, FirebaseID = $"{firebaseIds[i - 1] }", Title = title }
                 );
 
                 List<int> workoutStepIds = new List<int> { 1, 2, 3, 4, 5 };

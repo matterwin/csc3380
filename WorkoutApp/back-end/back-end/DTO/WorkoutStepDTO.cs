@@ -10,11 +10,15 @@ namespace back_end.DTO
 
         public WorkoutStepDTO(WorkoutStep step)
         {
-            if (step == null)
-                return;
-
             Instruction = step.Instruction;
             WorkoutTime = step.WorkoutTime;
+        }
+
+        [JsonConstructor]
+        public WorkoutStepDTO(string Instruction, int WorkoutTime)
+        {
+            this.WorkoutTime = WorkoutTime;
+            this.Instruction = Instruction;
         }
     }
 }

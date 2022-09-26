@@ -1,6 +1,7 @@
 ﻿using back_end.DTO;
 using back_end.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace back_end.Controllers
 {
@@ -27,7 +28,7 @@ namespace back_end.Controllers
             if (start > end)
                 return BadRequest();
 
-            var workouts = _context.Workouts.Where(p => p.ID >= start && p.ID <= end).ToArray();
+            var workouts = _context.Workouts.Include(workout => workout.Steps).Where(p => p.ID >= start && p.ID <= end).ToList();
             List<WorkoutDTO> workoutDTOs = new List<WorkoutDTO>();
 
             for (int i = 0; i < workouts.Count(); i++)
@@ -43,7 +44,7 @@ namespace back_end.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public IActionResult Get()
         {
-            var workouts = _context.Workouts.ToList();
+            var workouts = _context.Workouts.Include(workout => workout.Steps).ToList();
             List<WorkoutDTO> workoutDTOs = new List<WorkoutDTO>();
 
             //if no workouts queries then something is seriously wrong

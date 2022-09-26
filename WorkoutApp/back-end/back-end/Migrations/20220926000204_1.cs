@@ -4,25 +4,25 @@
 
 namespace back_end.Migrations
 {
-    public partial class SeedingDatabase : Migration
+    public partial class _1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "User",
+                name: "Users",
                 columns: table => new
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    FirebaseID = table.Column<int>(type: "int", nullable: false),
+                    FirebaseID = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     MiddleName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_User", x => x.ID);
-                    table.UniqueConstraint("AK_User_FirebaseID", x => x.FirebaseID);
+                    table.PrimaryKey("PK_Users", x => x.ID);
+                    table.UniqueConstraint("AK_Users_FirebaseID", x => x.FirebaseID);
                 });
 
             migrationBuilder.CreateTable(
@@ -32,7 +32,7 @@ namespace back_end.Migrations
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    FirebaseID = table.Column<int>(type: "int", nullable: false)
+                    FirebaseID = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -61,15 +61,15 @@ namespace back_end.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "User",
+                table: "Users",
                 columns: new[] { "ID", "FirebaseID", "FirstName", "LastName", "MiddleName" },
                 values: new object[,]
                 {
-                    { 1, 1, "FirstName1", "LastName1", "MiddleName1" },
-                    { 2, 2, "FirstName2", "LastName2", "MiddleName2" },
-                    { 3, 3, "FirstName3", "LastName3", "MiddleName3" },
-                    { 4, 4, "FirstName4", "LastName4", "MiddleName4" },
-                    { 5, 5, "FirstName4", "LastName5", "MiddleName5" }
+                    { 1, "1", "FirstName1", "LastName1", "MiddleName1" },
+                    { 2, "2", "FirstName2", "LastName2", "MiddleName2" },
+                    { 3, "3", "FirstName3", "LastName3", "MiddleName3" },
+                    { 4, "4", "FirstName4", "LastName4", "MiddleName4" },
+                    { 5, "5", "FirstName4", "LastName5", "MiddleName5" }
                 });
 
             migrationBuilder.InsertData(
@@ -77,11 +77,11 @@ namespace back_end.Migrations
                 columns: new[] { "ID", "FirebaseID", "Title" },
                 values: new object[,]
                 {
-                    { 1, 1, "Workout #1" },
-                    { 2, 2, "Workout #2" },
-                    { 3, 3, "Workout #3" },
-                    { 4, 4, "Workout #4" },
-                    { 5, 5, "Workout #5" }
+                    { 1, "1", "Workout #1" },
+                    { 2, "2", "Workout #2" },
+                    { 3, "3", "Workout #3" },
+                    { 4, "4", "Workout #4" },
+                    { 5, "5", "Workout #5" }
                 });
 
             migrationBuilder.InsertData(
@@ -125,7 +125,7 @@ namespace back_end.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "User");
+                name: "Users");
 
             migrationBuilder.DropTable(
                 name: "WorkoutSteps");

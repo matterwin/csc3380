@@ -8,24 +8,25 @@ namespace back_end.Domain
     {
         public string Title { get; set; }
         public ICollection<WorkoutStep> Steps { get; set; }
-        public int FirebaseID { get; set; }
+        public string FirebaseID { get; set; }
 
         // This if for creating the DTO
-        public Workout(int FirebaseID, WorkoutDTO workoutDTO)
+        public Workout(string FirebaseID, WorkoutDTO workoutDTO)
         {
             this.FirebaseID = FirebaseID;
             Title = workoutDTO.Title;
 
             Steps = new List<WorkoutStep>();
 
-            for(int i = 0; i < workoutDTO.Steps.Count; i++)
+            for(int i = 0; i < workoutDTO.Steps.Count(); i++)
             {
+                Console.WriteLine("TEst");
                 Steps.Add(new WorkoutStep(ID, workoutDTO.Steps.ElementAt(i)));
             }
         }
 
         // Standard get set constructor
-        public Workout(string title, ICollection<WorkoutStep> steps, int firebaseID)
+        public Workout(string title, ICollection<WorkoutStep> steps, string firebaseID)
         {
             Title = title;
             Steps = steps;
