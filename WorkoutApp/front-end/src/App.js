@@ -4,6 +4,7 @@ import Register from "./UserAuth/Register";
 import MyProfile from "./Core/MyProfile";
 import Workouts from "./Core/Workouts";
 import MyWorkouts from "./Core/MyWorkouts";
+import Navbar from "./Core/Navbar";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route exact path="/myworkouts" element={<MyWorkouts />} />
         </Routes>
       </Router>
+      <Navbar />
     </div>
   );
 }
