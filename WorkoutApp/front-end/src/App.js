@@ -9,6 +9,7 @@ import Navbar from "./Core/Navbar";
 function App() {
   return (
     <div className="app">
+      <Navbar />
       <Router>
         <Routes>
           <Route exact path="/" element={<Workouts />} />
@@ -18,7 +19,6 @@ function App() {
           <Route exact path="/myworkouts" element={<MyWorkouts />} />
         </Routes>
       </Router>
-      <Navbar />
     </div>
   );
 }

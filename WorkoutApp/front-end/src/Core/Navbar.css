@@ -7,7 +7,7 @@ nav {
     display: flex;
     padding: 20px 36px;
     box-shadow: 0px 2.98256px 7.4564px rgba(0, 0, 0, 0.1);
-    background-color: #665151;
+    background-color: #453A49;
   }
   
   .nav--list * {
@@ -17,6 +17,7 @@ nav {
     font-size: 30px;
     letter-spacing: -.05em;
     text-decoration: none;
+    text-align: center;
     color: #ffffff;
   }
   

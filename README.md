@@ -35,10 +35,10 @@
 	- git push
 	- git checkout main
 
-# Copy from master to branch
+# Copy from main to branch
 # If you can use: git merge 
-	- git checkout old_branch.
-	- git checkout master . #With period
+	- git checkout your_branch.
+	- git checkout main . #With period
 	- git add --all
-	- git commit -m "Copy from master to old_branch"
-	- git push -u origin old_branch
+	- git commit -m "Copy from main to your_branch"
+	- git push -u origin your_branch
