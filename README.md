@@ -1,3 +1,9 @@
 # csc3380
 Group 3 (Team MMM): Bryce, Nicholas, Marvin, Matthew, Noah, Mohammad
-1
+
+Push Commands:
+	git pull
+	git add .
+	git commit -m "message"
+	git push
+	git checkout main
