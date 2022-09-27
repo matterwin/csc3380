@@ -34,8 +34,6 @@
 	- git commit -m "message"
 	- git push
 	- git checkout main
-
-# Copy from main to branch
 # If you can use: git merge 
 	- git checkout your_branch.
 	- git checkout main . #With period
