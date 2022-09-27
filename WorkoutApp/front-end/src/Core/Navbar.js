@@ -8,7 +8,7 @@ class Navbar extends React.Component{
     
             this.state = {
                 workouts: [{"steps": [{}]}],
-                workoutsLoaded: true
+                workoutsLoaded: false
             }
         }
     
