@@ -34,3 +34,9 @@
 	- git commit -m "message"
 	- git push
 	- git checkout main
+# If you can use: git merge 
+	- git checkout your_branch.
+	- git checkout main . #With period
+	- git add --all
+	- git commit -m "Copy from main to your_branch"
+	- git push -u origin your_branch
