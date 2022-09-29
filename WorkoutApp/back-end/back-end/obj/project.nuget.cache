@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "PYCVMPSePFho7ieiq1iUJlagFZD4JIYwfuBIf6A8UlxnwBn6ecCR8n6GzEpiy2YcyjU/tYW4P3qFlCQbMbmgtQ==",
+  "dgSpecHash": "vV6o2nq01QS5Z3EJWTGp1BARC0X/dMyvYvyMqP6cAEpgfpHezbMz3KNfPD2kSADiwVv5JbAofoDmKzf8Y32WQA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\sigma\\Source\\Repos\\csc3380\\WorkoutApp\\back-end\\back-end\\back-end.csproj",
+  "projectFilePath": "C:\\Users\\sigma\\csc3380\\WorkoutApp\\back-end\\back-end\\back-end.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\sigma\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\sigma\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\6.0.9\\microsoft.aspnetcore.jsonpatch.6.0.9.nupkg.sha512",

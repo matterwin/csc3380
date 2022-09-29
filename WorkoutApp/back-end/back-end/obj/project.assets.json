@@ -2550,11 +2550,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\sigma\\Source\\Repos\\csc3380\\WorkoutApp\\back-end\\back-end\\back-end.csproj",
+      "projectUniqueName": "C:\\Users\\sigma\\csc3380\\WorkoutApp\\back-end\\back-end\\back-end.csproj",
       "projectName": "back-end",
-      "projectPath": "C:\\Users\\sigma\\Source\\Repos\\csc3380\\WorkoutApp\\back-end\\back-end\\back-end.csproj",
+      "projectPath": "C:\\Users\\sigma\\csc3380\\WorkoutApp\\back-end\\back-end\\back-end.csproj",
       "packagesPath": "C:\\Users\\sigma\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\sigma\\Source\\Repos\\csc3380\\WorkoutApp\\back-end\\back-end\\obj\\",
+      "outputPath": "C:\\Users\\sigma\\csc3380\\WorkoutApp\\back-end\\back-end\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\sigma\\AppData\\Roaming\\NuGet\\NuGet.Config",
