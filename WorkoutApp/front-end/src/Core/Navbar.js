@@ -40,10 +40,10 @@ class Navbar extends React.Component{
                     <a href=""><img src="https://static.vecteezy.com/system/resources/previews/001/191/989/non_2x/circle-logo-png.png" alt="vader" className="nav--logo" /></a>
                     <h2 className='nav--logo_text'><a href="">Fit Happens</a></h2>
                     <ul className="nav--list">
-                        <li><a className = "nav--pages_text" href="Home">Home</a></li>
-                        <li><a className = "nav--pages_text" href="MyWorkouts">Your Workouts</a></li>
-                        <li><a className = "nav--pages_text" href="MyProfile">Profile</a></li>
-                        <li><a className = "nav--pages_text" href="Login">Log In</a></li>
+                        <li><a href="Home">Home</a></li>
+                        <li><a href="MyWorkouts">Your Workouts</a></li>
+                        <li><a href="MyProfile">Profile</a></li>
+                        <li><a href="Login">Log In</a></li>
                         <li className="sign--up"><a href="Register">Sign Up</a></li>
                     </ul>
                 </nav>
