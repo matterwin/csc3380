@@ -6,6 +6,7 @@ import Workouts from "./Core/Workouts";
 import MyWorkouts from "./Core/MyWorkouts";
 import Navbar from "./Core/Navbar";
 import "./App.css"
+import Home from "./Core/Home"
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Router>
         <Routes>
           <Route exact path="/" element={<Workouts />} />
+          <Route exact path="/Home" element={<Home />} />
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/register" element={<Register />} />
           <Route exact path="/myprofile" element={<MyProfile />} />
