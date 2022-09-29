@@ -5,6 +5,7 @@ import MyProfile from "./Core/MyProfile";
 import Workouts from "./Core/Workouts";
 import MyWorkouts from "./Core/MyWorkouts";
 import Navbar from "./Core/Navbar";
+import "./App.css"
 
 function App() {
   return (
