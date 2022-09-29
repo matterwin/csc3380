@@ -33,17 +33,17 @@ class Navbar extends React.Component{
 
                 </div>
             )
-    
+
             return (
                 <nav>
-                    <img src="https://static.vecteezy.com/system/resources/previews/001/191/989/non_2x/circle-logo-png.png" alt="vader" className="nav--logo" />
-                    <h2 className='nav--logo_text'>Website name</h2>
+                    <a href=""><img src="https://static.vecteezy.com/system/resources/previews/001/191/989/non_2x/circle-logo-png.png" alt="vader" className="nav--logo" /></a>
+                    <h2 className='nav--logo_text'><a href="">Website name</a></h2>
                     <ul className="nav--list">
-                        <li><a href="">Home</a></li>
-                        <li><a href="">Recommended</a></li>
-                        <li><a href="">Your Page</a></li>
-                        <li><a href="">Profile</a></li>
-                        <li><a href="">Login In</a></li>
+                        <li><a href="Workouts">Recommended</a></li>
+                        <li><a href="MyWorkouts">Your Page</a></li>
+                        <li><a href="MyProfile">Profile</a></li>
+                        <li><a href="Login">Login In</a></li>
+                        <li className="sign--up"><a href="Register">Sign Up</a></li>
                     </ul>
                 </nav>
             )
