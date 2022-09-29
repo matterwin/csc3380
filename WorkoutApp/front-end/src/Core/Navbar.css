@@ -7,14 +7,15 @@ nav {
     height: 70px;
     display: flex;
     padding: 3px 36px;
+    align-items: center;
     box-shadow: 0px 2.98256px 7.4564px rgba(0, 0, 0, 0.1);
-    background-color: #223843;
-    position: fixed;
+    background-color: #222;
     position: fixed; 
     overflow: hidden;
     width: 97%;
     margin-right: 100px;
   }
+
   
   .nav--list * {
     list-style: none;
@@ -26,6 +27,7 @@ nav {
     text-align: center;
     color: #ffffff;
   }
+  
 
   a:link, a:visited, a:active
   {

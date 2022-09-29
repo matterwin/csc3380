@@ -6,6 +6,7 @@ class Navbar extends React.Component{
         constructor(props){
             super(props);
 
+
             this.state = {
                 workouts: [{"steps": [{}]}],
                 workoutsLoaded: true
@@ -33,7 +34,6 @@ class Navbar extends React.Component{
 
                 </div>
             )
-            
 
             return (
                 <nav>
