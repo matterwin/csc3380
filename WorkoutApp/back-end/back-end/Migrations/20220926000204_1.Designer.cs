@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using back_end.Repositories;
 
@@ -10,9 +11,10 @@ using back_end.Repositories;
 namespace back_end.Migrations
 {
     [DbContext(typeof(WorkoutAppContext))]
-    partial class WorkoutAppContextModelSnapshot : ModelSnapshot
+    [Migration("20220926000204_1")]
+    partial class _1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

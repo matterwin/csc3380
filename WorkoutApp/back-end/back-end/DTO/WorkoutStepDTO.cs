@@ -1,4 +1,5 @@
 ﻿using back_end.Domain;
+using Newtonsoft.Json;
 
 namespace back_end.DTO
 {
@@ -9,8 +10,15 @@ namespace back_end.DTO
 
         public WorkoutStepDTO(WorkoutStep step)
         {
-            this.Instruction = step.Instruction;
-            this.WorkoutTime = step.WorkoutTime;
+            Instruction = step.Instruction;
+            WorkoutTime = step.WorkoutTime;
+        }
+
+        [JsonConstructor]
+        public WorkoutStepDTO(string Instruction, int WorkoutTime)
+        {
+            this.WorkoutTime = WorkoutTime;
+            this.Instruction = Instruction;
         }
     }
 }

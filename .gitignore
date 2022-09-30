@@ -456,3 +456,4 @@ $RECYCLE.BIN/
 *.dll
 *.sqlite
 *.suo
+WorkoutApp/back-end/back-end/obj/*
