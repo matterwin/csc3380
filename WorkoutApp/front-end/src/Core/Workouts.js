@@ -30,7 +30,8 @@ class Workouts extends React.Component{
     render() {
         const { workoutsLoaded, workouts } = this.state;
         if(!workoutsLoaded) return(
-            <div>
+            <div className="loading">
+                <img src="https://subarucustomersupport.powerappsportals.com/blue-spinner.gif" alt="load"  />
                 <h1>Loading Workouts</h1>
             </div>
         )
