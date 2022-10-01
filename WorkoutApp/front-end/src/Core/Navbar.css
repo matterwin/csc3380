@@ -14,6 +14,8 @@ nav {
     overflow: hidden;
     width: 97%;
     margin-right: 100px;
+    font-family: "Raleway", sans-serif;
+    font-weight: bolder;
   }
 
   
@@ -30,10 +32,8 @@ nav {
   }
   
   .nav--list{
-    margin-right:120px;
+    margin-right:150px;
   }
-
-
 
   .nav--logo_text {
     margin-right: auto;
@@ -77,14 +77,20 @@ a:hover {
   text-decoration: none;
 }
 
-.sign--up a:hover {
-  background-color: red;
+a:hover .sign--up{
+  background-color: #9b5946;
+}
+
+a:hover .login{
+  color: #D77A61;
 }
 
 .nav--logo{
-  margin-left:120px;
+  margin-left:150px;
 }
 
 .nav--logo_text{
   margin-left: 10px;
+  font-size: 170%;
 }
+

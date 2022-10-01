@@ -22,6 +22,12 @@ function Register() {
     if (user) navigate("/dashboard");
   }, [user, loading]);
   return (
+    <div>
+      <div>
+          <img className="reg--pic" src="logo-orange.png"></img>
+          <h1 className="log--title">Create your free account</h1>
+          <h3 className="log--subtitle">or&nbsp;<a href="/Login"> <element className="link">login into your account</element></a></h3>
+      </div>
     <div className="register">
       <div className="register__container">
         <input
@@ -48,10 +54,8 @@ function Register() {
         <button className="register__btn" onClick={register}>
           Register
         </button>
-        <div>
-          Already have an account? <Link to="/">Login</Link> now.
-        </div>
       </div>
+    </div>
     </div>
   );
 }

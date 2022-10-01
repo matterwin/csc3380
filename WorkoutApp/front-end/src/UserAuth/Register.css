@@ -1,3 +1,26 @@
+.log--title {
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 250px;
+  padding-bottom: 0px;
+  margin-bottom: -270px;
+  color: white;
+  font-weight: bold;
+  font-family: Raleway;
+  font-weight: 900;
+}
+
+.reg--pic {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 5%;
+  margin-bottom: -250px;
+  margin-top: 130px;
+}
+
 .register {
     height: 100vh;
     width: 100vw;
@@ -35,4 +58,23 @@
   
   .register div {
     margin-top: 7px;
+  }
+
+  .log--subtitle {
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    padding-top: 260px;
+    margin-bottom: -300px;
+    color: #ffffff;
+    font-size: 15px;
+    justify-content: center;
+  }
+
+  .link{
+    color: #d77161;
+  }
+
+  a:hover .link {
+    color: #9b5946;
   }
