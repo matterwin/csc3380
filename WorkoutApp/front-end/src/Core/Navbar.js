@@ -6,7 +6,6 @@ class Navbar extends React.Component{
         constructor(props){
             super(props);
 
-
             this.state = {
                 workouts: [{"steps": [{}]}],
                 workoutsLoaded: true
@@ -37,14 +36,14 @@ class Navbar extends React.Component{
 
             return (
                 <nav>
-                    <a href=""><img src="https://static.vecteezy.com/system/resources/previews/001/191/989/non_2x/circle-logo-png.png" alt="vader" className="nav--logo" /></a>
-                    <h2 className='nav--logo_text'><a href="">Fit Happens</a></h2>
+                    <a href="Home"><img src="../logo-orange.png" alt="logo" className="nav--logo" /></a>
+                    <h2 className='nav--logo_text'><a href="Home">Fit Happens</a></h2>
                     <ul className="nav--list">
-                        <li><a href="Home">Home</a></li>
-                        <li><a href="MyWorkouts">Your Workouts</a></li>
-                        <li><a href="MyProfile">Profile</a></li>
-                        <li><a href="Login">Log In</a></li>
-                        <li className="sign--up"><a href="Register">Sign Up</a></li>
+                        <li><a href="Home">HOME</a></li>
+                        <li><a href="MyWorkouts">YOUR WORKOUTS</a></li>
+                        <li><a href="MyProfile">PROFILE</a></li>
+                        <li><a href="Login">LOG IN</a></li>
+                        <li><a className="sign--up" href="Register">SIGN UP</a></li>
                     </ul>
                 </nav>
             )
