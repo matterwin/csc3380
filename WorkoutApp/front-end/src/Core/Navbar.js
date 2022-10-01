@@ -1,5 +1,5 @@
 import { render } from "@testing-library/react";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./Navbar.css"
 
 class Navbar extends React.Component{  
@@ -8,8 +8,9 @@ class Navbar extends React.Component{
 
             this.state = {
                 workouts: [{"steps": [{}]}],
-                workoutsLoaded: true
-            }
+                workoutsLoaded: true,
+            };
+
         }
     
         async componentDidMount(){
@@ -26,6 +27,7 @@ class Navbar extends React.Component{
                 })
         }
 
+        
         render() {
             const { workoutsLoaded, workouts } = this.state;
             if(!workoutsLoaded) return(
@@ -42,8 +44,8 @@ class Navbar extends React.Component{
                         <li><a href="Home">HOME</a></li>
                         <li><a href="MyWorkouts">YOUR WORKOUTS</a></li>
                         <li><a href="MyProfile">PROFILE</a></li>
-                        <li><a href="Login">LOG IN</a></li>
-                        <li><a className="sign--up" href="Register">SIGN UP</a></li>
+                        <li><a href="Login"><element className="login">LOG IN</element></a></li>
+                        <li><a href="Register"><element className="sign--up">SIGN UP</element></a></li>
                     </ul>
                 </nav>
             )
