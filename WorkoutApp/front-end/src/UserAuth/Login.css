@@ -1,5 +1,5 @@
 .login {
-    height: 100vh;
+    height: 96.3vh;
     width: 100vw;
     display: flex;
     align-items: center;
@@ -10,7 +10,7 @@
     display: flex;
     flex-direction: column;
     text-align: center;
-    background-color: #dcdcdc;
+    background-color: #d8d3d8;
     padding: 30px;
   }
 
@@ -18,6 +18,8 @@
     padding: 10px;
     font-size: 18px;
     margin-bottom: 10px;
+    border-radius: 8px;
+    border-style: hidden;
   }
 
   .login__btn {
@@ -26,7 +28,8 @@
     margin-bottom: 10px;
     border: none;
     color: white;
-    background-color: black;
+    background-color: #222222;
+    border-radius: 8px;
   }
 
   .login__google {
@@ -35,4 +38,49 @@
 
   .login div {
     margin-top: 7px;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: white;
+    color: #222222;
+    transition: 10ms;
+  }
+  
+  .reg--pic {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+    width: 5%;
+    margin-bottom: -250px;
+    margin-top: 130px;
+  }
+
+  .log--subtitle {
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    padding-top: 260px;
+    margin-bottom: -200px;
+    color: #ffffff;
+    font-size: 15px;
+    justify-content: center;
+  }
+
+  .log--title {
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 250px;
+    padding-bottom: 0px;
+    margin-bottom: -270px;
+    color: white;
+    font-weight: bold;
+    font-family: Raleway;
+    font-weight: 900;
   }

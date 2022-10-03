@@ -18,30 +18,35 @@ function Login() {
   }, [user, loading]);
 
   return (
-    <div className="login">
-      <div className="login__container">
-        <input
-          type="text"
-          className="login__textBox"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="E-mail Address"
-        />
-        <input
-          type="password"
-          className="login__textBox"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="Password"
-        />
-        <button
-          className="login__btn"
-          onClick={() => logInWithEmailAndPassword(email, password)}
-        >
-          Login
-        </button>
-        <div>
-          Don't have an account? <Link to="/register">Register</Link> now.
+    <div>
+      <div>
+          <a href="Home"><img className="reg--pic" src="logo-orange.png"></img></a>
+          <h1 className="log--title">Log in to your account</h1>
+          <h3 className="log--subtitle">Or&nbsp;<a href="/register"> <element className="link">create a free account</element></a></h3>
+      </div>
+      <div className="login">
+        <div className="login__container">
+          <input
+            type="text"
+            className="login__textBox"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="E-mail Address"
+          />
+          <input
+            type="password"
+            className="login__textBox"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Password"
+          />
+          <p></p>
+          <button
+            className="login__btn"
+            onClick={() => logInWithEmailAndPassword(email, password)}
+          >
+            Login
+          </button>
         </div>
       </div>
     </div>
