@@ -26,21 +26,21 @@ function Login() {
       </div>
       <div className="login">
         <div className="login__container">
+          <label>Email</label>
           <input
             type="text"
             className="login__textBox"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="E-mail Address"
           />
+          <label>Password</label>
           <input
             type="password"
             className="login__textBox"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            placeholder="Password"
           />
-          <p></p>
+          <label> &nbsp;</label>
           <button
             className="login__btn"
             onClick={() => logInWithEmailAndPassword(email, password)}
