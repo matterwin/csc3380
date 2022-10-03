@@ -8,7 +8,7 @@ nav {
     display: flex;
     padding: 3px 36px;
     align-items: center;
-    box-shadow: 0px 2.98256px 7.4564px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 2.98256px 7.4564px rgba(255, 255, 255, 0.088);
     background-color: #222;
     position: fixed; 
     overflow: hidden;
