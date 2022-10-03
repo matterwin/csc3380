@@ -1,5 +1,5 @@
 .login {
-    height: 96.3vh;
+    height: 100vh;
     width: 100vw;
     display: flex;
     align-items: center;
@@ -20,6 +20,12 @@
     margin-bottom: 10px;
     border-radius: 8px;
     border-style: hidden;
+  }
+
+  input:focus{
+    outline-color: #d77a61;
+    outline-style:solid;
+    outline-width: 2.3px;
   }
 
   .login__btn {
@@ -83,4 +89,9 @@
     font-weight: bold;
     font-family: Raleway;
     font-weight: 900;
+  }
+
+  label {
+    text-align: left;
+    padding-bottom: 3px
   }
