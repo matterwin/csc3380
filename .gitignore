@@ -462,3 +462,5 @@ $RECYCLE.BIN/
 WorkoutApp/.vs/*
 WorkoutApp/back-end/.vs/*
 WorkoutApp/back-end/back-end/bin/*
+WorkoutApp/back-end/back-end/bin/Debug/net6.0/*
+WorkoutApp/back-end/.vscode/*
