@@ -2,6 +2,7 @@
 using back_end.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Diagnostics;
 
 namespace back_end.Controllers
 {
@@ -18,31 +19,28 @@ namespace back_end.Controllers
             _context = context;
         }
 
-
         [HttpGet]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<WorkoutDTO>))]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(WorkoutDTO))]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [Route("InRange/{start}/{end}")]
-        public IActionResult GetInRange(int start, int end)
+        [Route("{id}")]
+        public IActionResult GetWorkout(int id)
         {
-            if (start > end)
+            if (id <= 0)
                 return BadRequest();
 
-            var workouts = _context.Workouts.Include(workout => workout.Steps).Where(p => p.ID >= start && p.ID <= end).ToList();
-            List<WorkoutDTO> workoutDTOs = new List<WorkoutDTO>();
+            var workout = _context.Workouts.Include(workout => workout.Steps).Where((workout) => workout.ID == id).ToList();
+            new WorkoutDTO(workout[0]);
 
-            for (int i = 0; i < workouts.Count(); i++)
-            {
-                workoutDTOs.Add(new WorkoutDTO(workouts[i]));
-            }
-
-            return Ok(workoutDTOs);
+            if (workout != null)
+                return Ok(new WorkoutDTO(workout[0]));
+            else
+                return NotFound();
         }
 
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<WorkoutDTO>))]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public IActionResult Get()
+        public IActionResult GetWorkouts()
         {
             var workouts = _context.Workouts.Include(workout => workout.Steps).ToList();
             List<WorkoutDTO> workoutDTOs = new List<WorkoutDTO>();

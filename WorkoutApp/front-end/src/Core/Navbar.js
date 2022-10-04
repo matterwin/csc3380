@@ -41,11 +41,11 @@ class Navbar extends React.Component{
                     <a href="Home"><img src="../logo-orange.png" alt="logo" className="nav--logo" /></a>
                     <h2 className='nav--logo_text'><a href="Home">Fit Happens</a></h2>
                     <ul className="nav--list">
-                        <li><a href="Home">HOME</a></li>
-                        <li><a href="MyWorkouts">YOUR WORKOUTS</a></li>
-                        <li><a href="MyProfile">PROFILE</a></li>
-                        <li><a href="Login"><element className="login">LOG IN</element></a></li>
-                        <li><a href="Register"><element className="sign--up">SIGN UP</element></a></li>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="MyWorkouts">Your Workouts</a></li>
+                        <li><a href="MyProfile">Profile</a></li>
+                        <li><a href="Login">Log In</a></li>
+                        <li className="sign--up"><a href="Register">Sign Up</a></li>
                     </ul>
                 </nav>
             )
