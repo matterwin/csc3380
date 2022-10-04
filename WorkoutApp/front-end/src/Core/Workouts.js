@@ -43,7 +43,7 @@ class Workouts extends React.Component{
                     {
                         Object.keys(workouts).map((workout, i) => (
                             <div className="workout" key={i}>
-                                <h1 color="black">
+                                <h1>
                                     {/*workouts[workout].workoutID}*/}
                                     <a href={"/Workout?id=" + workouts[workout].workoutID}>
                                         {workouts[workout].title}
