@@ -15,6 +15,14 @@ namespace back_end.Repositories
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             List<int> firebaseIds = new List<int> { 1, 2, 3, 4, 5 };
+            List<string> descriptions = new List<string>
+            {
+                "Testing 1 description",
+                "Testing 2 description",
+                "Testing 3 description",
+                "Testing 4 description",
+                "Testing 5 description"
+            };
             List<string> firstNames = new List<string>
             {
                 "FirstName1",
@@ -52,7 +60,7 @@ namespace back_end.Repositories
 
                 string title = $"Workout #{i}";
                 modelBuilder.Entity<Workout>().HasData(
-                        new Workout { ID = workoutID++, FirebaseID = $"{firebaseIds[i - 1] }", Title = title }
+                        new Workout { ID = workoutID++, Description = descriptions[i - 1], FirebaseID = $"{firebaseIds[i - 1] }", Title = title }
                 );
 
                 List<int> workoutStepIds = new List<int> { 1, 2, 3, 4, 5 };

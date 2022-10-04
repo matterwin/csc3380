@@ -7,6 +7,7 @@ namespace back_end.Domain
     public class Workout : BaseEntity
     {
         public string Title { get; set; }
+        public string Description { get; set; }
         public ICollection<WorkoutStep> Steps { get; set; }
         public string FirebaseID { get; set; }
 
@@ -15,6 +16,7 @@ namespace back_end.Domain
         {
             this.FirebaseID = FirebaseID;
             Title = workoutDTO.Title;
+            Description = workoutDTO.Description;
 
             Steps = new List<WorkoutStep>();
 
@@ -26,9 +28,10 @@ namespace back_end.Domain
         }
 
         // Standard get set constructor
-        public Workout(string title, ICollection<WorkoutStep> steps, string firebaseID)
+        public Workout(string title, string description, ICollection<WorkoutStep> steps, string firebaseID)
         {
             Title = title;
+            Description = description;
             Steps = steps;
             FirebaseID = firebaseID;
         }
