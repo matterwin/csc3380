@@ -22,36 +22,41 @@ function Register() {
     if (user) navigate("/dashboard");
   }, [user, loading]);
   return (
+    <div>
+      <div>
+          <a href="Home"><img className="reg--pic" src="logo-orange.png"></img></a>
+          <h1 className="log--title">Create your free account</h1>
+          <h3 className="log--subtitle">Or&nbsp;<a href="/Login"> <element className="link">login into your account</element></a></h3>
+      </div>
     <div className="register">
       <div className="register__container">
+      <label>Full Name</label>
         <input
           type="text"
           className="register__textBox"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          placeholder="Full Name"
         />
+        <label>Email</label>
         <input
           type="text"
           className="register__textBox"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          placeholder="E-mail Address"
         />
+        <label>Password</label>
         <input
           type="password"
           className="register__textBox"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          placeholder="Password"
         />
+        <label> &nbsp;</label>
         <button className="register__btn" onClick={register}>
           Register
         </button>
-        <div>
-          Already have an account? <Link to="/">Login</Link> now.
-        </div>
       </div>
+    </div>
     </div>
   );
 }

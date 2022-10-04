@@ -32,8 +32,8 @@ class Workouts extends React.Component{
         const { workoutsLoaded, workouts } = this.state;
         if(!workoutsLoaded) return(
             <div className="loading">
-                <img src="https://subarucustomersupport.powerappsportals.com/blue-spinner.gif" alt="load"  />
-                <h1>Loading Workouts</h1>
+                <img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/cd514331234507.564a1d2324e4e.gif" alt="load"  />
+                <h1 className="load--phrase">Loading Workouts</h1>
             </div>
         )
 
