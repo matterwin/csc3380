@@ -20,7 +20,7 @@ function Login() {
   return (
     <div>
       <div>
-          <a href="Home"><img className="reg--pic" src="logo-orange.png"></img></a>
+          <a href="/"><img className="reg--pic" src="logo-orange.png"></img></a>
           <h1 className="log--title">Log in to your account</h1>
           <h3 className="log--subtitle">Or&nbsp;<a href="/register"> <element className="link">create a free account</element></a></h3>
       </div>
