@@ -452,8 +452,13 @@ $RECYCLE.BIN/
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
-*/.vs/*
+
+# files we always want to ignore
 *.dll
 *.sqlite
 *.suo
-WorkoutApp/back-end/back-end/obj/*
+
+# dirs we always want to ignore
+WorkoutApp/.vs/*
+WorkoutApp/back-end/.vs/*
+WorkoutApp/back-end/back-end/bin/*
