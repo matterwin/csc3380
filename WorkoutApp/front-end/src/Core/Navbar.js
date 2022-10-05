@@ -38,10 +38,10 @@ class Navbar extends React.Component{
 
             return (
                 <nav>
-                    <a href="Home"><img src="../logo-orange.png" alt="logo" className="nav--logo" /></a>
-                    <h2 className='nav--logo_text'><a href="Home">Fit Happens</a></h2>
+                    <a href="/"><img src="../logo-orange.png" alt="logo" className="nav--logo" /></a>
+                    <h2 className='nav--logo_text'><a href="/">Fit Happens</a></h2>
                     <ul className="nav--list">
-                        <li><a href="Home">HOME</a></li>
+                        <li><a href="/">HOME</a></li>
                         <li><a href="MyWorkouts">YOUR WORKOUTS</a></li>
                         <li><a href="MyProfile">PROFILE</a></li>
                         <li><a href="Login"><element className="login">LOG IN</element></a></li>

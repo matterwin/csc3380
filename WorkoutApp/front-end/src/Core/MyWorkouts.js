@@ -52,7 +52,7 @@ function MyWorkouts() {
             <h1>Logged in as</h1>
             <div>{name}</div>
             <div>{user?.email}</div>
-            <div><pre>{JSON.stringify(jsonWorkouts)}</pre></div>;
+            <div><pre>{JSON.stringify(jsonWorkouts, null, 4)}</pre></div>;
         </div>
     );
 }
