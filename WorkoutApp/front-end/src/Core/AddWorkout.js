@@ -1,9 +1,10 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
 import { auth, db, logout } from "../UserAuth/firebase";
 import { query, collection, getDocs, where } from "firebase/firestore";
 import { setPersistence } from "firebase/auth";
+
 
 function AddWorkout() {
   const [user, loading, error] = useAuthState(auth);
@@ -34,7 +35,9 @@ function AddWorkout() {
   }, [user, loading]);
 
   const addStep = () => {
-    const list = [...steps, 'new step'];
+    let tempStep = {instruction: document.getElementById('next-step').value, time: document.getElementById('next-time').value};
+
+    const list = [...steps, tempStep];
     setSteps(() => list);
   }
 
@@ -58,15 +61,16 @@ function AddWorkout() {
         <div>
         </div>
         {
-            (steps || []).map((element, index) => {
+            (steps || []).map((step, index) => {
                 return (
                     <div key={index}>
-                    <h2>{element}</h2>
+                        <p>{step.instruction} | time: {step.time} min</p>
                     </div>
                 );
         })}
         <label>Next Step</label><br></br>
         <input type="text" id="next-step"></input>
+        <input type="text" id="next-time"></input>
         <button onClick={addStep}>Add Step</button>
         <button onClick={removeStep}>Remove Step</button>
     </center>
