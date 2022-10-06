@@ -66,22 +66,22 @@ nav {
   }
 
 
-a:link, a:visited, a:active
+nav a:link, nav a:visited, nav a:active
 {
   color: #ffffff;
   text-decoration: none;
 }
   
-a:hover {
+nav a:hover {
   color: #a8a8a8;
   text-decoration: none;
 }
 
-a:hover .sign--up{
+nav a:hover .sign--up{
   background-color: #9b5946;
 }
 
-a:hover .login{
+nav a:hover .login{
   color: #D77A61;
 }
 
