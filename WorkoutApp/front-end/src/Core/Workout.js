@@ -2,7 +2,7 @@ import { render } from "@testing-library/react";
 import React, { useEffect } from "react";
 import { act } from "react-dom/test-utils";
 import Workouts from "./Workouts";
-import "./Workouts.css"
+import "./Workout.css"
 
 class Workout extends React.Component{    
     constructor(props){
@@ -42,8 +42,9 @@ class Workout extends React.Component{
         return(
             <div>
                 <center>
-                    <h1>{workout.title}</h1>
-                    <h2>{workout.description}</h2>
+                <div className="entireWorkout">
+                    <h1 className="workoutTitle">{workout.title}</h1>
+                    <h2 className = "workoutDesc">{workout.description}</h2>
 
                     {
                         Object.keys(workout.steps).map((step, j) => (
@@ -54,6 +55,7 @@ class Workout extends React.Component{
                             </div> 
                         ))
                     }
+                    </div>
                 </center>
             </div>
         )
