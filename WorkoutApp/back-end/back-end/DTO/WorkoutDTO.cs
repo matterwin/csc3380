@@ -1,18 +1,35 @@
 ﻿using back_end.Domain;
+using Newtonsoft.Json;
 
 namespace back_end.DTO
 {
     public class WorkoutDTO
     {
-        public readonly String Title;
-        public readonly ICollection<WorkoutStepDTO> Steps = new List<WorkoutStepDTO>();
+        public String Title { get; set; }
+        public String Description { get; set; }
+        public ICollection<WorkoutStepDTO> Steps { get; set; }
+        public int WorkoutID { get; }
 
         public WorkoutDTO(Workout workout)
         {
-            this.Title = workout.Title;
+            Title = workout.Title;
+            Description = workout.Description;
+            WorkoutID = workout.ID;
 
+            Steps = new List<WorkoutStepDTO>();
             foreach (var step in workout.Steps)
+            {
                 Steps.Add(new WorkoutStepDTO(step));
+            }
+        }
+
+        [JsonConstructor]
+        public WorkoutDTO(string Title, string Description, ICollection<WorkoutStepDTO> Steps, int WorkoutID)
+        {
+            this.Title = Title;
+            this.Description = Description;
+            this.Steps = Steps;
+            this.WorkoutID = WorkoutID;
         }
     }
 }

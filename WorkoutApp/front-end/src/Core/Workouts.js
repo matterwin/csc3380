@@ -27,12 +27,13 @@ class Workouts extends React.Component{
             })
     }
 
+
     render() {
         const { workoutsLoaded, workouts } = this.state;
         if(!workoutsLoaded) return(
             <div className="loading">
-                <img src="https://subarucustomersupport.powerappsportals.com/blue-spinner.gif" alt="load"  />
-                <h1>Loading Workouts</h1>
+                <img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/cd514331234507.564a1d2324e4e.gif" alt="load"  />
+                <h1 className="load--phrase">Loading Workouts</h1>
             </div>
         )
 
@@ -42,16 +43,13 @@ class Workouts extends React.Component{
                     {
                         Object.keys(workouts).map((workout, i) => (
                             <div className="workout" key={i}>
-                                <h1>{workouts[workout].title}</h1>
-                                {
-                                    Object.keys(workouts[workout].steps).map((step, j) => (
-                                        <div className="workoutSteps" key={j}>
-                                            <span>
-                                                <p>Step {j + 1}: | {workouts[workout].steps[j].workoutTime} min | {workouts[workout].steps[j].instruction}</p>
-                                            </span>
-                                        </div> 
-                                    ))
-                                }
+                                <h1>
+                                    {/*workouts[workout].workoutID}*/}
+                                    <a href={"/Workout?id=" + workouts[workout].workoutID}>
+                                        {workouts[workout].title}
+                                    </a>
+                                </h1>
+                                <h2>{workouts[workout].description}</h2>
                             </div>
                         ))
                     }

@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using back_end.Repositories;
 
@@ -10,9 +11,10 @@ using back_end.Repositories;
 namespace back_end.Migrations
 {
     [DbContext(typeof(WorkoutAppContext))]
-    partial class WorkoutAppContextModelSnapshot : ModelSnapshot
+    [Migration("20220926000204_1")]
+    partial class _1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -102,10 +104,6 @@ namespace back_end.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
 
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("FirebaseID")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -122,35 +120,30 @@ namespace back_end.Migrations
                         new
                         {
                             ID = 1,
-                            Description = "Testing 1 description",
                             FirebaseID = "1",
                             Title = "Workout #1"
                         },
                         new
                         {
                             ID = 2,
-                            Description = "Testing 2 description",
                             FirebaseID = "2",
                             Title = "Workout #2"
                         },
                         new
                         {
                             ID = 3,
-                            Description = "Testing 3 description",
                             FirebaseID = "3",
                             Title = "Workout #3"
                         },
                         new
                         {
                             ID = 4,
-                            Description = "Testing 4 description",
                             FirebaseID = "4",
                             Title = "Workout #4"
                         },
                         new
                         {
                             ID = 5,
-                            Description = "Testing 5 description",
                             FirebaseID = "5",
                             Title = "Workout #5"
                         });

@@ -40,3 +40,21 @@
 	- git add --all
 	- git commit -m "Copy from main to your_branch"
 	- git push -u origin your_branch
+
+# Palette Colors
+	You can find the color palette in the /front-end/images/ directory
+	where you will also find the diff color logo images.
+
+# Steps to push to remote main (Only edit in your local branch)
+	- make sure your local main is up-to-date via git pull
+	- git checkout your_branch
+	- make edits in your_branch
+	- git add .
+	- git commit -m "msg"
+	- git push origin your_branch
+	- go to github and make pull request and merge
+	- after pull request, update your local main
+	- git checkout main
+	- git pull
+	- git checkout your_branch
+	- git merge main
