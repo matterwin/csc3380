@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { json, Route, useNavigate } from "react-router-dom";
-import { auth, db, logout } from "../UserAuth/firebase";
+import { auth, db, logout } from "../../UserAuth/firebase";
 import { query, collection, getDocs, where } from "firebase/firestore";
-import "./Workouts.css"
+import "../Workouts/Workouts.css"
 import { getValue } from "@testing-library/user-event/dist/utils";
 
 function MyWorkout() {
@@ -112,6 +112,8 @@ function MyWorkout() {
         })
           .then((res) => console.log(res))
           .catch((err) => console.log(err));
+
+        window.location.href = "/MyWorkouts";
       }
 
     return (

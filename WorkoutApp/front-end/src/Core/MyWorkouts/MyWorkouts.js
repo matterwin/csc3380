@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { json, useNavigate } from "react-router-dom";
-import { auth, db, logout } from "../UserAuth/firebase";
+import { auth, db, logout } from "../../UserAuth/firebase";
 import { query, collection, getDocs, where } from "firebase/firestore";
-import "./Workouts.css"
+import "../Workouts/Workouts.css"
 
 function MyWorkouts() {
     const [user, loading, error] = useAuthState(auth);

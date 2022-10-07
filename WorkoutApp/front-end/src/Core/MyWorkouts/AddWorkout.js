@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
-import { auth, db, logout } from "../UserAuth/firebase";
+import { auth, db, logout } from "../../UserAuth/firebase";
 import { query, collection, getDocs, where } from "firebase/firestore";
 import { setPersistence } from "firebase/auth";
 
@@ -80,6 +80,9 @@ function AddWorkout() {
     })
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
+
+    //moving user to the myworkouts page
+    window.location.href = "/MyWorkouts"
   }
 
   return (

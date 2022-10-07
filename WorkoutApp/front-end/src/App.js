@@ -1,13 +1,13 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Login from "./UserAuth/Login";
 import Register from "./UserAuth/Register";
-import MyProfile from "./Core/MyProfile";
-import Workouts from "./Core/Workouts";
-import MyWorkouts from "./Core/MyWorkouts";
-import Workout from "./Core/Workout";
-import Navbar from "./Core/Navbar";
-import AddWorkout from "./Core/AddWorkout"
-import MyWorkout from "./Core/MyWorkout"
+import MyProfile from "./Core/MyProfile/MyProfile";
+import Workouts from "./Core/Workouts/Workouts";
+import MyWorkouts from "./Core/MyWorkouts/MyWorkouts";
+import Workout from "./Core/Workouts/Workout";
+import Navbar from "./Core/Navbar/Navbar";
+import AddWorkout from "./Core/MyWorkouts/AddWorkout"
+import MyWorkout from "./Core/MyWorkouts/MyWorkout"
 import "./App.css"
 
 function App() {
