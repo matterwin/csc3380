@@ -50,6 +50,7 @@ function MyWorkouts() {
             <div>{name}</div>
             <div>{user?.email}</div>
             <center>
+            <a href={"/add-workout"}>Add Workout</a>
             {
                 Object.entries(jsonWorkouts).map(([key, value]) => {
                     return (
