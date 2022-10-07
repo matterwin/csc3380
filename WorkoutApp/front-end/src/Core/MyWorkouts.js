@@ -10,23 +10,6 @@ function MyWorkouts() {
     const [name, setName] = useState("");
     const navigate = useNavigate();
     const [jsonWorkouts, setJsonWorkouts] = useState({});
-    
-    useEffect(() => {
-        if(loading)
-            return;
-
-        fetch('https://localhost:7025/UserWorkouts/' + user.uid)
-        .then((res) => res.json())
-        .then((json) => {
-            if(json?.status != 404)
-                setJsonWorkouts(json);
-            else
-                setJsonWorkouts("{No workouts for user}");
-        })
-        .catch((err) => {
-            console.log(err);
-        })
-    }, []);
 
     const fetchUserName = async () => {
         try {
@@ -47,6 +30,18 @@ function MyWorkouts() {
             return navigate("/login");
         }
         fetchUserName();
+
+        fetch('https://localhost:7025/UserWorkouts/' + user.uid)
+        .then((res) => res.json())
+        .then((json) => {
+            if(json?.status != 404)
+                setJsonWorkouts(json);
+            else
+                setJsonWorkouts("{No workouts for user}");
+        })
+        .catch((err) => {
+            console.log(err);
+        })
     }, [user, loading]);
 
     return (
