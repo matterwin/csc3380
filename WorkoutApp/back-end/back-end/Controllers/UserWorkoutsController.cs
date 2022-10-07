@@ -28,7 +28,7 @@ namespace back_end.Controllers
         [Route("{FirebaseID}/{WorkoutID}")]
         public IActionResult Delete(string FirebaseID, int WorkoutID)
         {
-            var workouts = _context.Workouts.Where(workout => workout.FirebaseID == FirebaseID).Where(workout => workout.FirebaseID == FirebaseID);
+            var workouts = _context.Workouts.Where(workout => workout.FirebaseID == FirebaseID).Where(workout => workout.ID == WorkoutID);
             if(workouts.Count() <= 0)
                 return NotFound(WorkoutID);
             else if(workouts.Count() > 1)

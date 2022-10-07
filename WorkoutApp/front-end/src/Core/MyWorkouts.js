@@ -37,7 +37,7 @@ function MyWorkouts() {
             if(json?.status != 404)
                 setJsonWorkouts(json);
             else
-                setJsonWorkouts("{No workouts for user}");
+                setJsonWorkouts("");
         })
         .catch((err) => {
             console.log(err);
