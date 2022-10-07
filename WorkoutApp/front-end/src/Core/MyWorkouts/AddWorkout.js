@@ -27,7 +27,7 @@ function AddWorkout() {
   useEffect(() => {
     if (loading) return;
     if (!user) {
-        console.log("User must be loggin in to access this page!");
+        console.info("User must be loggin in to access this page!");
         return navigate("/Login");
     }
     
@@ -39,7 +39,7 @@ function AddWorkout() {
 
     if(!tempStep.instruction || !tempStep.time){
       // TODO::show error message to user
-      console.log('error one or more inputs fields were null');
+      console.error('error one or more inputs fields were null');
       return;
     }
 
@@ -79,7 +79,7 @@ function AddWorkout() {
     for(let i = 0; i < stepInstructions.length; i++){
       if(!stepInstructions[i].value || !stepTimes[i].value){
         // TODO::show user error
-        console.log('one ore more input fields were null');
+        console.error('one ore more input fields were null');
         return;
       }
 
@@ -87,9 +87,6 @@ function AddWorkout() {
     };
 
     let jsonRes = {title: title.value, description: description.value, steps: tempSteps}
-
-    console.log('user id ' + user.uid);
-    console.log(JSON.stringify(jsonRes, null, 4));
 
     fetch('https://localhost:7025/UserWorkouts/' + user.uid, {
       method: 'post',

@@ -17,7 +17,6 @@ function MyWorkouts() {
             const doc = await getDocs(q);
             const data = doc.docs[0].data();
             setName(data.name);
-            console.log(user.uid);
         } catch (err) {
             console.error(err);
             alert("An error occured while fetching user data");

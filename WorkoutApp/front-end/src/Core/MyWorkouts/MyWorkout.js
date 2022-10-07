@@ -19,7 +19,6 @@ function MyWorkout() {
             const doc = await getDocs(q);
             const data = doc.docs[0].data();
             setName(data.name);
-            console.log(user.uid);
         } catch (err) {
             console.error(err);
             alert("An error occured while fetching user data");
@@ -28,8 +27,6 @@ function MyWorkout() {
 
     const deleteWorkout = (uid, workoutID) => {
         if(uid != 0){
-            console.log(uid);
-
             fetch('https://localhost:7025/UserWorkouts/' + uid + '/' + workoutID, { method: 'DELETE' })
             .then((res) => console.log(res))
             .catch((err) => console.log(err));
@@ -39,13 +36,12 @@ function MyWorkout() {
     }
 
     const addStep = () => {
-        console.log(document.getElementById('next-time').value);
         let tempStep = {instruction: document.getElementById('next-step').value, workoutTime: document.getElementById('next-time').value};
     
         const list = [...steps, tempStep];
         setSteps(() => list);
     
-        //resetting in put values
+        //resetting input values
         document.getElementById('next-step').value = "";
         document.getElementById('next-time').value = "";
       }
@@ -82,7 +78,7 @@ function MyWorkout() {
             setSteps(newList);
         })
         .catch((err) => {
-            console.log(err);
+            console.error(err);
         })
     }, [user, loading, setJsonWorkout, setSteps]);
 
@@ -95,17 +91,14 @@ function MyWorkout() {
    
         if(!title.value || !description.value){
           // TODO::display error to user
-          console.log('one or more input fields were null');
+          console.error('one or more input fields were null');
           return;
         }
-
-        console.log(stepInstructions);
-        console.log(stepTimes);
     
         for(let i = 0; i < stepInstructions.length; i++){
           if(!stepInstructions[i].value || !stepTimes[i].value){
             // TODO::display error to user
-            console.log('one or more input fields were null');
+            console.error('one or more input fields were null');
             return;
           }
 
@@ -113,9 +106,6 @@ function MyWorkout() {
         };
     
         let jsonRes = {title: title.value, description: description.value, steps: tempSteps}
-    
-        console.log('user id ' + user.uid);
-        console.log(JSON.stringify(jsonRes, null, 4));
     
         fetch('https://localhost:7025/UserWorkouts/Update/' + user.uid + '/' + workoutID, {
           method: 'PUT',
