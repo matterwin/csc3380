@@ -7,6 +7,7 @@ import MyWorkouts from "./Core/MyWorkouts";
 import Workout from "./Core/Workout";
 import Navbar from "./Core/Navbar";
 import AddWorkout from "./Core/AddWorkout"
+import MyWorkout from "./Core/MyWorkout"
 import "./App.css"
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
           <Route exact path="/myworkouts" element={<MyWorkouts />} />
           <Route exact path="/workout" element={<Workout />} />
           <Route exact path="/add-workout" element={<AddWorkout />} />
+          <Route exact path="/my-workout" element={<MyWorkout />} />
         </Routes>
       </Router>
     </div>
