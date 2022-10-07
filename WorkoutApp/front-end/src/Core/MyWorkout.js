@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { json, Route, useNavigate } from "react-router-dom";
-import { auth, db, logout } from "../../UserAuth/firebase";
+import { auth, db, logout } from "../UserAuth/firebase";
 import { query, collection, getDocs, where } from "firebase/firestore";
-import "../Workouts/Workouts.css"
+import "./Workouts.css"
 import { getValue } from "@testing-library/user-event/dist/utils";
 
 function MyWorkout() {
@@ -19,6 +19,7 @@ function MyWorkout() {
             const doc = await getDocs(q);
             const data = doc.docs[0].data();
             setName(data.name);
+            console.log(user.uid);
         } catch (err) {
             console.error(err);
             alert("An error occured while fetching user data");
@@ -27,6 +28,8 @@ function MyWorkout() {
 
     const deleteWorkout = (uid, workoutID) => {
         if(uid != 0){
+            console.log(uid);
+
             fetch('https://localhost:7025/UserWorkouts/' + uid + '/' + workoutID, { method: 'DELETE' })
             .then((res) => console.log(res))
             .catch((err) => console.log(err));
@@ -36,12 +39,13 @@ function MyWorkout() {
     }
 
     const addStep = () => {
+        console.log(document.getElementById('next-time').value);
         let tempStep = {instruction: document.getElementById('next-step').value, workoutTime: document.getElementById('next-time').value};
     
         const list = [...steps, tempStep];
         setSteps(() => list);
     
-        //resetting input values
+        //resetting in put values
         document.getElementById('next-step').value = "";
         document.getElementById('next-time').value = "";
       }
@@ -78,7 +82,7 @@ function MyWorkout() {
             setSteps(newList);
         })
         .catch((err) => {
-            console.error(err);
+            console.log(err);
         })
     }, [user, loading, setJsonWorkout, setSteps]);
 
@@ -88,24 +92,18 @@ function MyWorkout() {
         let description = document.getElementById("description");
         let stepInstructions = document.getElementsByClassName("step-instruction");
         let stepTimes = document.getElementsByClassName("step-time");
-   
-        if(!title.value || !description.value){
-          // TODO::display error to user
-          console.error('one or more input fields were null');
-          return;
-        }
+    
+        console.log(stepInstructions);
+        console.log(stepTimes);
     
         for(let i = 0; i < stepInstructions.length; i++){
-          if(!stepInstructions[i].value || !stepTimes[i].value){
-            // TODO::display error to user
-            console.error('one or more input fields were null');
-            return;
-          }
-
           tempSteps.push({instruction: stepInstructions[i].value, workoutTime: stepTimes[i].value});
         };
     
         let jsonRes = {title: title.value, description: description.value, steps: tempSteps}
+    
+        console.log('user id ' + user.uid);
+        console.log(JSON.stringify(jsonRes, null, 4));
     
         fetch('https://localhost:7025/UserWorkouts/Update/' + user.uid + '/' + workoutID, {
           method: 'PUT',
@@ -114,8 +112,6 @@ function MyWorkout() {
         })
           .then((res) => console.log(res))
           .catch((err) => console.log(err));
-
-        window.location.href = "/MyWorkouts";
       }
 
     return (
@@ -126,13 +122,13 @@ function MyWorkout() {
             <center>
             <label>Title</label><br></br>
             <input type="text" id="title" placeholder="Title"></input><br></br>
-            <label>Description</label><br></br>
+            <label>Description</label>Description<br></br>
             <input type="text" id="description" placeholder="Description"></input><br></br>
             {
                 (steps || []).map((step, index) => {
                     return (
                         <div key={index}>
-                        {/*{step.instruction} | time: {step.time} min*/}
+                        {console.log(index)}
                             <input className="step-instruction" type="text" defaultValue={step.instruction}></input>
                             <input className="step-time" type="number" defaultValue={step.workoutTime}></input>
                         </div>
