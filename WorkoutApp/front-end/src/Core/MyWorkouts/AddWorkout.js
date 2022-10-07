@@ -97,7 +97,7 @@ function AddWorkout() {
       .catch((err) => console.log(err));
 
     //moving user to the myworkouts page
-    //window.location.href = "/MyWorkouts"
+    window.location.href = "/MyWorkouts"
   }
 
   return (
