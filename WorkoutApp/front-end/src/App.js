@@ -17,13 +17,13 @@ function App() {
       <Router>
         <Routes>
           <Route exact path="/" element={<Workouts />} />
-          <Route exact path="/login" element={<Login />} />
-          <Route exact path="/register" element={<Register />} />
-          <Route exact path="/myprofile" element={<MyProfile />} />
-          <Route exact path="/myworkouts" element={<MyWorkouts />} />
-          <Route exact path="/workout" element={<Workout />} />
-          <Route exact path="/add-workout" element={<AddWorkout />} />
-          <Route exact path="/my-workout" element={<MyWorkout />} />
+          <Route exact path="/Login" element={<Login />} />
+          <Route exact path="/Register" element={<Register />} />
+          <Route exact path="/MyProfile" element={<MyProfile />} />
+          <Route exact path="/MyWorkouts" element={<MyWorkouts />} />
+          <Route exact path="/Workout" element={<Workout />} />
+          <Route exact path="/AddWorkout" element={<AddWorkout />} />
+          <Route exact path="/MyWorkout" element={<MyWorkout />} />
         </Routes>
       </Router>
     </div>

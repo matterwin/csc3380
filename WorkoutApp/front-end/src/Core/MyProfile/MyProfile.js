@@ -26,7 +26,7 @@ function MyProfile() {
     if (loading) return;
     if (!user) {
         console.log("User must be loggin in to access this page!");
-        return navigate("/login");
+        return navigate("/Login");
     }
     
     fetchUserName();

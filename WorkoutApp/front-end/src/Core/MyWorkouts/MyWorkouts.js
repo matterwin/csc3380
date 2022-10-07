@@ -55,7 +55,7 @@ function MyWorkouts() {
                 Object.entries(jsonWorkouts).map(([key, value]) => {
                     return (
                         <div className="workout">
-                            <a href={"/my-workout?id=" + value.workoutID}>{value.title}</a>
+                            <a href={"/MyWorkout?id=" + value.workoutID}>{value.title}</a>
                             <p>{value.description}</p>
                         </div>
                     )
