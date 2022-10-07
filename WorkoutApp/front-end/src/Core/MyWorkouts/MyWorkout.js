@@ -92,11 +92,23 @@ function MyWorkout() {
         let description = document.getElementById("description");
         let stepInstructions = document.getElementsByClassName("step-instruction");
         let stepTimes = document.getElementsByClassName("step-time");
-    
+   
+        if(!title.value || !description.value){
+          // TODO::display error to user
+          console.log('one or more input fields were null');
+          return;
+        }
+
         console.log(stepInstructions);
         console.log(stepTimes);
     
         for(let i = 0; i < stepInstructions.length; i++){
+          if(!stepInstructions[i].value || !stepTimes[i].value){
+            // TODO::display error to user
+            console.log('one or more input fields were null');
+            return;
+          }
+
           tempSteps.push({instruction: stepInstructions[i].value, workoutTime: stepTimes[i].value});
         };
     

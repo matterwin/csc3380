@@ -37,10 +37,16 @@ function AddWorkout() {
   const addStep = () => {
     let tempStep = {instruction: document.getElementById('next-step').value, time: document.getElementById('next-time').value};
 
+    if(!tempStep.instruction || !tempStep.time){
+      // TODO::show error message to user
+      console.log('error one or more inputs fields were null');
+      return;
+    }
+
     const list = [...steps, tempStep];
     setSteps(() => list);
 
-    //resetting in put values
+    //resetting input values
     document.getElementById('next-step').value = "";
     document.getElementById('next-time').value = "";
   }
@@ -56,15 +62,27 @@ function AddWorkout() {
 
   const submitWorkout = () => {
     let tempSteps = [];
-    let title = document.getElementById("title")
+    let title = document.getElementById("title");
     let description = document.getElementById("description");
     let stepInstructions = document.getElementsByClassName("step-instruction");
     let stepTimes = document.getElementsByClassName("step-time");
 
+    if(!title.value || !description.value){
+      // TODO::show error message to user
+      console.log('error one ore more inputs fields were null');
+      return;
+    }
+    
     console.log(stepInstructions);
     console.log(stepTimes);
 
     for(let i = 0; i < stepInstructions.length; i++){
+      if(!stepInstructions[i].value || !stepTimes[i].value){
+        // TODO::show user error
+        console.log('one ore more input fields were null');
+        return;
+      }
+
       tempSteps.push({instruction: stepInstructions[i].value, workoutTime: stepTimes[i].value});
     };
 
@@ -82,7 +100,7 @@ function AddWorkout() {
       .catch((err) => console.log(err));
 
     //moving user to the myworkouts page
-    window.location.href = "/MyWorkouts"
+    //window.location.href = "/MyWorkouts"
   }
 
   return (
