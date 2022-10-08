@@ -42,9 +42,9 @@ class Workout extends React.Component{
         return(
             <div>
                 <center>
-                <div className="entireWorkout">
-                    <h1 className="workoutTitle">{workout.title}</h1>
-                    <h2 className = "workoutDesc">{workout.description}</h2>
+                    <div className="workout">
+                    <h1>{workout.title}</h1>
+                    <h2>{workout.description}</h2>
 
                     {
                         Object.keys(workout.steps).map((step, j) => (
