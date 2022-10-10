@@ -1,12 +1,14 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Login from "./UserAuth/Login";
 import Register from "./UserAuth/Register";
-import MyProfile from "./Core/MyProfile";
-import Workouts from "./Core/Workouts";
-import MyWorkouts from "./Core/MyWorkouts";
-import Workout from "./Core/Workout";
-import Navbar from "./Core/Navbar";
-import AddWorkout from "./Core/AddWorkout"
+import MyProfile from "./Core/MyProfile/MyProfile";
+import Workouts from "./Core/Workouts/Workouts";
+import MyWorkouts from "./Core/MyWorkouts/MyWorkouts";
+import Workout from "./Core/Workouts/Workout";
+import Navbar from "./Core/Navbar/Navbar";
+import AddWorkout from "./Core/MyWorkouts/AddWorkout"
+import MyWorkout from "./Core/MyWorkouts/MyWorkout"
+
 import "./App.css"
 
 function App() {
@@ -16,12 +18,13 @@ function App() {
       <Router>
         <Routes>
           <Route exact path="/" element={<Workouts />} />
-          <Route exact path="/login" element={<Login />} />
-          <Route exact path="/register" element={<Register />} />
-          <Route exact path="/myprofile" element={<MyProfile />} />
-          <Route exact path="/myworkouts" element={<MyWorkouts />} />
-          <Route exact path="/workout" element={<Workout />} />
-          <Route exact path="/add-workout" element={<AddWorkout />} />
+          <Route exact path="/Login" element={<Login />} />
+          <Route exact path="/Register" element={<Register />} />
+          <Route exact path="/MyProfile" element={<MyProfile />} />
+          <Route exact path="/MyWorkouts" element={<MyWorkouts />} />
+          <Route exact path="/Workout" element={<Workout />} />
+          <Route exact path="/AddWorkout" element={<AddWorkout />} />
+          <Route exact path="/MyWorkout" element={<MyWorkout />} />
         </Routes>
       </Router>
     </div>

@@ -44,8 +44,8 @@ class Navbar extends React.Component{
                         <li><a href="/">HOME</a></li>
                         <li><a href="MyWorkouts">YOUR WORKOUTS</a></li>
                         <li><a href="MyProfile">PROFILE</a></li>
-                        <li><a href="Login"><element className="login">LOG IN</element></a></li>
-                        <li><a href="Register"><element className="sign--up">SIGN UP</element></a></li>
+                        <li><a href="Login"><div className="login">LOG IN</div></a></li>
+                        <li><a href="Register"><div className="sign--up">SIGN UP</div></a></li>
                     </ul>
                 </nav>
             )

@@ -13,20 +13,23 @@ function Register() {
   const [name, setName] = useState("");
   const [user, loading, error] = useAuthState(auth);
   const navigate = useNavigate();
+
   const register = () => {
     if (!name) alert("Please enter name");
     registerWithEmailAndPassword(name, email, password);
   };
+
   useEffect(() => {
     if (loading) return;
-    if (user) navigate("/dashboard");
+    if (user) navigate("/MyProfile");
   }, [user, loading]);
+
   return (
     <div>
       <div>
           <a href="/"><img className="reg--pic" src="logo-orange.png"></img></a>
           <h1 className="log--title">Create your free account</h1>
-          <h3 className="log--subtitle">Or&nbsp;<a href="/Login"> <element className="link">login into your account</element></a></h3>
+          <h3 className="log--subtitle">Or&nbsp;<a href="/Login"> <div className="link">login into your account</div></a></h3>
       </div>
     <div className="register">
       <div className="register__container">
