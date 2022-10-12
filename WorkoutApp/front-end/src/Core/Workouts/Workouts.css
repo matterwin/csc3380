@@ -52,6 +52,7 @@ a {
 }
 
 .welcome-screen h1{
+	display: flex;
 	padding-bottom: 0;
 	text-align: left;
 	margin-bottom: 0;
@@ -64,6 +65,7 @@ a {
 }
 
 .welcome-screen h2{
+	display: flex;
 	padding-bottom: 0;
 	text-align: left;
 	margin-bottom: 0;
@@ -93,4 +95,19 @@ a {
 	overflow: visible;
 	float: right;
 	width:20vh;
+}
+
+@media (max-width: 1213px) {
+	.welcome-screen h1 {
+		align-items: center;
+		width: 60vw;
+		/*font-size: 6vw;*/
+		text-align: center;
+	}
+
+	.welcome-screen h2 {
+		align-items: center;
+		width: 60vw;
+		text-align: center;
+	}
 }
