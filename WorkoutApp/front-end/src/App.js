@@ -14,8 +14,8 @@ import "./App.css"
 function App() {
   return (
     <div className="app">
-      <Navbar />
       <Router>
+      <Navbar />
         <Routes>
           <Route exact path="/" element={<Workouts />} />
           <Route exact path="/Login" element={<Login />} />

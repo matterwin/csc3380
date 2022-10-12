@@ -15,6 +15,7 @@ nav {
     width: 97%;
     margin-right: 100px;
     font-family: "Raleway", sans-serif;
+    font-weight: 100;
     font-weight: bolder;
   }
 
@@ -29,10 +30,11 @@ nav {
     text-align: center;
     color: #ffffff;
     font-size: 18px;
+    letter-spacing: 1px;
   }
   
   .nav--list{
-    margin-right:150px;
+    margin-right:167px;
   }
 
   .nav--logo_text {
@@ -93,4 +95,3 @@ nav a:hover .login{
   margin-left: 10px;
   font-size: 170%;
 }
-
