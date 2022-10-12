@@ -95,3 +95,84 @@ nav a:hover .login{
   margin-left: 10px;
   font-size: 170%;
 }
+
+input[type=checkbox]{
+  display: none;
+ } 
+ /*HAMBURGER MENU*/
+ .hamburger {
+  display: none;
+  font-size: 24px;
+  user-select: none;
+ }
+
+@media (max-width: 1220px) {
+  .menu { 
+   display:none;
+   position: absolute;
+   background-color:red;
+   right: 0;
+   left: 0;
+   text-align: center;
+   padding: 16px 0;
+  }
+
+  .nav--logo {
+    margin-left: -10px;
+  }
+  .nav--logo_text {
+    margin-left: -10px;
+  }
+
+  .menu li:hover {
+    display: inline-block;
+    background-color:#4c9e9e;
+    transition: 0.3s ease;
+   }
+   .menu li + li {
+    margin-top: 12px;
+   }
+   input[type=checkbox]:checked ~ .menu{
+    display: block;
+   }
+   .hamburger {
+    display: block;
+    margin-right: -150px;
+   }
+   
+   .dropdown {
+    left: 50%;
+    top: 30px;
+    transform: translateX(35%);
+   }
+
+   .dropdown li:hover {
+    background-color: red;
+   }
+
+}
+
+.menu .active {
+  color: #D77A61;
+}
+
+.menu .activeSign {
+  background-color: #223843;
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+  color: #fff;
+}
+
+.menu .inactiveSign{
+  background-color: #D77A61;
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+  color: #FFF;
+}
+
+
+.menu .inactiveSign a:hover {
+  
+}
