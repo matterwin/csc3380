@@ -57,5 +57,24 @@ namespace back_end.Controllers
 
             return Ok(workoutDTOs);
         }
+
+        /*
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<WorkoutDTO>))]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [Route("{startId}/{groupNum}/{numWorkouts}")]
+        public IActionResult GetWorkouts(int startId, int groupNum, int numWorkouts)
+        {
+            List<Domain.Workout> workouts = new();
+            _context.Workouts.Skip(numWorkouts)
+
+            while(workouts.Count <= numWorkouts)
+            {
+
+            }
+
+            return Ok(workouts);
+        }
+        */
     }
 }
