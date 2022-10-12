@@ -1,3 +1,9 @@
+.container {
+	height: 100vh;
+	width: 100%;
+	background-color: #223843;
+}
+
 .workout {
   	border: 5px solid black;
   	margin: 10px;
@@ -9,7 +15,7 @@
 }
 
 .loading {
-    padding-top: 150px;
+    padding: 25vh;
     text-align: center;
 }
 
@@ -25,4 +31,66 @@
 
 a:hover {
 	color: gray;
+}
+
+a {
+	color: #222;
+	text-decoration: none;
+}
+
+.preview-workouts {
+	margin-top: 28.5vh;
+	clip-path: ellipse(170% 100% at 50% 100%);
+	padding-top: 20vh;
+	padding-bottom: 10vh;
+	background-color: #222222;
+}
+
+.welcome-screen {
+	padding: 0;
+	margin: 0;
+}
+
+.welcome-screen h1{
+	padding-bottom: 0;
+	text-align: left;
+	margin-bottom: 0;
+	color: #fff;
+	font-family: Montserrat;
+	font-size: 6vh;
+	width: 120vh;
+	word-wrap: break-word;
+	padding-left:194px;
+}
+
+.welcome-screen h2{
+	padding-bottom: 0;
+	text-align: left;
+	margin-bottom: 0;
+	color: #fff;
+	font-family: Raleway;
+	font-size: 3vh;
+	width: 65vh;
+	word-wrap: break-word;
+	padding-left:194px;
+	padding-bottom: 0%;
+	margin-bottom: 0%;
+}
+
+.gif {
+	right: 100px;
+	justify-content: center;
+	align-content: center;
+	padding-top: 15vh;
+	padding-bottom: 0;
+	margin: 0;
+	width:20vh;
+}
+
+.gif2 {
+	padding-top: 170px;
+	padding-right: 186px;
+	overflow: visible;
+	float: right;
+	width:20vh;
 }

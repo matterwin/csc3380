@@ -1,5 +1,6 @@
 import { render } from "@testing-library/react";
 import React, { useEffect, useState } from "react";
+import { NavLink } from 'react-router-dom';
 import "./Navbar.css"
 
 class Navbar extends React.Component{  
@@ -8,7 +9,7 @@ class Navbar extends React.Component{
 
             this.state = {
                 workouts: [{"steps": [{}]}],
-                workoutsLoaded: true,
+                workoutsLoaded: true,       //will turn this back to false for prod version
             };
 
         }

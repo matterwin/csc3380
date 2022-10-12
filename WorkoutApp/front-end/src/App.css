@@ -1,7 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap');
+
 
 body{
-    background-color: #213742;
+    background-color: #223843;
     padding-top: 50px;
     font-family: "Roboto", sans-serif;
     height: 1000px;
