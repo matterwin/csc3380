@@ -6,7 +6,7 @@ import "./Workouts.css"
 
 class Workouts extends React.Component{    
     // This is the amount of workouts we display on each page
-    workoutsSize = 10;
+    workoutsSize = 5;
 
     constructor(props){
         super(props);
@@ -50,6 +50,30 @@ class Workouts extends React.Component{
             numWorkoutsLoaded: false,
             workoutsLoaded: false
         })
+
+        fetch('https://localhost:7025/Workouts/' + numWorkout + '/' + this.workoutsSize)
+            .then((res) => res.json())
+            .then((json) => {
+                this.setState({
+                    workouts: json,
+                    workoutsLoaded: true
+                });
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+
+        fetch('https://localhost:7025/Workouts/Count')
+            .then((res) => res.json())
+            .then((json) => {
+                this.setState({
+                    numWorkouts: json,
+                    numWorkoutsLoaded: true
+                });
+            })
+            .catch((err) => {
+                console.log(err);
+            })
     }
 
     render() {
@@ -74,17 +98,15 @@ class Workouts extends React.Component{
                     <img className="gif2"src="https://media4.giphy.com/media/113r36rG1hCJ6o/200w.webp?cid=ecf05e47plpqa87mbe6nkgsp5n64sq96bxeyncfpaku8wvzt&rid=200w.webp&ct=s">                       
                     </img>
                 </div>
-                {JSON.stringify(numWorkouts)}
-                {
-                [...Array(parseInt((numWorkouts / this.workoutsSize) + 1)) || []].map((key, value) => {
-                    return (
-                        <button onClick={() => this.nextWorkouts(value + 1)}>{value + 1}</button>
-                    )
-                })
-                }
                 <div className="preview-workouts">
-                    
                     <center>
+                        {
+                        [...Array(parseInt((numWorkouts / this.workoutsSize) + 1)) || []].map((key, value) => {
+                            return ( 
+                                <button onClick={() => this.nextWorkouts(value + 1)}>{value + 1}</button>
+                            )
+                        })
+                        }`
                         {
                             Object.keys(workouts).map((workout, i) => (
                                 <div className="workout" key={i}>
