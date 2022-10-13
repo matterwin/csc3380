@@ -1,21 +1,21 @@
-import { render } from "@testing-library/react";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { NavLink } from 'react-router-dom';
 import "./Navbar.css"
+import launchsettings from "../../launchsettings.json"
 
 class Navbar extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            workouts: [{ "steps": [{}] }],
+            workouts: [],
             workoutsLoaded: true,       //will turn this back to false for prod version
         };
 
     }
 
     async componentDidMount() {
-        fetch('https://localhost:7025/Workouts')
+        fetch(`${launchsettings.SERVER_URL}Workouts`)
             .then((res) => res.json())
             .then((json) => {
                 this.setState({

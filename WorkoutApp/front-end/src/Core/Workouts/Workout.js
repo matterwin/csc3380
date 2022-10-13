@@ -1,8 +1,6 @@
-import { render } from "@testing-library/react";
-import React, { useEffect } from "react";
-import { act } from "react-dom/test-utils";
-import Workouts from "./Workouts";
+import React from "react";
 import "./Workouts.css"
+import launchsettings from "../../launchsettings.json"
 
 class Workout extends React.Component {
     constructor(props) {
@@ -16,7 +14,7 @@ class Workout extends React.Component {
 
     async componentDidMount() {
         const params = new URLSearchParams(window.location.search);
-        fetch('https://localhost:7025/Workouts/' + params.get("id"))
+        fetch(`${launchsettings.SERVER_URL}Workouts/${params.get("id")}`)
             .then((res) => res.json())
             .then((json) => {
                 this.setState({
