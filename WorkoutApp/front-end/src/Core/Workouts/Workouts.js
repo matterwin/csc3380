@@ -1,7 +1,4 @@
-import { render } from "@testing-library/react";
-import React, { useEffect } from "react";
-import { act } from "react-dom/test-utils";
-import { json } from "react-router";
+import React from "react";
 import "./Workouts.css"
 
 class Workouts extends React.Component{    
@@ -23,47 +20,47 @@ class Workouts extends React.Component{
 
     fetchWorkouts(url){
         fetch(url)
-            .then((res) => res.json())
-            .then((json) => {
-                this.setState({
-                    workouts: json,
-                    workoutsLoaded: true
-                });
-            })
-            .catch((err) => {
-                console.log(err);
-            })
+        .then((res) => res.json())
+        .then((json) => {
+            this.setState({
+                workouts: json,
+                workoutsLoaded: true
+            });
+        })
+        .catch((err) => {
+            console.log(err);
+        })
     }
 
     fetchNumWorkouts(url){
         fetch(url)
-            .then((res) => res.json())
-            .then((json) => {
-                this.setState({
-                    numWorkouts: json,
-                    numWorkoutsLoaded: true
-                });
+        .then((res) => res.json())
+        .then((json) => {
+            this.setState({
+                numWorkouts: json,
+                numWorkoutsLoaded: true
+            });
 
-              if(this.state.numWorkouts > this.maxWorkoutPages){
-                this.setState({
-                    numWorkouts: this.maxWorkoutPages
-                })
-              }
+            if(this.state.numWorkouts > this.maxWorkoutPages){
+            this.setState({
+                numWorkouts: this.maxWorkoutPages
             })
-            .catch((err) => {
-                console.log(err);
-            })
+            }
+        })
+        .catch((err) => {
+            console.log(err);
+        })
     }
 
     async componentDidMount(){
-        this.fetchWorkouts('https://localhost:7025/Workouts/1/' + this.workoutsSize);
+        this.fetchWorkouts(`https://localhost:7025/Workouts/1/${this.workoutsSize}`);
         this.fetchNumWorkouts('https://localhost:7025/Workouts/Count');
     }
 
     nextWorkouts(numWorkout){
         this.currentWorkoutPage = numWorkout;
 
-        this.fetchWorkouts('https://localhost:7025/Workouts/' + numWorkout + '/' + this.workoutsSize);
+        this.fetchWorkouts(`https://localhost:7025/Workouts/${numWorkout}/${this.workoutsSize}`);
         this.fetchNumWorkouts('https://localhost:7025/Workouts/Count');
     }
 
