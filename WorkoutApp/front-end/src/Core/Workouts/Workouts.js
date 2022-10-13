@@ -72,7 +72,7 @@ class Workouts extends React.Component {
         // Something is not loaded
         if (!workoutsLoaded || !numWorkoutsLoaded) return (
             <div className="loading">
-                <img src={require('../../Pics/Loading.gif')} alt="Load" />
+                <img src={require('../../Gifs/Loading.gif')} alt="Load" />
                 <h1 className="load--phrase">Loading Workouts</h1>
             </div>
         )
@@ -81,11 +81,11 @@ class Workouts extends React.Component {
             <div className="container">
                 <div className="welcome-screen">
                     <center>
-                        <img className="gif" src={require('../../Pics/PatricSlappingKnees.gif')} />
+                        <img className="gif" src={require('../../Gifs/PatricSlappingKnees.gif')} />
                     </center>
                     <h1>Fit happens, it's inevitable</h1>
                     <h2>Get your fit on and explore, conquer, and commit your fitness goals</h2>
-                    <img className="gif2" src={require('../../Pics/PatrickBlowingBubble.gif')} />
+                    <img className="gif2" src={require('../../Gifs/PatrickBlowingBubble.gif')} />
                 </div>
                 <div className="preview-workouts">
                     <center>
