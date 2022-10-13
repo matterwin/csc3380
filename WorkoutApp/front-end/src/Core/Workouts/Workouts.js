@@ -47,8 +47,10 @@ class Workouts extends React.Component{
 
     nextWorkouts(numWorkout){
         this.setState({
-            numWorkoutsLoaded: false,
-            workoutsLoaded: false
+            workouts: [{"steps": [{}]}],
+            workoutsLoaded: false,
+            numWorkouts: 0,
+            numWorkoutsLoaded: false
         })
 
         fetch('https://localhost:7025/Workouts/' + numWorkout + '/' + this.workoutsSize)
@@ -101,18 +103,19 @@ class Workouts extends React.Component{
                 <div className="preview-workouts">
                     <center>
                         {
+                            
                         [...Array(parseInt((numWorkouts / this.workoutsSize) + 1)) || []].map((key, value) => {
                             return ( 
-                                <button onClick={() => this.nextWorkouts(value + 1)}>{value + 1}</button>
+                                <button key={value} onClick={() => this.nextWorkouts(value + 1)}>{value + 1}</button>
                             )
                         })
-                        }`
+                        }
                         {
-                            Object.keys(workouts).map((workout, i) => (
+                            Object.keys(workouts || "").map((workout, i) => (
                                 <div className="workout" key={i}>
                                     <h1>
                                         {/*workouts[workout].workoutID}*/}
-                                        <a href={"/Workout?id=" + workouts[workout].workoutID}>
+                                        <a href={"/Workout?id=" + workouts[workout].id}>
                                             {workouts[workout].title}
                                         </a>
                                     </h1>
