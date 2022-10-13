@@ -57,5 +57,32 @@ namespace back_end.Controllers
 
             return Ok(workoutDTOs);
         }
+
+
+        // NOTE::start id is indexed starting at 1
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<WorkoutDTO>))]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [Route("{start}/{size}")]
+        public IActionResult GetWorkouts(int start, int size)
+        {
+            var workouts = _context.Workouts.Include(workout => workout.Steps).Skip((start - 1) * size).Take(size).ToList();
+
+            List<WorkoutDTO> workoutDTOs = new List<WorkoutDTO>();
+            for (int i = 0; i < workouts.Count(); i++)
+            {
+                workoutDTOs.Add(new WorkoutDTO(workouts[i]));
+            }
+
+            return Ok(workoutDTOs);
+        }
+
+        [HttpGet]
+        [Route("Count")]
+        public IActionResult GetWorkoutsCount()
+        {
+            var numWorkouts = _context.Workouts.Count();
+            return Ok(numWorkouts);
+        }
     }
 }

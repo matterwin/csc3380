@@ -8,13 +8,14 @@ import Workout from "./Core/Workouts/Workout";
 import Navbar from "./Core/Navbar/Navbar";
 import AddWorkout from "./Core/MyWorkouts/AddWorkout"
 import MyWorkout from "./Core/MyWorkouts/MyWorkout"
+
 import "./App.css"
 
 function App() {
   return (
     <div className="app">
-      <Navbar />
       <Router>
+      <Navbar />
         <Routes>
           <Route exact path="/" element={<Workouts />} />
           <Route exact path="/Login" element={<Login />} />

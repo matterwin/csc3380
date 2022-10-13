@@ -22,7 +22,7 @@ function MyWorkouts() {
             alert("An error occured while fetching user data");
         }
     };
-    
+
     useEffect(() => {
         if (loading) return;
         if (!user) {
@@ -30,17 +30,19 @@ function MyWorkouts() {
         }
         fetchUserName();
 
+        console.log(user.uid);
+
         fetch('https://localhost:7025/UserWorkouts/' + user.uid)
-        .then((res) => res.json())
-        .then((json) => {
-            if(json?.status != 404)
-                setJsonWorkouts(json);
-            else
-                setJsonWorkouts("");
-        })
-        .catch((err) => {
-            console.log(err);
-        })
+            .then((res) => res.json())
+            .then((json) => {
+                if (json?.status != 404)
+                    setJsonWorkouts(json);
+                else
+                    setJsonWorkouts("");
+            })
+            .catch((err) => {
+                console.log(err);
+            })
     }, [user, loading]);
 
     return (
@@ -49,19 +51,20 @@ function MyWorkouts() {
             <div>{name}</div>
             <div>{user?.email}</div>
             <center>
-            <a href={"/AddWorkout"}>Add Workout</a>
-            {
-                Object.entries(jsonWorkouts).map(([key, value]) => {
-                    return (
-                        <div className="workout" key={key}>
-                            <h1>
-                                <a href={"/MyWorkout?id=" + value.workoutID}>{value.title}</a>
-                            </h1>
-                            <h2>{value.description}</h2>
-                        </div>
-                    )
-                })
-            }
+                <a href={"/AddWorkout"}>Add Workout</a>
+                {
+                    Object.entries(jsonWorkouts).map(([key, value]) => {
+                        return (
+                            <div className="workout" key={key}>
+                                <h1>
+                                    <a href={"/MyWorkout?id=" + value.workoutID}>{value.title}</a>
+                                </h1>
+                                <h2>{value.description}</h2>
+                                <h3>{value.workoutType}</h3>
+                            </div>
+                        )
+                    })
+                }
             </center>
         </div>
     );

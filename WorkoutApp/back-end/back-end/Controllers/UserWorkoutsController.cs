@@ -97,7 +97,33 @@ namespace back_end.Controllers
             _context.Workouts.Add(workout);
             _context.SaveChanges();
             return Ok();
+        }
 
+        // NOTE::start id is indexed starting at 1
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<WorkoutDTO>))]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [Route("{FirebaseID}/{start}/{size}")]
+        public IActionResult GetWorkouts(string FirebaseID, int start, int size)
+        {
+            var workouts = _context.Workouts.Include(workout => workout.Steps).Skip((start - 1) * size).Where(workout => workout.FirebaseID  == FirebaseID).Take(size).ToList();
+
+            List<WorkoutDTO> workoutDTOs = new List<WorkoutDTO>();
+            for (int i = 0; i < workouts.Count(); i++)
+            {
+                workoutDTOs.Add(new WorkoutDTO(workouts[i]));
+            }
+
+            return Ok(workoutDTOs);
+        }
+
+
+        [HttpGet]
+        [Route("Count/{FirebaseID}")]
+        public IActionResult GetWorkoutsCount(string FirebaseID)
+        {
+            var numWorkouts = _context.Workouts.Where(workout => workout.FirebaseID == FirebaseID)?.Count();
+            return Ok(numWorkouts);
         }
     }
 }
