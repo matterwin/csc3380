@@ -88,6 +88,9 @@ function MyWorkout() {
         let description = document.getElementById("description");
         let stepInstructions = document.getElementsByClassName("step-instruction");
         let stepTimes = document.getElementsByClassName("step-time");
+
+        // need to fix this to selected workout type
+        let workoutType = "arms";
    
         if(!title.value || !description.value){
           // TODO::display error to user
@@ -105,7 +108,7 @@ function MyWorkout() {
           tempSteps.push({instruction: stepInstructions[i].value, workoutTime: stepTimes[i].value});
         };
     
-        let jsonRes = {title: title.value, description: description.value, steps: tempSteps}
+        let jsonRes = {title: title.value, description: description.value, steps: tempSteps, workoutType: workoutType}
     
         fetch('https://localhost:7025/UserWorkouts/Update/' + user.uid + '/' + workoutID, {
           method: 'PUT',

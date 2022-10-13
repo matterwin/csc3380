@@ -16,7 +16,7 @@ class Workouts extends React.Component{
             workouts: [{"steps": [{}]}],
             workoutsLoaded: false,
             numWorkouts: 0,
-            numWorkoutsLoaded: false
+            numWorkoutsLoaded: false,
         }
     }
 
@@ -76,7 +76,7 @@ class Workouts extends React.Component{
 
     render() {
         // This is the amount of workouts we display on each page
-        const { workoutsLoaded, workouts, numWorkouts, numWorkoutsLoaded } = this.state;
+        const { workoutsLoaded, workouts, numWorkouts, numWorkoutsLoaded, workoutTypes, workoutTypesLoaded } = this.state;
 
         if(!workoutsLoaded || !numWorkoutsLoaded) return(
             <div className="loading">
@@ -98,6 +98,7 @@ class Workouts extends React.Component{
                 </div>
                 <div className="preview-workouts">
                     <center>
+                        <br></br>
                         { 
                             [...Array(parseInt((numWorkouts / this.workoutsSize) + 1)) || []].map((key, value) => {
                                 return ( 
@@ -115,6 +116,7 @@ class Workouts extends React.Component{
                                         </a>
                                     </h1>
                                     <h2>{workouts[workout].description}</h2>
+                                    <h3>{workouts[workout].workoutType}</h3>
                                 </div>
                             ))
                         }

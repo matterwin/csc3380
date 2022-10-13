@@ -30,6 +30,8 @@ function MyWorkouts() {
         }
         fetchUserName();
 
+        console.log(user.uid);
+
         fetch('https://localhost:7025/UserWorkouts/' + user.uid)
         .then((res) => res.json())
         .then((json) => {
@@ -58,6 +60,7 @@ function MyWorkouts() {
                                 <a href={"/MyWorkout?id=" + value.workoutID}>{value.title}</a>
                             </h1>
                             <h2>{value.description}</h2>
+                            <h3>{value.workoutType}</h3>
                         </div>
                     )
                 })
