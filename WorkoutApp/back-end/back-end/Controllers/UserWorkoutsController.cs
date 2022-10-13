@@ -106,9 +106,15 @@ namespace back_end.Controllers
         [Route("{FirebaseID}/{start}/{size}")]
         public IActionResult GetWorkouts(string FirebaseID, int start, int size)
         {
-            List<Domain.Workout> workouts = new();
-            var workout = _context.Workouts.Where(workout => workout.FirebaseID == FirebaseID)?.Skip((start - 1) * size)?.Take(size);
-            return Ok(workout);
+            var workouts = _context.Workouts.Include(workout => workout.Steps).Skip((start - 1) * size).Where(workout => workout.FirebaseID  == FirebaseID).Take(size).ToList();
+
+            List<WorkoutDTO> workoutDTOs = new List<WorkoutDTO>();
+            for (int i = 0; i < workouts.Count(); i++)
+            {
+                workoutDTOs.Add(new WorkoutDTO(workouts[i]));
+            }
+
+            return Ok(workoutDTOs);
         }
 
 
