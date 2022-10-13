@@ -67,6 +67,9 @@ function AddWorkout() {
     let stepInstructions = document.getElementsByClassName("step-instruction");
     let stepTimes = document.getElementsByClassName("step-time");
 
+    // need to fix this to selected workout type
+    let workoutType = "arms";
+
     if(!title.value || !description.value){
       // TODO::show error message to user
       console.log('error one ore more inputs fields were null');
@@ -86,7 +89,7 @@ function AddWorkout() {
       tempSteps.push({instruction: stepInstructions[i].value, workoutTime: stepTimes[i].value});
     };
 
-    let jsonRes = {title: title.value, description: description.value, steps: tempSteps}
+    let jsonRes = {title: title.value, description: description.value, steps: tempSteps, workoutType: workoutType}
 
     fetch('https://localhost:7025/UserWorkouts/' + user.uid, {
       method: 'post',

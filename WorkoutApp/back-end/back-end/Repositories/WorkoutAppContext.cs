@@ -47,6 +47,14 @@ namespace back_end.Repositories
                 "LastName4",
                 "LastName5"
             };
+            List<string> workoutTypes = new List<string>
+            {
+                "arms",
+                "legs",
+                "chest",
+                "calves",
+                "upper body"
+            };
 
             int workoutID = 1;
             int workoutStepID = 1;
@@ -60,7 +68,7 @@ namespace back_end.Repositories
 
                 string title = $"Workout #{i}";
                 modelBuilder.Entity<Workout>().HasData(
-                        new Workout { ID = workoutID++, Description = descriptions[i - 1], FirebaseID = $"{firebaseIds[i - 1] }", Title = title }
+                        new Workout { ID = workoutID++, WorkoutType = workoutTypes[i - 1], Description = descriptions[i - 1], FirebaseID = $"{firebaseIds[i - 1] }", Title = title }
                 );
 
                 List<int> workoutStepIds = new List<int> { 1, 2, 3, 4, 5 };
