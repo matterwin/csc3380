@@ -1,5 +1,6 @@
 import React from "react";
 import "./Workouts.css"
+import launchsettings from "../../launchsettings.json"
 
 class Workouts extends React.Component {
     // This is the amount of workouts we display on each page
@@ -53,15 +54,15 @@ class Workouts extends React.Component {
     }
 
     async componentDidMount() {
-        this.fetchWorkouts(`https://localhost:7025/Workouts/1/${this.workoutsSize}`);
-        this.fetchNumWorkouts('https://localhost:7025/Workouts/Count');
+        this.fetchWorkouts(`${launchsettings.SERVER_URL}Workouts/1/${this.workoutsSize}`);
+        this.fetchNumWorkouts(`${launchsettings.SERVER_URL}Workouts/Count`);
     }
 
     nextWorkouts(numWorkout) {
         this.currentWorkoutPage = numWorkout;
 
-        this.fetchWorkouts(`https://localhost:7025/Workouts/${numWorkout}/${this.workoutsSize}`);
-        this.fetchNumWorkouts('https://localhost:7025/Workouts/Count');
+        this.fetchWorkouts(`${launchsettings.SERVER_URL}Workouts/${numWorkout}/${this.workoutsSize}`);
+        this.fetchNumWorkouts(`${launchsettings.SERVER_URL}Workouts/Count`);
     }
 
     render() {

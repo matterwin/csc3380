@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { json, Route, useNavigate } from "react-router-dom";
-import { auth, db, logout } from "../../UserAuth/firebase";
+import { useNavigate } from "react-router-dom";
+import { auth, db } from "../../UserAuth/firebase";
 import { query, collection, getDocs, where } from "firebase/firestore";
 import "../Workouts/Workouts.css"
-import { getValue } from "@testing-library/user-event/dist/utils";
+import launchsettings from "../../launchsettings.json"
 
 function MyWorkout() {
     const [user, loading, error] = useAuthState(auth);
@@ -27,7 +27,7 @@ function MyWorkout() {
 
     const deleteWorkout = (uid, workoutID) => {
         if (uid != 0) {
-            fetch('https://localhost:7025/UserWorkouts/' + uid + '/' + workoutID, { method: 'DELETE' })
+            fetch(`${launchsettings.SERVER_URL}UserWorkouts/${uid}/${workoutID}`, { method: 'DELETE' })
                 .then((res) => console.log(res))
                 .catch((err) => console.log(err));
 
@@ -63,7 +63,7 @@ function MyWorkout() {
         fetchUserName();
 
         const params = new URLSearchParams(window.location.search);
-        fetch('https://localhost:7025/Workouts/' + params.get("id"))
+        fetch(`${launchsettings.SERVER_URL}Workouts/${params.get("id")}`)
             .then((res) => res.json())
             .then((json) => {
                 setJsonWorkout(json);
@@ -110,7 +110,7 @@ function MyWorkout() {
 
         let jsonRes = { title: title.value, description: description.value, steps: tempSteps, workoutType: workoutType }
 
-        fetch('https://localhost:7025/UserWorkouts/Update/' + user.uid + '/' + workoutID, {
+        fetch(`${launchsettings.SERVER_URL}UserWorkouts/Update/${user.uid}/${workoutID}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(jsonRes)

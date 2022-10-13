@@ -3,6 +3,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
 import { auth, db } from "../../UserAuth/firebase";
 import { query, collection, getDocs, where } from "firebase/firestore";
+import launchsettings from "../../launchsettings.json"
 
 
 function AddWorkout() {
@@ -90,7 +91,7 @@ function AddWorkout() {
 
     let jsonRes = { title: title.value, description: description.value, steps: tempSteps, workoutType: workoutType }
 
-    fetch('https://localhost:7025/UserWorkouts/' + user.uid, {
+    fetch(`${launchsettings.SERVER_URL}UserWorkouts/${user.uid}`, {
       method: 'post',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(jsonRes)
