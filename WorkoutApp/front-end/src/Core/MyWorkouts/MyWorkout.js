@@ -26,35 +26,35 @@ function MyWorkout() {
     };
 
     const deleteWorkout = (uid, workoutID) => {
-        if(uid != 0){
+        if (uid != 0) {
             fetch('https://localhost:7025/UserWorkouts/' + uid + '/' + workoutID, { method: 'DELETE' })
-            .then((res) => console.log(res))
-            .catch((err) => console.log(err));
+                .then((res) => console.log(res))
+                .catch((err) => console.log(err));
 
             window.location.href = "/MyWorkouts";
         }
     }
 
     const addStep = () => {
-        let tempStep = {instruction: document.getElementById('next-step').value, workoutTime: document.getElementById('next-time').value};
-    
+        let tempStep = { instruction: document.getElementById('next-step').value, workoutTime: document.getElementById('next-time').value };
+
         const list = [...steps, tempStep];
         setSteps(() => list);
-    
+
         //resetting input values
         document.getElementById('next-step').value = "";
         document.getElementById('next-time').value = "";
-      }
-    
-      const removeStep = () => {
+    }
+
+    const removeStep = () => {
         let newlist = [];
-    
-        for(let i = 0; i < steps.length - 1; i++)
+
+        for (let i = 0; i < steps.length - 1; i++)
             newlist.push(steps[i]);
-    
+
         setSteps(() => newlist);
-      }
-    
+    }
+
     useEffect(() => {
         if (loading) return;
         if (!user) {
@@ -64,22 +64,22 @@ function MyWorkout() {
 
         const params = new URLSearchParams(window.location.search);
         fetch('https://localhost:7025/Workouts/' + params.get("id"))
-        .then((res) => res.json())
-        .then((json) => {
-            setJsonWorkout(json);
+            .then((res) => res.json())
+            .then((json) => {
+                setJsonWorkout(json);
 
-            document.getElementById('title').value = json.title;
-            document.getElementById('description').value = json.description;
+                document.getElementById('title').value = json.title;
+                document.getElementById('description').value = json.description;
 
-            let newList = [];
-            for(let i = 0; i < json.steps.length; i++)
-                newList.push(json.steps[i]);
+                let newList = [];
+                for (let i = 0; i < json.steps.length; i++)
+                    newList.push(json.steps[i]);
 
-            setSteps(newList);
-        })
-        .catch((err) => {
-            console.error(err);
-        })
+                setSteps(newList);
+            })
+            .catch((err) => {
+                console.error(err);
+            })
     }, [user, loading, setJsonWorkout, setSteps]);
 
     const updateWorkout = (workoutID) => {
@@ -91,35 +91,35 @@ function MyWorkout() {
 
         // need to fix this to selected workout type
         let workoutType = "arms";
-   
-        if(!title.value || !description.value){
-          // TODO::display error to user
-          console.error('one or more input fields were null');
-          return;
-        }
-    
-        for(let i = 0; i < stepInstructions.length; i++){
-          if(!stepInstructions[i].value || !stepTimes[i].value){
+
+        if (!title.value || !description.value) {
             // TODO::display error to user
             console.error('one or more input fields were null');
             return;
-          }
+        }
 
-          tempSteps.push({instruction: stepInstructions[i].value, workoutTime: stepTimes[i].value});
+        for (let i = 0; i < stepInstructions.length; i++) {
+            if (!stepInstructions[i].value || !stepTimes[i].value) {
+                // TODO::display error to user
+                console.error('one or more input fields were null');
+                return;
+            }
+
+            tempSteps.push({ instruction: stepInstructions[i].value, workoutTime: stepTimes[i].value });
         };
-    
-        let jsonRes = {title: title.value, description: description.value, steps: tempSteps, workoutType: workoutType}
-    
+
+        let jsonRes = { title: title.value, description: description.value, steps: tempSteps, workoutType: workoutType }
+
         fetch('https://localhost:7025/UserWorkouts/Update/' + user.uid + '/' + workoutID, {
-          method: 'PUT',
-          headers: {'Content-Type':'application/json'},
-          body: JSON.stringify(jsonRes)
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(jsonRes)
         })
-          .then((res) => console.log(res))
-          .catch((err) => console.log(err));
+            .then((res) => console.log(res))
+            .catch((err) => console.log(err));
 
         window.location.href = "/MyWorkouts";
-      }
+    }
 
     return (
         <div className="myworkouts">
@@ -127,27 +127,27 @@ function MyWorkout() {
             <div>{name}</div>
             <div>{user?.email}</div>
             <center>
-            <label>Title</label><br></br>
-            <input type="text" id="title" placeholder="Title"></input><br></br>
-            <label>Description</label><br></br>
-            <input type="text" id="description" placeholder="Description"></input><br></br>
-            {
-                (steps || []).map((step, index) => {
-                    return (
-                        <div key={index}>
-                        {/*{step.instruction} | time: {step.time} min*/}
-                            <input className="step-instruction" type="text" defaultValue={step.instruction}></input>
-                            <input className="step-time" type="number" defaultValue={step.workoutTime}></input>
-                        </div>
-                    );
-            })}
-        <label>Next Step</label><br></br>
-        <input type="text" id="next-step" placeholder="Instruction"></input>
-        <input type="number" id="next-time" placeholder="Time (min)"></input>
-        <button onClick={addStep}>Add Step</button>
-        <button onClick={removeStep}>Remove Step</button>
-        <button onClick={() => updateWorkout(jsonWorkout.workoutID)}>Update Workout</button>
-        <button onClick={() => deleteWorkout(user.uid || 0, jsonWorkout.workoutID)}>Delete Workout</button>
+                <label>Title</label><br></br>
+                <input type="text" id="title" placeholder="Title"></input><br></br>
+                <label>Description</label><br></br>
+                <input type="text" id="description" placeholder="Description"></input><br></br>
+                {
+                    (steps || []).map((step, index) => {
+                        return (
+                            <div key={index}>
+                                {/*{step.instruction} | time: {step.time} min*/}
+                                <input className="step-instruction" type="text" defaultValue={step.instruction}></input>
+                                <input className="step-time" type="number" defaultValue={step.workoutTime}></input>
+                            </div>
+                        );
+                    })}
+                <label>Next Step</label><br></br>
+                <input type="text" id="next-step" placeholder="Instruction"></input>
+                <input type="number" id="next-time" placeholder="Time (min)"></input>
+                <button onClick={addStep}>Add Step</button>
+                <button onClick={removeStep}>Remove Step</button>
+                <button onClick={() => updateWorkout(jsonWorkout.workoutID)}>Update Workout</button>
+                <button onClick={() => deleteWorkout(user.uid || 0, jsonWorkout.workoutID)}>Delete Workout</button>
             </center>
         </div>
     );

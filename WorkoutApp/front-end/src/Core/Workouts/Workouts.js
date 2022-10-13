@@ -8,37 +8,26 @@ class Workouts extends React.Component{
     // This is the amount of workouts we display on each page
     workoutsSize = 5;
     currentWorkoutPage = 1;
+    maxWorkoutPages = 10;
 
     constructor(props){
         super(props);
 
         this.state = {
-            workouts: [{"steps": [{}]}],
+            workouts: [],
             workoutsLoaded: false,
             numWorkouts: 0,
             numWorkoutsLoaded: false,
         }
     }
 
-    async componentDidMount(){
-        fetch('https://localhost:7025/Workouts/1/' + this.workoutsSize)
+    fetchWorkouts(url){
+        fetch(url)
             .then((res) => res.json())
             .then((json) => {
                 this.setState({
                     workouts: json,
                     workoutsLoaded: true
-                });
-            })
-            .catch((err) => {
-                console.log(err);
-            })
-
-        fetch('https://localhost:7025/Workouts/Count')
-            .then((res) => res.json())
-            .then((json) => {
-                this.setState({
-                    numWorkouts: json,
-                    numWorkoutsLoaded: true
                 });
             })
             .catch((err) => {
@@ -46,41 +35,47 @@ class Workouts extends React.Component{
             })
     }
 
-    nextWorkouts(numWorkout){
-        this.currentWorkoutPage = numWorkout;
-
-        fetch('https://localhost:7025/Workouts/' + numWorkout + '/' + this.workoutsSize)
-            .then((res) => res.json())
-            .then((json) => {
-                this.setState({
-                    workouts: json,
-                    workoutsLoaded: true
-                });
-            })
-            .catch((err) => {
-                console.log(err);
-            })
-
-        fetch('https://localhost:7025/Workouts/Count')
+    fetchNumWorkouts(url){
+        fetch(url)
             .then((res) => res.json())
             .then((json) => {
                 this.setState({
                     numWorkouts: json,
                     numWorkoutsLoaded: true
                 });
+
+              if(this.state.numWorkouts > this.maxWorkoutPages){
+                this.setState({
+                    numWorkouts: this.maxWorkoutPages
+                })
+              }
             })
             .catch((err) => {
                 console.log(err);
             })
+    }
+
+    async componentDidMount(){
+        this.fetchWorkouts('https://localhost:7025/Workouts/1/' + this.workoutsSize);
+        this.fetchNumWorkouts('https://localhost:7025/Workouts/Count');
+    }
+
+    nextWorkouts(numWorkout){
+        this.currentWorkoutPage = numWorkout;
+
+        this.fetchWorkouts('https://localhost:7025/Workouts/' + numWorkout + '/' + this.workoutsSize);
+        this.fetchNumWorkouts('https://localhost:7025/Workouts/Count');
     }
 
     render() {
         // This is the amount of workouts we display on each page
         const { workoutsLoaded, workouts, numWorkouts, numWorkoutsLoaded, workoutTypes, workoutTypesLoaded } = this.state;
 
+
+        // Something is not loaded
         if(!workoutsLoaded || !numWorkoutsLoaded) return(
             <div className="loading">
-                <img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/cd514331234507.564a1d2324e4e.gif" alt="load"  />
+                <img src={require('../../Pics/Loading.gif')} alt="Load"/>
                 <h1 className="load--phrase">Loading Workouts</h1>
             </div>
         )
@@ -89,11 +84,11 @@ class Workouts extends React.Component{
             <div className="container">
                 <div className="welcome-screen">                
                     <center>
-                    <img className="gif"
-                    src="https://media0.giphy.com/media/u6JoYx9q6Isp2/200w.webp?cid=ecf05e47fdeez8fz3z6fscx3v380ju264atjs0gcu8jg72ee&rid=200w.webp&ct=s"></img></center>
+                        <img className="gif" src={require('../../Pics/PatricSlappingKnees.gif')} />
+                    </center>
                     <h1>Fit happens, it's inevitable</h1>
                     <h2>Get your fit on and explore, conquer, and commit your fitness goals</h2>
-                    <img className="gif2"src="https://media4.giphy.com/media/113r36rG1hCJ6o/200w.webp?cid=ecf05e47plpqa87mbe6nkgsp5n64sq96bxeyncfpaku8wvzt&rid=200w.webp&ct=s">                       
+                    <img className="gif2"src={require('../../Pics/PatrickBlowingBubble.gif')}>                       
                     </img>
                 </div>
                 <div className="preview-workouts">
@@ -102,7 +97,12 @@ class Workouts extends React.Component{
                         { 
                             [...Array(parseInt((numWorkouts / this.workoutsSize) + 1)) || []].map((key, value) => {
                                 return ( 
-                                    <button type="button" disabled={(value + 1 == this.currentWorkoutPage)} key={value} onMouseUp={() => this.nextWorkouts(value + 1)}>{value + 1}</button>
+                                    <button type="button" 
+                                            disabled={(value + 1 == this.currentWorkoutPage)} 
+                                            key={value} 
+                                            onMouseUp={() => this.nextWorkouts(value + 1)}>
+                                            {value + 1}
+                                    </button>
                                 )
                             })
                         }
@@ -122,7 +122,7 @@ class Workouts extends React.Component{
                         }
                     </center>
                 </div>
-                </div>
+            </div>
         )
     };
 }
