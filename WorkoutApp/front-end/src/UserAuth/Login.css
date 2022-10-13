@@ -1,97 +1,97 @@
 .login {
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .login__container {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    background-color: #d8d3d8;
-    padding: 30px;
-  }
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-  .login__textBox {
-    padding: 10px;
-    font-size: 18px;
-    margin-bottom: 10px;
-    border-radius: 8px;
-    border-style: hidden;
-  }
+.login__container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  background-color: #d8d3d8;
+  padding: 30px;
+}
 
-  input:focus{
-    outline-color: #d77a61;
-    outline-style:solid;
-    outline-width: 2.3px;
-  }
+.login__textBox {
+  padding: 10px;
+  font-size: 18px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  border-style: hidden;
+}
 
-  .login__btn {
-    padding: 10px;
-    font-size: 18px;
-    margin-bottom: 10px;
-    border: none;
-    color: white;
-    background-color: #222222;
-    border-radius: 8px;
-  }
+input:focus {
+  outline-color: #d77a61;
+  outline-style: solid;
+  outline-width: 2.3px;
+}
 
-  .login__google {
-    background-color: #4285f4;
-  }
+.login__btn {
+  padding: 10px;
+  font-size: 18px;
+  margin-bottom: 10px;
+  border: none;
+  color: white;
+  background-color: #222222;
+  border-radius: 8px;
+}
 
-  .login div {
-    margin-top: 7px;
-  }
+.login__google {
+  background-color: #4285f4;
+}
 
-  button {
-    cursor: pointer;
-  }
+.login div {
+  margin-top: 7px;
+}
 
-  button:hover {
-    background-color: white;
-    color: #222222;
-    transition: 10ms;
-  }
-  
-  .reg--pic {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    justify-content: center;
-    width: 5%;
-    margin-bottom: -250px;
-    margin-top: 130px;
-  }
+button {
+  cursor: pointer;
+}
 
-  .log--subtitle {
-    width: 100vw;
-    display: flex;
-    align-items: center;
-    padding-top: 260px;
-    margin-bottom: -200px;
-    color: #ffffff;
-    font-size: 15px;
-    justify-content: center;
-  }
+button:hover {
+  background-color: white;
+  color: #222222;
+  transition: 10ms;
+}
 
-  .log--title {
-    width: 100vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-top: 250px;
-    padding-bottom: 0px;
-    margin-bottom: -270px;
-    color: white;
-    font-weight: bold;
-    font-family: Raleway;
-    font-weight: 900;
-  }
+.reg--pic {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+  width: 5%;
+  margin-bottom: -250px;
+  margin-top: 130px;
+}
 
-  label {
-    text-align: left;
-    padding-bottom: 3px
-  }
+.log--subtitle {
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  padding-top: 260px;
+  margin-bottom: -200px;
+  color: #ffffff;
+  font-size: 15px;
+  justify-content: center;
+}
+
+.log--title {
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 250px;
+  padding-bottom: 0px;
+  margin-bottom: -270px;
+  color: white;
+  font-weight: bold;
+  font-family: Raleway;
+  font-weight: 900;
+}
+
+label {
+  text-align: left;
+  padding-bottom: 3px
+}

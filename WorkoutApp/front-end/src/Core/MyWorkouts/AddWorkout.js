@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
-import { auth, db, logout } from "../../UserAuth/firebase";
+import { auth, db } from "../../UserAuth/firebase";
 import { query, collection, getDocs, where } from "firebase/firestore";
-import { setPersistence } from "firebase/auth";
 
 
 function AddWorkout() {
@@ -27,17 +26,17 @@ function AddWorkout() {
   useEffect(() => {
     if (loading) return;
     if (!user) {
-        console.info("User must be loggin in to access this page!");
-        return navigate("/Login");
+      console.info("User must be loggin in to access this page!");
+      return navigate("/Login");
     }
-    
+
     fetchUserName();
   }, [user, loading]);
 
   const addStep = () => {
-    let tempStep = {instruction: document.getElementById('next-step').value, time: document.getElementById('next-time').value};
+    let tempStep = { instruction: document.getElementById('next-step').value, time: document.getElementById('next-time').value };
 
-    if(!tempStep.instruction || !tempStep.time){
+    if (!tempStep.instruction || !tempStep.time) {
       // TODO::show error message to user
       console.error('error one or more inputs fields were null');
       return;
@@ -54,8 +53,8 @@ function AddWorkout() {
   const removeStep = () => {
     let newlist = [];
 
-    for(let i = 0; i < steps.length - 1; i++)
-        newlist.push(steps[i]);
+    for (let i = 0; i < steps.length - 1; i++)
+      newlist.push(steps[i]);
 
     setSteps(() => newlist);
   }
@@ -70,30 +69,30 @@ function AddWorkout() {
     // need to fix this to selected workout type
     let workoutType = "arms";
 
-    if(!title.value || !description.value){
+    if (!title.value || !description.value) {
       // TODO::show error message to user
       console.log('error one ore more inputs fields were null');
       return;
     }
-    
+
     console.log(stepInstructions);
     console.log(stepTimes);
 
-    for(let i = 0; i < stepInstructions.length; i++){
-      if(!stepInstructions[i].value || !stepTimes[i].value){
+    for (let i = 0; i < stepInstructions.length; i++) {
+      if (!stepInstructions[i].value || !stepTimes[i].value) {
         // TODO::show user error
         console.error('one ore more input fields were null');
         return;
       }
 
-      tempSteps.push({instruction: stepInstructions[i].value, workoutTime: stepTimes[i].value});
+      tempSteps.push({ instruction: stepInstructions[i].value, workoutTime: stepTimes[i].value });
     };
 
-    let jsonRes = {title: title.value, description: description.value, steps: tempSteps, workoutType: workoutType}
+    let jsonRes = { title: title.value, description: description.value, steps: tempSteps, workoutType: workoutType }
 
     fetch('https://localhost:7025/UserWorkouts/' + user.uid, {
       method: 'post',
-      headers: {'Content-Type':'application/json'},
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(jsonRes)
     })
       .then((res) => console.log(res))
@@ -105,30 +104,29 @@ function AddWorkout() {
 
   return (
     <center>
-        {/*this is temp for line spacing*/}
-        <br></br><br></br><br></br><br></br>
-        <label>Title</label><br></br>
-        <input type="text" id="title" placeholder="Title"></input><br></br>
-        <label>Description</label>Description<br></br>
-        <input type="text" id="description" placeholder="Description"></input><br></br>
-        <div>
-        </div>
-        {
-            (steps || []).map((step, index) => {
-                return (
-                    <div key={index}>
-                      {/*{step.instruction} | time: {step.time} min*/}
-                        <input className="step-instruction" type="text" defaultValue={step.instruction}></input>
-                        <input className="step-time" type="number" defaultValue={step.time}></input>
-                    </div>
-                );
+      {/*this is temp for line spacing*/}
+      <label>Title</label><br></br>
+      <input type="text" id="title" placeholder="Title"></input><br></br>
+      <label>Description</label>Description<br></br>
+      <input type="text" id="description" placeholder="Description"></input><br></br>
+      <div>
+      </div>
+      {
+        (steps || []).map((step, index) => {
+          return (
+            <div key={index}>
+              {/*{step.instruction} | time: {step.time} min*/}
+              <input className="step-instruction" type="text" defaultValue={step.instruction}></input>
+              <input className="step-time" type="number" defaultValue={step.time}></input>
+            </div>
+          );
         })}
-        <label>Next Step</label><br></br>
-        <input type="text" id="next-step" placeholder="Instruction"></input>
-        <input type="number" id="next-time" placeholder="Time (min)"></input>
-        <button onClick={addStep}>Add Step</button>
-        <button onClick={removeStep}>Remove Step</button>
-        <button onClick={submitWorkout}>Submit Workout</button>
+      <label>Next Step</label><br></br>
+      <input type="text" id="next-step" placeholder="Instruction"></input>
+      <input type="number" id="next-time" placeholder="Time (min)"></input>
+      <button onClick={addStep}>Add Step</button>
+      <button onClick={removeStep}>Remove Step</button>
+      <button onClick={submitWorkout}>Submit Workout</button>
     </center>
   );
 }
