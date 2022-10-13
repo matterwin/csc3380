@@ -66,10 +66,15 @@ namespace back_end.Controllers
         [Route("{start}/{size}")]
         public IActionResult GetWorkouts(int start, int size)
         {
-            List<Domain.Workout> workouts = new();
-            var workout = _context.Workouts.Skip((start - 1) * size).Take(size);
+            var workouts = _context.Workouts.Include(workout => workout.Steps).Skip((start - 1) * size).Take(size).ToList();
 
-            return Ok(workout);
+            List<WorkoutDTO> workoutDTOs = new List<WorkoutDTO>();
+            for (int i = 0; i < workouts.Count(); i++)
+            {
+                workoutDTOs.Add(new WorkoutDTO(workouts[i]));
+            }
+
+            return Ok(workoutDTOs);
         }
 
         [HttpGet]

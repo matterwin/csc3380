@@ -115,7 +115,7 @@ class Workouts extends React.Component{
                                 <div className="workout" key={i}>
                                     <h1>
                                         {/*workouts[workout].workoutID}*/}
-                                        <a href={"/Workout?id=" + workouts[workout].id}>
+                                        <a href={"/Workout?id=" + workouts[workout].workoutID}>
                                             {workouts[workout].title}
                                         </a>
                                     </h1>
