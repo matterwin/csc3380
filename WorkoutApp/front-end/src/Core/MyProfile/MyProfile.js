@@ -6,7 +6,7 @@ import { query, collection, getDocs, where } from "firebase/firestore";
 import "./MyProfile.css";
 
 function MyProfile() {
-  const [user, loading, error] = useAuthState(auth);
+  const [user, loading] = useAuthState(auth);
   const [name, setName] = useState("");
   const navigate = useNavigate();
 
@@ -25,24 +25,24 @@ function MyProfile() {
   useEffect(() => {
     if (loading) return;
     if (!user) {
-        console.log("User must be loggin in to access this page!");
-        return navigate("/Login");
+      console.log("User must be loggin in to access this page!");
+      return navigate("/Login");
     }
-    
+
     fetchUserName();
   }, [user, loading]);
 
   return (
     <div className="myprofile">
-       <div className="myprofile__container">
+      <div className="myprofile__container">
         Logged in as
-         <div>{name}</div>
-         <div>{user?.email}</div>
-         <button className="myprofile__btn" onClick={logout}>
+        <div>{name}</div>
+        <div>{user?.email}</div>
+        <button className="myprofile__btn" onClick={logout}>
           Logout
-         </button>
-       </div>
-     </div>
+        </button>
+      </div>
+    </div>
   );
 }
 
