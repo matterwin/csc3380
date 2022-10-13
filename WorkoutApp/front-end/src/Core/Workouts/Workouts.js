@@ -1,20 +1,26 @@
 import { render } from "@testing-library/react";
 import React, { useEffect } from "react";
 import { act } from "react-dom/test-utils";
+import { json } from "react-router";
 import "./Workouts.css"
 
 class Workouts extends React.Component{    
+    // This is the amount of workouts we display on each page
+    workoutsSize = 5;
+
     constructor(props){
         super(props);
 
         this.state = {
             workouts: [{"steps": [{}]}],
-            workoutsLoaded: false
+            workoutsLoaded: false,
+            numWorkouts: 0,
+            numWorkoutsLoaded: false
         }
     }
 
     async componentDidMount(){
-        fetch('https://localhost:7025/Workouts')
+        fetch('https://localhost:7025/Workouts/1/' + this.workoutsSize)
             .then((res) => res.json())
             .then((json) => {
                 this.setState({
@@ -25,12 +31,56 @@ class Workouts extends React.Component{
             .catch((err) => {
                 console.log(err);
             })
+
+        fetch('https://localhost:7025/Workouts/Count')
+            .then((res) => res.json())
+            .then((json) => {
+                this.setState({
+                    numWorkouts: json,
+                    numWorkoutsLoaded: true
+                });
+            })
+            .catch((err) => {
+                console.log(err);
+            })
     }
 
+    nextWorkouts(numWorkout){
+        this.setState({
+            numWorkoutsLoaded: false,
+            workoutsLoaded: false
+        })
+
+        fetch('https://localhost:7025/Workouts/' + numWorkout + '/' + this.workoutsSize)
+            .then((res) => res.json())
+            .then((json) => {
+                this.setState({
+                    workouts: json,
+                    workoutsLoaded: true
+                });
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+
+        fetch('https://localhost:7025/Workouts/Count')
+            .then((res) => res.json())
+            .then((json) => {
+                this.setState({
+                    numWorkouts: json,
+                    numWorkoutsLoaded: true
+                });
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    }
 
     render() {
-        const { workoutsLoaded, workouts } = this.state;
-        if(!workoutsLoaded) return(
+        // This is the amount of workouts we display on each page
+        const { workoutsLoaded, workouts, numWorkouts, numWorkoutsLoaded } = this.state;
+
+        if(!workoutsLoaded || !numWorkoutsLoaded) return(
             <div className="loading">
                 <img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/cd514331234507.564a1d2324e4e.gif" alt="load"  />
                 <h1 className="load--phrase">Loading Workouts</h1>
@@ -49,8 +99,14 @@ class Workouts extends React.Component{
                     </img>
                 </div>
                 <div className="preview-workouts">
-                    
                     <center>
+                        {
+                        [...Array(parseInt((numWorkouts / this.workoutsSize) + 1)) || []].map((key, value) => {
+                            return ( 
+                                <button onClick={() => this.nextWorkouts(value + 1)}>{value + 1}</button>
+                            )
+                        })
+                        }`
                         {
                             Object.keys(workouts).map((workout, i) => (
                                 <div className="workout" key={i}>
