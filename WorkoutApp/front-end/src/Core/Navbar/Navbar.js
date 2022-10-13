@@ -43,7 +43,7 @@ class Navbar extends React.Component{
                     <h2 className='nav--logo_text'><a href="/">Fit Happens</a></h2>
                     <ul className="nav--list">
                         <input type="checkbox" id="checkbox_toggle" />
-                        <label for="checkbox_toggle" class="hamburger">&#9776;</label>
+                        <label htmlFor="checkbox_toggle" className="hamburger">&#9776;</label>
                         <div className="menu">
                             <NavLink
                                 end to="/"
