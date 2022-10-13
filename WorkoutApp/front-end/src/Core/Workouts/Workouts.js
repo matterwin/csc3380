@@ -7,6 +7,7 @@ import "./Workouts.css"
 class Workouts extends React.Component{    
     // This is the amount of workouts we display on each page
     workoutsSize = 5;
+    currentWorkoutPage = 1;
 
     constructor(props){
         super(props);
@@ -46,12 +47,7 @@ class Workouts extends React.Component{
     }
 
     nextWorkouts(numWorkout){
-        this.setState({
-            workouts: [{"steps": [{}]}],
-            workoutsLoaded: false,
-            numWorkouts: 0,
-            numWorkoutsLoaded: false
-        })
+        this.currentWorkoutPage = numWorkout;
 
         fetch('https://localhost:7025/Workouts/' + numWorkout + '/' + this.workoutsSize)
             .then((res) => res.json())
@@ -102,13 +98,12 @@ class Workouts extends React.Component{
                 </div>
                 <div className="preview-workouts">
                     <center>
-                        {
-                            
-                        [...Array(parseInt((numWorkouts / this.workoutsSize) + 1)) || []].map((key, value) => {
-                            return ( 
-                                <button key={value} onClick={() => this.nextWorkouts(value + 1)}>{value + 1}</button>
-                            )
-                        })
+                        { 
+                            [...Array(parseInt((numWorkouts / this.workoutsSize) + 1)) || []].map((key, value) => {
+                                return ( 
+                                    <button type="button" disabled={(value + 1 == this.currentWorkoutPage)} key={value} onMouseUp={() => this.nextWorkouts(value + 1)}>{value + 1}</button>
+                                )
+                            })
                         }
                         {
                             Object.keys(workouts || "").map((workout, i) => (
