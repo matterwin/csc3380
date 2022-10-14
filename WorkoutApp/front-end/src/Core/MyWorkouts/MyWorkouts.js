@@ -3,7 +3,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { json, useNavigate } from "react-router-dom";
 import { auth, db, logout } from "../../UserAuth/firebase";
 import { query, collection, getDocs, where } from "firebase/firestore";
-import "../Workouts/Workouts.css"
+import "./MyWorkouts.css"
 
 function MyWorkouts() {
     const [user, loading, error] = useAuthState(auth);
@@ -47,11 +47,11 @@ function MyWorkouts() {
 
     return (
         <div className="myworkouts">
-            <h1>Logged in as</h1>
-            <div>{name}</div>
-            <div>{user?.email}</div>
+                
+            <div className="welcomeMessage">Welcome to Fit Happens, <div className = "typing">{name} <span class="wave">👋</span></div></div>
             <center>
-                <a href={"/AddWorkout"}>Add Workout</a>
+                <br></br>
+                <a className = "addWorkout" href={"/AddWorkout"}>Click here to add a personal workout!</a>
                 {
                     Object.entries(jsonWorkouts).map(([key, value]) => {
                         return (

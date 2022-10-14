@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { auth, db, logout } from "../../UserAuth/firebase";
 import { query, collection, getDocs, where } from "firebase/firestore";
 import { setPersistence } from "firebase/auth";
+import "./AddWorkout.css"
 
 
 function AddWorkout() {
@@ -105,14 +106,12 @@ function AddWorkout() {
 
   return (
     <center>
-        {/*this is temp for line spacing*/}
-        <br></br><br></br><br></br><br></br>
-        <label>Title</label><br></br>
-        <input type="text" id="title" placeholder="Title"></input><br></br>
-        <label>Description</label>Description<br></br>
-        <input type="text" id="description" placeholder="Description"></input><br></br>
-        <div>
-        </div>
+        <div className="alignBox">
+        <div className="titleBox"><label>Title: </label><br></br>
+        <input type="text" id="title" placeholder="Title"></input></div><br></br>
+        <div className="descriptionBox">
+        <label>Description</label><br></br>
+        <input type="text" id="description" placeholder="Description"></input></div><br></br>
         {
             (steps || []).map((step, index) => {
                 return (
@@ -125,10 +124,18 @@ function AddWorkout() {
         })}
         <label>Next Step</label><br></br>
         <input type="text" id="next-step" placeholder="Instruction"></input>
-        <input type="number" id="next-time" placeholder="Time (min)"></input>
-        <button onClick={addStep}>Add Step</button>
-        <button onClick={removeStep}>Remove Step</button>
-        <button onClick={submitWorkout}>Submit Workout</button>
+        <div className="space"></div>
+        <input type="number" id="next-time" placeholder="Time (mins)"></input>
+        <br></br>
+        <div className="buttons">
+          <br></br>
+        <button className = "Btn" onClick={addStep}><span>Add New Step</span></button>
+        <div className="space"></div>
+        <button className = "Btn" onClick={removeStep}><span>Remove A Step</span></button>
+        <div className="space"></div>
+        <button className = "Btn" onClick={submitWorkout}><span>Submit Workout</span></button>
+        </div>
+        </div>
     </center>
   );
 }
