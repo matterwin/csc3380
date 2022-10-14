@@ -1,0 +1,59 @@
+*{
+  font-size: 30px;
+  font-family: "Roboto", sans-serif;
+}
+
+.welcomeMessage{
+    color: #D77A61;
+    display:flex;
+    justify-content: center;
+    align-items: baseline;
+    font-weight: bolder;
+}
+
+.addWorkout{ 
+    color: white;
+} 
+
+.addWorkout:hover{
+    color: white;
+}
+
+.wave {
+    display: inline-block;
+    animation: wave 500ms infinite ease-in-out;
+}
+
+@keyframes wave {
+    0% {
+        transform: rotate(0);
+    }
+    50% {
+        transform: rotate(15deg);
+    }
+    100% {
+        transform: rotate(0);
+    }
+}
+  
+  .typing {
+    padding-left: 0.5ch;
+    width: 22ch;
+    animation: typing 2s steps(22), blink .5s step-end infinite alternate;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid;
+    font-size: 30px;
+  }
+  
+  @keyframes typing {
+    from {
+      width: 0
+    }
+  }
+      
+  @keyframes blink {
+    50% {
+      border-color: transparent
+    }
+  }
