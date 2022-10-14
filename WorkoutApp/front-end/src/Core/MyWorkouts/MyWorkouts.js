@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { auth, db } from "../../UserAuth/firebase";
 import { query, collection, getDocs, where } from "firebase/firestore";
 import "./MyWorkouts.css"
+import launchsettings from "../../launchsettings.json"
 
 function MyWorkouts() {
     const [user, loading, error] = useAuthState(auth);
