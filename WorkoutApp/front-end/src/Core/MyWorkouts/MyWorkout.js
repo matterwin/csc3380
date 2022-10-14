@@ -3,7 +3,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
 import { auth, db } from "../../UserAuth/firebase";
 import { query, collection, getDocs, where } from "firebase/firestore";
-import "../Workouts/Workouts.css"
+import "./AddWorkout.css"
 import launchsettings from "../../launchsettings.json"
 
 function MyWorkout() {
@@ -144,10 +144,16 @@ function MyWorkout() {
                 <label>Next Step</label><br></br>
                 <input type="text" id="next-step" placeholder="Instruction"></input>
                 <input type="number" id="next-time" placeholder="Time (min)"></input>
-                <button onClick={addStep}>Add Step</button>
-                <button onClick={removeStep}>Remove Step</button>
-                <button onClick={() => updateWorkout(jsonWorkout.workoutID)}>Update Workout</button>
-                <button onClick={() => deleteWorkout(user.uid || 0, jsonWorkout.workoutID)}>Delete Workout</button>
+                <br></br><br></br>
+                <div className="buttons">
+                    <button className = "Btn" onClick={addStep}><span>Add Step</span></button>
+                    <div className="space"></div>
+                    <button className = "Btn" onClick={removeStep}><span>Remove Step</span></button>
+                    <div className="space"></div>
+                    <button className = "Btn" onClick={() => updateWorkout(jsonWorkout.workoutID)}><span>Update Workout</span></button>
+                    <div className="space"></div>
+                    <button className = "Btn" onClick={() => deleteWorkout(user.uid || 0, jsonWorkout.workoutID)}><span>Delete Workout</span></button>
+                </div>
             </center>
         </div>
     );
