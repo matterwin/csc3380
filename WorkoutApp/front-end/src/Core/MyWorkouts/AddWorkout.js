@@ -3,7 +3,6 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
 import { auth, db } from "../../UserAuth/firebase";
 import { query, collection, getDocs, where } from "firebase/firestore";
-import { setPersistence } from "firebase/auth";
 import "./AddWorkout.css"
 
 

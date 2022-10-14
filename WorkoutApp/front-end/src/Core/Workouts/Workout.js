@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import { act } from "react-dom/test-utils";
 import Workouts from "./Workouts";
 import "./Workout.css"
+import launchsettings from "../../launchsettings.json"
 
 class Workout extends React.Component {
     constructor(props) {
