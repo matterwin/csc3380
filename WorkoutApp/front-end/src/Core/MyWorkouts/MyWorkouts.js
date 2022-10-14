@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { json, useNavigate } from "react-router-dom";
-import { auth, db, logout } from "../../UserAuth/firebase";
+import { useNavigate } from "react-router-dom";
+import { auth, db } from "../../UserAuth/firebase";
 import { query, collection, getDocs, where } from "firebase/firestore";
 import "./MyWorkouts.css"
 
@@ -30,9 +30,7 @@ function MyWorkouts() {
         }
         fetchUserName();
 
-        console.log(user.uid);
-
-        fetch('https://localhost:7025/UserWorkouts/' + user.uid)
+        fetch(`${launchsettings.SERVER_URL}UserWorkouts/${user.uid}`)
             .then((res) => res.json())
             .then((json) => {
                 if (json?.status != 404)

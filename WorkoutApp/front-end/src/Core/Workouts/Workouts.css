@@ -5,8 +5,8 @@
 }
 
 .workout {
-  	border: 5px solid black;
-  	margin: 10px;
+	border: 5px solid black;
+	margin: 10px;
 	margin-top: 30px;
 	width: 600px;
 	box-shadow: 0 4px 8px 0 black;
@@ -15,8 +15,8 @@
 }
 
 .loading {
-    padding: 25vh;
-    text-align: center;
+	padding: 25vh;
+	text-align: center;
 }
 
 .h1 {
@@ -51,7 +51,7 @@ a {
 	margin: 0;
 }
 
-.welcome-screen h1{
+.welcome-screen h1 {
 	display: flex;
 	padding-bottom: 0;
 	text-align: left;
@@ -61,10 +61,10 @@ a {
 	font-size: 6vh;
 	width: 120vh;
 	word-wrap: break-word;
-	padding-left:194px;
+	padding-left: 194px;
 }
 
-.welcome-screen h2{
+.welcome-screen h2 {
 	display: flex;
 	padding-bottom: 0;
 	text-align: left;
@@ -74,7 +74,7 @@ a {
 	font-size: 3vh;
 	width: 65vh;
 	word-wrap: break-word;
-	padding-left:194px;
+	padding-left: 194px;
 	padding-bottom: 0%;
 	margin-bottom: 0%;
 }
@@ -86,7 +86,7 @@ a {
 	padding-top: 15vh;
 	padding-bottom: 0;
 	margin: 0;
-	width:20vh;
+	width: 20vh;
 }
 
 .gif2 {
@@ -94,7 +94,7 @@ a {
 	padding-right: 186px;
 	overflow: visible;
 	float: right;
-	width:20vh;
+	width: 20vh;
 }
 
 @media (max-width: 1213px) {

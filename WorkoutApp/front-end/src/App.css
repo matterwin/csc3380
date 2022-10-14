@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap');
 
 
-body{
+body {
     background-color: #223843;
     padding-top: 90px;
     font-family: "Roboto", sans-serif;
@@ -10,4 +10,3 @@ body{
     width: 100%;
     overflow-x: hidden;
 }
-

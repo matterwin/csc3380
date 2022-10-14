@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
-import { auth, db, logout } from "../../UserAuth/firebase";
+import { auth, db } from "../../UserAuth/firebase";
 import { query, collection, getDocs, where } from "firebase/firestore";
 import { setPersistence } from "firebase/auth";
 import "./AddWorkout.css"
@@ -28,17 +28,17 @@ function AddWorkout() {
   useEffect(() => {
     if (loading) return;
     if (!user) {
-        console.info("User must be loggin in to access this page!");
-        return navigate("/Login");
+      console.info("User must be loggin in to access this page!");
+      return navigate("/Login");
     }
-    
+
     fetchUserName();
   }, [user, loading]);
 
   const addStep = () => {
-    let tempStep = {instruction: document.getElementById('next-step').value, time: document.getElementById('next-time').value};
+    let tempStep = { instruction: document.getElementById('next-step').value, time: document.getElementById('next-time').value };
 
-    if(!tempStep.instruction || !tempStep.time){
+    if (!tempStep.instruction || !tempStep.time) {
       // TODO::show error message to user
       console.error('error one or more inputs fields were null');
       return;
@@ -55,8 +55,8 @@ function AddWorkout() {
   const removeStep = () => {
     let newlist = [];
 
-    for(let i = 0; i < steps.length - 1; i++)
-        newlist.push(steps[i]);
+    for (let i = 0; i < steps.length - 1; i++)
+      newlist.push(steps[i]);
 
     setSteps(() => newlist);
   }
@@ -71,30 +71,30 @@ function AddWorkout() {
     // need to fix this to selected workout type
     let workoutType = "arms";
 
-    if(!title.value || !description.value){
+    if (!title.value || !description.value) {
       // TODO::show error message to user
       console.log('error one ore more inputs fields were null');
       return;
     }
-    
+
     console.log(stepInstructions);
     console.log(stepTimes);
 
-    for(let i = 0; i < stepInstructions.length; i++){
-      if(!stepInstructions[i].value || !stepTimes[i].value){
+    for (let i = 0; i < stepInstructions.length; i++) {
+      if (!stepInstructions[i].value || !stepTimes[i].value) {
         // TODO::show user error
         console.error('one ore more input fields were null');
         return;
       }
 
-      tempSteps.push({instruction: stepInstructions[i].value, workoutTime: stepTimes[i].value});
+      tempSteps.push({ instruction: stepInstructions[i].value, workoutTime: stepTimes[i].value });
     };
 
-    let jsonRes = {title: title.value, description: description.value, steps: tempSteps, workoutType: workoutType}
+    let jsonRes = { title: title.value, description: description.value, steps: tempSteps, workoutType: workoutType }
 
-    fetch('https://localhost:7025/UserWorkouts/' + user.uid, {
+    fetch(`${launchsettings.SERVER_URL}UserWorkouts/${user.uid}`, {
       method: 'post',
-      headers: {'Content-Type':'application/json'},
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(jsonRes)
     })
       .then((res) => console.log(res))
