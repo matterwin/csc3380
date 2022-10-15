@@ -27,7 +27,7 @@ function MyWorkout() {
 
     const deleteWorkout = (uid, workoutID) => {
         if (uid != 0) {
-            fetch(`${launchsettings.SERVER_URL}UserWorkouts/${uid}/${workoutID}`, { method: 'DELETE' })
+            fetch(`${launchsettings.SERVER_URL}UserWorkouts/${workoutID}`, { method: 'DELETE' })
                 .then((res) => console.log(res))
                 .catch((err) => console.log(err));
 
@@ -110,7 +110,7 @@ function MyWorkout() {
 
         let jsonRes = { title: title.value, description: description.value, steps: tempSteps, workoutType: workoutType }
 
-        fetch(`${launchsettings.SERVER_URL}UserWorkouts/Update/${user.uid}/${workoutID}`, {
+        fetch(`${launchsettings.SERVER_URL}UserWorkouts/Update/${workoutID}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(jsonRes)
@@ -150,9 +150,9 @@ function MyWorkout() {
                     <div className="space"></div>
                     <button className = "Btn" onClick={removeStep}><span>Remove Step</span></button>
                     <div className="space"></div>
-                    <button className = "Btn" onClick={() => updateWorkout(jsonWorkout.workoutID)}><span>Update Workout</span></button>
+                    <button className = "Btn" onClick={() => updateWorkout(jsonWorkout.id)}><span>Update Workout</span></button>
                     <div className="space"></div>
-                    <button className = "Btn" onClick={() => deleteWorkout(user.uid || 0, jsonWorkout.workoutID)}><span>Delete Workout</span></button>
+                    <button className = "Btn" onClick={() => deleteWorkout(user.uid || 0, jsonWorkout.id)}><span>Delete Workout</span></button>
                 </div>
             </center>
         </div>

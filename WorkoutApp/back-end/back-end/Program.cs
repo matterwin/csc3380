@@ -1,6 +1,11 @@
 using back_end.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Internal;
+using back_end.Repositories.IRepositories;
+using back_end.Domain;
+using back_end.DTO;
+using AutoMapper;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,6 +32,16 @@ builder.Services.AddCors(options =>
                                                     .AllowAnyMethod()
                                                     .AllowAnyHeader());
 });
+
+// TODO:put this in its own file
+//new MapperConfiguration(cfg => cfg.CreateMap<Workout, WorkoutDTO>().ReverseMap().DisableCtorValidation());
+//new MapperConfiguration(cfg => cfg.CreateMap<ICollection<Workout>, ICollection<WorkoutDTO>>().ReverseMap().DisableCtorValidation());
+
+builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
+
+// TODO::put this in its own file
+builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+builder.Services.AddScoped<IWorkoutRepository, WorkoutRepository>();
 
 var app = builder.Build();
 
