@@ -42,6 +42,7 @@ builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 // TODO::put this in its own file
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 builder.Services.AddScoped<IWorkoutRepository, WorkoutRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 var app = builder.Build();
 

@@ -54,5 +54,15 @@ namespace back_end.Repositories
                                         .ToListAsync();
             return result;
         }
+
+        public async Task<List<Workout>> GetAllWithStepsWithWorkoutTypeAsync(string workoutType)
+        {
+            var result = await dbContext.Set<Workout>()
+                                        .Include(workout => workout.Steps)
+                                        .Where(workout => workout.WorkoutType == workoutType)
+                                        .ToListAsync();
+
+            return result;
+        }
     }
 }

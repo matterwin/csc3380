@@ -1,8 +1,7 @@
-﻿namespace back_end.Domain
+﻿namespace back_end.DTO.User
 {
-    public class User : BaseEntity
+    public class UserBaseDTO
     {
-        public string FirebaseId { get; set; }
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
         public string LastName { get; set; }
