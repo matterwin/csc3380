@@ -1,6 +1,7 @@
 ﻿using back_end.Domain;
 using back_end.DTO;
 using back_end.Repositories;
+using back_end.Repositories.IRepositories;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.Design;
@@ -28,18 +29,7 @@ namespace back_end.Controllers
         [Route("{FirebaseID}/{WorkoutID}")]
         public IActionResult Delete(string FirebaseID, int WorkoutID)
         {
-            var workouts = _context.Workouts.Where(workout => workout.FirebaseID == FirebaseID).Where(workout => workout.ID == WorkoutID);
-            if(workouts.Count() <= 0)
-                return NotFound(WorkoutID);
-            else if(workouts.Count() > 1)
-            {
-                _logger.LogError("more than one workout found for id");
-                return StatusCode(500);
-            }
-
-            _context.Remove<Workout>(new Workout { FirebaseID = FirebaseID, ID = WorkoutID});
-            _context.SaveChanges();
-            return Ok();
+            return null;
         }
 
         [HttpGet]
@@ -48,19 +38,7 @@ namespace back_end.Controllers
         [Route("{FirebaseID}")]
         public IActionResult Get(string FirebaseID)
         {
-            var workouts = _context.Workouts.Include(workout => workout.Steps).Where(workout => workout.FirebaseID == FirebaseID).ToArray();
-
-            if (workouts.Count() != 0)
-            {
-                Console.WriteLine("TEST");
-                List<WorkoutDTO> workoutDTOs = new List<WorkoutDTO>();
-                for (int i = 0; i < workouts.Count(); i++)
-                    workoutDTOs.Add(new WorkoutDTO(workouts.ElementAt(i)));
-
-                return Ok(workoutDTOs);
-            }
-
-            return NotFound();
+            return null;
         }
 
         [HttpPut]
@@ -69,22 +47,7 @@ namespace back_end.Controllers
         [Route("Update/{FirebaseID}/{WorkoutID}")]
         public IActionResult Put(string FirebaseID, int WorkoutID,  [FromBody] WorkoutDTO workoutDTO)
         {
-            var workout = _context.Workouts.Include(workout => workout.Steps).Where(workout => workout.ID == WorkoutID).Where(workout => workout.FirebaseID == FirebaseID).FirstOrDefault();
-
-            if(workout != null)
-            {
-                workout.Title = workoutDTO.Title;
-                workout.Steps.Clear();
-
-                foreach(WorkoutStepDTO step in workoutDTO.Steps)
-                    workout.Steps.Add(new WorkoutStep(WorkoutID, step));
-
-                _context.Workouts.Update(workout);
-                _context.SaveChanges();
-                return Ok(workout);
-            }
-
-            return NotFound();
+            return null;
         }
 
         [HttpPost]
@@ -93,10 +56,7 @@ namespace back_end.Controllers
         [Route("{FirebaseID}")]
         public IActionResult Post(string FirebaseID, [FromBody] WorkoutDTO workoutDTO)
         {
-            Workout workout = new Workout(FirebaseID, workoutDTO);
-            _context.Workouts.Add(workout);
-            _context.SaveChanges();
-            return Ok();
+            return null;
         }
 
         // NOTE::start id is indexed starting at 1
@@ -106,15 +66,7 @@ namespace back_end.Controllers
         [Route("{FirebaseID}/{start}/{size}")]
         public IActionResult GetWorkouts(string FirebaseID, int start, int size)
         {
-            var workouts = _context.Workouts.Include(workout => workout.Steps).Skip((start - 1) * size).Where(workout => workout.FirebaseID  == FirebaseID).Take(size).ToList();
-
-            List<WorkoutDTO> workoutDTOs = new List<WorkoutDTO>();
-            for (int i = 0; i < workouts.Count(); i++)
-            {
-                workoutDTOs.Add(new WorkoutDTO(workouts[i]));
-            }
-
-            return Ok(workoutDTOs);
+            return null;
         }
 
 
@@ -122,8 +74,7 @@ namespace back_end.Controllers
         [Route("Count/{FirebaseID}")]
         public IActionResult GetWorkoutsCount(string FirebaseID)
         {
-            var numWorkouts = _context.Workouts.Where(workout => workout.FirebaseID == FirebaseID)?.Count();
-            return Ok(numWorkouts);
+            return null;
         }
     }
 }
