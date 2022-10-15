@@ -40,13 +40,13 @@ namespace back_end.Controllers
         }
 
         [HttpGet]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<WorkoutBaseDTO>))]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<GetWorkoutDTO>))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [Route("{FirebaseID}")]
         public async Task<IActionResult> GetUserWorkouts(string FirebaseID)
         {
             var result = await workoutRepository.GetAllWithFirebaseIdWithStepsAsync(FirebaseID);
-            var dto = mapper.Map<List<WorkoutBaseDTO>>(result);
+            var dto = mapper.Map<List<GetWorkoutDTO>>(result);
 
             if (result != null)
                 return Ok(dto);

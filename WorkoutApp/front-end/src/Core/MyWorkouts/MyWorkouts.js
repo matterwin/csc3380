@@ -47,7 +47,7 @@ function MyWorkouts() {
     return (
         <div className="myworkouts">
                 
-            <div className="welcomeMessage">Welcome to Fit Happens, <div className = "typing">{name} <span class="wave">👋</span></div></div>
+            <div className="welcomeMessage">Welcome to Fit Happens, <div className = "typing">{name} <span className="wave">👋</span></div></div>
             <center>
                 <br></br>
                 <a className = "addWorkout" href={"/AddWorkout"}>Click here to add a personal workout!</a>
@@ -56,7 +56,7 @@ function MyWorkouts() {
                         return (
                             <div className="workout" key={key}>
                                 <h1>
-                                    <a href={"/MyWorkout?id=" + value.workoutID}>{value.title}</a>
+                                    <a href={"/MyWorkout?id=" + value.id}>{value.title}</a>
                                 </h1>
                                 <h2>{value.description}</h2>
                                 <h3>{value.workoutType}</h3>

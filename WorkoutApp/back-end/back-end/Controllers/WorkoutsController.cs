@@ -23,13 +23,13 @@ namespace back_end.Controllers
 
         #region workouts
         [HttpGet("{Id}")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(WorkoutBaseDTO))]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(GetWorkoutDTO))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetWorkout(int Id)
         {
             var result = await workoutRepository.GetWithStepsAsync(Id);
 
-            var dto = mapper.Map<WorkoutBaseDTO>(result);
+            var dto = mapper.Map<GetWorkoutDTO>(result);
 
             if (result != null)
                 return Ok(dto);
@@ -38,12 +38,12 @@ namespace back_end.Controllers
         }
 
         [HttpGet]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<WorkoutBaseDTO>))]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<GetWorkoutDTO>))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetAllWorkouts()
         {
             var result = await workoutRepository.GetAllWithStepsAsync();
-            var dto = mapper.Map<List<WorkoutBaseDTO>>(result);
+            var dto = mapper.Map<List<GetWorkoutDTO>>(result);
 
             if (result != null)
                 return Ok(dto);
@@ -52,13 +52,13 @@ namespace back_end.Controllers
         }
 
         [HttpGet]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<WorkoutBaseDTO>))]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<GetWorkoutDTO>))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [Route("{Start}/{Size}")]
         public async Task<IActionResult> GetWorkoutsInRange(int Start, int Size)
         {
             var result = await workoutRepository.GetAllInRangeWithSteps(Start, Size);
-            var dto = mapper.Map<List<WorkoutBaseDTO>>(result);
+            var dto = mapper.Map<List<GetWorkoutDTO>>(result);
 
             if (result != null)
                 return Ok(dto);
