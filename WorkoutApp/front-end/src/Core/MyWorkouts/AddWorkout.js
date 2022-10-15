@@ -104,7 +104,7 @@ function AddWorkout() {
   }
 
   return (
-    <center>
+    <center className="addWorkout">
         <div className="alignBox">
         <div className="titleBox"><label>Title: </label><br></br>
         <input type="text" id="title" placeholder="Title"></input></div><br></br>

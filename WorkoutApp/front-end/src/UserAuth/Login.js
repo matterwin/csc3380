@@ -18,7 +18,7 @@ function Login() {
   }, [user, loading]);
 
   return (
-    <div>
+    <div className="log">
       <div>
         <a href="/"><img className="reg--pic" src="logo-orange.png"></img></a>
         <h1 className="log--title">Log in to your account</h1>
