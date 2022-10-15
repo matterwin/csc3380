@@ -67,7 +67,7 @@ class Workouts extends React.Component {
 
     render() {
         // This is the amount of workouts we display on each page
-        const { workoutsLoaded, workouts, numWorkouts, numWorkoutsLoaded, workoutTypes, workoutTypesLoaded } = this.state;
+        let { workoutsLoaded, workouts, numWorkouts, numWorkoutsLoaded, workoutTypes, workoutTypesLoaded } = this.state;
 
 
         // Something is not loaded
@@ -77,6 +77,9 @@ class Workouts extends React.Component {
                 <h1 className="load--phrase">Loading Workouts</h1>
             </div>
         )
+
+        if(numWorkouts % this.workoutsSize == 0)
+            numWorkouts--;
 
         return (
             <div className="container">
@@ -92,7 +95,7 @@ class Workouts extends React.Component {
                     <center>
                         <br></br>
                         {
-                            [...Array(parseInt((numWorkouts / this.workoutsSize) + 1)) || []].map((key, value) => {
+                            [...Array(parseInt(numWorkouts / this.workoutsSize) + 1) || []].map((key, value) => {
                                 return (
                                     <button type="button"
                                         disabled={(value + 1 == this.currentWorkoutPage)}
