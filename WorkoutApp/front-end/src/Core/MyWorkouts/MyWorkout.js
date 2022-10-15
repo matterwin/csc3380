@@ -110,7 +110,7 @@ function MyWorkout() {
 
         let jsonRes = { title: title.value, description: description.value, steps: tempSteps, workoutType: workoutType }
 
-        fetch(`${launchsettings.SERVER_URL}UserWorkouts/Update/${workoutID}`, {
+        fetch(`${launchsettings.SERVER_URL}UserWorkouts/${workoutID}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(jsonRes)
