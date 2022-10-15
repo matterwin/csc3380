@@ -14,11 +14,14 @@ nav {
   overflow: hidden;
   width: 97%;
   margin-right: 100px;
-  font-family: "Raleway", sans-serif;
+  font-family: "Raleway";
   font-weight: 100;
   font-weight: bolder;
 }
 
+nav h2 .nav--logo_text {
+  font-family: "Raleway";
+}
 
 .nav--list * {
   list-style: none;
@@ -31,10 +34,12 @@ nav {
   color: #ffffff;
   font-size: 18px;
   letter-spacing: 1px;
+  font-family: "Raleway";
 }
 
 .nav--list {
   margin-right: 167px;
+  font-family: "Raleway";
 }
 
 .nav--logo_text {
@@ -96,7 +101,7 @@ nav a:hover .login {
   font-size: 170%;
 }
 
-input[type=checkbox] {
+nav input[type=checkbox] {
   display: none;
 }
 
@@ -176,6 +181,3 @@ input[type=checkbox] {
   text-align: center;
   color: #FFF;
 }
-
-
-.menu .inactiveSign a:hover {}

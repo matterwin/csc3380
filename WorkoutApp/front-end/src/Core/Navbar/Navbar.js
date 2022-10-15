@@ -38,7 +38,7 @@ class Navbar extends React.Component {
         )
 
         return (
-            <nav>
+            <nav className="navClass">
                 <a href="/"><img src="../logo-orange.png" alt="logo" className="nav--logo" /></a>
                 <h2 className='nav--logo_text'><a href="/">Fit Happens</a></h2>
                 <ul className="nav--list">

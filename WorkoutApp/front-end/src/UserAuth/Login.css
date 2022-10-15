@@ -22,7 +22,7 @@
   border-style: hidden;
 }
 
-input:focus {
+.log input:focus {
   outline-color: #d77a61;
   outline-style: solid;
   outline-width: 2.3px;
@@ -87,11 +87,11 @@ button:hover {
   margin-bottom: -270px;
   color: white;
   font-weight: bold;
-  font-family: Raleway;
+  font-family: "Raleway";
   font-weight: 900;
 }
 
-label {
+.log label {
   text-align: left;
   padding-bottom: 3px
 }

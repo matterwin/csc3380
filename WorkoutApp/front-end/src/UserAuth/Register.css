@@ -86,3 +86,9 @@ a:hover .link {
 label {
   text-align: left;
 }
+
+.register input:focus {
+  outline-color: #d77a61;
+  outline-style: solid;
+  outline-width: 2.3px;
+}
