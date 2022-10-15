@@ -54,16 +54,22 @@ namespace back_end.Controllers
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<WorkoutDTO>))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [Route("{start}/{size}")]
-        public IActionResult GetWorkouts(int start, int size)
+        public async Task<IActionResult> GetWorkouts(int start, int size)
         {
-            return null;
+            var result = await workoutRepository.GetAllInRangeWithSteps(start, size);
+            var dto = mapper.Map<List<WorkoutDTO>>(result);
+
+            if (result != null)
+                return Ok(dto);
+            else
+                return NotFound();
         }
 
-        [HttpGet]
-        [Route("Count")]
-        public IActionResult GetWorkoutsCount()
+        [HttpGet("Count")]
+        public async Task<IActionResult> GetWorkoutsCount()
         {
-            return null;
+            var result = await workoutRepository.GetAllSize();
+            return Ok(result);
         }
     }
 }

@@ -29,5 +29,21 @@ namespace back_end.Repositories
                                         .FirstOrDefaultAsync();
             return result;
         }
+
+        public async Task<int> GetAllSize()
+        {
+            var result = await dbContext.Set<Workout>().CountAsync();
+            return result;
+        }
+
+        public async Task<List<Workout>> GetAllInRangeWithSteps(int start, int size)
+        {
+            var result = await dbContext.Set<Workout>()
+                                        .Skip((start - 1) * size)
+                                        .Take(size)
+                                        .Include(workout => workout.Steps)
+                                        .ToListAsync();
+            return result;
+        }
     }
 }
