@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using back_end.DTO;
+using back_end.DTO.Workout;
 using back_end.Repositories;
 using back_end.Repositories.IRepositories;
 using Microsoft.AspNetCore.Mvc;
@@ -21,14 +21,15 @@ namespace back_end.Controllers
             this.mapper = mapper;
         }
 
-        [HttpGet("{id}")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(WorkoutDTO))]
+        #region workouts
+        [HttpGet("{Id}")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(WorkoutBaseDTO))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> GetWorkout(int id)
+        public async Task<IActionResult> GetWorkout(int Id)
         {
-            var result = await workoutRepository.GetWithStepsAsync(id);
+            var result = await workoutRepository.GetWithStepsAsync(Id);
 
-            var dto = mapper.Map<WorkoutDTO>(result);
+            var dto = mapper.Map<WorkoutBaseDTO>(result);
 
             if (result != null)
                 return Ok(dto);
@@ -37,12 +38,12 @@ namespace back_end.Controllers
         }
 
         [HttpGet]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<WorkoutDTO>))]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<WorkoutBaseDTO>))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> GetWorkouts()
+        public async Task<IActionResult> GetAllWorkouts()
         {
             var result = await workoutRepository.GetAllWithStepsAsync();
-            var dto = mapper.Map<List<WorkoutDTO>>(result);
+            var dto = mapper.Map<List<WorkoutBaseDTO>>(result);
 
             if (result != null)
                 return Ok(dto);
@@ -51,13 +52,13 @@ namespace back_end.Controllers
         }
 
         [HttpGet]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<WorkoutDTO>))]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<WorkoutBaseDTO>))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [Route("{start}/{size}")]
-        public async Task<IActionResult> GetWorkouts(int start, int size)
+        [Route("{Start}/{Size}")]
+        public async Task<IActionResult> GetWorkoutsInRange(int Start, int Size)
         {
-            var result = await workoutRepository.GetAllInRangeWithSteps(start, size);
-            var dto = mapper.Map<List<WorkoutDTO>>(result);
+            var result = await workoutRepository.GetAllInRangeWithSteps(Start, Size);
+            var dto = mapper.Map<List<WorkoutBaseDTO>>(result);
 
             if (result != null)
                 return Ok(dto);
@@ -71,5 +72,6 @@ namespace back_end.Controllers
             var result = await workoutRepository.GetAllSize();
             return Ok(result);
         }
+        #endregion
     }
 }

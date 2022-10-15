@@ -8,5 +8,6 @@ namespace back_end.Repositories.IRepositories
         public Task<Workout> GetWithStepsAsync(int id);
         public Task<int> GetAllSize();
         public Task<List<Workout>> GetAllInRangeWithSteps(int start, int size);
+        public Task<List<Workout>> GetAllWithFirebaseIdWithStepsAsync(string firebaseId);
     }
 }

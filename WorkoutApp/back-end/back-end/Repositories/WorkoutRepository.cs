@@ -21,10 +21,10 @@ namespace back_end.Repositories
             return result;
         }
 
-        public async Task<Workout> GetWithStepsAsync(int id)
+        public async Task<Workout> GetWithStepsAsync(int Id)
         {
             var result = await dbContext.Set<Workout>()
-                                        .Where(workout => workout.Id == id)
+                                        .Where(workout => workout.Id == Id)
                                         .Include(workout => workout.Steps)
                                         .FirstOrDefaultAsync();
             return result;
@@ -41,6 +41,15 @@ namespace back_end.Repositories
             var result = await dbContext.Set<Workout>()
                                         .Skip((start - 1) * size)
                                         .Take(size)
+                                        .Include(workout => workout.Steps)
+                                        .ToListAsync();
+            return result;
+        }
+
+        public async Task<List<Workout>> GetAllWithFirebaseIdWithStepsAsync(string FirebaseId)
+        {
+            var result = await dbContext.Set<Workout>()
+                                        .Where(workout => workout.FirebaseId == FirebaseId)
                                         .Include(workout => workout.Steps)
                                         .ToListAsync();
             return result;

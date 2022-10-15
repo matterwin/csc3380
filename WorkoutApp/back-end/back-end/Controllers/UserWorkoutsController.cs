@@ -1,5 +1,6 @@
-﻿using back_end.Domain;
-using back_end.DTO;
+﻿using AutoMapper;
+using back_end.Domain;
+using back_end.DTO.Workout;
 using back_end.Repositories;
 using back_end.Repositories.IRepositories;
 using Microsoft.AspNetCore.Mvc;
@@ -13,68 +14,72 @@ namespace back_end.Controllers
     [Route("[controller]")]
     public class UserWorkoutsController : ControllerBase
     {
-        private readonly ILogger<WorkoutsController> _logger;
-        private WorkoutAppContext _context;
+        private readonly IWorkoutRepository workoutRepository;
+        private readonly IMapper mapper;
 
-        public UserWorkoutsController(ILogger<WorkoutsController> logger, WorkoutAppContext context)
+        public UserWorkoutsController(IWorkoutRepository workoutRepository, IMapper mapper)
         {
-            _logger = logger;
-            _context = context;
+            this.workoutRepository = workoutRepository;
+            this.mapper = mapper;
         }
 
-        [HttpDelete]
+        [HttpDelete("{Id}")]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        [Route("{FirebaseID}/{WorkoutID}")]
-        public IActionResult Delete(string FirebaseID, int WorkoutID)
+        public async Task<IActionResult> DeleteUserWorkout(int Id)
         {
-            return null;
+            var existingResult = await workoutRepository.GetAsync(Id);
+
+            if (existingResult != null)
+            {
+                await workoutRepository.DeleteAsync(existingResult);
+                return Ok();
+            }
+            else
+                return NotFound();
         }
 
         [HttpGet]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<WorkoutDTO>))]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<WorkoutBaseDTO>))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [Route("{FirebaseID}")]
-        public IActionResult Get(string FirebaseID)
+        public async Task<IActionResult> GetUserWorkouts(string FirebaseID)
         {
-            return null;
+            var result = await workoutRepository.GetAllWithFirebaseIdWithStepsAsync(FirebaseID);
+            var dto = mapper.Map<List<WorkoutBaseDTO>>(result);
+
+            if (result != null)
+                return Ok(dto);
+            else
+                return NotFound();
         }
 
         [HttpPut]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(int))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [Route("Update/{FirebaseID}/{WorkoutID}")]
-        public IActionResult Put(string FirebaseID, int WorkoutID,  [FromBody] WorkoutDTO workoutDTO)
+        [Route("{Id}")]
+        public async Task<IActionResult> PutUserWorkouts(int Id,  [FromBody] PutWorkoutDTO workoutDTO)
         {
-            return null;
+            var existingResult = await workoutRepository.GetWithStepsAsync(Id);
+
+            if (existingResult != null)
+            {
+                mapper.Map(workoutDTO, existingResult);
+                await workoutRepository.UpdateAsync(existingResult);
+                return Ok(existingResult.Id);
+            }
+            else
+                return NotFound();
         }
 
-        [HttpPost]
+        [HttpPost("{FirebaseId}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [Route("{FirebaseID}")]
-        public IActionResult Post(string FirebaseID, [FromBody] WorkoutDTO workoutDTO)
+        public async Task<IActionResult> Post(string FirebaseId, [FromBody] PostWorkoutDTO workoutDTO)
         {
-            return null;
-        }
-
-        // NOTE::start id is indexed starting at 1
-        [HttpGet]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<WorkoutDTO>))]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        [Route("{FirebaseID}/{start}/{size}")]
-        public IActionResult GetWorkouts(string FirebaseID, int start, int size)
-        {
-            return null;
-        }
-
-
-        [HttpGet]
-        [Route("Count/{FirebaseID}")]
-        public IActionResult GetWorkoutsCount(string FirebaseID)
-        {
-            return null;
+            var result = mapper.Map<Workout>(workoutDTO);
+            result.FirebaseId = FirebaseId;
+            await workoutRepository.AddAsync(result);
+            return Ok(result.Id);
         }
     }
 }

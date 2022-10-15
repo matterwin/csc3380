@@ -10,6 +10,6 @@ namespace back_end.Domain
         public string Description { get; set; }
         public string WorkoutType { get; set; }
         public ICollection<WorkoutStep> Steps { get; set; }
-        public string FirebaseID { get; set; }
+        public string FirebaseId { get; set; }
     }
 }

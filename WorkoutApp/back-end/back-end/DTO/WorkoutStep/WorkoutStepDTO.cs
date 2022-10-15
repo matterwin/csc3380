@@ -1,7 +1,4 @@
-﻿using back_end.Domain;
-using Newtonsoft.Json;
-
-namespace back_end.DTO
+﻿namespace back_end.DTO.WorkoutStep
 {
     public class WorkoutStepDTO
     {
