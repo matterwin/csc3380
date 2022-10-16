@@ -123,9 +123,6 @@ function MyWorkout() {
 
     return (
         <div className="myworkouts">
-            <h1>Logged in as</h1>
-            <div>{name}</div>
-            <div>{user?.email}</div>
             <center>
                 <label>Title</label><br></br>
                 <input type="text" id="title" placeholder="Title"></input><br></br>
