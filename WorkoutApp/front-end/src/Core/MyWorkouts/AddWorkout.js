@@ -96,11 +96,11 @@ function AddWorkout() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(jsonRes)
     })
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
-
-    //moving user to the myworkouts page
-    window.location.href = "/MyWorkouts"
+    .then((res) => {
+      console.log(res);
+      window.location.href = "/MyWorkouts";
+    })
+    .catch((err) => console.log(err));
   }
 
   return (
