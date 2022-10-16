@@ -100,5 +100,12 @@ namespace back_end.Controllers
 
             return Ok(result.Id);
         }
+
+        [HttpGet("Genders")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public IActionResult GetUserGenders()
+        {
+            return Ok(Domain.User.Genders);
+        }
     }
 }
