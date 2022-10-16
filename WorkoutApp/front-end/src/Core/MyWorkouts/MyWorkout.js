@@ -25,14 +25,12 @@ function MyWorkout() {
         }
     };
 
-    const deleteWorkout = (uid, workoutID) => {
-        if (uid != 0) {
-            fetch(`${launchsettings.SERVER_URL}UserWorkouts/${workoutID}`, { method: 'DELETE' })
-                .then((res) => console.log(res))
-                .catch((err) => console.log(err));
+    const deleteWorkout = (workoutID) => {
+        fetch(`${launchsettings.SERVER_URL}UserWorkouts/${workoutID}`, { method: 'DELETE' })
+            .then((res) => console.log(res))
+            .catch((err) => console.log(err));
 
-            window.location.href = "/MyWorkouts";
-        }
+        window.location.href = "/MyWorkouts";
     }
 
     const addStep = () => {
@@ -99,7 +97,7 @@ function MyWorkout() {
         }
 
         for (let i = 0; i < stepInstructions.length; i++) {
-            if (!stepInstructions[i].value || !stepUnits[i].value) {
+            if (!stepInstructions[i].value) {
                 // TODO::display error to user
                 console.error('one or more input fields were null');
                 return;
@@ -109,6 +107,8 @@ function MyWorkout() {
         };
 
         let jsonRes = { title: title.value, description: description.value, steps: tempSteps, workoutType: workoutType }
+
+        console.log(jsonRes);
 
         fetch(`${launchsettings.SERVER_URL}UserWorkouts/${workoutID}`, {
             method: 'PUT',
@@ -151,7 +151,7 @@ function MyWorkout() {
                     <div className="space"></div>
                     <button className = "Btn" onClick={() => updateWorkout(jsonWorkout.id)}><span>Update Workout</span></button>
                     <div className="space"></div>
-                    <button className = "Btn" onClick={() => deleteWorkout(user.uid || 0, jsonWorkout.id)}><span>Delete Workout</span></button>
+                    <button className = "Btn" onClick={() => deleteWorkout(jsonWorkout.id)}><span>Delete Workout</span></button>
                 </div>
             </center>
         </div>
