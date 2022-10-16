@@ -35,9 +35,9 @@ function AddWorkout() {
   }, [user, loading]);
 
   const addStep = () => {
-    let tempStep = { instruction: document.getElementById('next-step').value, time: document.getElementById('next-time').value };
+    let tempStep = { instruction: document.getElementById('next-step').value, unit: document.getElementById('next-unit').value };
 
-    if (!tempStep.instruction || !tempStep.time) {
+    if (!tempStep.instruction) {
       // TODO::show error message to user
       console.error('error one or more inputs fields were null');
       return;
@@ -48,7 +48,7 @@ function AddWorkout() {
 
     //resetting input values
     document.getElementById('next-step').value = "";
-    document.getElementById('next-time').value = "";
+    document.getElementById('next-unit').value = "";
   }
 
   const removeStep = () => {
@@ -65,7 +65,7 @@ function AddWorkout() {
     let title = document.getElementById("title");
     let description = document.getElementById("description");
     let stepInstructions = document.getElementsByClassName("step-instruction");
-    let stepTimes = document.getElementsByClassName("step-time");
+    let stepUnits = document.getElementsByClassName("step-unit");
 
     // need to fix this to selected workout type
     let workoutType = "arms";
@@ -77,16 +77,16 @@ function AddWorkout() {
     }
 
     console.log(stepInstructions);
-    console.log(stepTimes);
+    console.log(stepUnits);
 
     for (let i = 0; i < stepInstructions.length; i++) {
-      if (!stepInstructions[i].value || !stepTimes[i].value) {
+      if (!stepInstructions[i].value) {
         // TODO::show user error
         console.error('one ore more input fields were null');
         return;
       }
 
-      tempSteps.push({ instruction: stepInstructions[i].value, workoutTime: stepTimes[i].value });
+      tempSteps.push({ instruction: stepInstructions[i].value, unit: stepUnits[i].value});
     };
 
     let jsonRes = { title: title.value, description: description.value, steps: tempSteps, workoutType: workoutType }
@@ -115,16 +115,15 @@ function AddWorkout() {
             (steps || []).map((step, index) => {
                 return (
                     <div key={index}>
-                      {/*{step.instruction} | time: {step.time} min*/}
-                        <input className="step-instruction" type="text" defaultValue={step.instruction}></input>
-                        <input className="step-time" type="number" defaultValue={step.time}></input>
+                        <input className="step-instruction" type="text" defaultValue={step.instruction} placeholder="Instruction"></input>
+                        <input className="step-unit" type="test" defaultValue={step.unit} placeholder="Unit"></input>
                     </div>
                 );
         })}
         <label>Next Step</label><br></br>
         <input type="text" id="next-step" placeholder="Instruction"></input>
         <div className="space"></div>
-        <input type="number" id="next-time" placeholder="Time (mins)"></input>
+        <input id="next-unit" placeholder="Unit"></input>
         <br></br>
         <div className="buttons">
           <br></br>

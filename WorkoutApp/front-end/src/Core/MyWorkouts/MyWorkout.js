@@ -36,14 +36,14 @@ function MyWorkout() {
     }
 
     const addStep = () => {
-        let tempStep = { instruction: document.getElementById('next-step').value, workoutTime: document.getElementById('next-time').value };
+        let tempStep = { instruction: document.getElementById('next-step').value, unit: document.getElementById('next-unit').value };
 
         const list = [...steps, tempStep];
         setSteps(() => list);
 
         //resetting input values
         document.getElementById('next-step').value = "";
-        document.getElementById('next-time').value = "";
+        document.getElementById('next-unit').value = "";
     }
 
     const removeStep = () => {
@@ -87,7 +87,7 @@ function MyWorkout() {
         let title = document.getElementById("title")
         let description = document.getElementById("description");
         let stepInstructions = document.getElementsByClassName("step-instruction");
-        let stepTimes = document.getElementsByClassName("step-time");
+        let stepUnits = document.getElementsByClassName("step-unit");
 
         // need to fix this to selected workout type
         let workoutType = "arms";
@@ -99,13 +99,13 @@ function MyWorkout() {
         }
 
         for (let i = 0; i < stepInstructions.length; i++) {
-            if (!stepInstructions[i].value || !stepTimes[i].value) {
+            if (!stepInstructions[i].value || !stepUnits[i].value) {
                 // TODO::display error to user
                 console.error('one or more input fields were null');
                 return;
             }
 
-            tempSteps.push({ instruction: stepInstructions[i].value, workoutTime: stepTimes[i].value });
+            tempSteps.push({ instruction: stepInstructions[i].value, unit: stepUnits[i].value });
         };
 
         let jsonRes = { title: title.value, description: description.value, steps: tempSteps, workoutType: workoutType }
@@ -135,15 +135,14 @@ function MyWorkout() {
                     (steps || []).map((step, index) => {
                         return (
                             <div key={index}>
-                                {/*{step.instruction} | time: {step.time} min*/}
-                                <input className="step-instruction" type="text" defaultValue={step.instruction}></input>
-                                <input className="step-time" type="number" defaultValue={step.workoutTime}></input>
+                                <input className="step-instruction" type="text" defaultValue={step.instruction} placeholder="Instruction"></input>
+                                <input className="step-unit" type="text" defaultValue={step.unit} placeholder="Unit"></input>
                             </div>
                         );
                     })}
                 <label>Next Step</label><br></br>
                 <input type="text" id="next-step" placeholder="Instruction"></input>
-                <input type="number" id="next-time" placeholder="Time (min)"></input>
+                <input type="text" id="next-unit" placeholder="Unit"></input>
                 <br></br><br></br>
                 <div className="buttons">
                     <button className = "Btn" onClick={addStep}><span>Add Step</span></button>

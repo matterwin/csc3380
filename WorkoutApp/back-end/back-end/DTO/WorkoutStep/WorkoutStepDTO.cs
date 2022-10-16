@@ -3,6 +3,6 @@
     public class WorkoutStepDTO
     {
         public string Instruction { get; set; }
-        public int WorkoutTime { get; set; }
+        public string? Unit { get; set; }
     }
 }

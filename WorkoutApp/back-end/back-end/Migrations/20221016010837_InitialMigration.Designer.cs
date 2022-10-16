@@ -12,7 +12,7 @@ using back_end.Repositories;
 namespace back_end.Migrations
 {
     [DbContext(typeof(WorkoutAppContext))]
-    [Migration("20221015221533_InitialMigration")]
+    [Migration("20221016010837_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -100,10 +100,10 @@ namespace back_end.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("WorkoutId")
-                        .HasColumnType("int");
+                    b.Property<string>("Unit")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("WorkoutTime")
+                    b.Property<int>("WorkoutId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");

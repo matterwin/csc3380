@@ -51,7 +51,7 @@ namespace back_end.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Instruction = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    WorkoutTime = table.Column<int>(type: "int", nullable: false),
+                    Unit = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     WorkoutId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>

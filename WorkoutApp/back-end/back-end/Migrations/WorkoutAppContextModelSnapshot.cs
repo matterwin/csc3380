@@ -98,10 +98,10 @@ namespace back_end.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("WorkoutId")
-                        .HasColumnType("int");
+                    b.Property<string>("Unit")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("WorkoutTime")
+                    b.Property<int>("WorkoutId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
