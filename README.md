@@ -58,3 +58,24 @@
 	- git pull
 	- git checkout your_branch
 	- git merge main
+
+# Rsetting back-end
+  Updating back-end correctly:
+    1. Open Visual Studio
+      2. Open SQL Server Object Explorer: Located at (View->SQL Server Object Explorer)
+        3. Inside of SQL Server Object Explorer
+          4. Open Datbase Tables ((localdb)MSSQLLocalDB->Databases->System Databasesmaster->master->Tables)
+    4. Select 4 Tables (dbo._EFMigrationsHistory, dbo.Users, dbo.Workouts, dbo.WorkoutSteps)
+    5. Right Click and Delete
+      6. New Window will pop up click Update Database
+        7. Close Visual Studio
+          8. Open git bash
+            9. cd into root directory of project
+              10. type ./launch.bat
+                11. wait for project to load completely
+                  11. You are done
+
+                  Note:
+                    1. I took out the seeding data so there will be no workouts displayed on homepage by default
+                      2. When creating a workout instead of time for each step there is a unit that is not necessary for user to specify
+                        3. When you click on profile you are now able to input more information about yourself
