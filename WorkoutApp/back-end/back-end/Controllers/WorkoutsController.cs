@@ -73,5 +73,28 @@ namespace back_end.Controllers
             return Ok(result);
         }
         #endregion
+
+        #region workout_types
+        [HttpGet("Filter/{WorkoutType}")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<GetWorkoutDTO>))]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> GetAllWorkoutsFilter(string WorkoutType)
+        {
+            var result = await workoutRepository.GetAllWithStepsWithWorkoutTypeAsync(WorkoutType);
+            var dto = mapper.Map<List<GetWorkoutDTO>>(result);
+
+            if (result != null)
+                return Ok(dto);
+            else
+                return NotFound();
+        }
+
+        [HttpGet("WorkoutTypes")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<string>))]
+        public IActionResult GetWorkoutTypes()
+        {
+            return Ok(Domain.Workout.WorkoutTypes);
+        }
+        #endregion
     }
 }

@@ -58,7 +58,7 @@ namespace back_end.Controllers
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(int))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [Route("{Id}")]
-        public async Task<IActionResult> PutUserWorkouts(int Id,  [FromBody] PutWorkoutDTO workoutDTO)
+        public async Task<IActionResult> PutUserWorkout(int Id,  [FromBody] PutWorkoutDTO workoutDTO)
         {
             var existingResult = await workoutRepository.GetWithStepsAsync(Id);
 
@@ -74,7 +74,7 @@ namespace back_end.Controllers
 
         [HttpPost("{FirebaseId}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<IActionResult> Post(string FirebaseId, [FromBody] PostWorkoutDTO workoutDTO)
+        public async Task<IActionResult> PostUserWorkout(string FirebaseId, [FromBody] PostWorkoutDTO workoutDTO)
         {
             var result = mapper.Map<Workout>(workoutDTO);
             result.FirebaseId = FirebaseId;
