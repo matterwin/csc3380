@@ -181,3 +181,13 @@ nav input[type=checkbox] {
   text-align: center;
   color: #FFF;
 }
+
+.menu .sign-out {
+  background-color: #D77A61;
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+  color: #FFF;
+}
+
+

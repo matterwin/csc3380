@@ -29,7 +29,7 @@ function Register() {
       <div>
         <a href="/"><img className="reg--pic" src="logo-orange.png"></img></a>
         <h1 className="log--title">Create your free account</h1>
-        <h3 className="log--subtitle">Or&nbsp;<a href="/Login"> <div className="link">login into your account</div></a></h3>
+        <h3 className="log--subtitle">Or&nbsp;<Link to="../Login" className="link">login into your account</Link></h3>
       </div>
       <div className="register">
         <div className="register__container">

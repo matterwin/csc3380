@@ -69,7 +69,6 @@ class Workouts extends React.Component {
         // This is the amount of workouts we display on each page
         let { workoutsLoaded, workouts, numWorkouts, numWorkoutsLoaded, workoutTypes, workoutTypesLoaded } = this.state;
 
-
         // Something is not loaded
         if (!workoutsLoaded || !numWorkoutsLoaded) return (
             <div className="loading">
@@ -87,8 +86,16 @@ class Workouts extends React.Component {
                     <center>
                         <img className="gif" src={require('../../Gifs/PatricSlappingKnees.gif')} />
                     </center>
-                    <h1>Fit happens, it's inevitable</h1>
-                    <h2>Get your fit on and explore, conquer, and commit your fitness goals</h2>
+                    <h1>Fit happens, it's&nbsp;
+                        <div className="slidingVertical">
+                            <span>inevitable.</span>
+                            <span>terrible.</span>
+                            <span>necessary.</span>
+                            <span>bittersweet.</span>
+                            <span>a bitch.</span>
+                        </div>
+                    </h1>
+                    <h2>Get your fit on and explore, conquer, and relish your fitness goals</h2>
                     <img className="gif2" src={require('../../Gifs/PatrickBlowingBubble.gif')} />
                 </div>
                 <div className="preview-workouts">
