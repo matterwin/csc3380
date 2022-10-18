@@ -5,6 +5,7 @@
         width: 600px;
         box-shadow: 0 4px 8px 0 black;
         background-color: #DBD3D8;
+		background-image: linear-gradient(white, #DBD3D8);
         color: #000000; 
 }
 
