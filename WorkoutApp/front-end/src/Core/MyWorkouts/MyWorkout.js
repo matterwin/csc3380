@@ -26,11 +26,14 @@ function MyWorkout() {
     };
 
     const deleteWorkout = (workoutID) => {
-        fetch(`${launchsettings.SERVER_URL}UserWorkouts/${workoutID}`, { method: 'DELETE' })
-            .then((res) => console.log(res))
-            .catch((err) => console.log(err));
 
-        window.location.href = "/MyWorkouts";
+
+        fetch(`${launchsettings.SERVER_URL}UserWorkouts/${workoutID}`, { method: 'DELETE' })
+            .then((res) => {
+                console.log(res);
+                window.location.href = "/MyWorkouts";
+            })
+            .catch((err) => console.log(err));
     }
 
     const addStep = () => {
@@ -115,10 +118,11 @@ function MyWorkout() {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(jsonRes)
         })
-            .then((res) => console.log(res))
-            .catch((err) => console.log(err));
-
-        window.location.href = "/MyWorkouts";
+        .then((res) => {
+            console.log(res);
+            window.location.href = "/MyWorkouts";
+        })
+        .catch((err) => console.log(err));
     }
 
     return (
