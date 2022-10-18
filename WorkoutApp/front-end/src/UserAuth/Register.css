@@ -23,66 +23,73 @@
 }
 
 .register {
-    height: 110vh;
-    width: 100vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+  /*height: 110vh;*/
+  height: 86vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-  .register__container {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    background-color: #d8d3d8;
-    padding: 30px;
-  }
+.register__container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  background-color: #d8d3d8;
+  padding: 30px;
+}
 
-  .register__textBox {
-    padding: 10px;
-    font-size: 18px;
-    margin-bottom: 10px;
-    border-radius: 8px;
-    border-style: hidden;
-  }
+.register__textBox {
+  padding: 10px;
+  font-size: 18px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  border-style: hidden;
+}
 
-  .register__btn {
-    padding: 10px;
-    font-size: 18px;
-    margin-bottom: 10px;
-    border: none;
-    color: white;
-    background-color: black;
-    border-radius: 8px;
-  }
+.register__btn {
+  padding: 10px;
+  font-size: 18px;
+  margin-bottom: 10px;
+  border: none;
+  color: white;
+  background-color: black;
+  border-radius: 8px;
+}
 
-  .register__google {
-    background-color: #4285f4;
-  }
-  
-  .register div {
-    margin-top: 7px;
-  }
+.register__google {
+  background-color: #4285f4;
+}
 
-  .log--subtitle {
-    width: 100vw;
-    display: flex;
-    align-items: center;
-    padding-top: 260px;
-    margin-bottom: -250px;
-    color: #ffffff;
-    font-size: 15px;
-    justify-content: center;
-  }
+.register div {
+  margin-top: 7px;
+}
 
-  .link{
-    color: #d77161;
-  }
+.log--subtitle {
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  padding-top: 260px;
+  margin-bottom: -250px;
+  color: #ffffff;
+  font-size: 15px;
+  justify-content: center;
+}
 
-  a:hover .link {
-    color: #9b5946;
-  }
+.link {
+  color: #d77161;
+}
 
-  label {
-    text-align: left;
-  }
+a:hover .link {
+  color: #9b5946;
+}
+
+label {
+  text-align: left;
+}
+
+.register input:focus {
+  outline-color: #d77a61;
+  outline-style: solid;
+  outline-width: 2.3px;
+}
