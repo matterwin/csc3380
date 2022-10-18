@@ -18,11 +18,11 @@ function Login() {
   }, [user, loading]);
 
   return (
-    <div>
+    <div className="log">
       <div>
-          <a href="/"><img className="reg--pic" src="logo-orange.png"></img></a>
-          <h1 className="log--title">Log in to your account</h1>
-          <h3 className="log--subtitle">Or&nbsp;<a href="/register"> <div className="link">create a free account</div></a></h3>
+        <a href="/"><img className="reg--pic" src="logo-orange.png"></img></a>
+        <h1 className="log--title">Log in to your account</h1>
+        <h3 className="log--subtitle">Or&nbsp;<Link to="../Register" className="link">create a free account</Link></h3>
       </div>
       <div className="login">
         <div className="login__container">

@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { json, useNavigate } from "react-router-dom";
-import { auth, db, logout } from "../../UserAuth/firebase";
+import { useNavigate } from "react-router-dom";
+import { auth, db } from "../../UserAuth/firebase";
 import { query, collection, getDocs, where } from "firebase/firestore";
 import "./MyWorkouts.css"
+import launchsettings from "../../launchsettings.json"
 
 function MyWorkouts() {
     const [user, loading, error] = useAuthState(auth);
@@ -30,9 +31,7 @@ function MyWorkouts() {
         }
         fetchUserName();
 
-        console.log(user.uid);
-
-        fetch('https://localhost:7025/UserWorkouts/' + user.uid)
+        fetch(`${launchsettings.SERVER_URL}UserWorkouts/${user.uid}`)
             .then((res) => res.json())
             .then((json) => {
                 if (json?.status != 404)
@@ -48,7 +47,7 @@ function MyWorkouts() {
     return (
         <div className="myworkouts">
                 
-            <div className="welcomeMessage">Welcome to Fit Happens, <div className = "typing">{name} <span class="wave">👋</span></div></div>
+            <div className="welcomeMessage">Welcome to Fit Happens, <div className = "typing">{name} <span className="wave">👋</span></div></div>
             <center>
                 <br></br>
                 <a className = "addWorkout" href={"/AddWorkout"}>Click here to add a personal workout!</a>
@@ -57,10 +56,11 @@ function MyWorkouts() {
                         return (
                             <div className="workout" key={key}>
                                 <h1>
-                                    <a href={"/MyWorkout?id=" + value.workoutID}>{value.title}</a>
+                                    <a href={"/MyWorkout?id=" + value.id}>{value.title}</a>
                                 </h1>
                                 <h2>{value.description}</h2>
                                 <h3>{value.workoutType}</h3>
+                                <img width="200" height="200" src={require(`../../Gifs/${value.workoutType}.gif`)}></img>
                             </div>
                         )
                     })

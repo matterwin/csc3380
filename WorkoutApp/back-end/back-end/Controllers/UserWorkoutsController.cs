@@ -1,6 +1,8 @@
-﻿using back_end.Domain;
-using back_end.DTO;
+﻿using AutoMapper;
+using back_end.Domain;
+using back_end.DTO.Workout;
 using back_end.Repositories;
+using back_end.Repositories.IRepositories;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.Design;
@@ -12,118 +14,72 @@ namespace back_end.Controllers
     [Route("[controller]")]
     public class UserWorkoutsController : ControllerBase
     {
-        private readonly ILogger<WorkoutsController> _logger;
-        private WorkoutAppContext _context;
+        private readonly IWorkoutRepository workoutRepository;
+        private readonly IMapper mapper;
 
-        public UserWorkoutsController(ILogger<WorkoutsController> logger, WorkoutAppContext context)
+        public UserWorkoutsController(IWorkoutRepository workoutRepository, IMapper mapper)
         {
-            _logger = logger;
-            _context = context;
+            this.workoutRepository = workoutRepository;
+            this.mapper = mapper;
         }
 
-        [HttpDelete]
+        [HttpDelete("{Id}")]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        [Route("{FirebaseID}/{WorkoutID}")]
-        public IActionResult Delete(string FirebaseID, int WorkoutID)
+        public async Task<IActionResult> DeleteUserWorkout(int Id)
         {
-            var workouts = _context.Workouts.Where(workout => workout.FirebaseID == FirebaseID).Where(workout => workout.ID == WorkoutID);
-            if(workouts.Count() <= 0)
-                return NotFound(WorkoutID);
-            else if(workouts.Count() > 1)
-            {
-                _logger.LogError("more than one workout found for id");
-                return StatusCode(500);
-            }
+            var existingResult = await workoutRepository.GetAsync(Id);
 
-            _context.Remove<Workout>(new Workout { FirebaseID = FirebaseID, ID = WorkoutID});
-            _context.SaveChanges();
-            return Ok();
+            if (existingResult != null)
+            {
+                await workoutRepository.DeleteAsync(existingResult);
+                return Ok();
+            }
+            else
+                return NotFound();
         }
 
         [HttpGet]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<WorkoutDTO>))]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<GetWorkoutDTO>))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [Route("{FirebaseID}")]
-        public IActionResult Get(string FirebaseID)
+        public async Task<IActionResult> GetUserWorkouts(string FirebaseID)
         {
-            var workouts = _context.Workouts.Include(workout => workout.Steps).Where(workout => workout.FirebaseID == FirebaseID).ToArray();
+            var result = await workoutRepository.GetAllWithFirebaseIdWithStepsAsync(FirebaseID);
+            var dto = mapper.Map<List<GetWorkoutDTO>>(result);
 
-            if (workouts.Count() != 0)
-            {
-                Console.WriteLine("TEST");
-                List<WorkoutDTO> workoutDTOs = new List<WorkoutDTO>();
-                for (int i = 0; i < workouts.Count(); i++)
-                    workoutDTOs.Add(new WorkoutDTO(workouts.ElementAt(i)));
-
-                return Ok(workoutDTOs);
-            }
-
-            return NotFound();
+            if (result != null)
+                return Ok(dto);
+            else
+                return NotFound();
         }
 
         [HttpPut]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(int))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [Route("Update/{FirebaseID}/{WorkoutID}")]
-        public IActionResult Put(string FirebaseID, int WorkoutID,  [FromBody] WorkoutDTO workoutDTO)
+        [Route("{Id}")]
+        public async Task<IActionResult> PutUserWorkout(int Id,  [FromBody] PutWorkoutDTO workoutDTO)
         {
-            var workout = _context.Workouts.Include(workout => workout.Steps).Where(workout => workout.ID == WorkoutID).Where(workout => workout.FirebaseID == FirebaseID).FirstOrDefault();
+            var existingResult = await workoutRepository.GetWithStepsAsync(Id);
 
-            if(workout != null)
+            if (existingResult != null)
             {
-                workout.Title = workoutDTO.Title;
-                workout.Steps.Clear();
-
-                foreach(WorkoutStepDTO step in workoutDTO.Steps)
-                    workout.Steps.Add(new WorkoutStep(WorkoutID, step));
-
-                _context.Workouts.Update(workout);
-                _context.SaveChanges();
-                return Ok(workout);
+                mapper.Map(workoutDTO, existingResult);
+                await workoutRepository.UpdateAsync(existingResult);
+                return Ok(existingResult.Id);
             }
-
-            return NotFound();
+            else
+                return NotFound();
         }
 
-        [HttpPost]
+        [HttpPost("{FirebaseId}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [Route("{FirebaseID}")]
-        public IActionResult Post(string FirebaseID, [FromBody] WorkoutDTO workoutDTO)
+        public async Task<IActionResult> PostUserWorkout(string FirebaseId, [FromBody] PostWorkoutDTO workoutDTO)
         {
-            Workout workout = new Workout(FirebaseID, workoutDTO);
-            _context.Workouts.Add(workout);
-            _context.SaveChanges();
-            return Ok();
-        }
-
-        // NOTE::start id is indexed starting at 1
-        [HttpGet]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<WorkoutDTO>))]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        [Route("{FirebaseID}/{start}/{size}")]
-        public IActionResult GetWorkouts(string FirebaseID, int start, int size)
-        {
-            var workouts = _context.Workouts.Include(workout => workout.Steps).Skip((start - 1) * size).Where(workout => workout.FirebaseID  == FirebaseID).Take(size).ToList();
-
-            List<WorkoutDTO> workoutDTOs = new List<WorkoutDTO>();
-            for (int i = 0; i < workouts.Count(); i++)
-            {
-                workoutDTOs.Add(new WorkoutDTO(workouts[i]));
-            }
-
-            return Ok(workoutDTOs);
-        }
-
-
-        [HttpGet]
-        [Route("Count/{FirebaseID}")]
-        public IActionResult GetWorkoutsCount(string FirebaseID)
-        {
-            var numWorkouts = _context.Workouts.Where(workout => workout.FirebaseID == FirebaseID)?.Count();
-            return Ok(numWorkouts);
+            var result = mapper.Map<Workout>(workoutDTO);
+            result.FirebaseId = FirebaseId;
+            await workoutRepository.AddAsync(result);
+            return Ok(result.Id);
         }
     }
 }

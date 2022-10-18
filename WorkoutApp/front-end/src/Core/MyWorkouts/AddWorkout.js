@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
-import { auth, db, logout } from "../../UserAuth/firebase";
+import { auth, db } from "../../UserAuth/firebase";
 import { query, collection, getDocs, where } from "firebase/firestore";
-import { setPersistence } from "firebase/auth";
 import "./AddWorkout.css"
-
+import launchsettings from "../../launchsettings.json"
 
 function AddWorkout() {
   const [user, loading, error] = useAuthState(auth);
   const [name, setName] = useState("");
   const navigate = useNavigate();
-  let [steps, setSteps] = useState([]);
+  const [steps, setSteps] = useState([]);
+  const [workoutTypes, setWorkoutTypes] = useState([]);
+
 
   const fetchUserName = async () => {
     try {
@@ -25,20 +26,35 @@ function AddWorkout() {
     }
   };
 
+  const fetchUserWorkoutTypes = async () => {
+    try{
+      const res = await fetch(`${launchsettings.SERVER_URL}Workouts/WorkoutTypes`);
+      const json = await res.json();
+
+      console.log(json);
+
+      setWorkoutTypes(json);
+    }catch(err){
+      console.error(err);
+      alert("an error occurred while fetching workout types");
+    }
+  }
+
   useEffect(() => {
     if (loading) return;
     if (!user) {
-        console.info("User must be loggin in to access this page!");
-        return navigate("/Login");
+      console.info("User must be loggin in to access this page!");
+      return navigate("/Login");
     }
-    
+
     fetchUserName();
+    fetchUserWorkoutTypes();
   }, [user, loading]);
 
   const addStep = () => {
-    let tempStep = {instruction: document.getElementById('next-step').value, time: document.getElementById('next-time').value};
+    let tempStep = { instruction: document.getElementById('next-step').value, unit: document.getElementById('next-unit').value };
 
-    if(!tempStep.instruction || !tempStep.time){
+    if (!tempStep.instruction) {
       // TODO::show error message to user
       console.error('error one or more inputs fields were null');
       return;
@@ -49,14 +65,14 @@ function AddWorkout() {
 
     //resetting input values
     document.getElementById('next-step').value = "";
-    document.getElementById('next-time').value = "";
+    document.getElementById('next-unit').value = "";
   }
 
   const removeStep = () => {
     let newlist = [];
 
-    for(let i = 0; i < steps.length - 1; i++)
-        newlist.push(steps[i]);
+    for (let i = 0; i < steps.length - 1; i++)
+      newlist.push(steps[i]);
 
     setSteps(() => newlist);
   }
@@ -66,46 +82,44 @@ function AddWorkout() {
     let title = document.getElementById("title");
     let description = document.getElementById("description");
     let stepInstructions = document.getElementsByClassName("step-instruction");
-    let stepTimes = document.getElementsByClassName("step-time");
+    let stepUnits = document.getElementsByClassName("step-unit");
+    let workoutType = document.getElementById('workoutType').value;
 
-    // need to fix this to selected workout type
-    let workoutType = "arms";
-
-    if(!title.value || !description.value){
+    if (!title.value || !description.value) {
       // TODO::show error message to user
       console.log('error one ore more inputs fields were null');
       return;
     }
-    
-    console.log(stepInstructions);
-    console.log(stepTimes);
 
-    for(let i = 0; i < stepInstructions.length; i++){
-      if(!stepInstructions[i].value || !stepTimes[i].value){
+    console.log(stepInstructions);
+    console.log(stepUnits);
+
+    for (let i = 0; i < stepInstructions.length; i++) {
+      if (!stepInstructions[i].value) {
         // TODO::show user error
         console.error('one ore more input fields were null');
         return;
       }
 
-      tempSteps.push({instruction: stepInstructions[i].value, workoutTime: stepTimes[i].value});
+      tempSteps.push({ instruction: stepInstructions[i].value, unit: stepUnits[i].value});
     };
 
-    let jsonRes = {title: title.value, description: description.value, steps: tempSteps, workoutType: workoutType}
+    let jsonRes = { title: title.value, description: description.value, steps: tempSteps, workoutType: workoutType }
 
-    fetch('https://localhost:7025/UserWorkouts/' + user.uid, {
+    fetch(`${launchsettings.SERVER_URL}UserWorkouts/${user.uid}`, {
       method: 'post',
-      headers: {'Content-Type':'application/json'},
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(jsonRes)
     })
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
-
-    //moving user to the myworkouts page
-    window.location.href = "/MyWorkouts"
+    .then((res) => {
+      console.log(res);
+      window.location.href = "/MyWorkouts";
+    })
+    .catch((err) => console.log(err));
   }
 
   return (
-    <center>
+    <center className="addWorkout">
         <div className="alignBox">
         <div className="titleBox"><label>Title: </label><br></br>
         <input type="text" id="title" placeholder="Title"></input></div><br></br>
@@ -116,23 +130,32 @@ function AddWorkout() {
             (steps || []).map((step, index) => {
                 return (
                     <div key={index}>
-                      {/*{step.instruction} | time: {step.time} min*/}
-                        <input className="step-instruction" type="text" defaultValue={step.instruction}></input>
-                        <input className="step-time" type="number" defaultValue={step.time}></input>
+                        <input className="step-instruction" type="text" defaultValue={step.instruction} placeholder="Instruction"></input>
+                        <input className="step-unit" type="test" defaultValue={step.unit} placeholder="Unit"></input>
                     </div>
                 );
         })}
         <label>Next Step</label><br></br>
         <input type="text" id="next-step" placeholder="Instruction"></input>
         <div className="space"></div>
-        <input type="number" id="next-time" placeholder="Time (mins)"></input>
+        <input id="next-unit" placeholder="Unit"></input>
         <br></br>
         <div className="buttons">
           <br></br>
         <button className = "Btn" onClick={addStep}><span>Add New Step</span></button>
         <div className="space"></div>
         <button className = "Btn" onClick={removeStep}><span>Remove A Step</span></button>
-        <div className="space"></div>
+        <br></br><br></br>
+        <select id="workoutType" name="Workout Type">
+        {
+          (workoutTypes).map(type => {
+            return (
+              <option value={type}>{type}</option>
+            );
+          })
+        }
+        </select>
+        <br></br><br></br>
         <button className = "Btn" onClick={submitWorkout}><span>Submit Workout</span></button>
         </div>
         </div>

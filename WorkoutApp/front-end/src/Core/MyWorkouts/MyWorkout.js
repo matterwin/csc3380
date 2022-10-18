@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { json, Route, useNavigate } from "react-router-dom";
-import { auth, db, logout } from "../../UserAuth/firebase";
+import { useNavigate } from "react-router-dom";
+import { auth, db } from "../../UserAuth/firebase";
 import { query, collection, getDocs, where } from "firebase/firestore";
-import "../Workouts/Workouts.css"
-import { getValue } from "@testing-library/user-event/dist/utils";
+import "./AddWorkout.css"
+import launchsettings from "../../launchsettings.json"
 
 function MyWorkout() {
     const [user, loading, error] = useAuthState(auth);
@@ -12,6 +12,21 @@ function MyWorkout() {
     const navigate = useNavigate();
     const [jsonWorkout, setJsonWorkout] = useState({});
     const [steps, setSteps] = useState([]);
+    const [workoutTypes, setWorkoutTypes] = useState([]);
+
+    const fetchUserWorkoutTypes = async () => {
+        try{
+          const res = await fetch(`${launchsettings.SERVER_URL}Workouts/WorkoutTypes`);
+          const json = await res.json();
+    
+          console.log(json);
+    
+          setWorkoutTypes(json);
+        }catch(err){
+          console.error(err);
+          alert("an error occurred while fetching workout types");
+        }
+      }
 
     const fetchUserName = async () => {
         try {
@@ -25,25 +40,26 @@ function MyWorkout() {
         }
     };
 
-    const deleteWorkout = (uid, workoutID) => {
-        if (uid != 0) {
-            fetch('https://localhost:7025/UserWorkouts/' + uid + '/' + workoutID, { method: 'DELETE' })
-                .then((res) => console.log(res))
-                .catch((err) => console.log(err));
+    const deleteWorkout = (workoutID) => {
 
-            window.location.href = "/MyWorkouts";
-        }
+
+        fetch(`${launchsettings.SERVER_URL}UserWorkouts/${workoutID}`, { method: 'DELETE' })
+            .then((res) => {
+                console.log(res);
+                window.location.href = "/MyWorkouts";
+            })
+            .catch((err) => console.log(err));
     }
 
     const addStep = () => {
-        let tempStep = { instruction: document.getElementById('next-step').value, workoutTime: document.getElementById('next-time').value };
+        let tempStep = { instruction: document.getElementById('next-step').value, unit: document.getElementById('next-unit').value };
 
         const list = [...steps, tempStep];
         setSteps(() => list);
 
         //resetting input values
         document.getElementById('next-step').value = "";
-        document.getElementById('next-time').value = "";
+        document.getElementById('next-unit').value = "";
     }
 
     const removeStep = () => {
@@ -61,15 +77,17 @@ function MyWorkout() {
             return navigate("/login");
         }
         fetchUserName();
+        fetchUserWorkoutTypes();
 
         const params = new URLSearchParams(window.location.search);
-        fetch('https://localhost:7025/Workouts/' + params.get("id"))
+        fetch(`${launchsettings.SERVER_URL}Workouts/${params.get("id")}`)
             .then((res) => res.json())
             .then((json) => {
                 setJsonWorkout(json);
 
                 document.getElementById('title').value = json.title;
                 document.getElementById('description').value = json.description;
+                document.getElementById('workoutType').value = json.workoutType;
 
                 let newList = [];
                 for (let i = 0; i < json.steps.length; i++)
@@ -87,10 +105,8 @@ function MyWorkout() {
         let title = document.getElementById("title")
         let description = document.getElementById("description");
         let stepInstructions = document.getElementsByClassName("step-instruction");
-        let stepTimes = document.getElementsByClassName("step-time");
-
-        // need to fix this to selected workout type
-        let workoutType = "arms";
+        let stepUnits = document.getElementsByClassName("step-unit");
+        let workoutType = document.getElementById('workoutType');
 
         if (!title.value || !description.value) {
             // TODO::display error to user
@@ -99,33 +115,33 @@ function MyWorkout() {
         }
 
         for (let i = 0; i < stepInstructions.length; i++) {
-            if (!stepInstructions[i].value || !stepTimes[i].value) {
+            if (!stepInstructions[i].value) {
                 // TODO::display error to user
                 console.error('one or more input fields were null');
                 return;
             }
 
-            tempSteps.push({ instruction: stepInstructions[i].value, workoutTime: stepTimes[i].value });
+            tempSteps.push({ instruction: stepInstructions[i].value, unit: stepUnits[i].value });
         };
 
-        let jsonRes = { title: title.value, description: description.value, steps: tempSteps, workoutType: workoutType }
+        let jsonRes = { title: title.value, description: description.value, steps: tempSteps, workoutType: workoutType.value }
 
-        fetch('https://localhost:7025/UserWorkouts/Update/' + user.uid + '/' + workoutID, {
+        console.log(jsonRes);
+
+        fetch(`${launchsettings.SERVER_URL}UserWorkouts/${workoutID}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(jsonRes)
         })
-            .then((res) => console.log(res))
-            .catch((err) => console.log(err));
-
-        window.location.href = "/MyWorkouts";
+        .then((res) => {
+            console.log(res);
+            window.location.href = "/MyWorkouts";
+        })
+        .catch((err) => console.log(err));
     }
 
     return (
         <div className="myworkouts">
-            <h1>Logged in as</h1>
-            <div>{name}</div>
-            <div>{user?.email}</div>
             <center>
                 <label>Title</label><br></br>
                 <input type="text" id="title" placeholder="Title"></input><br></br>
@@ -135,19 +151,33 @@ function MyWorkout() {
                     (steps || []).map((step, index) => {
                         return (
                             <div key={index}>
-                                {/*{step.instruction} | time: {step.time} min*/}
-                                <input className="step-instruction" type="text" defaultValue={step.instruction}></input>
-                                <input className="step-time" type="number" defaultValue={step.workoutTime}></input>
+                                <input className="step-instruction" type="text" defaultValue={step.instruction} placeholder="Instruction"></input>
+                                <input className="step-unit" type="text" defaultValue={step.unit} placeholder="Unit"></input>
                             </div>
                         );
                     })}
                 <label>Next Step</label><br></br>
                 <input type="text" id="next-step" placeholder="Instruction"></input>
-                <input type="number" id="next-time" placeholder="Time (min)"></input>
-                <button onClick={addStep}>Add Step</button>
-                <button onClick={removeStep}>Remove Step</button>
-                <button onClick={() => updateWorkout(jsonWorkout.workoutID)}>Update Workout</button>
-                <button onClick={() => deleteWorkout(user.uid || 0, jsonWorkout.workoutID)}>Delete Workout</button>
+                <input type="text" id="next-unit" placeholder="Unit"></input>
+                <br></br><br></br>
+                <select id="workoutType" name="Workout Type">
+                {
+                (workoutTypes).map(type => {
+                    return (
+                    <option value={type}>{type}</option>
+                    );
+                })
+                }
+                </select>
+                <div className="buttons">
+                    <button className = "Btn" onClick={addStep}><span>Add Step</span></button>
+                    <div className="space"></div>
+                    <button className = "Btn" onClick={removeStep}><span>Remove Step</span></button>
+                    <div className="space"></div>
+                    <button className = "Btn" onClick={() => updateWorkout(jsonWorkout.id)}><span>Update Workout</span></button>
+                    <div className="space"></div>
+                    <button className = "Btn" onClick={() => deleteWorkout(jsonWorkout.id)}><span>Delete Workout</span></button>
+                </div>
             </center>
         </div>
     );

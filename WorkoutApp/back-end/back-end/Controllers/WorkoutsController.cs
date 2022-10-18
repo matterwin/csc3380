@@ -1,5 +1,7 @@
-﻿using back_end.DTO;
+﻿using AutoMapper;
+using back_end.DTO.Workout;
 using back_end.Repositories;
+using back_end.Repositories.IRepositories;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
@@ -10,79 +12,89 @@ namespace back_end.Controllers
     [Route("[controller]")]
     public class WorkoutsController : ControllerBase
     {
-        private readonly ILogger<WorkoutsController> _logger;
-        private WorkoutAppContext _context;
+        private readonly IWorkoutRepository workoutRepository;
+        private readonly IMapper mapper;
 
-        public WorkoutsController(ILogger<WorkoutsController> logger, WorkoutAppContext context)
+        public WorkoutsController(IWorkoutRepository workoutRepository, IMapper mapper)
         {
-            _logger = logger;
-            _context = context;
+            this.workoutRepository = workoutRepository;
+            this.mapper = mapper;
         }
 
-        [HttpGet]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(WorkoutDTO))]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [Route("{id}")]
-        public IActionResult GetWorkout(int id)
+        #region workouts
+        [HttpGet("{Id}")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(GetWorkoutDTO))]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> GetWorkout(int Id)
         {
-            if (id <= 0)
-                return BadRequest();
+            var result = await workoutRepository.GetWithStepsAsync(Id);
 
-            var workout = _context.Workouts.Include(workout => workout.Steps).Where((workout) => workout.ID == id).ToList();
-            new WorkoutDTO(workout[0]);
+            var dto = mapper.Map<GetWorkoutDTO>(result);
 
-            if (workout != null)
-                return Ok(new WorkoutDTO(workout[0]));
+            if (result != null)
+                return Ok(dto);
             else
                 return NotFound();
         }
 
         [HttpGet]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<WorkoutDTO>))]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public IActionResult GetWorkouts()
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<GetWorkoutDTO>))]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> GetAllWorkouts()
         {
-            var workouts = _context.Workouts.Include(workout => workout.Steps).ToList();
-            List<WorkoutDTO> workoutDTOs = new List<WorkoutDTO>();
+            var result = await workoutRepository.GetAllWithStepsAsync();
+            var dto = mapper.Map<List<GetWorkoutDTO>>(result);
 
-            //if no workouts queries then something is seriously wrong
-            //just throw internal server error
-            if (workouts.Count <= 0)
-                return StatusCode(500);
-
-            for (int i = 0; i < workouts.Count(); i++)
-            {
-                workoutDTOs.Add(new WorkoutDTO(workouts[i]));
-            }
-
-            return Ok(workoutDTOs);
-        }
-
-
-        // NOTE::start id is indexed starting at 1
-        [HttpGet]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<WorkoutDTO>))]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        [Route("{start}/{size}")]
-        public IActionResult GetWorkouts(int start, int size)
-        {
-            var workouts = _context.Workouts.Include(workout => workout.Steps).Skip((start - 1) * size).Take(size).ToList();
-
-            List<WorkoutDTO> workoutDTOs = new List<WorkoutDTO>();
-            for (int i = 0; i < workouts.Count(); i++)
-            {
-                workoutDTOs.Add(new WorkoutDTO(workouts[i]));
-            }
-
-            return Ok(workoutDTOs);
+            if (result != null)
+                return Ok(dto);
+            else
+                return NotFound();
         }
 
         [HttpGet]
-        [Route("Count")]
-        public IActionResult GetWorkoutsCount()
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<GetWorkoutDTO>))]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [Route("{Start}/{Size}")]
+        public async Task<IActionResult> GetWorkoutsInRange(int Start, int Size)
         {
-            var numWorkouts = _context.Workouts.Count();
-            return Ok(numWorkouts);
+            var result = await workoutRepository.GetAllInRangeWithSteps(Start, Size);
+            var dto = mapper.Map<List<GetWorkoutDTO>>(result);
+
+            if (result != null)
+                return Ok(dto);
+            else
+                return NotFound();
         }
+
+        [HttpGet("Count")]
+        public async Task<IActionResult> GetWorkoutsCount()
+        {
+            var result = await workoutRepository.GetAllSize();
+            return Ok(result);
+        }
+        #endregion
+
+        #region workout_types
+        [HttpGet("Filter/{WorkoutType}")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<GetWorkoutDTO>))]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> GetAllWorkoutsFilter(string WorkoutType)
+        {
+            var result = await workoutRepository.GetAllWithStepsWithWorkoutTypeAsync(WorkoutType);
+            var dto = mapper.Map<List<GetWorkoutDTO>>(result);
+
+            if (result != null)
+                return Ok(dto);
+            else
+                return NotFound();
+        }
+
+        [HttpGet("WorkoutTypes")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<string>))]
+        public IActionResult GetWorkoutTypes()
+        {
+            return Ok(Domain.Workout.WorkoutTypes);
+        }
+        #endregion
     }
 }

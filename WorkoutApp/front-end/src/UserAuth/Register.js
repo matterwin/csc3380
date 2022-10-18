@@ -27,39 +27,39 @@ function Register() {
   return (
     <div>
       <div>
-          <a href="/"><img className="reg--pic" src="logo-orange.png"></img></a>
-          <h1 className="log--title">Create your free account</h1>
-          <h3 className="log--subtitle">Or&nbsp;<a href="/Login"> <div className="link">login into your account</div></a></h3>
+        <a href="/"><img className="reg--pic" src="logo-orange.png"></img></a>
+        <h1 className="log--title">Create your free account</h1>
+        <h3 className="log--subtitle">Or&nbsp;<Link to="../Login" className="link">login into your account</Link></h3>
       </div>
-    <div className="register">
-      <div className="register__container">
-      <label>Full Name</label>
-        <input
-          type="text"
-          className="register__textBox"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-        <label>Email</label>
-        <input
-          type="text"
-          className="register__textBox"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <label>Password</label>
-        <input
-          type="password"
-          className="register__textBox"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <label> &nbsp;</label>
-        <button className="register__btn" onClick={register}>
-          Register
-        </button>
+      <div className="register">
+        <div className="register__container">
+          <label>Full Name</label>
+          <input
+            type="text"
+            className="register__textBox"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+          <label>Email</label>
+          <input
+            type="text"
+            className="register__textBox"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <label>Password</label>
+          <input
+            type="password"
+            className="register__textBox"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <label> &nbsp;</label>
+          <button className="register__btn" onClick={register}>
+            Register
+          </button>
+        </div>
       </div>
-    </div>
     </div>
   );
 }

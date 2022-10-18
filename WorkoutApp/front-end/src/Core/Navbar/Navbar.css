@@ -3,39 +3,45 @@ body {
 }
 
 nav {
-    top: 0%;
-    height: 70px;
-    display: flex;
-    padding: 3px 36px;
-    align-items: center;
-    box-shadow: 0px 2.98256px 7.4564px rgba(255, 255, 255, 0.088);
-    background-color: #222;
-    position: fixed; 
-    overflow: hidden;
-    width: 97%;
-    margin-right: 100px;
-    font-family: "Raleway", sans-serif;
-    font-weight: 100;
-    font-weight: bolder;
-  }
+  top: 0%;
+  height: 70px;
+  display: flex;
+  padding: 3px 36px;
+  align-items: center;
+  box-shadow: 0px 2.98256px 7.4564px rgba(255, 255, 255, 0.088);
+  background-color: #222;
+  position: fixed;
+  overflow: hidden;
+  width: 97%;
+  margin-right: 100px;
+  font-family: "Raleway";
+  font-weight: 100;
+  font-weight: bolder;
+  z-index: 9999;
+}
 
-  
-  .nav--list * {
-    list-style: none;
-    display: inline;
-    margin: 7px;
-    font-size: 20px;
-    letter-spacing: -.05em;
-    text-decoration: none;
-    text-align: center;
-    color: #ffffff;
-    font-size: 18px;
-    letter-spacing: 1px;
-  }
-  
-  .nav--list{
-    margin-right:167px;
-  }
+nav h2 .nav--logo_text {
+  font-family: "Raleway";
+}
+
+.nav--list * {
+  list-style: none;
+  display: inline;
+  margin: 7px;
+  font-size: 20px;
+  letter-spacing: -.05em;
+  text-decoration: none;
+  text-align: center;
+  color: #ffffff;
+  font-size: 18px;
+  letter-spacing: 1px;
+  font-family: "Raleway";
+}
+
+.nav--list {
+  margin-right: 167px;
+  font-family: "Raleway";
+}
 
 .nav--logo_text {
   margin-right: auto;
@@ -96,59 +102,64 @@ nav a:hover .login {
   font-size: 170%;
 }
 
-input[type=checkbox]{
+nav input[type=checkbox] {
   display: none;
- } 
- /*HAMBURGER MENU*/
- .hamburger {
+}
+
+/*HAMBURGER MENU*/
+.hamburger {
   display: none;
   font-size: 24px;
   user-select: none;
- }
+}
 
 @media (max-width: 1220px) {
-  .menu { 
-   display:none;
-   position: absolute;
-   background-color:red;
-   right: 0;
-   left: 0;
-   text-align: center;
-   padding: 16px 0;
+  .menu {
+    display: none;
+    position: absolute;
+    background-color: red;
+    right: 0;
+    left: 0;
+    text-align: center;
+    padding: 16px 0;
   }
 
   .nav--logo {
     margin-left: -10px;
   }
+
   .nav--logo_text {
     margin-left: -10px;
   }
 
   .menu li:hover {
     display: inline-block;
-    background-color:#4c9e9e;
+    background-color: #4c9e9e;
     transition: 0.3s ease;
-   }
-   .menu li + li {
+  }
+
+  .menu li+li {
     margin-top: 12px;
-   }
-   input[type=checkbox]:checked ~ .menu{
+  }
+
+  input[type=checkbox]:checked~.menu {
     display: block;
-   }
-   .hamburger {
+  }
+
+  .hamburger {
     display: block;
     margin-right: -150px;
-   }
-   
-   .dropdown {
+  }
+
+  .dropdown {
     left: 50%;
     top: 30px;
     transform: translateX(35%);
-   }
+  }
 
-   .dropdown li:hover {
+  .dropdown li:hover {
     background-color: red;
-   }
+  }
 
 }
 
@@ -157,14 +168,20 @@ input[type=checkbox]{
 }
 
 .menu .activeSign {
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
   background-color: #223843;
-  border-radius: 10px;
   padding: 10px;
   text-align: center;
   color: #fff;
 }
 
-.menu .inactiveSign{
+.menu .inactiveSign {
+  position: relative;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  text-decoration: none;
+  overflow: hidden;
   background-color: #D77A61;
   border-radius: 10px;
   padding: 10px;
@@ -172,7 +189,45 @@ input[type=checkbox]{
   color: #FFF;
 }
 
-
-.menu .inactiveSign a:hover {
-  
+.menu .inactiveSign:active {
+  background-color: #9b5946;
 }
+
+.menu .inactiveSign:hover {
+  border-radius: 0px;
+}
+
+.menu .sign-out {
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  background-color: #D77A61;
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+  color: #FFF;
+}
+
+.menu .sign-out:active {
+  background-color: #9b5946;
+}
+
+.menu .sign-out:hover {
+  border-radius: 0px;
+}
+
+.searchBox {
+  margin-right: 800px;
+  padding-right: 50px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  border-radius: 5px;
+  border-style: hidden;
+  background-color: #223843;
+}
+
+nav .searchBox input:focus {
+  outline-color: #d77a61;
+  outline-style: solid;
+  outline-width: 2.3px;
+}
+

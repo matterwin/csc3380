@@ -1,10 +1,10 @@
-* {
+.addWorkout * {
     font-family: "Roboto", sans-serif;
     font-size: 30px;
 }
 /**/
 
-label {
+.addWorkout label {
     outline: black 1px;
     color: #D77A61;
     font-size: 30px;
@@ -21,7 +21,7 @@ label {
     justify-content: space-between;
 }
 
-input {
+.addWorkout input {
     border-style: solid;
     border-spacing: 10px;
     padding: 10px;
@@ -29,7 +29,7 @@ input {
     box-shadow: rgba(0, 0, 0, 0.1) 1px 20px 4px;
 }
 
-input:focus {
+.addWorkout input:focus {
     border-color: #D77A61;
     border-style: solid;
     border-spacing: 10px;
