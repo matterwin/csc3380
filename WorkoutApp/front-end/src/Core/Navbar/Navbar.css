@@ -170,7 +170,6 @@ nav input[type=checkbox] {
   -webkit-transition-duration: 0.4s; /* Safari */
   transition-duration: 0.4s;
   background-color: #223843;
-  border-radius: 10px;
   padding: 10px;
   text-align: center;
   color: #fff;
@@ -193,6 +192,10 @@ nav input[type=checkbox] {
   background-color: #9b5946;
 }
 
+.menu .inactiveSign:hover {
+  border-radius: 0px;
+}
+
 .menu .sign-out {
   -webkit-transition-duration: 0.4s; /* Safari */
   transition-duration: 0.4s;
@@ -205,6 +208,10 @@ nav input[type=checkbox] {
 
 .menu .sign-out:active {
   background-color: #9b5946;
+}
+
+.menu .sign-out:hover {
+  border-radius: 0px;
 }
 
 .searchBox {
