@@ -16,13 +16,15 @@ function Navbar() {
       if (!user) {
         return navigate("/");
       }
-  
     }, [user, loading]);
+
+
 
     return (
         <nav className="navClass">
             <a href="/"><img src="../logo-orange.png" alt="logo" className="nav--logo" /></a>
             <h2 className='nav--logo_text'><a href="/">Fit Happens</a></h2>
+            {/*<input className="searchBox" placeholder="  Search"/>*/}
             <ul className="nav--list">
                 <input type="checkbox" id="checkbox_toggle" />
                 <label htmlFor="checkbox_toggle" className="hamburger">&#9776;</label>
@@ -48,25 +50,25 @@ function Navbar() {
                             window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
                           }}
                     >PROFILE</NavLink>
-                    <NavLink
+                    {!user && (<NavLink
                         to="Login"
                         className={({ isActive }) => (isActive ? 'active' : 'inactive')}
                         onClick={() => {
                             window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
                           }}
-                    >LOG IN</NavLink>
-                    <NavLink
+                    >LOG IN</NavLink>)}
+                    {!user && (<NavLink
                         to="Register"
                         className={({ isActive }) => (isActive ? 'activeSign' : 'inactiveSign')}
                         onClick={() => {
                             window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
                           }}
-                    >SIGN UP</NavLink>         
-                    <NavLink
+                    >SIGN UP</NavLink>)}       
+                    {user && (<NavLink
                         end to="/"
                         className="sign-out"
                         onClick={logout}
-                    >SIGN OUT</NavLink>
+                    >SIGN OUT</NavLink>)}
                 </div>
             </ul>
         </nav>

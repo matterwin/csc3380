@@ -190,4 +190,19 @@ nav input[type=checkbox] {
   color: #FFF;
 }
 
+.searchBox {
+  margin-right: 800px;
+  padding-right: 50px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  border-radius: 5px;
+  border-style: hidden;
+  background-color: #223843;
+}
+
+nav .searchBox input:focus {
+  outline-color: #d77a61;
+  outline-style: solid;
+  outline-width: 2.3px;
+}
 
