@@ -57,7 +57,7 @@ const logInWithEmailAndPassword = async (email, password) => {
 
 const logout = () => {
 	signOut(auth);
-	/*setTimeout(function() {alert("You have successfuly logged out!"); }, 100);*/
+	setTimeout(function() {alert("You have successfuly logged out!"); }, 100);
 }
 
 const userIsLoggedIn = auth.onAuthStateChanged(function (user) {
