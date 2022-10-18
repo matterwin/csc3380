@@ -12,6 +12,21 @@ function MyWorkout() {
     const navigate = useNavigate();
     const [jsonWorkout, setJsonWorkout] = useState({});
     const [steps, setSteps] = useState([]);
+    const [workoutTypes, setWorkoutTypes] = useState([]);
+
+    const fetchUserWorkoutTypes = async () => {
+        try{
+          const res = await fetch(`${launchsettings.SERVER_URL}Workouts/WorkoutTypes`);
+          const json = await res.json();
+    
+          console.log(json);
+    
+          setWorkoutTypes(json);
+        }catch(err){
+          console.error(err);
+          alert("an error occurred while fetching workout types");
+        }
+      }
 
     const fetchUserName = async () => {
         try {
@@ -62,6 +77,7 @@ function MyWorkout() {
             return navigate("/login");
         }
         fetchUserName();
+        fetchUserWorkoutTypes();
 
         const params = new URLSearchParams(window.location.search);
         fetch(`${launchsettings.SERVER_URL}Workouts/${params.get("id")}`)
@@ -71,6 +87,7 @@ function MyWorkout() {
 
                 document.getElementById('title').value = json.title;
                 document.getElementById('description').value = json.description;
+                document.getElementById('workoutType').value = json.workoutType;
 
                 let newList = [];
                 for (let i = 0; i < json.steps.length; i++)
@@ -89,9 +106,7 @@ function MyWorkout() {
         let description = document.getElementById("description");
         let stepInstructions = document.getElementsByClassName("step-instruction");
         let stepUnits = document.getElementsByClassName("step-unit");
-
-        // need to fix this to selected workout type
-        let workoutType = "arms";
+        let workoutType = document.getElementById('workoutType');
 
         if (!title.value || !description.value) {
             // TODO::display error to user
@@ -109,7 +124,7 @@ function MyWorkout() {
             tempSteps.push({ instruction: stepInstructions[i].value, unit: stepUnits[i].value });
         };
 
-        let jsonRes = { title: title.value, description: description.value, steps: tempSteps, workoutType: workoutType }
+        let jsonRes = { title: title.value, description: description.value, steps: tempSteps, workoutType: workoutType.value }
 
         console.log(jsonRes);
 
@@ -145,6 +160,15 @@ function MyWorkout() {
                 <input type="text" id="next-step" placeholder="Instruction"></input>
                 <input type="text" id="next-unit" placeholder="Unit"></input>
                 <br></br><br></br>
+                <select id="workoutType" name="Workout Type">
+                {
+                (workoutTypes).map(type => {
+                    return (
+                    <option value={type}>{type}</option>
+                    );
+                })
+                }
+                </select>
                 <div className="buttons">
                     <button className = "Btn" onClick={addStep}><span>Add Step</span></button>
                     <div className="space"></div>

@@ -124,6 +124,7 @@ class Workouts extends React.Component {
                                     </h1>
                                     <h2>{workouts[workout].description}</h2>
                                     <h3>{workouts[workout].workoutType}</h3>
+                                    <img width="200" height="200" src={require(`../../Gifs/${workouts[workout].workoutType}.gif`)}></img>
                                 </div>
                             ))
                         }

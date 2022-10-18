@@ -10,7 +10,9 @@ function AddWorkout() {
   const [user, loading, error] = useAuthState(auth);
   const [name, setName] = useState("");
   const navigate = useNavigate();
-  let [steps, setSteps] = useState([]);
+  const [steps, setSteps] = useState([]);
+  const [workoutTypes, setWorkoutTypes] = useState([]);
+
 
   const fetchUserName = async () => {
     try {
@@ -24,6 +26,20 @@ function AddWorkout() {
     }
   };
 
+  const fetchUserWorkoutTypes = async () => {
+    try{
+      const res = await fetch(`${launchsettings.SERVER_URL}Workouts/WorkoutTypes`);
+      const json = await res.json();
+
+      console.log(json);
+
+      setWorkoutTypes(json);
+    }catch(err){
+      console.error(err);
+      alert("an error occurred while fetching workout types");
+    }
+  }
+
   useEffect(() => {
     if (loading) return;
     if (!user) {
@@ -32,6 +48,7 @@ function AddWorkout() {
     }
 
     fetchUserName();
+    fetchUserWorkoutTypes();
   }, [user, loading]);
 
   const addStep = () => {
@@ -66,9 +83,7 @@ function AddWorkout() {
     let description = document.getElementById("description");
     let stepInstructions = document.getElementsByClassName("step-instruction");
     let stepUnits = document.getElementsByClassName("step-unit");
-
-    // need to fix this to selected workout type
-    let workoutType = "arms";
+    let workoutType = document.getElementById('workoutType').value;
 
     if (!title.value || !description.value) {
       // TODO::show error message to user
@@ -130,7 +145,17 @@ function AddWorkout() {
         <button className = "Btn" onClick={addStep}><span>Add New Step</span></button>
         <div className="space"></div>
         <button className = "Btn" onClick={removeStep}><span>Remove A Step</span></button>
-        <div className="space"></div>
+        <br></br><br></br>
+        <select id="workoutType" name="Workout Type">
+        {
+          (workoutTypes).map(type => {
+            return (
+              <option value={type}>{type}</option>
+            );
+          })
+        }
+        </select>
+        <br></br><br></br>
         <button className = "Btn" onClick={submitWorkout}><span>Submit Workout</span></button>
         </div>
         </div>
