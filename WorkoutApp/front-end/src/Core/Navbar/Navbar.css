@@ -17,6 +17,7 @@ nav {
   font-family: "Raleway";
   font-weight: 100;
   font-weight: bolder;
+  z-index: 9999;
 }
 
 nav h2 .nav--logo_text {
@@ -167,22 +168,38 @@ nav input[type=checkbox] {
 }
 
 .menu .activeSign {
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
   background-color: #223843;
-  border-radius: 10px;
   padding: 10px;
   text-align: center;
   color: #fff;
 }
 
 .menu .inactiveSign {
+  position: relative;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  text-decoration: none;
+  overflow: hidden;
   background-color: #D77A61;
   border-radius: 10px;
   padding: 10px;
   text-align: center;
   color: #FFF;
+}
+
+.menu .inactiveSign:active {
+  background-color: #9b5946;
+}
+
+.menu .inactiveSign:hover {
+  border-radius: 0px;
 }
 
 .menu .sign-out {
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
   background-color: #D77A61;
   border-radius: 10px;
   padding: 10px;
@@ -190,4 +207,27 @@ nav input[type=checkbox] {
   color: #FFF;
 }
 
+.menu .sign-out:active {
+  background-color: #9b5946;
+}
+
+.menu .sign-out:hover {
+  border-radius: 0px;
+}
+
+.searchBox {
+  margin-right: 800px;
+  padding-right: 50px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  border-radius: 5px;
+  border-style: hidden;
+  background-color: #223843;
+}
+
+nav .searchBox input:focus {
+  outline-color: #d77a61;
+  outline-style: solid;
+  outline-width: 2.3px;
+}
 

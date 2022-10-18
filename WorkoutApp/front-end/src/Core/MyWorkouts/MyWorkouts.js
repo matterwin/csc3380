@@ -60,6 +60,7 @@ function MyWorkouts() {
                                 </h1>
                                 <h2>{value.description}</h2>
                                 <h3>{value.workoutType}</h3>
+                                <img width="200" height="200" src={require(`../../Gifs/${value.workoutType}.gif`)}></img>
                             </div>
                         )
                     })

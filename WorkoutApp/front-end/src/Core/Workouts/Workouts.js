@@ -89,10 +89,10 @@ class Workouts extends React.Component {
                     <h1>Fit happens, it's&nbsp;
                         <div className="slidingVertical">
                             <span>inevitable.</span>
-                            <span>terrible.</span>
-                            <span>necessary.</span>
-                            <span>bittersweet.</span>
-                            <span>a bitch.</span>
+                            <span>inexorable.</span>
+                            <span>ineliminable.</span>
+                            <span>ineluctable.</span>
+                            <span>inescapable.</span>
                         </div>
                     </h1>
                     <h2>Get your fit on and explore, conquer, and relish your fitness goals</h2>
@@ -124,6 +124,7 @@ class Workouts extends React.Component {
                                     </h1>
                                     <h2>{workouts[workout].description}</h2>
                                     <h3>{workouts[workout].workoutType}</h3>
+                                    <img width="100" height="100" src={require(`../../Gifs/${workouts[workout].workoutType}.gif`)}></img>
                                 </div>
                             ))
                         }
