@@ -167,6 +167,8 @@ nav input[type=checkbox] {
 }
 
 .menu .activeSign {
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
   background-color: #223843;
   border-radius: 10px;
   padding: 10px;
@@ -175,6 +177,11 @@ nav input[type=checkbox] {
 }
 
 .menu .inactiveSign {
+  position: relative;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  text-decoration: none;
+  overflow: hidden;
   background-color: #D77A61;
   border-radius: 10px;
   padding: 10px;
@@ -182,12 +189,22 @@ nav input[type=checkbox] {
   color: #FFF;
 }
 
+.menu .inactiveSign:active {
+  background-color: #9b5946;
+}
+
 .menu .sign-out {
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
   background-color: #D77A61;
   border-radius: 10px;
   padding: 10px;
   text-align: center;
   color: #FFF;
+}
+
+.menu .sign-out:active {
+  background-color: #9b5946;
 }
 
 .searchBox {
