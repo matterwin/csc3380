@@ -17,6 +17,7 @@ nav {
   font-family: "Raleway";
   font-weight: 100;
   font-weight: bolder;
+  z-index: 9999;
 }
 
 nav h2 .nav--logo_text {
