@@ -45,7 +45,7 @@ function Navbar() {
                         to="MyProfile"
                         className={({ isActive }) => (isActive ? 'active' : 'inactive')}
                         onClick={() => {
-                            window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+                            window.scrollTo({top: 60, left: 0, behavior: 'smooth'});
                           }}
                     >PROFILE</NavLink>
                     {!user && (<NavLink

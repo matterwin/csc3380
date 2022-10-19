@@ -111,25 +111,37 @@ function MyProfile() {
         Logged in as
         <div>{name}</div>
         <div>{user?.email}</div>
-        <button className="myprofile__btn" onClick={logout}>
+        <div className="space"></div>
+        <div className="space"></div>
+        <div className="space"></div>
+        <table>
+        <tr>
+        <td align="left">First Name:<div className="space"></div></td>  
+        <input className="firstName" id="firstName" placeholder="First Name"></input>
+        </tr>
+        <tr>
+        <td align="left">Middle Name:<div className="space"></div></td>  
+        <input className="middleName" id="middleName" placeholder="Middle Name"></input>
+        </tr>
+        <tr>
+        <td align="left">Last Name:<div className="space"></div></td>   
+        <input className="lastName" id="lastName" placeholder="Last Name"></input>
+        </tr>
+        <tr>
+        <td align="left">Birth Date:<div className="space"></div></td>   
+        <input className="birthDate" id="birthDate" type="date" placeholder="Birth Date"></input>
+        </tr>
+        <tr>
+        <td align="left">Weight:<div className="space"></div></td>   
+        <input className="weight" id="weight" type="number" placeholder="Weight"></input>
+        </tr>
+        </table>
+        <div className="space"></div>
+        <div className="space"></div>
+        <button className="update_btn" onClick={() => updateUserInfo()}>Update Profile</button>
+        <button className="logout_btn" onClick={logout}>
           Logout
         </button>
-        <p style={{display: 'inline-block', margin:'5px'}}>First Name: 
-        <input id="firstName" placeholder="First Name"></input>
-        </p>
-        <p style={{display: 'inline-block', margin:'5px'}}>Middle Name: 
-        <input id="middleName" placeholder="Middle Name"></input>
-        </p>
-        <p style={{display: 'inline-block', margin:'5px'}}>Last Name: 
-        <input id="lastName" placeholder="Last Name"></input>
-        </p>
-        <p style={{display: 'inline-block', margin:'5px'}}>Birth Date: 
-        <input id="birthDate" type="date" placeholder="Birth Date"></input>
-        </p>
-        <p style={{display: 'inline-block', margin:'5px'}}>Weight: 
-        <input id="weight" type="number" placeholder="Weight"></input>
-        </p>
-        <button onClick={() => updateUserInfo()}>Update Profile</button>
       </div>
     </div>
   );

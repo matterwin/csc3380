@@ -13,6 +13,10 @@ import { useEffect, useState } from "react";
 
 import "./App.css"
 
+window.onbeforeunload = function () {
+  window.scrollTo(0, 0);
+}
+
 function App() {
   
   const [scrollPosition, setScrollPosition] = useState(0);
