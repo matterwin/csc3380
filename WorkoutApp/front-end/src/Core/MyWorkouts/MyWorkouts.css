@@ -51,3 +51,9 @@
       border-color: transparent
     }
   }
+
+  .add--button {
+    font-family: "Raleway";
+    font-weight: bolder;
+    right:0%;
+  }

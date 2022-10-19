@@ -65,7 +65,7 @@ function MyWorkouts() {
                         )
                     })
                 }
-            </center>
+            </center>         
         </div>
     );
 }

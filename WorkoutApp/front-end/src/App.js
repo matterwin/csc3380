@@ -9,6 +9,8 @@ import Navbar from "./Core/Navbar/Navbar";
 import AddWorkout from "./Core/MyWorkouts/AddWorkout"
 import MyWorkout from "./Core/MyWorkouts/MyWorkout"
 
+import { useEffect, useState } from "react";
+
 import "./App.css"
 
 window.onbeforeunload = function () {
@@ -16,21 +18,49 @@ window.onbeforeunload = function () {
 }
 
 function App() {
+  
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const handleScroll = () => {
+    const position = window.pageYOffset;
+    setScrollPosition(position);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const myComponentStyle = { 
+    top: '6%',
+    backgroundColor: 'white',
+    color: 'white',
+    paddingLeft: scrollPosition,
+    overflow: 'hidden',
+    position: 'fixed',
+    zIndex: 9999
+ } 
+
   return (
-    <div className="app">
-      <Router>
-        <Navbar />
-        <Routes>
-          <Route exact path="/" element={<Workouts />} />
-          <Route exact path="/Login" element={<Login />} />
-          <Route exact path="/Register" element={<Register />} />
-          <Route exact path="/MyProfile" element={<MyProfile />} />
-          <Route exact path="/MyWorkouts" element={<MyWorkouts />} />
-          <Route exact path="/Workout" element={<Workout />} />
-          <Route exact path="/AddWorkout" element={<AddWorkout />} />
-          <Route exact path="/MyWorkout" element={<MyWorkout />} />
-        </Routes>
-      </Router>
+    <div>
+      <div style={myComponentStyle}>scroll</div>
+      <div className="app">       
+        <Router>
+          <Navbar />
+          <Routes>
+            <Route exact path="/" element={<Workouts />} />
+            <Route exact path="/Login" element={<Login />} />
+            <Route exact path="/Register" element={<Register />} />
+            <Route exact path="/MyProfile" element={<MyProfile />} />
+            <Route exact path="/MyWorkouts" element={<MyWorkouts />} />
+            <Route exact path="/Workout" element={<Workout />} />
+            <Route exact path="/AddWorkout" element={<AddWorkout />} />
+            <Route exact path="/MyWorkout" element={<MyWorkout />} />
+          </Routes>
+        </Router>
+      </div>
     </div>
   );
 }

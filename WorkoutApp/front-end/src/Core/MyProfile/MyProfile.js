@@ -98,10 +98,11 @@ function MyProfile() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(jsonUserInfo)
     })
-    .then((res) => console.log(res))
+    .then((res) => {
+      console.log(res);
+      window.location.href = "/MyProfile";
+    })
     .catch((err) => console.log(err));
-
-    window.location.href = "/MyProfile";
   }
 
   return (
