@@ -18,8 +18,6 @@ function Navbar() {
       }
     }, [user, loading]);
 
-
-
     return (
         <nav className="navClass">
             <a href="/"><img src="../logo-orange.png" alt="logo" className="nav--logo" /></a>

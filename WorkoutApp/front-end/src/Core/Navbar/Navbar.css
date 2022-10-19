@@ -211,6 +211,12 @@ nav input[type=checkbox] {
   background-color: #9b5946;
 }
 
+.menu .inactive:active {
+  -webkit-transition-duration: 0.1s; /* Safari */
+  transition-duration: 0.1s;
+  color: #D77A61;
+}
+
 .menu .sign-out:hover {
   border-radius: 0px;
 }
