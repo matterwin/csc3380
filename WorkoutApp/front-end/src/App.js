@@ -11,6 +11,10 @@ import MyWorkout from "./Core/MyWorkouts/MyWorkout"
 
 import "./App.css"
 
+window.onbeforeunload = function () {
+  window.scrollTo(0, 0);
+}
+
 function App() {
   return (
     <div className="app">

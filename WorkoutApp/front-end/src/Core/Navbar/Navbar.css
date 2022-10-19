@@ -194,7 +194,7 @@ nav input[type=checkbox] {
 }
 
 .menu .inactiveSign:hover {
-  border-radius: 0px;
+  border-radius: 10px;
 }
 
 .menu .sign-out {
@@ -212,7 +212,7 @@ nav input[type=checkbox] {
 }
 
 .menu .sign-out:hover {
-  border-radius: 0px;
+  border-radius: 10px;
 }
 
 .searchBox {
