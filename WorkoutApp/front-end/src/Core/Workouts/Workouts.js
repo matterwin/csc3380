@@ -86,12 +86,12 @@ class Workouts extends React.Component {
                     <center>
                         <img className="gif" src={require('../../Gifs/PatricSlappingKnees.gif')} />
                     </center>
-                    <h1>Fit happens, it's
+                    <h1>Fit happens, it's&nbsp;
                         <div className="slidingVertical">
                             <span>Inevitable.</span>
                             <span>Inexorable.</span>
                             <span>Ineliminable.</span>
-                            <span>Ineluctable.</span>
+                            <span>Iineluctable.</span>
                             <span>Inescapable.</span>
                         </div>
                     </h1>
@@ -99,7 +99,15 @@ class Workouts extends React.Component {
                     <img className="gif2" src={require('../../Gifs/PatrickBlowingBubble.gif')} />
                 </div>
                 <div className="preview-workouts">
-                    <center>
+                    <center className="note-box">
+                        <h1 className="box-h1">You can view other people's workouts down below.</h1>
+                        <h3 className="box-h3">Click on the workout and leave a comment or rating down below (finish this mess)</h3>
+                    </center>
+                </div>
+                <br></br>
+
+                <div className="preview">
+                <center>
                         <br></br>
                         {
                             [...Array(parseInt(numWorkouts / this.workoutsSize) + 1) || []].map((key, value) => {
@@ -129,6 +137,14 @@ class Workouts extends React.Component {
                             ))
                         }
                     </center>
+                </div>
+                <div className="curve">
+                </div>
+                <div className="added-space"></div>
+                <div className="footer">
+                    <ul className="footer--list">
+                        <li><p>&copy; 2022, Team MMM</p></li>  
+                    </ul>
                 </div>
             </div>
         )

@@ -2,11 +2,18 @@
 	height: 100%;
 	width: 100%;
 	margin-top: -15px;
-	background: linear-gradient(45deg, #e9824b, #d77a61, #d8b4a0);
+	/*background: linear-gradient(45deg, #e9824b, #d77a61, #d8b4a0);
     background-size: 600% 600%;
     -webkit-animation: backgroundGradient 3s ease infinite;
     -moz-animation: backgroundGradient 3s ease infinite;
-    animation: backgroundGradient 3s ease infinite;
+    animation: backgroundGradient 3s ease infinite;*/
+	background-image: linear-gradient(45deg, #152229, #d85936af, #152229);
+	background-color: #223843;
+    background-size: 300% 100%;
+    -webkit-animation: backgroundGradient 15s ease infinite;
+    -moz-animation: backgroundGradient 15s ease infinite;
+    animation: backgroundGradient 15s ease infinite;
+	/*decide in class which is better*/
 }
 
 .workout {
@@ -44,11 +51,11 @@ a {
 }
 
 .preview-workouts {
-	margin-top: 28.5vh;
-	clip-path: ellipse(170% 100% at 50% 100%);
-	padding-top: 20vh;
-	padding-bottom: 10vh;
-	background-color: #222222;
+    margin-top: 28.5vh;
+    clip-path: ellipse(120% 100% at 50% 100%);
+    padding-top: 20vh;
+    padding-bottom: 20vh;
+    background-color: #222222;
 }
 
 .welcome-screen {
@@ -170,6 +177,58 @@ a {
 	-ms-animation-delay: 10s;
 	-webkit-animation-delay: 10s;
 }
+
+.box-h1 {
+    color: white;
+}
+
+.box-h3 {
+    color: white;
+}
+
+.preview {
+    border-style: solid;
+    border-color: #222222;
+    border-width: 10px;
+    margin-top: -20px;
+    background-image: linear-gradient(45deg, #2238434a, #d8593626, #22384332);
+    background-color: #223843;
+    padding-top: 10vh;
+    padding-bottom: 10vh;
+}
+
+.note-box {
+    text-align: left;
+    margin-left: 20vw;
+    margin-right: 20vw;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #223843;
+}
+
+.curve {
+    clip-path: ellipse(95% 100% at 50% 0%);
+    padding-top: 20vh;
+    padding-bottom: 20vh;
+    background-color: #222222;
+}
+
+.added-space {
+    padding-bottom: 50vh;
+}
+
+.footer {
+    background-color: #222222;
+    color: white;
+	padding: 0.5px;
+}
+
+.footer--list {
+	list-style: none;
+	padding-left: 8.8vw;
+	color: white;
+}
+
 
 /*topToBottom Animation*/
 @keyframes topToBottom{
