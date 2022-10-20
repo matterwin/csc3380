@@ -20,3 +20,7 @@
 .workout h2 {
 	font-size: 20px;
 }
+
+.workout:hover {
+	box-shadow: 0 8px 16px 0 white;
+}
