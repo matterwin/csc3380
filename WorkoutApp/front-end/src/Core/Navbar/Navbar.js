@@ -23,9 +23,8 @@ function Navbar() {
             <a href="/"><img src="../logo-orange.png" alt="logo" className="nav--logo" /></a>
             <h2 className='nav--logo_text'><a href="/">Fit Happens</a></h2>
             {/*<input className="searchBox" placeholder="  Search"/>*/}
+            <input className="nav-toggle" type="checkbox"/>
             <ul className="nav--list">
-                <input type="checkbox" id="checkbox_toggle" />
-                <label htmlFor="checkbox_toggle" className="hamburger">&#9776;</label>
                 <div className="menu">
                     <NavLink
                         end to="/"
@@ -69,6 +68,11 @@ function Navbar() {
                     >SIGN OUT</NavLink>)}
                 </div>
             </ul>
+            <label htmlFor="nav-toggle" className="icon-burger">
+                <div className="line"></div>
+                <div className="line"></div>
+                <div className="line"></div>
+            </label>
         </nav>
         )
     };

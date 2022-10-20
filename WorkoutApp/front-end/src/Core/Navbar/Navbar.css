@@ -102,26 +102,68 @@ nav a:hover .login {
   font-size: 170%;
 }
 
-nav input[type=checkbox] {
+/*HAMBURGER MENU*/
+
+.mav-toggle {
   display: none;
 }
 
-/*HAMBURGER MENU*/
-.hamburger {
+nav .icon-burger{
   display: none;
-  font-size: 24px;
-  user-select: none;
+  padding-right: 30px;
+  top: 20px;
+  cursor: pointer;
+}
+
+nav .icon-burger .line{
+  width: 30px;
+  height: 5px;
+  background-color: white;
+  margin: 5px;
+  border-radius: 2px;
+  transition: all .3s ease-in-out;
 }
 
 @media (max-width: 1220px) {
+
+  nav .icon-burger{
+    display: inline-block;
+  }
+
+  nav :checked ~ .icon-burger .line:nth-child(1) {
+    transform: translateY(10px) rotate(585deg);
+  }
+
+  nav :checked ~ .icon-burger .line:nth-child(3) {
+    transform: translateY(-10px) rotate(-585deg);
+  }
+
+  nav :checked ~ .icon-burger .line:nth-child(2) {
+      opacity: 0;
+  }
+
   .menu {
     display: none;
     position: absolute;
-    background-color: red;
+    background-color: #222;
     right: 0;
-    left: 0;
+    /*left: 0;*/
     text-align: center;
     padding: 16px 0;
+    margin-top:38px;
+    margin-right: 0px;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  .menu {
+    display: grid;
+    position: fixed;
+    overflow: hidden
+  }
+
+  nav input[type=checkbox]:checked~.menu {
+    display: inline-block;
   }
 
   .nav--logo {
@@ -132,7 +174,7 @@ nav input[type=checkbox] {
     margin-left: -10px;
   }
 
-  .menu li:hover {
+  /*.menu li:hover {
     display: inline-block;
     background-color: #4c9e9e;
     transition: 0.3s ease;
@@ -160,7 +202,7 @@ nav input[type=checkbox] {
   .dropdown li:hover {
     background-color: red;
   }
-
+  */
 }
 
 .menu .active {
@@ -236,4 +278,3 @@ nav .searchBox input:focus {
   outline-style: solid;
   outline-width: 2.3px;
 }
-
