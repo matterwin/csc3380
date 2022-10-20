@@ -23,7 +23,8 @@
 }
 
 .register {
-  height: 110vh;
+  /*height: 110vh;*/
+  height: 905px;
   width: 100vw;
   display: flex;
   align-items: center;
