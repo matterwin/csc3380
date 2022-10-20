@@ -34,7 +34,7 @@ function App() {
   }, []);
 
   const myComponentStyle = { 
-    top: '6vh',
+    top: '62px',
     backgroundColor: 'white',
     color: 'white',
     paddingLeft: scrollPosition + 20,
