@@ -86,13 +86,13 @@ class Workouts extends React.Component {
                     <center>
                         <img className="gif" src={require('../../Gifs/PatricSlappingKnees.gif')} />
                     </center>
-                    <h1>Fit happens, it's&nbsp;
+                    <h1>Fit happens, it's
                         <div className="slidingVertical">
-                            <span>inevitable.</span>
-                            <span>inexorable.</span>
-                            <span>ineliminable.</span>
-                            <span>ineluctable.</span>
-                            <span>inescapable.</span>
+                            <span>Inevitable.</span>
+                            <span>Inexorable.</span>
+                            <span>Ineliminable.</span>
+                            <span>Ineluctable.</span>
+                            <span>Inescapable.</span>
                         </div>
                     </h1>
                     <h2>Get your fit on and explore, conquer, and relish your fitness goals</h2>
@@ -104,7 +104,7 @@ class Workouts extends React.Component {
                         {
                             [...Array(parseInt(numWorkouts / this.workoutsSize) + 1) || []].map((key, value) => {
                                 return (
-                                    <button type="button"
+                                    <button className="workoutPages" type="button"
                                         disabled={(value + 1 == this.currentWorkoutPage)}
                                         key={value}
                                         onMouseUp={() => this.nextWorkouts(value + 1)}>
