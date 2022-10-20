@@ -88,11 +88,11 @@ class Workouts extends React.Component {
                     </center>
                     <h1>Fit happens, it's&nbsp;
                         <div className="slidingVertical">
-                            <span>Inevitable.</span>
-                            <span>Inexorable.</span>
-                            <span>Ineliminable.</span>
-                            <span>Iineluctable.</span>
-                            <span>Inescapable.</span>
+                            <span>inevitable.</span>
+                            <span>inexorable.</span>
+                            <span>ineliminable.</span>
+                            <span>ineluctable.</span>
+                            <span>inescapable.</span>
                         </div>
                     </h1>
                     <h2>Get your fit on and explore, conquer, and relish your fitness goals</h2>
