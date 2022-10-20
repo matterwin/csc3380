@@ -32,11 +32,22 @@
 .login__btn {
   padding: 10px;
   font-size: 18px;
-  margin-bottom: 10px;
-  border: none;
+  margin-top: 10px;
+  border-width: 2px;
+  border-color: black;
   color: white;
-  background-color: #222222;
-  border-radius: 8px;
+  background-color: black;
+}
+
+.login__btn:hover{
+  padding: 10px;
+  font-size: 18px;
+  margin-top: 10px;
+  border-width: 2px;
+  border-color: black;
+  color: black;
+  background-color: white;
+  transition: background-color 0.3s;
 }
 
 .login__google {

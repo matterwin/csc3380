@@ -2,7 +2,11 @@
 	height: 100%;
 	width: 100%;
 	margin-top: -15px;
-	background-image: linear-gradient(45deg, #152229, #d85936af, #152229);
+	background: linear-gradient(45deg, #e9824b, #d77a61, #d8b4a0);
+    background-size: 600% 600%;
+    -webkit-animation: backgroundGradient 3s ease infinite;
+    -moz-animation: backgroundGradient 3s ease infinite;
+    animation: backgroundGradient 3s ease infinite;
 }
 
 .workout {
@@ -98,6 +102,25 @@ a {
 	width: 20vh;
 }
 
+.workoutPages{
+	border-radius: 10px;
+	background-color: #d77a61;
+	color: black;
+	font-size: 20px;
+	box-shadow: 3px 3px 0px 0px;
+	margin: 5px;
+}
+
+.workoutPages:hover{
+	transform: translateY(2px);
+    box-shadow: 1px 1px 0px 0px;
+    border-radius: 10px;
+    background-color: blanchedalmond;
+    color: black;
+    transition:transform 400ms cubic-bezier(.3,.7,.4,1.5);
+	
+}
+
 @media (max-width: 1213px) {
 	.welcome-screen h1 {
 		align-items: center;
@@ -177,5 +200,22 @@ a {
 	100% { opacity: 0; }
 }
 
+/*Animations*/
+
+@-webkit-keyframes backgroundGradient {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@-moz-keyframes backgroundGradient {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@keyframes backgroundGradient {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
 
   
