@@ -34,10 +34,10 @@ function App() {
   }, []);
 
   const myComponentStyle = { 
-    top: '6%',
+    top: '6vh',
     backgroundColor: 'white',
     color: 'white',
-    paddingLeft: scrollPosition,
+    paddingLeft: scrollPosition + 20,
     overflow: 'hidden',
     position: 'fixed',
     zIndex: 9999
@@ -45,7 +45,7 @@ function App() {
 
   return (
     <div>
-      <div style={myComponentStyle}>scroll</div>
+      <div style={myComponentStyle}>&nbsp;</div>
       <div className="app">       
         <Router>
           <Navbar />

@@ -194,7 +194,7 @@ nav input[type=checkbox] {
 }
 
 .menu .inactiveSign:hover {
-  border-radius: 10px;
+  border-radius: 0px;
 }
 
 .menu .sign-out {
