@@ -16,6 +16,7 @@ class Workouts extends React.Component {
             workoutsLoaded: false,
             numWorkouts: 0,
             numWorkoutsLoaded: false,
+            user: null
         }
     }
 
@@ -150,7 +151,7 @@ class Workouts extends React.Component {
                 <div className="added-space"></div>
                 <div className="footer">
                     <ul className="footer--list">
-                        <li><p>&copy; 2022, Team MMM</p></li>  
+                        <li><p>&copy; 2022, Team MMM</p></li>                         
                     </ul>
                 </div>
             </div>

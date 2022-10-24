@@ -240,19 +240,28 @@ a {
 
 .added-space {
     padding-bottom: 50vh;
+	margin-bottom: -5vh;
 }
 
 .footer {
-    background-color: #222222;
-    color: white;
-	padding: 0.5px;
+	bottom: 0%;
+  	height: 40px;
+  	display: flex;
+	padding: 3px 36px;
+	background-color: #222;
+	overflow: hidden;
+	align-items: center;
 }
 
-.footer--list {
+.footer--list{
 	list-style: none;
-	padding-left: 8.8vw;
 	color: white;
+	margin-right: auto;
+	margin-left: auto;
 }
+
+
+
 
 
 /*topToBottom Animation*/

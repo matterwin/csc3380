@@ -54,7 +54,7 @@ function Navbar() {
                     >PROFILE</NavLink>
                     {!user && (<NavLink
                         to="Login"
-                        className={({ isActive }) => (isActive ? 'active' : 'inactive')}
+                        className={({ isActive }) => (isActive ? 'activeLog' : 'inactiveLog')}
                         onClick={handleClick}
                     >LOG IN</NavLink>)}
                     {!user && (<NavLink
