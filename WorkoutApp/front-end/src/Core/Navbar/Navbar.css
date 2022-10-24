@@ -104,8 +104,9 @@ nav a:hover .login {
 
 /*HAMBURGER MENU*/
 
-.mav-toggle {
-  display: none;
+#nav-toggle{
+  position: absolute;
+  top: -100px;
 }
 
 nav .icon-burger{
@@ -156,14 +157,10 @@ nav .icon-burger .line{
     padding-right: 30px;
   }
 
-  .menu {
+  nav :checked ~ .nav--list .menu {
     display: grid;
     position: fixed;
-    overflow: hidden
-  }
-
-  nav input[type=checkbox]:checked~.menu {
-    display: inline-block;
+    overflow: hidden;
   }
 
   .nav--logo {
@@ -173,36 +170,6 @@ nav .icon-burger .line{
   .nav--logo_text {
     margin-left: -10px;
   }
-
-  /*.menu li:hover {
-    display: inline-block;
-    background-color: #4c9e9e;
-    transition: 0.3s ease;
-  }
-
-  .menu li+li {
-    margin-top: 12px;
-  }
-
-  input[type=checkbox]:checked~.menu {
-    display: block;
-  }
-
-  .hamburger {
-    display: block;
-    margin-right: -150px;
-  }
-
-  .dropdown {
-    left: 50%;
-    top: 30px;
-    transform: translateX(35%);
-  }
-
-  .dropdown li:hover {
-    background-color: red;
-  }
-  */
 }
 
 .menu .active {

@@ -23,7 +23,7 @@ function Navbar() {
             <a href="/"><img src="../logo-orange.png" alt="logo" className="nav--logo" /></a>
             <h2 className='nav--logo_text'><a href="/">Fit Happens</a></h2>
             {/*<input className="searchBox" placeholder="  Search"/>*/}
-            <input className="nav-toggle" type="checkbox"/>
+            <input type="checkbox" id="nav-toggle"/>
             <ul className="nav--list">
                 <div className="menu">
                     <NavLink
