@@ -24,10 +24,6 @@ function Navbar() {
         handleCheckbox();
     }
     
-    function handleClickForSignOut() {
-        logout;
-    }
-
     function handleCheckbox() {
         setChecked(prev => !prev);
     }
@@ -37,7 +33,7 @@ function Navbar() {
             <a href="/"><img src="../logo-orange.png" alt="logo" className="nav--logo" /></a>
             <h2 className='nav--logo_text'><a href="/">Fit Happens</a></h2>
             {/*<input className="searchBox" placeholder="  Search"/>*/}
-            <input type="checkbox" id="nav-toggle" checked={checked} onClick={handleCheckbox}>
+            <input type="checkbox" id="nav-toggle" checked={checked} onChange={handleCheckbox}>
             </input>
             <ul className="nav--list">
                 <div className="menu">

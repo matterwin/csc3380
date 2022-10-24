@@ -173,6 +173,11 @@ nav .icon-burger .line{
     display: grid;
     position: fixed;
     overflow: hidden;
+    animation: loadingtransition 0.3s ease-in;
+  }
+
+  nav :checked ~ .nav--list .menu * {
+    animation: loadingtransition 0.3s ease-in;
   }
 
   nav :checked ~ .nav--list .body {
@@ -216,12 +221,13 @@ nav .icon-burger .line{
   color: #FFF;
 }
 
-.menu .inactiveSign:active {
-  background-color: #9b5946;
+.menu .inactiveSign:hover {
+  background-color: #a8a8a894;
+  border-radius: 0px;
 }
 
-.menu .inactiveSign:hover {
-  border-radius: 0px;
+.menu .inactiveSign:active {
+  background-color: #D77A61;
 }
 
 .menu .sign-out {
@@ -234,9 +240,6 @@ nav .icon-burger .line{
   color: #FFF;
 }
 
-.menu .sign-out:active {
-  background-color: #9b5946;
-}
 
 .menu .inactive:active {
   -webkit-transition-duration: 0.1s; /* Safari */
@@ -245,7 +248,12 @@ nav .icon-burger .line{
 }
 
 .menu .sign-out:hover {
-  border-radius: 10px;
+  border-radius: 0px;
+  background-color: #a8a8a894;
+}
+
+.menu .sign-out:active {
+  background-color: #D77A61;
 }
 
 .searchBox {

@@ -39,6 +39,8 @@ function Register() {
             className="register__textBox"
             value={name}
             onChange={(e) => setName(e.target.value)}
+            autoFocus
+            onFocus={e => e.currentTarget.select()}
           />
           <label>Email</label>
           <input

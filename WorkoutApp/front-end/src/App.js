@@ -20,10 +20,22 @@ window.onbeforeunload = function () {
 function App() {
   
   const [scrollPosition, setScrollPosition] = useState(0);
+
+ /* let scrollHeight = Math.max(
+    document.body.scrollHeight, document.documentElement.scrollHeight,
+    document.body.offsetHeight, document.documentElement.offsetHeight,
+    document.body.clientHeight, document.documentElement.clientHeight
+  );
+  console.log('Full document height, with scrolled out part: ' + scrollHeight);*/
+
   const handleScroll = () => {
-    const position = window.pageYOffset;
+    const position = window.pageYOffset;/* + 1041;*/
+    /*console.log(position);  */
+    /*console.log("                             " + (100*(position)) / scrollHeight);*/
     setScrollPosition(position);
   };
+
+  //Have been trying to figure out horizontal position scroll
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -37,7 +49,7 @@ function App() {
     top: '62px',
     backgroundColor: 'white',
     color: 'white',
-    paddingLeft: scrollPosition + 20,
+    paddingLeft: scrollPosition,
     overflow: 'hidden',
     position: 'fixed',
     zIndex: 9999
