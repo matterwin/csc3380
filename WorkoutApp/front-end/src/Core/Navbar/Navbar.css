@@ -111,15 +111,21 @@ nav a:hover .login {
 
 nav .icon-burger{
   display: none;
-  padding-right: 30px;
+  margin-right: 27px;
+  border-radius: 10px;
+  padding: 3px;
   top: 20px;
   cursor: pointer;
+}
+
+nav .icon-burger:hover{
+  background-color: #a8a8a894;
 }
 
 nav .icon-burger .line{
   width: 30px;
   height: 5px;
-  background-color: white;
+  background-color: #FFF;
   margin: 5px;
   border-radius: 2px;
   transition: all .3s ease-in-out;
@@ -143,21 +149,33 @@ nav .icon-burger .line{
       opacity: 0;
   }
 
+  nav :checked ~ .icon-burger{
+    background-color: #a8a8a894;
+    outline-color: #d77a61;
+    outline-style: solid;
+    outline-width: 3.5px;
+  }
+
   .menu {
     display: none;
     position: absolute;
     background-color: #222;
     right: 0;
-    /*left: 0;*/
+    left: 0;
     text-align: center;
     padding: 16px 0;
-    margin-top:38px;
-    margin-right: 0px;
+    margin-top:43px;
     padding-left: 30px;
     padding-right: 30px;
   }
 
   nav :checked ~ .nav--list .menu {
+    display: grid;
+    position: fixed;
+    overflow: hidden;
+  }
+
+  nav :checked ~ .nav--list .body {
     display: grid;
     position: fixed;
     overflow: hidden;

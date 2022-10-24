@@ -10,6 +10,7 @@ function Navbar() {
 
     const [user, loading] = useAuthState(auth);
     const navigate = useNavigate();
+    const [checked, setChecked] = React.useState(false);
 
     useEffect(() => {
       if (loading) return;
@@ -18,48 +19,52 @@ function Navbar() {
       }
     }, [user, loading]);
 
+    function handleClick() {
+        window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+        handleCheckbox();
+    }
+    
+    function handleClickForSignOut() {
+        logout;
+    }
+
+    function handleCheckbox() {
+        setChecked(prev => !prev);
+    }
+
     return (
         <nav className="navClass">
             <a href="/"><img src="../logo-orange.png" alt="logo" className="nav--logo" /></a>
             <h2 className='nav--logo_text'><a href="/">Fit Happens</a></h2>
             {/*<input className="searchBox" placeholder="  Search"/>*/}
-            <input type="checkbox" id="nav-toggle"/>
+            <input type="checkbox" id="nav-toggle" checked={checked} onClick={handleCheckbox}>
+            </input>
             <ul className="nav--list">
                 <div className="menu">
                     <NavLink
                         end to="/"
                         className={({ isActive }) => (isActive ? 'active' : 'inactive')}
-                        onClick={() => {
-                            window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
-                          }}
+                        onClick={handleClick}
                     >HOME</NavLink>
                     <NavLink
                         to="MyWorkouts"
                         className={({ isActive }) => (isActive ? 'active' : 'inactive')}
-                        onClick={() => {
-                            window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
-                          }}
+                        onClick={handleClick}   
                     >YOUR WORKOUTS</NavLink>
                     <NavLink
                         to="MyProfile"
                         className={({ isActive }) => (isActive ? 'active' : 'inactive')}
-                        onClick={() => {
-                            window.scrollTo({top: 60, left: 0, behavior: 'smooth'});
-                          }}
+                        onClick={handleClick}
                     >PROFILE</NavLink>
                     {!user && (<NavLink
                         to="Login"
                         className={({ isActive }) => (isActive ? 'active' : 'inactive')}
-                        onClick={() => {
-                            window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
-                          }}
+                        onClick={handleClick}
                     >LOG IN</NavLink>)}
                     {!user && (<NavLink
                         to="Register"
                         className={({ isActive }) => (isActive ? 'activeSign' : 'inactiveSign')}
-                        onClick={() => {
-                            window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
-                          }}
+                        onClick={handleClick}
                     >SIGN UP</NavLink>)}       
                     {user && (<NavLink
                         end to="/"
