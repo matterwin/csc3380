@@ -89,6 +89,8 @@ a {
 	padding-left: 194px;
 	padding-bottom: 0%;
 	margin-bottom: 0%;
+	color:#d8b5a4;
+	color:#fac9bb
 }
 
 .gif {
@@ -165,31 +167,42 @@ a {
 
 @media (max-width: 1213px) {
 	.welcome-screen h1 {
+		margin-left: auto;
+		margin-right: auto;
 		align-items: center;
 		width: 60vw;
 		/*font-size: 6vw;*/
+		word-wrap: 0;
 		text-align: center;
+		padding-left: 0;
+	}
+
+	.slidingVertical {
+		/*Need to fix styling for smaller window size*/
+		color: white; /*placeholder*/
 	}
 
 	.welcome-screen h2 {
+		margin-left: auto;
+		margin-right: auto;
 		align-items: center;
 		width: 60vw;
 		text-align: center;
-	}
-
-	h1 .slidingVertical {
-		align-items: center;
-		width: 60vw;
-		text-align: center;
+		padding-left: 0;
 	}
 }
 
 .box-h1 {
+	padding-left: 20px;
+	padding-right: 20px;
     color: white;
 }
 
 .box-h3 {
+	padding-left: 20px;
+	padding-right: 20px;
     color: white;
+	font-weight:lighter;
 }
 
 .preview {
@@ -210,6 +223,12 @@ a {
     border-style: solid;
     border-width: 1px;
     border-color: #223843;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+.gifs--box img {
+	width: 200px;
 }
 
 .curve {

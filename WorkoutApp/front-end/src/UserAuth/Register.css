@@ -51,9 +51,10 @@
   padding: 10px;
   font-size: 18px;
   margin-bottom: 10px;
-  border: none;
+  border-width: 2px;
+  border-color: #222;
   color: white;
-  background-color: black;
+  background-color: #222;
   border-radius: 8px;
 }
 

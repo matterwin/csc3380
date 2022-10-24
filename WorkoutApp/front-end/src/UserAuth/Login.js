@@ -32,6 +32,8 @@ function Login() {
             className="login__textBox"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            autoFocus
+            onFocus={e => e.currentTarget.select()}
           />
           <label>Password</label>
           <input

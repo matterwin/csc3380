@@ -35,9 +35,10 @@
   font-size: 18px;
   margin-top: 10px;
   border-width: 2px;
-  border-color: black;
+  border-color: #222;
   color: white;
-  background-color: black;
+  background-color: #222;
+  border-radius: 8px;
 }
 
 .login__btn:hover{
@@ -45,8 +46,8 @@
   font-size: 18px;
   margin-top: 10px;
   border-width: 2px;
-  border-color: black;
-  color: black;
+  border-color: #222;
+  color: #222;
   background-color: white;
   transition: background-color 0.3s;
 }
