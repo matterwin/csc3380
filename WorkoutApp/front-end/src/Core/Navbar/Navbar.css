@@ -271,3 +271,11 @@ nav .searchBox input:focus {
   outline-style: solid;
   outline-width: 2.3px;
 }
+
+.inactiveLog:hover {
+  color: #d77a61;
+}
+
+.menu .activeLog {
+  color: #d77a61;
+}
