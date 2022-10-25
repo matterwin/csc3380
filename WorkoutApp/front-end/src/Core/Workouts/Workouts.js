@@ -106,7 +106,7 @@ class Workouts extends React.Component {
                         <h1 className="box-h1">You can view other people's workouts down below.</h1>
                         <h3 className="box-h3">Click on the workout and leave a comment or rating down below (finish this mess)</h3>
                         <div className="gifs--box">
-                            <img src={require('../../Gifs/arms.gif')} className="arms--Gif"></img>
+                            <img src={require('../../images/Arms.png')} className="arms--Gif"></img>
                             <img src={require('../../Gifs/back.gif')} className="back--Gif"></img>
                             <img src={require('../../Gifs/cardio.gif')} className="cardio--Gif"></img>
                             <img src={require('../../Gifs/chest.gif')} className="chest--Gif"></img>
