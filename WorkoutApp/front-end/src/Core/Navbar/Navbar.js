@@ -18,6 +18,7 @@ function Navbar() {
      /* if (!user) {
         return navigate("/");
       }*///this fixed the bug where if you're not signed in you can't see other people's workouts
+      //but also when you refresh, it stays on the same page
     }, [user, loading]);
 
     function handleClick() {
