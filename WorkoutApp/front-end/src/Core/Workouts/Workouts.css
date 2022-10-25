@@ -240,7 +240,7 @@ a {
 
 .added-space {
     padding-bottom: 50vh;
-	margin-bottom: -5vh;
+	margin-bottom: -4vh;
 }
 
 .footer {
@@ -258,6 +258,9 @@ a {
 	color: white;
 	margin-right: auto;
 	margin-left: auto;
+	align-items: center;
+	text-align: center;
+	justify-content: center;
 }
 
 

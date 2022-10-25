@@ -58,6 +58,14 @@
   border-radius: 8px;
 }
 
+.register__btn:hover{
+  border-width: 2px;
+  border-color: #222;
+  color: #222;
+  background-color: white;
+  transition: background-color 0.3s;
+}
+
 .register__google {
   background-color: #4285f4;
 }
@@ -93,4 +101,8 @@ label {
   outline-color: #d77a61;
   outline-style: solid;
   outline-width: 2.3px;
+}
+
+.register__container label {
+  padding-bottom: 2px;
 }

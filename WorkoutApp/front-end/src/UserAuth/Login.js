@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { auth, logInWithEmailAndPassword } from "./firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
+import {useRef} from 'react';
 import "./Login.css";
 
 function Login() {
@@ -16,6 +17,8 @@ function Login() {
     }
     if (user) navigate("/");
   }, [user, loading]);
+
+  const ref = useRef(null);
 
   return (
     <div className="log">
@@ -34,6 +37,12 @@ function Login() {
             onChange={(e) => setEmail(e.target.value)}
             autoFocus
             onFocus={e => e.currentTarget.select()}
+            onKeyPress={(e) => {
+              if (e.key === "Enter") {
+                //console.log("enter email");
+                ref.current.focus();
+              }
+            }}
           />
           <label>Password</label>
           <input
@@ -41,6 +50,13 @@ function Login() {
             className="login__textBox"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            onKeyPress={(e) => {
+              if (e.key === "Enter") {
+                //console.log("enter password");
+                logInWithEmailAndPassword(email, password)
+              }
+            }}
+            ref={ref}
           />
           <label> &nbsp;</label>
           <button
