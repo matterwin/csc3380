@@ -29,39 +29,47 @@ function Login() {
       </div>
       <div className="login">
         <div className="login__container">
-          <label>Email</label>
-          <input
-            type="text"
-            className="login__textBox"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            autoFocus
-            onFocus={e => e.currentTarget.select()}
-            onKeyDown={(e) => {              
-              //console.log( "You pressed a key: " + e.key );
-              if (e.key === "Enter" || e.key === "ArrowDown") {
-                //console.log("test");
-                inputRefs.current[1].focus();
-              }
-            }}
-            ref={(el) => (inputRefs.current[0] = el)}
-          />
-          <label>Password</label>
-          <input
-            type="password"
-            className="login__textBox"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            onKeyDown={(e) => {
-              if (e.key === "Enter") {
-                logInWithEmailAndPassword(email, password)
-              }
-              if(e.key == "ArrowUp") {
-                inputRefs.current[0].focus();
-              }
-            }}
-            ref={(el) => (inputRefs.current[1] = el)}
-          />
+          <element>
+            <br></br>
+            <input
+              type="text"
+              placeholder="Email"
+              className="login__textBox"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              autoFocus
+              onFocus={e => e.currentTarget.select()}
+              onKeyDown={(e) => {              
+                //console.log( "You pressed a key: " + e.key );
+                if (e.key === "Enter" || e.key === "ArrowDown") {
+                  //console.log("test");
+                  inputRefs.current[1].focus();
+                }
+              }}
+              ref={(el) => (inputRefs.current[0] = el)}
+            />
+            <label className="emailLabel">Email</label>
+          </element>
+          <element>
+            <br></br>
+            <input
+              type="password"
+              placeholder="Password"
+              className="login__textBox"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  logInWithEmailAndPassword(email, password)
+                }
+                if(e.key == "ArrowUp") {
+                  inputRefs.current[0].focus();
+                }
+              }}
+              ref={(el) => (inputRefs.current[1] = el)}
+            />
+            <label className="passwordLabel">Password</label>
+          </element>
           <label> &nbsp;</label>
           <button
             className="login__btn"

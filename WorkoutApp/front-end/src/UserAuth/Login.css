@@ -107,9 +107,39 @@ button:hover {
 
 .log label {
   text-align: left;
-  padding-bottom: 3px
+  padding-bottom: 3px;
+  visibility: hidden;
+  transition:visibility 0.3s ease-out;
 }
 
 .login__container label {
   padding-bottom: 2px;
+}
+
+.emailLabel, .passwordLabel {
+  float: right;
+  margin-top: -30px;
+  padding-left: 35px;
+  padding-top: 7px;
+}
+
+.login__container input:not(:placeholder-shown) ~.emailLabel{
+  visibility: visible;
+}
+
+.login__container input:not(:placeholder-shown) ~.passwordLabel{
+  visibility: visible;
+}
+
+.login__container input {
+  margin-left: -52.5px;
+  margin-right: -52.5px;
+}
+
+input:focus ~.emailLabel {
+  color: #d77a61;
+}
+
+input:focus ~.passwordLabel {
+  color: #d77a61;
 }
