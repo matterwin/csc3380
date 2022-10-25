@@ -18,7 +18,7 @@ function Login() {
     if (user) navigate("/");
   }, [user, loading]);
 
-  const ref = useRef(null);
+  const inputRefs = useRef([]);
 
   return (
     <div className="log">
@@ -37,12 +37,14 @@ function Login() {
             onChange={(e) => setEmail(e.target.value)}
             autoFocus
             onFocus={e => e.currentTarget.select()}
-            onKeyPress={(e) => {
-              if (e.key === "Enter") {
-                //console.log("enter email");
-                ref.current.focus();
+            onKeyDown={(e) => {              
+              //console.log( "You pressed a key: " + e.key );
+              if (e.key === "Enter" || e.key === "ArrowDown") {
+                //console.log("test");
+                inputRefs.current[1].focus();
               }
             }}
+            ref={(el) => (inputRefs.current[0] = el)}
           />
           <label>Password</label>
           <input
@@ -50,13 +52,15 @@ function Login() {
             className="login__textBox"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            onKeyPress={(e) => {
+            onKeyDown={(e) => {
               if (e.key === "Enter") {
-                //console.log("enter password");
                 logInWithEmailAndPassword(email, password)
               }
+              if(e.key == "ArrowUp") {
+                inputRefs.current[0].focus();
+              }
             }}
-            ref={ref}
+            ref={(el) => (inputRefs.current[1] = el)}
           />
           <label> &nbsp;</label>
           <button

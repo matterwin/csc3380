@@ -44,12 +44,13 @@ function Register() {
             onChange={(e) => setName(e.target.value)}
             autoFocus
             onFocus={e => e.currentTarget.select()}
-            onKeyPress={(e) => {
-              if (e.key === "Enter") {
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === "ArrowDown") {
                 //console.log("enter email");
-                inputRefs.current[0].focus();
+                inputRefs.current[1].focus();
               }
             }}
+            ref={(el) => (inputRefs.current[0] = el)}
           />
           <label>Email</label>
           <input
@@ -57,13 +58,16 @@ function Register() {
             className="register__textBox"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            onKeyPress={(e) => {
-              if (e.key === "Enter") {
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === "ArrowDown") {
                 //console.log("enter email");   
-                inputRefs.current[1].focus();        
+                inputRefs.current[2].focus();        
+              }
+              if(e.key == "ArrowUp") {
+                inputRefs.current[0].focus();
               }
             }}
-            ref={(el) => (inputRefs.current[0] = el)}
+            ref={(el) => (inputRefs.current[1] = el)}
           />
           <label>Password</label>
           <input
@@ -71,13 +75,16 @@ function Register() {
             className="register__textBox"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            onKeyPress={(e) => {
+            onKeyDown={(e) => {
               if (e.key === "Enter") {
                 //console.log("enter password");
                 registerWithEmailAndPassword(name, email, password);
               }
+              if(e.key == "ArrowUp") {
+                inputRefs.current[1].focus();
+              }
             }}
-            ref={(el) => (inputRefs.current[1] = el)}
+            ref={(el) => (inputRefs.current[2] = el)}
           />
           <label> &nbsp;</label>
           <button className="register__btn" onClick={register}>
