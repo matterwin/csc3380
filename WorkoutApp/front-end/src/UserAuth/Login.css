@@ -109,3 +109,7 @@ button:hover {
   text-align: left;
   padding-bottom: 3px
 }
+
+.login__container label {
+  padding-bottom: 2px;
+}

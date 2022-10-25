@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import {useRef} from 'react';
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, useNavigate } from "react-router-dom";
 import {
@@ -24,6 +25,8 @@ function Register() {
     if (user) navigate("/MyProfile");
   }, [user, loading]);
 
+  const inputRefs = useRef([]);
+
   return (
     <div>
       <div>
@@ -41,6 +44,12 @@ function Register() {
             onChange={(e) => setName(e.target.value)}
             autoFocus
             onFocus={e => e.currentTarget.select()}
+            onKeyPress={(e) => {
+              if (e.key === "Enter") {
+                //console.log("enter email");
+                inputRefs.current[0].focus();
+              }
+            }}
           />
           <label>Email</label>
           <input
@@ -48,6 +57,13 @@ function Register() {
             className="register__textBox"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            onKeyPress={(e) => {
+              if (e.key === "Enter") {
+                //console.log("enter email");   
+                inputRefs.current[1].focus();        
+              }
+            }}
+            ref={(el) => (inputRefs.current[0] = el)}
           />
           <label>Password</label>
           <input
@@ -55,6 +71,13 @@ function Register() {
             className="register__textBox"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            onKeyPress={(e) => {
+              if (e.key === "Enter") {
+                //console.log("enter password");
+                registerWithEmailAndPassword(name, email, password);
+              }
+            }}
+            ref={(el) => (inputRefs.current[1] = el)}
           />
           <label> &nbsp;</label>
           <button className="register__btn" onClick={register}>

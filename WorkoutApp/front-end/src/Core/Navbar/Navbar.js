@@ -1,10 +1,11 @@
 import React from "react";
 import { NavLink } from 'react-router-dom';
 import "./Navbar.css"
-import { useState, useEffect } from 'react';
+import { useState, useEffect} from 'react';
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
 import { auth, db, logout } from "../../UserAuth/firebase";
+
 
 function Navbar() {
 
@@ -14,9 +15,9 @@ function Navbar() {
 
     useEffect(() => {
       if (loading) return;
-      if (!user) {
+     /* if (!user) {
         return navigate("/");
-      }
+      }*///this fixed the bug where if you're not signed in you can't see other people's workouts
     }, [user, loading]);
 
     function handleClick() {
@@ -26,6 +27,11 @@ function Navbar() {
     
     function handleCheckbox() {
         setChecked(prev => !prev);
+    }
+  
+    function hideMenu() {
+        document.removeEventListener("click", hideMenu);
+        setChecked(false);
     }
 
     return (
@@ -69,7 +75,9 @@ function Navbar() {
                     >SIGN OUT</NavLink>)}
                 </div>
             </ul>
-            <label htmlFor="nav-toggle" className="icon-burger">
+            <label htmlFor="nav-toggle" className="icon-burger" onMouseLeave={() => {
+            document.addEventListener("click", hideMenu)
+          }}>
                 <div className="line"></div>
                 <div className="line"></div>
                 <div className="line"></div>
