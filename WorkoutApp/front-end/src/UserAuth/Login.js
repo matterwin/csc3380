@@ -29,7 +29,7 @@ function Login() {
       </div>
       <div className="login">
         <div className="login__container">
-          <element>
+          <div>
             <br></br>
             <input
               type="text"
@@ -49,8 +49,8 @@ function Login() {
               ref={(el) => (inputRefs.current[0] = el)}
             />
             <label className="emailLabel">Email</label>
-          </element>
-          <element>
+          </div>
+          <div>
             <br></br>
             <input
               type="password"
@@ -69,7 +69,7 @@ function Login() {
               ref={(el) => (inputRefs.current[1] = el)}
             />
             <label className="passwordLabel">Password</label>
-          </element>
+          </div>
           <label> &nbsp;</label>
           <button
             className="login__btn"
