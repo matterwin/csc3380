@@ -102,26 +102,88 @@ nav a:hover .login {
   font-size: 170%;
 }
 
-nav input[type=checkbox] {
-  display: none;
+/*HAMBURGER MENU*/
+
+#nav-toggle{
+  position: absolute;
+  top: -100px;
 }
 
-/*HAMBURGER MENU*/
-.hamburger {
+nav .icon-burger{
   display: none;
-  font-size: 24px;
-  user-select: none;
+  margin-right: 27px;
+  border-radius: 10px;
+  padding: 3px;
+  top: 20px;
+  cursor: pointer;
+}
+
+nav .icon-burger:hover{
+  background-color: #a8a8a894;
+}
+
+nav .icon-burger .line{
+  width: 30px;
+  height: 5px;
+  background-color: #FFF;
+  margin: 5px;
+  border-radius: 2px;
+  transition: all .3s ease-in-out;
 }
 
 @media (max-width: 1220px) {
+
+  nav .icon-burger{
+    display: inline-block;
+  }
+
+  nav :checked ~ .icon-burger .line:nth-child(1) {
+    transform: translateY(10px) rotate(585deg);
+  }
+
+  nav :checked ~ .icon-burger .line:nth-child(3) {
+    transform: translateY(-10px) rotate(-585deg);
+  }
+
+  nav :checked ~ .icon-burger .line:nth-child(2) {
+      opacity: 0;
+  }
+
+  nav :checked ~ .icon-burger{
+    background-color: #a8a8a894;
+    outline-color: #d77a61;
+    outline-style: solid;
+    outline-width: 3.5px;
+  }
+
   .menu {
     display: none;
     position: absolute;
-    background-color: red;
+    background-color: #222;
     right: 0;
     left: 0;
     text-align: center;
     padding: 16px 0;
+    margin-top:43px;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  nav :checked ~ .nav--list .menu {
+    display: grid;
+    position: fixed;
+    overflow: hidden;
+    animation: loadingtransition 0.3s ease-in;
+  }
+
+  nav :checked ~ .nav--list .menu * {
+    animation: loadingtransition 0.3s ease-in;
+  }
+
+  nav :checked ~ .nav--list .body {
+    display: grid;
+    position: fixed;
+    overflow: hidden;
   }
 
   .nav--logo {
@@ -131,36 +193,6 @@ nav input[type=checkbox] {
   .nav--logo_text {
     margin-left: -10px;
   }
-
-  .menu li:hover {
-    display: inline-block;
-    background-color: #4c9e9e;
-    transition: 0.3s ease;
-  }
-
-  .menu li+li {
-    margin-top: 12px;
-  }
-
-  input[type=checkbox]:checked~.menu {
-    display: block;
-  }
-
-  .hamburger {
-    display: block;
-    margin-right: -150px;
-  }
-
-  .dropdown {
-    left: 50%;
-    top: 30px;
-    transform: translateX(35%);
-  }
-
-  .dropdown li:hover {
-    background-color: red;
-  }
-
 }
 
 .menu .active {
@@ -189,12 +221,13 @@ nav input[type=checkbox] {
   color: #FFF;
 }
 
-.menu .inactiveSign:active {
-  background-color: #9b5946;
+.menu .inactiveSign:hover {
+  background-color: #a8a8a894;
+  border-radius: 0px;
 }
 
-.menu .inactiveSign:hover {
-  border-radius: 0px;
+.menu .inactiveSign:active {
+  background-color: #D77A61;
 }
 
 .menu .sign-out {
@@ -207,12 +240,20 @@ nav input[type=checkbox] {
   color: #FFF;
 }
 
-.menu .sign-out:active {
-  background-color: #9b5946;
+
+.menu .inactive:active {
+  -webkit-transition-duration: 0.1s; /* Safari */
+  transition-duration: 0.1s;
+  color: #D77A61;
 }
 
 .menu .sign-out:hover {
   border-radius: 0px;
+  background-color: #a8a8a894;
+}
+
+.menu .sign-out:active {
+  background-color: #D77A61;
 }
 
 .searchBox {
@@ -231,3 +272,10 @@ nav .searchBox input:focus {
   outline-width: 2.3px;
 }
 
+.inactiveLog:hover {
+  color: #d77a61;
+}
+
+.menu .activeLog {
+  color: #d77a61;
+}

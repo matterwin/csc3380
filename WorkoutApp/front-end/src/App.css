@@ -6,7 +6,24 @@ body {
     background-color: #223843;
     padding-top: 90px;
     font-family: "Roboto", sans-serif;
-    height: 1000px;
+    height: 900px;
     width: 100%;
     overflow-x: hidden;
+}
+
+*{
+    animation: loadingtransition 700ms ease-in;
+}
+
+@keyframes  loadingtransition{
+
+from{
+    opacity: 0;
+    transform: rotateY(-50deg);
+}
+to{
+    opacity: 1;
+    transform: rotateY(0);
+}
+
 }

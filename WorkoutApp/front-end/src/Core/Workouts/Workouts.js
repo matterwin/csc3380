@@ -16,6 +16,7 @@ class Workouts extends React.Component {
             workoutsLoaded: false,
             numWorkouts: 0,
             numWorkoutsLoaded: false,
+            user: null
         }
     }
 
@@ -97,16 +98,32 @@ class Workouts extends React.Component {
                             <span>inescapable.</span>
                         </div>
                     </h1>
-                    <h2>Get your fit on and explore, conquer, and relish your fitness goals</h2>
+                    <h2>Get your fit on and explore, chase, and conquer your fitness goals</h2>
                     <img className="gif2" src={require('../../Gifs/PatrickBlowingBubble.gif')} />
                 </div>
                 <div className="preview-workouts">
-                    <center>
+                    <center className="note-box">
+                        <h1 className="box-h1">You can view other people's workouts down below.</h1>
+                        <h3 className="box-h3">Click on the workout and leave a comment or rating down below (finish this mess)</h3>
+                        <div className="gifs--box">
+                            <img src={require('../../Gifs/arms.gif')} className="arms--Gif"></img>
+                            <img src={require('../../Gifs/back.gif')} className="back--Gif"></img>
+                            <img src={require('../../Gifs/cardio.gif')} className="cardio--Gif"></img>
+                            <img src={require('../../Gifs/chest.gif')} className="chest--Gif"></img>
+                            <img src={require('../../Gifs/core.gif')} className="core--Gif"></img>
+                            <img src={require('../../Gifs/legs.gif')} className="legs--Gif"></img>
+                        </div>
+                    </center>
+                </div>
+                <br></br>
+
+                <div className="preview">
+                <center>
                         <br></br>
                         {
                             [...Array(parseInt(numWorkouts / this.workoutsSize) + 1) || []].map((key, value) => {
                                 return (
-                                    <button type="button"
+                                    <button className="workoutPages" type="button"
                                         disabled={(value + 1 == this.currentWorkoutPage)}
                                         key={value}
                                         onMouseUp={() => this.nextWorkouts(value + 1)}>
@@ -131,6 +148,13 @@ class Workouts extends React.Component {
                             ))
                         }
                     </center>
+                </div>
+                <div className="curve"></div>
+                <div className="added-space"></div>
+                <div className="footer">
+                    <ul className="footer--list">
+                        <li><p>&copy; 2022, Team MMM</p></li>                         
+                    </ul>
                 </div>
             </div>
         )

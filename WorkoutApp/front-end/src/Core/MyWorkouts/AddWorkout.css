@@ -2,6 +2,7 @@
     font-family: "Roboto", sans-serif;
     font-size: 30px;
 }
+/**/
 
 .addWorkout label {
     outline: black 1px;
@@ -84,4 +85,8 @@
 
 .Btn:active {
     opacity: .5;
+}
+
+.workoutType{
+    
 }

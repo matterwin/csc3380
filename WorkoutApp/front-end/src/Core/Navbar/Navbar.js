@@ -1,68 +1,73 @@
 import React from "react";
 import { NavLink } from 'react-router-dom';
 import "./Navbar.css"
-import { useState, useEffect } from 'react';
+import { useState, useEffect} from 'react';
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
 import { auth, db, logout } from "../../UserAuth/firebase";
+
 
 function Navbar() {
 
     const [user, loading] = useAuthState(auth);
     const navigate = useNavigate();
+    const [checked, setChecked] = React.useState(false);
 
     useEffect(() => {
       if (loading) return;
-      if (!user) {
+     /* if (!user) {
         return navigate("/");
-      }
+      }*///this fixed the bug where if you're not signed in you can't see other people's workouts
+      //but also when you refresh, it stays on the same page
     }, [user, loading]);
 
-
+    function handleClick() {
+        window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+        handleCheckbox();
+    }
+    
+    function handleCheckbox() {
+        setChecked(prev => !prev);
+    }
+  
+    function hideMenu() {
+        document.removeEventListener("click", hideMenu);
+        setChecked(false);
+    }
 
     return (
         <nav className="navClass">
             <a href="/"><img src="../logo-orange.png" alt="logo" className="nav--logo" /></a>
             <h2 className='nav--logo_text'><a href="/">Fit Happens</a></h2>
             {/*<input className="searchBox" placeholder="  Search"/>*/}
+            <input type="checkbox" id="nav-toggle" checked={checked} onChange={handleCheckbox}>
+            </input>
             <ul className="nav--list">
-                <input type="checkbox" id="checkbox_toggle" />
-                <label htmlFor="checkbox_toggle" className="hamburger">&#9776;</label>
                 <div className="menu">
                     <NavLink
                         end to="/"
                         className={({ isActive }) => (isActive ? 'active' : 'inactive')}
-                        onClick={() => {
-                            window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
-                          }}
+                        onClick={handleClick}
                     >HOME</NavLink>
                     <NavLink
                         to="MyWorkouts"
                         className={({ isActive }) => (isActive ? 'active' : 'inactive')}
-                        onClick={() => {
-                            window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
-                          }}
+                        onClick={handleClick}   
                     >YOUR WORKOUTS</NavLink>
                     <NavLink
                         to="MyProfile"
                         className={({ isActive }) => (isActive ? 'active' : 'inactive')}
-                        onClick={() => {
-                            window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
-                          }}
+                        onClick={handleClick}
                     >PROFILE</NavLink>
                     {!user && (<NavLink
                         to="Login"
-                        className={({ isActive }) => (isActive ? 'active' : 'inactive')}
-                        onClick={() => {
-                            window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
-                          }}
+                        className={({ isActive }) => (isActive ? 'activeLog' : 'inactiveLog')}
+                        onClick={handleClick}
                     >LOG IN</NavLink>)}
                     {!user && (<NavLink
                         to="Register"
                         className={({ isActive }) => (isActive ? 'activeSign' : 'inactiveSign')}
-                        onClick={() => {
-                            window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
-                          }}
+                        onClick={handleClick}
                     >SIGN UP</NavLink>)}       
                     {user && (<NavLink
                         end to="/"
@@ -71,6 +76,13 @@ function Navbar() {
                     >SIGN OUT</NavLink>)}
                 </div>
             </ul>
+            <label htmlFor="nav-toggle" className="icon-burger" onMouseLeave={() => {
+            document.addEventListener("click", hideMenu)
+          }}>
+                <div className="line"></div>
+                <div className="line"></div>
+                <div className="line"></div>
+            </label>
         </nav>
         )
     };

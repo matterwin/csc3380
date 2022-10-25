@@ -1,5 +1,5 @@
 .myprofile {
-  height: 100vh;
+  height: 80vh;
   width: 100vw;
   display: flex;
   align-items: center;
@@ -10,19 +10,94 @@
   display: flex;
   flex-direction: column;
   text-align: center;
-  background-color: #dcdcdc;
+  background-color: white;
   padding: 30px;
+  border-radius: 20px;
+  box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.5);
 }
 
-.myprofile__btn {
+.logout_btn {
   padding: 10px;
   font-size: 18px;
   margin-top: 10px;
-  border: none;
+  border-width: 2px;
+  border-color: black;
+  color: black;
+  background-color: white;
+}
+
+.logout_btn:hover{
+  padding: 10px;
+  font-size: 18px;
+  margin-top: 10px;
+  border-width: 2px;
+  border-color: black;
+  color: white;
+  background-color: black;
+  transition: background-color 0.3s;
+}
+
+.update_btn {
+  padding: 10px;
+  font-size: 18px;
+  margin-top: 10px;
+  border-width: 2px;
+  border-color: black;
   color: white;
   background-color: black;
 }
 
+.update_btn:hover{
+  padding: 10px;
+  font-size: 18px;
+  margin-top: 10px;
+  border-width: 2px;
+  border-color: black;
+  color: black;
+  background-color: white;
+  transition: background-color 0.3s;
+}
+
+
 .myprofile div {
   margin-top: 7px;
 }
+
+.space {
+  width: 7px;
+  height: auto;
+  display: inline-block;
+}
+
+.firstName{
+  box-sizing: border-box;
+  height: 30px;
+  width: 150px;
+}
+
+.middleName{
+  box-sizing: border-box;
+  height: 30px;
+  width: 150px;
+}
+
+.lastName{
+  box-sizing: border-box;
+  height: 30px;
+  width: 150px;
+}
+
+.birthDate{
+  box-sizing: border-box;
+  height: 30px;
+  width: 150px;
+}
+
+.weight{
+  box-sizing: border-box;
+  height: 30px;
+  width: 150px;
+}
+
+/**/
+

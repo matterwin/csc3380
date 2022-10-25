@@ -23,7 +23,8 @@
 }
 
 .register {
-  height: 110vh;
+  /*height: 110vh;*/
+  height: 905px;
   width: 100vw;
   display: flex;
   align-items: center;
@@ -50,10 +51,19 @@
   padding: 10px;
   font-size: 18px;
   margin-bottom: 10px;
-  border: none;
+  border-width: 2px;
+  border-color: #222;
   color: white;
-  background-color: black;
+  background-color: #222;
   border-radius: 8px;
+}
+
+.register__btn:hover{
+  border-width: 2px;
+  border-color: #222;
+  color: #222;
+  background-color: white;
+  transition: background-color 0.3s;
 }
 
 .register__google {
@@ -91,4 +101,8 @@ label {
   outline-color: #d77a61;
   outline-style: solid;
   outline-width: 2.3px;
+}
+
+.register__container label {
+  padding-bottom: 2px;
 }

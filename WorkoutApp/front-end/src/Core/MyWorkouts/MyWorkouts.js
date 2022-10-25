@@ -50,7 +50,7 @@ function MyWorkouts() {
             <div className="welcomeMessage">Welcome to Fit Happens, <div className = "typing">{name} <span className="wave">👋</span></div></div>
             <center>
                 <br></br>
-                <a className = "addWorkout" href={"/AddWorkout"}>Click here to add a personal workout!</a>
+                <a href={"/AddWorkout"}><button type="button" className="addWorkoutBtn">Click here to add a personal workout!</button></a>
                 {
                     Object.entries(jsonWorkouts).map(([key, value]) => {
                         return (
@@ -65,7 +65,7 @@ function MyWorkouts() {
                         )
                     })
                 }
-            </center>
+            </center>         
         </div>
     );
 }
