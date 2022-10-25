@@ -56,6 +56,8 @@ class Workouts extends React.Component {
     async componentDidMount() {
         this.fetchWorkouts(`${launchsettings.SERVER_URL}Workouts/1/${this.workoutsSize}`);
         this.fetchNumWorkouts(`${launchsettings.SERVER_URL}Workouts/Count`);
+		
+		// initialize card class here
     }
 
     nextWorkouts(numWorkout) {
@@ -115,17 +117,17 @@ class Workouts extends React.Component {
                         }
                         {
                             Object.keys(workouts || "").map((workout, i) => (
-                                <div className="workout" key={i}>
-                                    <h1>
-                                        {/*workouts[workout].workoutID}*/}
-                                        <a href={"/Workout?id=" + workouts[workout].id}>
-                                            {workouts[workout].title}
-                                        </a>
-                                    </h1>
-                                    <h2>{workouts[workout].description}</h2>
-                                    <h3>{workouts[workout].workoutType}</h3>
-                                    <img width="100" height="100" src={require(`../../Gifs/${workouts[workout].workoutType}.gif`)}></img>
-                                </div>
+								<div className="workout" key={i} onclick="'/Workout?id=' + workouts[workout].id">
+									<h1>
+										{/*workouts[workout].workoutID}*/}
+										<a href={"/Workout?id=" + workouts[workout].id}>
+											{workouts[workout].title}
+										</a>
+									</h1>
+									<h2>{workouts[workout].description}</h2>
+									<h3>{workouts[workout].workoutType}</h3>
+									<img width="100" height="100" src={require(`../../Gifs/${workouts[workout].workoutType}.gif`)}></img>
+								</div>
                             ))
                         }
                     </center>
