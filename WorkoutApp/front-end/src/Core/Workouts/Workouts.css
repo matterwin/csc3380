@@ -21,7 +21,7 @@
 	border: 5px solid black;
 	margin: 10px;
 	margin-top: 30px;
-	width: 600px;
+	width: 70%;
 	box-shadow: 0 4px 8px 0 black;
 	background-color: #DBD3D8;
 	color: #000000;
@@ -75,6 +75,8 @@ a {
 	width: 120vh;
 	word-wrap: break-word;
 	padding-left: 194px;
+	padding-bottom: 0%;
+	margin-bottom: 0%;
 }
 
 .welcome-screen h2 {
@@ -166,16 +168,26 @@ a {
 	-webkit-animation-delay: 10s;
 }
 
+.curve {
+    clip-path: ellipse(95% 100% at 50% 0%);
+    padding-top: 20vh;
+    padding-bottom: 20vh;
+    background-color: #222222;
+}
+
 @media (max-width: 1213px) {
 	.welcome-screen h1 {
+		float: center;
 		margin-left: auto;
 		margin-right: auto;
 		align-items: center;
 		width: 60vw;
 		/*font-size: 6vw;*/
-		word-wrap: 0;
+		word-wrap: normal;
+
 		text-align: center;
-		padding-left: 0;
+		padding-left: 0px;
+		text-align: center;
 	}
 
 	.slidingVertical {
@@ -190,6 +202,22 @@ a {
 		width: 60vw;
 		text-align: center;
 		padding-left: 0;
+	}
+
+	.preview-workouts {
+		clip-path: none;
+	}
+
+	.curve {
+		clip-path: none;
+	}
+	
+	.can-get-rid,.slidingVertical  {
+		display: none;
+	}
+
+	.gif2{
+		display: none;
 	}
 }
 
@@ -230,13 +258,6 @@ a {
 
 .gifs--box img {
 	width: 200px;
-}
-
-.curve {
-    clip-path: ellipse(95% 100% at 50% 0%);
-    padding-top: 20vh;
-    padding-bottom: 20vh;
-    background-color: #222222;
 }
 
 .added-space {
