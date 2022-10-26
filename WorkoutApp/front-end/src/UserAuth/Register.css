@@ -13,10 +13,11 @@
 }
 
 .reg--pic {
-  width: 15vh;
+  /*width: 15vh;*/
+  width: 130px;
   margin-bottom: -250px;
   margin-top: 130px;
-  margin-right: -1.5px;
+  margin-right: -20px;
 }
 
 .register {

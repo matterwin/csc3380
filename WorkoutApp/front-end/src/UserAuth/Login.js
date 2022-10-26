@@ -78,7 +78,10 @@ function Login() {
             </div>
             <label> &nbsp;</label>
             <button
-              className={ (email && password) ? 'login__btn' : 'login__btn__disabled'}
+              className={ 
+                (email) ? 
+                  ((password) ? 'login__btn' : 'login__btn__half__disabled') 
+                : ((password) ? ((email) ? 'login__btn' : 'login__btn__half__disabled') : 'login__btn__disabled')}
               onClick={() => {logInWithEmailAndPassword(email, password)}}
               
             >
