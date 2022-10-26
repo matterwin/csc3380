@@ -1,5 +1,5 @@
 body {
-  margin: 0px;
+  margin: 0;
 }
 
 nav {
@@ -16,12 +16,11 @@ nav {
   margin-right: 100px;
   font-family: "Raleway";
   font-weight: 100;
-  font-weight: bolder;
   z-index: 9999;
 }
 
-nav h2 .nav--logo_text {
-  font-family: "Raleway";
+nav .nav--logo_text {
+  font-family: "Montserrat";
 }
 
 .nav--list * {
@@ -36,6 +35,7 @@ nav h2 .nav--logo_text {
   font-size: 18px;
   letter-spacing: 1px;
   font-family: "Raleway";
+  font-weight: bolder;
 }
 
 .nav--list {
@@ -111,7 +111,7 @@ nav a:hover .login {
 
 nav .icon-burger{
   display: none;
-  margin-right: 27px;
+  margin-right: 5%;
   border-radius: 10px;
   padding: 3px;
   top: 20px;
@@ -187,12 +187,9 @@ nav .icon-burger .line{
   }
 
   .nav--logo {
-    margin-left: -10px;
+    margin-left: 0px
   }
 
-  .nav--logo_text {
-    margin-left: -10px;
-  }
 }
 
 .menu .active {
@@ -273,9 +270,13 @@ nav .searchBox input:focus {
 }
 
 .inactiveLog:hover {
-  color: #d77a61;
+  color: #a8a8a894;
 }
 
 .menu .activeLog {
+  color: #d77a61;
+}
+
+.inactiveLog:active {
   color: #d77a61;
 }

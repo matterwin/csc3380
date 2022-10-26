@@ -36,6 +36,9 @@ function Navbar() {
     }
 
     return (
+        <>
+        {
+            location.pathname != '/Login'  && location.pathname != '/Register' && 
         <nav className="navClass">
             <a href="/"><img src="../logo-orange.png" alt="logo" className="nav--logo" /></a>
             <h2 className='nav--logo_text'><a href="/">Fit Happens</a></h2>
@@ -49,16 +52,16 @@ function Navbar() {
                         className={({ isActive }) => (isActive ? 'active' : 'inactive')}
                         onClick={handleClick}
                     >HOME</NavLink>
-                    <NavLink
+                    {user && (<NavLink
                         to="MyWorkouts"
                         className={({ isActive }) => (isActive ? 'active' : 'inactive')}
                         onClick={handleClick}   
-                    >YOUR WORKOUTS</NavLink>
-                    <NavLink
+                    >YOUR WORKOUTS</NavLink>)}
+                    {user && (<NavLink
                         to="MyProfile"
                         className={({ isActive }) => (isActive ? 'active' : 'inactive')}
                         onClick={handleClick}
-                    >PROFILE</NavLink>
+                    >PROFILE</NavLink>)}
                     {!user && (<NavLink
                         to="Login"
                         className={({ isActive }) => (isActive ? 'activeLog' : 'inactiveLog')}
@@ -73,6 +76,7 @@ function Navbar() {
                         end to="/"
                         className="sign-out"
                         onClick={logout}
+                        /*reloadDocument*/
                     >SIGN OUT</NavLink>)}
                 </div>
             </ul>
@@ -83,7 +87,8 @@ function Navbar() {
                 <div className="line"></div>
                 <div className="line"></div>
             </label>
-        </nav>
+        </nav>}
+        </>
         )
     };
 

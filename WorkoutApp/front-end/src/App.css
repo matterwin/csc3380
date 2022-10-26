@@ -6,13 +6,13 @@ body {
     background-color: #223843;
     padding-top: 90px;
     font-family: "Roboto", sans-serif;
-    height: 900px;
+    height: 100%;
     width: 100%;
     overflow-x: hidden;
 }
 
 *{
-    animation: loadingtransition 700ms ease-in;
+    animation: loadingtransition 200ms ease-in;
 }
 
 @keyframes  loadingtransition{

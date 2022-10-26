@@ -8,7 +8,6 @@ import Workout from "./Core/Workouts/Workout";
 import Navbar from "./Core/Navbar/Navbar";
 import AddWorkout from "./Core/MyWorkouts/AddWorkout"
 import MyWorkout from "./Core/MyWorkouts/MyWorkout"
-
 import { useEffect, useState } from "react";
 
 import "./App.css"
@@ -55,12 +54,17 @@ function App() {
     zIndex: 9999
  } 
 
+  /*{
+    location.pathname != '/Login'  && location.pathname != '/Register' && <div style={myComponentStyle}>&nbsp;</div>
+  }*/
+
   return (
     <div>
-      <div style={myComponentStyle}>&nbsp;</div>
       <div className="app">       
         <Router>
-          <Navbar />
+          {
+            location.pathname != '/Login'  && location.pathname != '/Register' && <Navbar />
+          }
           <Routes>
             <Route exact path="/" element={<Workouts />} />
             <Route exact path="/Login" element={<Login />} />
