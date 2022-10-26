@@ -87,7 +87,7 @@ class Workouts extends React.Component {
                     <center>
                         <img className="gif" src={require('../../Gifs/PatricSlappingKnees.gif')} />
                     </center>
-                    <h1>Fit happens, it's&nbsp;
+                    <h1>Fit happens<div className="can-get-rid">,&nbsp;it's&nbsp;</div>
                         <div className="slidingVertical">
                             <span>inevitable.</span>
                             <span>inexorable.</span>
