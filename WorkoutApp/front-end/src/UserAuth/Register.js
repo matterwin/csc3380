@@ -29,10 +29,7 @@ function Register() {
 
   return (
     <div className="reg">
-      <div className="buttons">
-        <div><Link to="/Login" className="signup">Log in</Link></div>
-        <div><a href="/" className="home">Home</a></div>
-      </div>
+      <div className="space--uptop"></div>
       <center>
         <div>
           <a href="/"><img className="reg--pic" src="logo-orange.png"></img></a>
@@ -99,6 +96,13 @@ function Register() {
               Register
             </button>
           </div>
+        </div>
+      </center>
+      <center>
+        <div className="buttons">
+          <a href="/" className="home">Home</a>
+          <>&nbsp;&nbsp;</>
+          <Link to="/Login" className="signup">Log in</Link>
         </div>
         <p className="copyright">© Copyright 2022 Team MMM. All Rights Reserved.</p>
       </center>
