@@ -30,7 +30,7 @@
   outline-width: 2.3px;
 }
 
-.login__btn, .login__btn__disabled {
+.login__btn, .login__btn__disabled, .login__btn__half__disabled{
   padding: 10px;
   font-size: 18px;
   margin-top: 10px;
@@ -39,6 +39,8 @@
   color: white;
   background-color: #222;
   border-radius: 8px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
 }
 
 .login__btn:hover{
@@ -71,10 +73,10 @@ button:hover {
 }
 
 .log--pic {
-  width: 15vh;
+  width: 130px;
   margin-bottom: -250px;
   margin-top: 130px;
-  margin-right: -1.5px;
+  margin-right: -20px;
 }
 
 .log--subtitle {
@@ -228,5 +230,15 @@ input:focus ~.passwordLabel {
 .login__btn__disabled {
   cursor: not-allowed;
   pointer-events: none;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  opacity: 55%;
+}
+
+.login__btn__half__disabled{
+  cursor: not-allowed;
+  pointer-events: none;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
   opacity: 75%;
 }
