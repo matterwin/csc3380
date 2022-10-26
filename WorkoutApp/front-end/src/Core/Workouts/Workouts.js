@@ -73,8 +73,7 @@ class Workouts extends React.Component {
         // Something is not loaded
         if (!workoutsLoaded || !numWorkoutsLoaded) return (
             <div className="loading">
-                <img src={require('../../Gifs/Loading.gif')} alt="Load" />
-                <h1 className="load--phrase">Loading Workouts</h1>
+                 <img src={require('../../Gifs/Loading.gif')} alt="Load" />
             </div>
         )
 
