@@ -4,6 +4,7 @@ import { auth, logInWithEmailAndPassword } from "./firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import {useRef} from 'react';
 import "./Login.css";
+import { isEmpty } from "@firebase/util";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -22,10 +23,12 @@ function Login() {
 /*<div className="signup--words"><p>Don't have an account yet?</p></div>*/
   return (
     <div className="log">
-        <div><Link Link to="/Register" className="signup">Sign up</Link></div>
-        <Link Link to="/" className="home">Home</Link>
-      <center>
-        <div className="buttons">
+      <div className="buttons">
+        <div><Link to="/Register" className="signup">Sign up</Link></div>
+        <div><a href="/" className="home">Home</a></div>
+      </div>
+      <center className="login-eveything">
+        <div>
           <a href="/"><img className="log--pic" src="logo-orange.png"></img></a>
           <h1 className="log--title">Log in to your account</h1>
           <h3 className="log--subtitle">Or&nbsp;<Link to="../Register" className="link">create a free account</Link></h3>
@@ -36,9 +39,9 @@ function Login() {
               <br></br>
               <input
                 type="text"
-                placeholder="Email"
-                className="login__textBox"
+                placeholder="Email"              
                 value={email}
+                className='login__textBox'
                 onChange={(e) => setEmail(e.target.value)}
                 autoFocus
                 onFocus={e => e.currentTarget.select()}
@@ -58,8 +61,8 @@ function Login() {
               <input
                 type="password"
                 placeholder="Password"
-                className="login__textBox"
                 value={password}
+                className='login__textBox'
                 onChange={(e) => setPassword(e.target.value)}
                 onKeyDown={(e) => {
                   if (e.key === "Enter") {
@@ -69,20 +72,24 @@ function Login() {
                     inputRefs.current[0].focus();
                   }
                 }}
-                ref={(el) => (inputRefs.current[1] = el)}
+                ref={(el) => (inputRefs.current[1] = el)}             
               />
               <label className="passwordLabel">Password</label>
             </div>
             <label> &nbsp;</label>
             <button
-              className="login__btn"
-              onClick={() => logInWithEmailAndPassword(email, password)}
+              className={ (email && password) ? 'login__btn' : 'login__btn__disabled'}
+              onClick={() => {logInWithEmailAndPassword(email, password)}}
+              
             >
               Login
             </button>
           </div>
+        
         </div>
+        <p className="copyright">© Copyright 2022 Team MMM. All Rights Reserved.</p>
       </center>
+      
     </div>
   );
 }

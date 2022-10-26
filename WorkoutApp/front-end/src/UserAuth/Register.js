@@ -28,11 +28,13 @@ function Register() {
   const inputRefs = useRef([]);
 
   return (
-    <div>
-      <div><Link Link to="/Login" className="signup">Log in</Link></div>
-      <Link Link to="/" className="home">Home</Link>
+    <div className="reg">
+      <div className="buttons">
+        <div><Link to="/Login" className="signup">Log in</Link></div>
+        <div><a href="/" className="home">Home</a></div>
+      </div>
       <center>
-        <div className="buttons">
+        <div>
           <a href="/"><img className="reg--pic" src="logo-orange.png"></img></a>
           <h1 className="log--title">Create your free account</h1>
           <h3 className="log--subtitle">Or&nbsp;<Link to="../Login" className="link">login into your account</Link></h3>
@@ -90,11 +92,15 @@ function Register() {
               ref={(el) => (inputRefs.current[2] = el)}
             />
             <label> &nbsp;</label>
-            <button className="register__btn" onClick={register}>
+            <button 
+              className={ (name && email && password) ? 'register__btn' : 'register__btn__disabled'}
+              onClick={register}
+            >
               Register
             </button>
           </div>
         </div>
+        <p className="copyright">© Copyright 2022 Team MMM. All Rights Reserved.</p>
       </center>
     </div>
   );

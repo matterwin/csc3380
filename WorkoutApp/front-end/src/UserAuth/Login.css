@@ -30,7 +30,7 @@
   outline-width: 2.3px;
 }
 
-.login__btn {
+.login__btn, .login__btn__disabled {
   padding: 10px;
   font-size: 18px;
   margin-top: 10px;
@@ -74,6 +74,7 @@ button:hover {
   width: 15vh;
   margin-bottom: -250px;
   margin-top: 130px;
+  margin-right: -1.5px;
 }
 
 .log--subtitle {
@@ -141,12 +142,8 @@ input:focus ~.passwordLabel {
   color: #d77a61;
 }
 
-input[value=""] ~ :root .login__btn{
-  opacity: 50%;
-}
-
 .words--before-log {
-  margin-top: -21.5vh;
+  margin-top: -20.5vh;
 }
 
 .signup--words {
@@ -161,7 +158,7 @@ input[value=""] ~ :root .login__btn{
 }
 
 .signup {
-  top: 0%;
+  top: 0% !important;
   font-weight: 600;
   font-size: 90%;
   float: right;
@@ -222,6 +219,14 @@ input[value=""] ~ :root .login__btn{
   outline-width: 2.3px;
 }
 
-.buttons {
-  margin-top: -75px;
+.log .copyright {
+  color: #ffffff;
+  margin-top: -240px;
+  font-size: x-small;
+}
+
+.login__btn__disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+  opacity: 75%;
 }
