@@ -133,7 +133,7 @@ class Workouts extends React.Component {
                         }
                         {
                             Object.keys(workouts || "").map((workout, i) => (
-								<div className="workout" key={i} onclick="'/Workout?id=' + workouts[workout].id">
+								<div className="homeworkout" key={i} onclick="'/Workout?id=' + workouts[workout].id">
 									<h1>
 										{/*workouts[workout].workoutID}*/}
 										<a href={"/Workout?id=" + workouts[workout].id}>

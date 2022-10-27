@@ -16,7 +16,11 @@
 	/*decide in class which is better*/
 }
 
-.workout {
+.homeworkout {
+	background-color: #DBD3D8;
+	background: url("https://images.unsplash.com/photo-1604147706283-d7119b5b822c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80");
+	background-repeat: no-repeat;
+	background-size: cover;
 	font-family: "Roboto";
 	border: 5px solid black;
 	margin: 10px;
@@ -32,9 +36,14 @@
 	text-align: center;
 }
 
-.h1 {
+h1.workout {
 	font-size: 15;
 	color: #000000;
+	font-family: "Roboto";
+}
+
+h3.workout {
+	font-family: "Roboto";
 }
 
 .load--phrase {
@@ -49,6 +58,7 @@ a:hover {
 a {
 	color: #222;
 	text-decoration: none;
+	font-family: "Roboto";
 }
 
 .preview-workouts {

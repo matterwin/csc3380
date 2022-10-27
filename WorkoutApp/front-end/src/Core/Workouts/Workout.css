@@ -14,13 +14,83 @@
 
 .workout {
 	background-color: #DBD3D8;
-	background-image: linear-gradient(white, #DBD3D8, #808080);
+	background: url("https://images.unsplash.com/photo-1604147706283-d7119b5b822c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80");
+	background-repeat: no-repeat;
+	background-size: cover;
+	font-family: "Roboto";
+	border: 5px solid black;
+	margin: 10px;
+	margin-top: 30px;
+	width: 70%;
+	box-shadow: 0 4px 8px 0 black;
+	color: #000000;
+	/*background-image: linear-gradient(white, #DBD3D8, #808080);*/
+	min-height: 40%;
+	position: absolute;
+	top: 55%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	display: grid;
+	justify-content: center;
+	align-items: center;
+	border-radius: 2rem;
+	transition: transform 200ms;
+}
+.workout h2{
+	font-size: 20px;
+	font-family: "Roboto";
 }
 
-.workout h2 {
-	font-size: 20px;
+.workout h1 {
+	font-family: "Roboto";
+}
+
+.workout h3 {
+	font-family: "Roboto";
 }
 
 .workout:hover {
 	box-shadow: 0 8px 16px 0 white;
+}
+
+.workoutType {
+	font-family: "Roboto";
+}
+
+.stack {
+	width: 500px;
+	height: 500px;
+	position: relative;
+}
+
+.workout:nth-last-child(1) {
+	--y: calc(-50% + 35px);
+	transform: translate(-50%, var(--y)) scale(1.05);
+}
+
+.workout:nth-last-child(2) {
+	--y: calc(-50%);
+	transform: translate(-50%, var(--y)) scale(1);
+}
+
+.workout:nth-last-child(3) {
+	--y: calc(-50% - 35px);
+	transform: translate(-50%, var(--y)) scale(0.95);
+}
+
+.workout:nth-last-child(n + 4) {
+	--y: calc(-50% - 70px);
+	transform: translate(-50%, var(--y)) scale(0.9);
+	box-shadow: 0 0 1px 1px #00000003;
+}
+
+@keyframes swap {
+	50% {
+		transform: translate(-50%, calc(var(--y) - 250px)) scarl(0.85) rotate(-5deg);
+		animation-timing-function: ease-in;
+	}
+	100% {
+		transform: translate(-50%, calc(var(--y) - 15px)) scarl(0.85);
+		z-index: -1;
+	}
 }

@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { act } from "react-dom/test-utils";
 import Workouts from "./Workouts";
 import "./Workout.css"
+/*import "./CardScript.js";*/
 import launchsettings from "../../launchsettings.json"
 
 class Workout extends React.Component {
@@ -29,7 +30,6 @@ class Workout extends React.Component {
             })
     }
 
-
     render() {
         const { workoutLoaded, workout } = this.state;
         if (!workoutLoaded) return (
@@ -40,24 +40,25 @@ class Workout extends React.Component {
         )
 
         return (
-            <div>
-                <center>
-                    <div className="workout">
-                        <h1>{workout.title}</h1>
-                        <h2>{workout.description}</h2>
-                        {
-                            Object.keys(workout.steps).map((step, j) => (
-                                <div className="workoutSteps" key={j}>
-                                    <span>
-                                        <p>Step {j + 1}: {workout.steps[j].instruction} {workout.steps[j].unit || ""}</p>
-                                    </span>
-                                </div>
-                            ))
-                        }
-                        <img width="200" height="200" src={require(`../../Gifs/${workout.workoutType}.gif`)}></img>
-                    </div>
-                </center>
-            </div>
+			<div className="stack">
+			<script src="./CardScript.js" defer></script>
+				<center>
+					<div className="workout">
+						<h1>{workout.title}</h1>
+						<h2>{workout.description}</h2>
+						{
+							Object.keys(workout.steps).map((step, j) => (
+								<div className="workoutSteps" key={j}>
+									<span>
+										<p>Step {j + 1}: {workout.steps[j].instruction} {workout.steps[j].unit || ""}</p>
+									</span>
+								</div>
+							))
+						}
+						<img width="200" height="200" src={require(`../../Gifs/${workout.workoutType}.gif`)}></img>
+					</div>
+				</center>
+			</div>
         )
     };
 }
