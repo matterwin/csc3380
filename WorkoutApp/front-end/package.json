@@ -597,7 +597,6 @@
     "react-refresh": "^0.11.0",
     "react-router": "^6.4.0",
     "react-router-dom": "^6.4.0",
-    "react-scripts": "^5.0.1",
     "read-cache": "^1.0.0",
     "readable-stream": "^3.6.0",
     "readdirp": "^3.6.0",
@@ -792,7 +791,9 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
   "author": "",
   "license": "ISC",
@@ -807,5 +808,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "homepage": "https://localhost",
+  "devDependencies": {
+    "react-scripts": "^5.0.1"
   }
 }
