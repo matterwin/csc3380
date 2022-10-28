@@ -5,6 +5,7 @@ import { auth, db } from "../../UserAuth/firebase";
 import { query, collection, getDocs, where } from "firebase/firestore";
 import "./MyWorkouts.css"
 import launchsettings from "../../launchsettings.json"
+import { Link } from 'react-router-dom';
 
 function MyWorkouts() {
     const [user, loading, error] = useAuthState(auth);
@@ -56,7 +57,7 @@ function MyWorkouts() {
                         return (
                             <div className="workout" key={key}>
                                 <h1>
-                                    <a href={"/MyWorkout?id=" + value.id}>{value.title}</a>
+                                    <Link to={location => ({ ...location, pathname:`/MyWorkout?id=${value.id}`})} />
                                 </h1>
                                 <h2>{value.description}</h2>
                                 <h3>{value.workoutType}</h3>
