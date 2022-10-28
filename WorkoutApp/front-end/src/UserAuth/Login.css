@@ -75,8 +75,6 @@ button:hover {
 .log--pic {
   width: 130px;
   margin-bottom: -250px;
-  margin-top: 130px;
-  margin-right: -20px;
 }
 
 .log--subtitle {
@@ -148,6 +146,10 @@ input:focus ~.passwordLabel {
   margin-top: -20.5vh;
 }
 
+.log .buttons {
+  margin-top: -230px;
+}
+
 .signup--words {
   top: 0%;
   color: #d8d3d8;
@@ -160,13 +162,11 @@ input:focus ~.passwordLabel {
 }
 
 .signup {
-  top: 0% !important;
   font-weight: 600;
   font-size: 90%;
-  float: right;
   color: white;
   margin-right: 1%;
-  padding: 10px 15px;
+  padding: 10px 51px;
   background-color: #d77a61;
   border-radius: 7px;
   vertical-align: middle;
@@ -180,15 +180,15 @@ input:focus ~.passwordLabel {
 }
 
 .home {
-  top: 0%;
   font-size: 90%;
   font-weight: 600;
-  float: left;
   color: white;
   margin-left: 1%;
-  padding: 10px 15px;
+  padding: 10px 51px;
+  padding-right: 55px;
   background-color: #d77a61;
   border-radius: 7px;
+  vertical-align: middle;
   -webkit-transition-duration: 0.4s; /* Safari */
   transition-duration: 0.4s;
 }
@@ -196,6 +196,7 @@ input:focus ~.passwordLabel {
 .home:hover {
   color: white;
   background-color: #9b5946;
+  border-radius: 0px;
 }
 
 .signup:hover {
@@ -223,8 +224,9 @@ input:focus ~.passwordLabel {
 
 .log .copyright {
   color: #ffffff;
-  margin-top: -240px;
-  font-size: x-small;
+  margin-top: 30px;
+  font-size: 12px;
+  bottom: 0;
 }
 
 .login__btn__disabled {
@@ -241,4 +243,8 @@ input:focus ~.passwordLabel {
   -webkit-transition-duration: 0.4s; /* Safari */
   transition-duration: 0.4s;
   opacity: 75%;
+}
+
+.space--uptop {
+  margin-bottom: -105px;
 }

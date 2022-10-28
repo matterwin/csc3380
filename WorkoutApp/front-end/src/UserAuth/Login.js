@@ -23,10 +23,7 @@ function Login() {
 /*<div className="signup--words"><p>Don't have an account yet?</p></div>*/
   return (
     <div className="log">
-      <div className="buttons">
-        <div><Link to="/Register" className="signup">Sign up</Link></div>
-        <div><a href="/" className="home">Home</a></div>
-      </div>
+      <div className="space--uptop"></div>
       <center className="login-eveything">
         <div>
           <a href="/"><img className="log--pic" src="logo-orange.png"></img></a>
@@ -90,11 +87,17 @@ function Login() {
           </div>
         
         </div>
+      </center>
+      <center>
+        <div className="buttons">
+          <a href="/" className="home">Home</a>
+          <>&nbsp;&nbsp;</>
+          <Link to="/Register" className="signup">Sign up</Link>
+        </div>
         <p className="copyright">© Copyright 2022 Team MMM. All Rights Reserved.</p>
       </center>
-      
     </div>
   );
 }
-
+//<p className="copyright">© Copyright 2022 Team MMM. All Rights Reserved.</p>
 export default Login;
