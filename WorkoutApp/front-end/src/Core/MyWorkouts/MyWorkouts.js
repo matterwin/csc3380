@@ -57,7 +57,7 @@ function MyWorkouts() {
                         return (
                             <div className="workout" key={key}>
                                 <h1>
-                                    <Link to={location => ({ ...location, pathname:`/MyWorkout?id=${value.id}`})} />
+                                    <Link to={`/MyWorkout?id=${value.id}`}>{value.title}</Link>
                                 </h1>
                                 <h2>{value.description}</h2>
                                 <h3>{value.workoutType}</h3>
