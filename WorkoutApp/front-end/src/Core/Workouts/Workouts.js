@@ -73,7 +73,7 @@ class Workouts extends React.Component {
         // Something is not loaded
         if (!workoutsLoaded || !numWorkoutsLoaded) return (
             <div className="loading">
-                 <img src={require('../../Gifs/Loading.gif')} alt="Load" />
+                 <img src={'/Gifs/Loading.gif'} alt="Load" />
             </div>
         )
 
@@ -84,7 +84,7 @@ class Workouts extends React.Component {
             <div className="container">
                 <div className="welcome-screen">
                     <center>
-                        <img className="gif" src={require('../../Gifs/PatricSlappingKnees.gif')} />
+                        <img className="gif" src={'/Gifs/PatricSlappingKnees.gif'} />
                     </center>
                     <h1>Fit happens<div className="can-get-rid">,&nbsp;it's&nbsp;</div>
                         <div className="slidingVertical">
@@ -96,19 +96,19 @@ class Workouts extends React.Component {
                         </div>
                     </h1>
                     <h2>Get your fit on and explore, chase, and conquer your fitness goals</h2>
-                    <img className="gif2" src={require('../../Gifs/PatrickBlowingBubble.gif')} />
+                    <img className="gif2" src={'/Gifs/PatrickBlowingBubble.gif'} />
                 </div>
                 <div className="preview-workouts">
                     <center className="note-box">
                         <h1 className="box-h1">You can view other people's workouts down below.</h1>
                         <h3 className="box-h3">Click on the workout and leave a comment or rating down below (finish this mess)</h3>
                         <div className="gifs--box">
-                            <img src={require('../../Gifs/arms.gif')} className="arms--Gif"></img>
-                            <img src={require('../../Gifs/back.gif')} className="back--Gif"></img>
-                            <img src={require('../../Gifs/cardio.gif')} className="cardio--Gif"></img>
-                            <img src={require('../../Gifs/chest.gif')} className="chest--Gif"></img>
-                            <img src={require('../../Gifs/core.gif')} className="core--Gif"></img>
-                            <img src={require('../../Gifs/legs.gif')} className="legs--Gif"></img>
+                            <img src={'/Gifs/arms.gif'} className="arms--Gif"></img>
+                            <img src={'/Gifs/back.gif'} className="back--Gif"></img>
+                            <img src={'/Gifs/cardio.gif'} className="cardio--Gif"></img>
+                            <img src={'/Gifs/chest.gif'} className="chest--Gif"></img>
+                            <img src={'/Gifs/core.gif'} className="core--Gif"></img>
+                            <img src={'/Gifs/legs.gif'} className="legs--Gif"></img>
                         </div>
                     </center>
                 </div>
@@ -140,7 +140,7 @@ class Workouts extends React.Component {
                                     </h1>
                                     <h2>{workouts[workout].description}</h2>
                                     <h3>{workouts[workout].workoutType}</h3>
-                                    <img width="100" height="100" src={require(`../../Gifs/${workouts[workout].workoutType}.gif`)}></img>
+                                    <img width="100" height="100" src={`/Gifs/${workouts[workout].workoutType}.gif`}></img>
                                 </div>
                             ))
                         }
