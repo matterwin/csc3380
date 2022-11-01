@@ -141,12 +141,13 @@ function MyWorkout() {
     }
 
     return (
-        <div className="myworkouts">
-            <center>
-                <label>Title</label><br></br>
-                <input type="text" id="title" placeholder="Title"></input><br></br>
-                <label>Description</label><br></br>
-                <input type="text" id="description" placeholder="Description"></input><br></br>
+        <center className="addWorkout">
+            <div className="alignBox">
+                <div className="titleBox"><br></br>
+                <input type="text" id="title" placeholder="Title"></input></div><br></br>
+                <div className="descriptionBox">
+                <textarea id="description" placeholder="Description"></textarea></div><br></br>
+                <label>Steps:</label><br></br>
                 {
                     (steps || []).map((step, index) => {
                         return (
@@ -156,11 +157,12 @@ function MyWorkout() {
                             </div>
                         );
                     })}
-                <label>Next Step</label><br></br>
-                <input type="text" id="next-step" placeholder="Instruction"></input>
-                <input type="text" id="next-unit" placeholder="Unit"></input>
+                <label>Create Step</label><br></br>
+                <input className="instruction" type="text" id="next-step" placeholder="Instruction"></input>
+                <input className="unit" type="text" id="next-unit" placeholder="Unit"></input>
                 <br></br><br></br>
-                <select id="workoutType" name="Workout Type">
+                <label>Select a tag</label><br></br>
+                <div className="tag"><select id="workoutType" name="Workout Type">
                 {
                 (workoutTypes).map(type => {
                     return (
@@ -168,7 +170,7 @@ function MyWorkout() {
                     );
                 })
                 }
-                </select>
+                </select></div>
                 <div className="buttons">
                     <button className = "Btn" onClick={addStep}><span>Add Step</span></button>
                     <div className="space"></div>
@@ -178,8 +180,8 @@ function MyWorkout() {
                     <div className="space"></div>
                     <button className = "Btn" onClick={() => deleteWorkout(jsonWorkout.id)}><span>Delete Workout</span></button>
                 </div>
+                </div>
             </center>
-        </div>
     );
 }
 

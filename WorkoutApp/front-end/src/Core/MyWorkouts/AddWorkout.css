@@ -117,6 +117,7 @@
 
 .tag{
     margin-top:10px;
+    margin-bottom:10px;
 }
 .Btn {
     background: #D77A61;
@@ -136,7 +137,7 @@
     -webkit-user-select: none;
     touch-action: manipulation;
     vertical-align: middle;
-    margin:5px;
+    margin:4px;
 }
 
 .Btn:hover,

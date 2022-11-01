@@ -125,7 +125,7 @@ function AddWorkout() {
         <input type="text" id="title" placeholder="Title"></input></div><br></br>
         <div className="descriptionBox">
         <textarea id="description" placeholder="Description"></textarea></div><br></br>
-        <label>Steps</label><br></br>
+        <label>Steps:</label><br></br>
         {
             (steps || []).map((step, index) => {
                 return (
@@ -135,13 +135,14 @@ function AddWorkout() {
                     </div>
                 );
         })}
+        <label>Create Step</label><br></br>
         <input className="instruction" type="text" id="next-step" placeholder="Instruction"></input>
         <div className="space"></div>
         <input className="unit" id="next-unit" placeholder="Unit"></input>
        
         <div className="buttons">
           <br></br>
-        <button className = "Btn" onClick={addStep}><span>Add New Step</span></button>
+        <button className = "Btn" onClick={addStep}><span>Add Step</span></button>
         <div className="space"></div>
         <button className = "Btn" onClick={removeStep}><span>Remove A Step</span></button>
         <br></br><br></br>
