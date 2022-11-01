@@ -121,11 +121,11 @@ function AddWorkout() {
   return (
     <center className="addWorkout">
         <div className="alignBox">
-        <div className="titleBox"><label>Title: </label><br></br>
+        <div className="titleBox"><br></br>
         <input type="text" id="title" placeholder="Title"></input></div><br></br>
         <div className="descriptionBox">
-        <label>Description</label><br></br>
-        <input type="text" id="description" placeholder="Description"></input></div><br></br>
+        <textarea id="description" placeholder="Description"></textarea></div><br></br>
+        <label>Steps</label><br></br>
         {
             (steps || []).map((step, index) => {
                 return (
@@ -135,18 +135,18 @@ function AddWorkout() {
                     </div>
                 );
         })}
-        <label>Next Step</label><br></br>
-        <input type="text" id="next-step" placeholder="Instruction"></input>
+        <input className="instruction" type="text" id="next-step" placeholder="Instruction"></input>
         <div className="space"></div>
-        <input id="next-unit" placeholder="Unit"></input>
-        <br></br>
+        <input className="unit" id="next-unit" placeholder="Unit"></input>
+       
         <div className="buttons">
           <br></br>
         <button className = "Btn" onClick={addStep}><span>Add New Step</span></button>
         <div className="space"></div>
         <button className = "Btn" onClick={removeStep}><span>Remove A Step</span></button>
         <br></br><br></br>
-        <select id="workoutType" name="Workout Type">
+        <label>Select a tag</label><br></br>
+        <div className="tag"><select id="workoutType" name="Workout Type">
         {
           (workoutTypes).map(type => {
             return (
@@ -154,8 +154,8 @@ function AddWorkout() {
             );
           })
         }
-        </select>
-        <br></br><br></br>
+        </select></div>
+        <br></br>
         <button className = "Btn" onClick={submitWorkout}><span>Submit Workout</span></button>
         </div>
         </div>
