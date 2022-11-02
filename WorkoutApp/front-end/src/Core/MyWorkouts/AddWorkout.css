@@ -46,7 +46,7 @@
 }
 
 .titleBox input[type=text], textarea{
-    background-color: gray;
+    background-color: lightgray;
     border: 1px solid #ccc;
     width: 94%;
     padding: 12px 20px;
@@ -76,7 +76,7 @@
 
 .instruction {
     align-self: center;
-    background-color: white;
+    background-color: lightgray;
     color: black;
     width:38%;
     border-radius:5px;
@@ -84,7 +84,7 @@
 
 .unit {
     align-self: center;
-    background-color: white;
+    background-color: lightgray;
     color: black;
     width:38%;
     border-radius:5px;
