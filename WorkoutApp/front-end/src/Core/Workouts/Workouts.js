@@ -117,7 +117,7 @@ class Workouts extends React.Component {
                 <br></br>
 
                 <div className="preview">
-                <center>
+					<center>
                         <br></br>
                         {
                             [...Array(parseInt(numWorkouts / this.workoutsSize) + 1) || []].map((key, value) => {
@@ -134,15 +134,17 @@ class Workouts extends React.Component {
                         {
                             Object.keys(workouts || "").map((workout, i) => (
 								<div className="homeworkout" key={i} onclick="'/Workout?id=' + workouts[workout].id">
-									<h1>
-										{/*workouts[workout].workoutID}*/}
-										<a href={"/Workout?id=" + workouts[workout].id}>
+									<h3 className="workoutTypeName">{workouts[workout].workoutType}</h3>
+									<div className="infobox">
+										<h1 className="workoutTitleHome">
+											{/*workouts[workout].workoutID}*/}
 											{workouts[workout].title}
-										</a>
-									</h1>
-									<h2>{workouts[workout].description}</h2>
-									<h3>{workouts[workout].workoutType}</h3>
-									<img width="100" height="100" src={require(`../../Gifs/${workouts[workout].workoutType}.gif`)}></img>
+										</h1>
+										<h2 className="workoutDescriptionHome">{workouts[workout].description}</h2>
+										<form action="'/Workout?id=' + workouts[workout].id">
+											<a href={"/Workout?id=" + workouts[workout].id}><button className="viewSteps" type="button">Steps</button></a>
+										</form>
+									</div>
 								</div>
                             ))
                         }
