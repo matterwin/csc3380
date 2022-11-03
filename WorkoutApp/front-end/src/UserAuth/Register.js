@@ -90,10 +90,30 @@ function Register() {
             />
             <label> &nbsp;</label>
             <button 
-              className={ (name && email && password) ? 'register__btn' : 'register__btn__disabled'}
+              className={ (name) ? 
+                            ((email) ?
+                              ((password) ? 
+                                'register__btn' : 'reg__btn__3rd__disabled'
+                              )
+                            : ((password) ? 'reg__btn__3nd__disabled' :  'reg__btn__2nd__disabled')
+
+                          )
+                          : ((email) ?
+                              ((password) ? 
+                                'reg__btn__3rd__disabled' : 'reg__btn__2nd__disabled'
+                              )
+                              : ((password) ? 'reg__btn__2nd__disabled' :  'reg__btn__disabled')
+                            )
+              }
               onClick={register}
             >
-              Register
+              Register{/* 
+                .register__btn
+                .reg__btn__disabled
+                .reg__btn__2nd__disabled
+                .reg__btn__3rd__disabled
+                className={ (name && email && password) ? 'register__btn' : 'reg__btn__2nd__disabled'}
+              */}
             </button>
           </div>
         </div>

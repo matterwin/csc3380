@@ -43,7 +43,7 @@
   border-style: hidden;
 }
 
-.register__btn, .register__btn__disabled {
+.register__btn, .reg__btn__disabled, .reg__btn__2nd__disabled, .reg__btn__3rd__disabled {
   padding: 10px;
   font-size: 18px;
   margin-bottom: 10px;
@@ -52,6 +52,8 @@
   color: white;
   background-color: #222;
   border-radius: 8px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
 }
 
 .register__btn:hover{
@@ -118,6 +120,30 @@ label {
   cursor: not-allowed;
   pointer-events: none;
   opacity: 75%;
+}
+
+.reg__btn__disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  opacity: 55%;
+}
+
+.reg__btn__2nd__disabled{
+  cursor: not-allowed;
+  pointer-events: none;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  opacity: 70%;
+}
+
+.reg__btn__3rd__disabled{
+  cursor: not-allowed;
+  pointer-events: none;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  opacity: 85%;
 }
 
 .reg .buttons {
