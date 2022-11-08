@@ -104,10 +104,10 @@ class Workouts extends React.Component {
                         <h3 className="box-h3">It's up to you to create your own workout to share to others! 
                         Feel free to post whatever content you like. Fit Happens is where every idea is welcomed:</h3>
                         <div className="gifs--box">
-                            <img src={'/Gifs/arms.gif'} className="arms--Gif"></img>
                             <img src={'/Gifs/back.gif'} className="back--Gif"></img>
                             <img src={'/Gifs/cardio.gif'} className="cardio--Gif"></img>
                             <img src={'/Gifs/chest.gif'} className="chest--Gif"></img>
+                            <img src={'/Gifs/arms.gif'} className="arms--Gif"></img>
                             <img src={'/Gifs/core.gif'} className="core--Gif"></img>
                             <img src={'/Gifs/legs.gif'} className="legs--Gif"></img>
                         </div>

@@ -119,7 +119,7 @@
     margin-top:10px;
     margin-bottom:10px;
 }
-.Btn {
+.Btn, .BtnAdd {
     background: #D77A61;
     border: 1.5px solid #D77A61;
     border-radius: 6px;
@@ -141,14 +141,20 @@
 }
 
 .Btn:hover,
-.Btn:active {
+.Btn:active, .BtnAdd:hover, .BtnAdd:active {
     background-color: white;
     background-position: 0 0;
     color: #D77A61;
 }
 
-.Btn:active {
+.Btn:active, .BtnAdd:active {
     opacity: .5;
+}
+
+.BtnAdd {
+   padding-left: 43px;
+   padding-right: 43px;
+   margin-right: -0.5px;
 }
 
 @media (max-width: 1213px) {
