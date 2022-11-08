@@ -143,7 +143,7 @@ function AddWorkout() {
        
         <div className="buttons">
           <br></br>
-        <button className = "Btn" onClick={addStep}><span>Add Step</span></button>
+        <button className = "BtnAdd" onClick={addStep}><span>Add Step</span></button>
         <div className="space"></div>
         <button className = "Btn" onClick={removeStep}><span>Remove A Step</span></button>
         <br></br><br></br>

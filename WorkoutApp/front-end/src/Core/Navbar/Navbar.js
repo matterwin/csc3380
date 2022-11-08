@@ -39,7 +39,7 @@ function Navbar() {
         <>
         {
             location.pathname != '/Login'  && location.pathname != '/Register' && 
-        <nav className="navClass">
+        <nav className="navClass"> 
             <a href="/"><img src="../logo-orange.png" alt="logo" className="nav--logo" /></a>
             <h2 className='nav--logo_text'><a href="/">Fit Happens</a></h2>
             {/*<input className="searchBox" placeholder="  Search"/>*/}
