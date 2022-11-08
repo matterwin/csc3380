@@ -159,6 +159,7 @@ function MyWorkout() {
                     })}
                 <label>Create Step</label><br></br>
                 <input className="instruction" type="text" id="next-step" placeholder="Instruction"></input>
+                <div className="space"></div>
                 <input className="unit" type="text" id="next-unit" placeholder="Unit"></input>
                 <br></br><br></br>
                 <label>Select a tag</label><br></br>
