@@ -79,8 +79,7 @@ function Login() {
                 (email) ? 
                   ((password) ? 'login__btn' : 'login__btn__half__disabled') 
                 : ((password) ? ((email) ? 'login__btn' : 'login__btn__half__disabled') : 'login__btn__disabled')}
-              onClick={() => {logInWithEmailAndPassword(email, password)}}
-              
+              onClick={() => {logInWithEmailAndPassword(email, password)}}              
             >
               Login
             </button>

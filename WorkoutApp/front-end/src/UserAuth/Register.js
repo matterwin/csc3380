@@ -38,56 +38,68 @@ function Register() {
         </div>
         <div className="register">
           <div className="register__container">
-            <label>Full Name</label>
-            <input
-              type="text"
-              className="register__textBox"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              autoFocus
-              onFocus={e => e.currentTarget.select()}
-              onKeyDown={(e) => {
-                if (e.key === "Enter" || e.key === "ArrowDown") {
-                  //console.log("enter email");
-                  inputRefs.current[1].focus();
-                }
-              }}
-              ref={(el) => (inputRefs.current[0] = el)}
-            />
-            <label>Email</label>
-            <input
-              type="text"
-              className="register__textBox"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              onKeyDown={(e) => {
-                if (e.key === "Enter" || e.key === "ArrowDown") {
-                  //console.log("enter email");   
-                  inputRefs.current[2].focus();        
-                }
-                if(e.key == "ArrowUp") {
-                  inputRefs.current[0].focus();
-                }
-              }}
-              ref={(el) => (inputRefs.current[1] = el)}
-            />
-            <label>Password</label>
-            <input
-              type="password"
-              className="register__textBox"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              onKeyDown={(e) => {
-                if (e.key === "Enter") {
-                  //console.log("enter password");
-                  registerWithEmailAndPassword(name, email, password);
-                }
-                if(e.key == "ArrowUp") {
-                  inputRefs.current[1].focus();
-                }
-              }}
-              ref={(el) => (inputRefs.current[2] = el)}
-            />
+            <div>
+              <br></br>
+              <input
+                type="text"
+                placeholder="Full Name"
+                className="register__textBox"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                autoFocus
+                onFocus={e => e.currentTarget.select()}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === "ArrowDown") {
+                    //console.log("enter email");
+                    inputRefs.current[1].focus();
+                  }
+                }}
+                ref={(el) => (inputRefs.current[0] = el)}
+              />
+              <label className="fullNameLabel">Full Name</label>
+            </div>
+            <div>
+              <br></br>
+              <input
+                type="text"
+                placeholder="Email"
+                className="register__textBox"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === "ArrowDown") {
+                    //console.log("enter email");   
+                    inputRefs.current[2].focus();        
+                  }
+                  if(e.key == "ArrowUp") {
+                    inputRefs.current[0].focus();
+                  }
+                }}
+                ref={(el) => (inputRefs.current[1] = el)}
+              />
+              <label className="emailRegLabel">Email</label>
+            </div>
+            <div>
+              <br></br>
+              <input
+                type="password"
+                placeholder="Password"
+                className="register__textBox"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    //console.log("enter password");
+                    registerWithEmailAndPassword(name, email, password);
+                  }
+                  if(e.key == "ArrowUp") {
+                    inputRefs.current[1].focus();
+                  }
+                }}
+                ref={(el) => (inputRefs.current[2] = el)}
+              />
+              <label className="passwordRegLabel">Password</label>
+            </div>
             <label> &nbsp;</label>
             <button 
               className={ (name) ? 
@@ -95,25 +107,19 @@ function Register() {
                               ((password) ? 
                                 'register__btn' : 'reg__btn__3rd__disabled'
                               )
-                            : ((password) ? 'reg__btn__3nd__disabled' :  'reg__btn__2nd__disabled')
+                            : ((password) ? 'reg__btn__3rd__disabled' :  'reg__btn__2nd__disabled')
 
-                          )
+                            )
                           : ((email) ?
                               ((password) ? 
                                 'reg__btn__3rd__disabled' : 'reg__btn__2nd__disabled'
                               )
-                              : ((password) ? 'reg__btn__2nd__disabled' :  'reg__btn__disabled')
+                              : ((password) ? 'reg__btn__2nd__disabled' : 'reg__btn__disabled')
                             )
               }
               onClick={register}
             >
-              Register{/* 
-                .register__btn
-                .reg__btn__disabled
-                .reg__btn__2nd__disabled
-                .reg__btn__3rd__disabled
-                className={ (name && email && password) ? 'register__btn' : 'reg__btn__2nd__disabled'}
-              */}
+              Register
             </button>
           </div>
         </div>
