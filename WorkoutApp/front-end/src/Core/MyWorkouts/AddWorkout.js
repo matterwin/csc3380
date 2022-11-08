@@ -120,6 +120,7 @@ function AddWorkout() {
 
   return (
     <center className="addWorkout">
+        <div className="addWorkout__added-space"></div>
         <div className="alignBox">
         <div className="titleBox"><br></br>
         <input type="text" id="title" placeholder="Title"></input></div><br></br>

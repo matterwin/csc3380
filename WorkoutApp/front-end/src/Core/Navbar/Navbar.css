@@ -8,9 +8,11 @@ nav {
   display: flex;
   padding: 3px 36px;
   align-items: center;
-  outline-color: #d77a61;
+  /*outline-color: #d77a61;
   outline-style: solid;
   outline-width: 2.3px;
+  border-top: #D77A61;*/
+  border-top: 2.3px solid #D77A61;
   background-color: #222;
   position: fixed;
   overflow: hidden;

@@ -101,7 +101,8 @@ class Workouts extends React.Component {
                 <div className="preview-workouts">
                     <center className="note-box">
                         <h1 className="box-h1">You can view other people's workouts down below.</h1>
-                        <h3 className="box-h3">Click on the workout and leave a comment or rating down below (finish this mess)</h3>
+                        <h3 className="box-h3">It's up to you to create your own workout to share to others! 
+                        Feel free to post whatever content you like. Fit Happens is where every idea is welcomed:</h3>
                         <div className="gifs--box">
                             <img src={'/Gifs/arms.gif'} className="arms--Gif"></img>
                             <img src={'/Gifs/back.gif'} className="back--Gif"></img>
@@ -120,11 +121,14 @@ class Workouts extends React.Component {
                         {
                             [...Array(parseInt(numWorkouts / this.workoutsSize) + 1) || []].map((key, value) => {
                                 return (
-                                    <button className="workoutPages" type="button"
+                                    <button 
+                                        className="workoutPages" 
+                                        type="button"
                                         disabled={(value + 1 == this.currentWorkoutPage)}
                                         key={value}
-                                        onMouseUp={() => this.nextWorkouts(value + 1)}>
-                                        {value + 1}
+                                        onMouseUp={() => this.nextWorkouts(value + 1)}
+                                    >
+                                        {value}
                                     </button>
                                 )
                             })
@@ -146,13 +150,15 @@ class Workouts extends React.Component {
                         }
                     </center>
                 </div>
-                <div className="curve"></div>
-                <div className="added-space"></div>
-                <div className="footer">
-                    <ul className="footer--list">
-                        <li><p>&copy; 2022, Team MMM</p></li>                         
-                    </ul>
-                </div>
+                {/*<div className="curve"></div>
+                <div className="added-space"></div>*/}
+                <center>
+                    <div className="footer">
+                        <ul className="footer--list">
+                            <li><p>&copy; 2022 Team MMM, Inc.</p></li>                         
+                        </ul>
+                    </div>
+                </center>
             </div>
         )
     };
