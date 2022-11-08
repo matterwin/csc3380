@@ -56,6 +56,8 @@ a {
     padding-top: 20vh;
     padding-bottom: 20vh;
     background-color: #222222;
+	background-image: url("../../images/run.png");
+	background-size: cover;
 }
 
 .welcome-screen {
@@ -115,7 +117,7 @@ a {
 
 .workoutPages{
 	border-radius: 10px;
-	background-color: #d77a61;
+	background-color: #fff;
 	color: black;
 	font-size: 20px;
 	box-shadow: 3px 3px 0px 0px;
@@ -126,10 +128,18 @@ a {
 	transform: translateY(2px);
     box-shadow: 1px 1px 0px 0px;
     border-radius: 10px;
-    background-color: blanchedalmond;
+    background-color: #a8a8a8;
     color: black;
     transition:transform 400ms cubic-bezier(.3,.7,.4,1.5);
-	
+}
+
+.workoutPages:active {
+	background-color: #D77A61;
+}
+
+.workoutPages:checked {
+	background-color: #D77A61;
+	color: red;
 }
 
 /*Vertical Sliding*/
@@ -244,19 +254,46 @@ a {
     padding-bottom: 10vh;
 }
 
-.note-box {
-    text-align: left;
+.note-box h1{
+	text-align: center;
     margin-left: 20vw;
     margin-right: 20vw;
-    border-style: solid;
-    border-width: 1px;
-    border-color: #223843;
 	padding-top: 20px;
+	font-family: Montserrat;
+	font-size: 6vh;
+}
+
+.note-box h3{
+	text-align: center;
+    margin-left: 20vw;
+    margin-right: 20vw;
 	padding-bottom: 20px;
+	font-family: Raleway;
+	font-size: 5vh;
+	color: #a8a8a8;
+	font-family: Raleway;
+	font-size: 3vh;
+	font-weight: bold;
 }
 
 .gifs--box img {
-	width: 200px;
+	width: 100px;
+	height: 100px;
+	padding-right: 8px;
+	padding-left: 8px;
+}
+
+.gifs--box {
+	text-align: center;
+	border-style: solid;
+    border-width: 1px;
+	border-radius: 10px;
+    border-color: #fff;
+	margin-left: 30vw;
+    margin-right: 30vw;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	background-color: #222222;
 }
 
 .added-space {
@@ -268,10 +305,12 @@ a {
 	bottom: 0%;
   	height: 40px;
   	display: flex;
-	padding: 3px 36px;
+	padding: 0px;
 	background-color: #222;
 	overflow: hidden;
 	align-items: center;
+	text-align: center;
+	width: 100%;
 }
 
 .footer--list{
@@ -280,12 +319,12 @@ a {
 	margin-right: auto;
 	margin-left: auto;
 	align-items: center;
-	text-align: center;
+	text-align: left;
 	justify-content: center;
+	padding-right: 50px;
+	font-size: small;
+	padding-bottom: 8px;
 }
-
-
-
 
 
 /*topToBottom Animation*/
@@ -335,4 +374,7 @@ a {
     100%{background-position:0% 50%}
 }
 
+button:focus {
+	background-color: #D77A61;
+}
   
