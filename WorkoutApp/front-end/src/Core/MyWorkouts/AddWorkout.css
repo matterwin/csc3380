@@ -63,7 +63,7 @@
 }
 
 .descriptionBox input[type=text], textarea{
-    border: 1px solid #ccc;
+    border: 1px solid lightgray;
     border-radius: 6px;
     resize: vertical;
     height: 100px;
@@ -92,12 +92,14 @@
 
 
 .step-instruction{
+    background-color: lightgray;
     width:38%;
     margin:3.8px;
     border-radius:5px;
 }
 
 .step-unit{
+    background-color: lightgray;
     width:38%;
     margin:3.8px;
     border-radius:5px;
