@@ -147,5 +147,47 @@ label {
 }
 
 .reg .buttons {
-  margin-top: -240px;
+  margin-top: -242px;
+}
+
+.emailRegLabel, .passwordRegLabel, .fullNameLabel {
+  float: right;
+  margin-top: -30px;
+  padding-left: 35px;
+  padding-top: 7px;
+  font-size: 110%;
+}
+
+.register__container input {
+  margin-left: -52.5px;
+  margin-right: -52.5px;
+}
+
+input:focus ~.fullNameLabel {
+  color: #d77a61;
+}
+
+input:focus ~.passwordRegLabel {
+  color: #d77a61;
+}
+
+input:focus ~.emailRegLabel {
+  color: #d77a61;
+}
+
+.reg label {
+  visibility: hidden;
+  transition: visibility 0.3s ease-out;
+}
+
+.register__container input:not(:placeholder-shown) ~.fullNameLabel{
+  visibility: visible;
+}
+
+.register__container input:not(:placeholder-shown) ~.emailRegLabel{
+  visibility: visible;
+}
+
+.register__container input:not(:placeholder-shown) ~.passwordRegLabel{
+  visibility: visible;
 }

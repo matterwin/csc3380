@@ -106,7 +106,7 @@ button:hover {
   text-align: left;
   padding-bottom: 3px;
   visibility: hidden;
-  transition:visibility 0.3s ease-out;
+  transition: visibility 0.3s ease-out;
 }
 
 .login__container label {
@@ -148,6 +148,8 @@ input:focus ~.passwordLabel {
 
 .log .buttons {
   margin-top: -230px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .signup--words {
