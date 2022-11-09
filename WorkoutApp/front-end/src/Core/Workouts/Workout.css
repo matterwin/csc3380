@@ -20,3 +20,25 @@
 .workout h2 {
 	font-size: 20px;
 }
+
+.workout h1 {
+	font-family: "Roboto";
+}
+
+.workout h3 {
+	font-family: "Roboto";
+}
+
+.workout:hover {
+	box-shadow: 0 8px 16px 0 white;
+}
+
+.workoutType {
+	font-family: "Roboto";
+}
+
+.stack {
+	width: 500px;
+	height: 500px;
+	position: relative;
+}

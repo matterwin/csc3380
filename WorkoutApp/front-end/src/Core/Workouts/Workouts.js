@@ -1,6 +1,7 @@
 import React from "react";
 import "./Workouts.css"
 import launchsettings from "../../launchsettings.json"
+import { NavLink } from 'react-router-dom';
 
 class Workouts extends React.Component {
     // This is the amount of workouts we display on each page
@@ -84,7 +85,7 @@ class Workouts extends React.Component {
             <div className="container">
                 <div className="welcome-screen">
                     <center>
-                        <img className="gif" src={'/Gifs/PatricSlappingKnees.gif'} />
+                        <img className="gif" src={'/Gifs/tiger.gif'} />
                     </center>
                     <h1>Fit happens<div className="can-get-rid">,&nbsp;it's&nbsp;</div>
                         <div className="slidingVertical">
@@ -96,7 +97,7 @@ class Workouts extends React.Component {
                         </div>
                     </h1>
                     <h2>Get your fit on and explore, chase, and conquer your fitness goals</h2>
-                    <img className="gif2" src={'/Gifs/PatrickBlowingBubble.gif'} />
+                    <img className="gif2" src={'/Gifs/stickman.gif'} />
                 </div>
                 <div className="preview-workouts">
                     <center className="note-box">
@@ -133,25 +134,32 @@ class Workouts extends React.Component {
                                 )
                             })
                         }
+                        <br></br>
+                        <br></br>
+                        <br></br>
+                        <br></br>
                         {
                             Object.keys(workouts || "").map((workout, i) => (
-                                <div className="workout" key={i}>
-                                    <h1>
-                                        {/*workouts[workout].workoutID}*/}
-                                        <a href={"/Workout?id=" + workouts[workout].id}>
+                                
+                                <div className="card">
+                                    <div className="card--badge">{workouts[workout].workoutType}</div>
+                                    <img 
+                                        src={`/Gifs/${workouts[workout].workoutType}.gif`} 
+                                        className="card--image" 
+                                    />
+                                    <p className="card--title"><a href={"/Workout?id=" + workouts[workout].id}>
                                             {workouts[workout].title}
-                                        </a>
-                                    </h1>
-                                    <h2>{workouts[workout].description}</h2>
-                                    <h3>{workouts[workout].workoutType}</h3>
-                                    <img width="100" height="100" src={`/Gifs/${workouts[workout].workoutType}.gif`}></img>
+                                        </a></p>
+                                    <p className="desc"> {workouts[workout].description} </p>
+                                    <NavLink
+                                            end to={"/Workout?id=" + workouts[workout].id}
+                                            className="btn__steps"
+                                    >Steps</NavLink>
                                 </div>
                             ))
                         }
                     </center>
                 </div>
-                {/*<div className="curve"></div>
-                <div className="added-space"></div>*/}
                 <center>
                     <div className="footer">
                         <ul className="footer--list">

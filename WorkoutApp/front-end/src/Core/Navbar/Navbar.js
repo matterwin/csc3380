@@ -15,10 +15,6 @@ function Navbar() {
 
     useEffect(() => {
       if (loading) return;
-     /* if (!user) {
-        return navigate("/");
-      }*///this fixed the bug where if you're not signed in you can't see other people's workouts
-      //but also when you refresh, it stays on the same page
     }, [user, loading]);
 
     function handleClick() {
@@ -42,7 +38,6 @@ function Navbar() {
         <nav className="navClass"> 
             <a href="/"><img src="../logo-orange.png" alt="logo" className="nav--logo" /></a>
             <h2 className='nav--logo_text'><a href="/">Fit Happens</a></h2>
-            {/*<input className="searchBox" placeholder="  Search"/>*/}
             <input type="checkbox" id="nav-toggle" checked={checked} onChange={handleCheckbox}>
             </input>
             <ul className="nav--list">
