@@ -3,6 +3,7 @@ import { act } from "react-dom/test-utils";
 import Workouts from "./Workouts";
 import "./Workout.css"
 import launchsettings from "../../launchsettings.json"
+import { NavLink } from 'react-router-dom';
 
 class Workout extends React.Component {
     constructor(props) {
@@ -34,28 +35,33 @@ class Workout extends React.Component {
         const { workoutLoaded, workout } = this.state;
         if (!workoutLoaded) return (
             <div className="loading">
-                <img src="https://subarucustomersupport.powerappsportals.com/blue-spinner.gif" alt="load" />
-                <h1>Loading Workout</h1>
+                <img src={`/Gifs/Loading.png`} alt="load"/>
             </div>
         )
 
         return (
             <div>
-                <center>
-                    <div className="homeworkout">
-                        <h1>{workout.title}</h1>
-                        <h2>{workout.description}</h2>
+                <center className="step--workout">
+                <div className="card">
+                            <div className="card--badge">{workout.workoutType}</div>
+                            <img 
+                                src={`/Gifs/${workout.workoutType}.gif`}
+                                className="card--image" 
+                            />
+                            <p className="card--title"> {workout.title} </p>
+                            <p className="desc"> {workout.description} </p>
                         {
-                            Object.keys(workout.steps).map((step, j) => (
-                                <div className="workoutSteps" key={j}>
-                                    <span>
-                                        <p>Step {j + 1}: {workout.steps[j].instruction} {workout.steps[j].unit || ""}</p>
-                                    </span>
-                                </div>
+                            Object.keys(workout.steps).map((step, j) => (     
+                                    <span className="steps-box">
+                                            <p className="steps">Step {j + 1}: {workout.steps[j].instruction} {workout.steps[j].unit || ""}</p>
+                                    </span>    
                             ))
                         }
-                        <img width="200" height="200" src={`/Gifs/${workout.workoutType}.gif`}></img>
-                    </div>
+                        <NavLink
+                            end to={"/"}
+                            className="btn__steps"
+                            >Home</NavLink>
+                         </div>
                 </center>
             </div>
         )

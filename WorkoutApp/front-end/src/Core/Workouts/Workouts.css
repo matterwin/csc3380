@@ -485,7 +485,7 @@ button:focus {
 
 .card {
 	margin-top: 10px;
-    width: 275px;
+    width: 355px;
     font-size: 12px;
     flex: 0 0 auto;         /* ADD */
     display: flex;          /* ADD */
@@ -561,4 +561,13 @@ button:focus {
 	padding-left: 10px;
 	padding-right: 10px;
 	padding-bottom: 5px;
+}
+
+.front-arrow, .back-arrow {
+	width: 3vw;
+	cursor: pointer;
+}
+
+.back-arrow {
+	transform: scaleX(-1);
 }

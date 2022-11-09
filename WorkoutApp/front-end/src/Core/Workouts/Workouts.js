@@ -103,7 +103,7 @@ class Workouts extends React.Component {
                     <center className="note-box">
                         <h1 className="box-h1">You can view other people's workouts down below.</h1>
                         <h3 className="box-h3">It's up to you to create your own workout to share to others! 
-                        Feel free to post whatever content you like. Fit Happens is where every idea is welcomed:</h3>
+                        Feel free to post whatever content you want. Fit Happens is where every idea is welcomed:</h3>
                         <div className="gifs--box">
                             <img src={'/Gifs/back.gif'} className="back--Gif"></img>
                             <img src={'/Gifs/cardio.gif'} className="cardio--Gif"></img>
@@ -122,15 +122,17 @@ class Workouts extends React.Component {
                         {
                             [...Array(parseInt(numWorkouts / this.workoutsSize) + 1) || []].map((key, value) => {
                                 return (
-                                    <button 
-                                        className="workoutPages" 
-                                        type="button"
-                                        disabled={(value + 1 == this.currentWorkoutPage)}
-                                        key={value}
-                                        onMouseUp={() => this.nextWorkouts(value + 1)}
-                                    >
-                                        {value}
-                                    </button>
+                                    <>                                       
+                                        <button 
+                                            className="workoutPages" 
+                                            type="button"
+                                            disabled={(value + 1 == this.currentWorkoutPage)}
+                                            key={value}
+                                            onMouseUp={() => this.nextWorkouts(value + 1)}
+                                        >
+                                            {value}
+                                        </button>
+                                    </>
                                 )
                             })
                         }

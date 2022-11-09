@@ -37,8 +37,20 @@
 	font-family: "Roboto";
 }
 
-.stack {
-	width: 500px;
-	height: 500px;
-	position: relative;
+.step--workout .card {
+    width: 400px;
 }
+
+.step--workout .card--title {
+    color: #fff !important;
+    background-color: #808080;
+    margin-left: 60px;
+    margin-right: 60px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.steps-box {
+    background-color: #222;
+}
+  
