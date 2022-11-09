@@ -6,6 +6,7 @@ import { query, collection, getDocs, where } from "firebase/firestore";
 import "./MyWorkouts.css"
 import launchsettings from "../../launchsettings.json"
 import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 function MyWorkouts() {
     const [user, loading, error] = useAuthState(auth);
@@ -52,16 +53,27 @@ function MyWorkouts() {
             <center>
                 <br></br>
                 <a href={"/AddWorkout"}><button type="button" className="addWorkoutBtn">Click here to add a personal workout!</button></a>
+                <br></br>
+                <br></br>
                 {
                     Object.entries(jsonWorkouts).map(([key, value]) => {
                         return (
-                            <div className="workout" key={key}>
-                                <h1>
-                                    <Link to={`/MyWorkout?id=${value.id}`}>{value.title}</Link>
-                                </h1>
-                                <h2>{value.description}</h2>
-                                <h3>{value.workoutType}</h3>
-                                <img width="200" height="200" src={`/Gifs/${value.workoutType}.gif`}></img>
+                            <div>
+                                <center className="step--workout">
+                                    <div className="card">
+                                        <div className="card--badge">{value.workoutType}</div>
+                                        <img 
+                                            src={`/Gifs/${value.workoutType}.gif`}
+                                            className="card--image" 
+                                        />
+                                        <p className="card--title"> <Link to={`/MyWorkout?id=${value.id}`}>{value.title}</Link> </p>
+                                        <p className="desc"> {value.description} </p>  
+                                         <NavLink
+                                            end to={`/MyWorkout?id=${value.id}`}
+                                            className="btn__steps"
+                                            >Edit</NavLink>                                      
+                                    </div>
+                                </center>
                             </div>
                         )
                     })
