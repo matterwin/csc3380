@@ -95,7 +95,7 @@ a {
 	padding-bottom: 0%;
 	margin-bottom: 0%;
 	color:#d8b5a4;
-	color:#fac9bb
+	color:#fac9bb;
 }
 
 .gif {
@@ -105,7 +105,7 @@ a {
 	padding-top: 15vh;
 	padding-bottom: 0;
 	margin: 0;
-	width: 20vh;
+	width: 35vh;
 }
 
 .gif2 {
@@ -386,4 +386,179 @@ button:focus {
 	border-bottom-width: 0px;
 
 	border-top-width: 0px;
+}
+
+.workoutTitleHome {
+	font-size: 30px;
+	color: #FFFFFF;
+	font-family: "Raleway";
+	text-align: left;
+	text-decoration: none;
+	padding-left: 3px;
+	white-space: normal;
+	line-height: 25px;
+}
+
+.workoutDescriptionHome {
+	font-size: 18px;
+	color: #FFFFFF;
+	font-family: "Raleway";
+	text-align: left;
+	text-decoration: none;
+	padding-left: 3px;
+	white-space: normal;
+	line-height: 1px;
+	word-break: break-word;
+	hyphens: auto;
+}
+
+.workoutTypeName {
+	font-family: "Raleway";
+	font-size: 40px;
+	line-height: 5px;
+}
+
+.viewSteps {
+	background-color: #d77a61;
+	border-radius: 10px;
+	height: 45px;
+	width: 80px;
+	margin-left: 75%;
+	margin-top: -85%;
+	z-index: 100;
+	font-size: 15px;
+	justify-content: space-between;
+	box-shadow: 3px 3px 0px 0px;
+}
+
+.viewSteps:hover {
+	transform: translateY(2px);
+    box-shadow: 1px 1px 0px 0px;
+    border-radius: 10px;
+    background-color: blanchedalmond;
+    color: black;
+    transition:transform 400ms cubic-bezier(.3,.7,.4,1.5);
+}
+
+.infobox {
+	background-color: rgba(34, 34, 34, 0.75);
+	position: relative;
+	height: 6em;
+	align-items: down;
+	border-radius: 0px, 0px, 20px, 20px;
+}
+
+.homeworkout {
+	background-color: #DBD3D8;
+	background: url("https://images.unsplash.com/photo-1604147706283-d7119b5b822c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80");
+	background-repeat: no-repeat;
+	background-size: cover;
+	font-family: "Roboto";
+	border: 5px solid black;
+	margin: 10px;
+	margin-top: 30px;
+	width: 70%;
+	width: 35%;
+	box-shadow: 0 4px 8px 0 black;
+	background-color: #DBD3D8;
+	color: #000000;
+	border-radius: 2rem;
+	height: 30%;
+	padding-top: 60px;
+}
+
+.top-of-box {
+	display: inline;
+
+}
+
+.top-of-box img {
+	display: inline-block;
+}
+
+.cards-list {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 20px;
+    overflow-x: auto;
+}
+
+.card {
+	margin-top: 10px;
+    width: 275px;
+    font-size: 12px;
+    flex: 0 0 auto;         /* ADD */
+    display: flex;          /* ADD */
+    flex-direction: column; /* ADD */
+    position: relative;
+	border: 1px solid #fff;
+  	border-radius: 5px;
+	margin-bottom: 50px;
+}
+
+.card--image {
+    width: 100%;
+    border-bottom-left-radius:  9px;
+	border-bottom-right-radius:  9px;
+    margin-bottom: 9px;
+}
+
+/* ADD */
+.card p {
+	color: #fff;
+	font-size: large;
+}
+
+.card p a {
+	color: #fac9bb;
+}
+
+.card--title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+	font-family: "Montserrat";
+	color:#fac9bb !important;
+}
+
+
+.card--badge {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    background-color: #223843;
+	color: #FFFFFF;
+    padding: 5px 7px;
+    border-radius: 2px;
+    font-weight: bold;
+	font-size: large;
+}
+
+.card p a:hover {
+	color: #a8a8a8;
+}
+
+.btn__steps {
+	padding-left: 72px;
+	padding-right: 72px;
+	border-bottom-left-radius:  1px;
+	border-bottom-right-radius:  1px;
+	outline: none;
+	text-decoration: none;
+	border: none;
+	background-color: #FFFFFF;
+	font-size: large;
+}
+
+.btn__steps:hover {
+	background-color: rgb(233, 233, 233);
+}
+
+.card button {
+	font-size: large;
+}
+
+.desc {
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-bottom: 5px;
 }

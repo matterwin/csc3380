@@ -42,7 +42,7 @@ class Workout extends React.Component {
         return (
             <div>
                 <center>
-                    <div className="workout">
+                    <div className="homeworkout">
                         <h1>{workout.title}</h1>
                         <h2>{workout.description}</h2>
                         {
