@@ -7,7 +7,6 @@ class Workouts extends React.Component {
     // This is the amount of workouts we display on each page
     workoutsSize = 5;
     currentWorkoutPage = 1;
-    maxWorkoutPages = 10;
 
     constructor(props) {
         super(props);
@@ -35,20 +34,16 @@ class Workouts extends React.Component {
             })
     }
 
-    fetchNumWorkouts(url) {
+    async fetchNumWorkouts(url) {
         fetch(url)
             .then((res) => res.json())
             .then((json) => {
+                console.log(JSON.stringify(json));
+
                 this.setState({
-                    numWorkouts: json,
+                    numWorkouts: JSON.stringify(json),
                     numWorkoutsLoaded: true
                 });
-
-                if (this.state.numWorkouts > this.maxWorkoutPages) {
-                    this.setState({
-                        numWorkouts: this.maxWorkoutPages
-                    })
-                }
             })
             .catch((err) => {
                 console.log(err);
@@ -61,10 +56,24 @@ class Workouts extends React.Component {
     }
 
     nextWorkouts(numWorkout) {
+        this.fetchNumWorkouts(`${launchsettings.SERVER_URL}Workouts/Count`);
+
+        console.log('----------------');
+        console.log("numWorkout:" + numWorkout);
+        console.log("this.currentWorkoutPage:" + this.currentWorkoutPage);
+        console.log("this.workoutSize:" + this.workoutsSize);
+        console.log("this.state.numWorkouts:" + this.state.numWorkouts);
+        console.log('----------------');
+
+        if (numWorkout < 1 || (numWorkout - 1) * this.workoutsSize >= this.state.numWorkouts) {
+            this.numWorkout = this.currentWorkoutPage;
+            alert('No more workouts!');
+            return;
+        }
+
         this.currentWorkoutPage = numWorkout;
 
         this.fetchWorkouts(`${launchsettings.SERVER_URL}Workouts/${numWorkout}/${this.workoutsSize}`);
-        this.fetchNumWorkouts(`${launchsettings.SERVER_URL}Workouts/Count`);
     }
 
     render() {
@@ -74,11 +83,11 @@ class Workouts extends React.Component {
         // Something is not loaded
         if (!workoutsLoaded || !numWorkoutsLoaded) return (
             <div className="loading">
-                 <img src={'/Gifs/Loading.gif'} alt="Load" />
+                <img src={'/Gifs/Loading.gif'} alt="Load" />
             </div>
         )
 
-        if(numWorkouts % this.workoutsSize == 0)
+        if (numWorkouts % this.workoutsSize == 0)
             numWorkouts--;
 
         return (
@@ -102,8 +111,8 @@ class Workouts extends React.Component {
                 <div className="preview-workouts">
                     <center className="note-box">
                         <h1 className="box-h1">You can view other people's workouts down below.</h1>
-                        <h3 className="box-h3">It's up to you to create your own workout to share to others! 
-                        Feel free to post whatever content you want. Fit Happens is where every idea is welcomed:</h3>
+                        <h3 className="box-h3">It's up to you to create your own workout to share to others!
+                            Feel free to post whatever content you want. Fit Happens is where every idea is welcomed:</h3>
                         <div className="gifs--box">
                             <img src={'/Gifs/back.gif'} className="back--Gif"></img>
                             <img src={'/Gifs/cardio.gif'} className="cardio--Gif"></img>
@@ -117,57 +126,39 @@ class Workouts extends React.Component {
                 <br></br>
 
                 <div className="preview">
-                <center>
-                    <div className="nav2">
-                        {
-                            [...Array(parseInt(numWorkouts / this.workoutsSize) + 1) || []].map((key, value) => {
-                                return (
-                                    <>          
-                                        <NavLink key={value} disabled={(value + 1 == this.currentWorkoutPage)} 
-                                            onClick={() => this.nextWorkouts(value - 1)}>
-                                            <img className="left-arrow" src={`/Gifs/left-arrow.png`}/>
-                                        </NavLink>
-                                        &nbsp;&nbsp;&nbsp;                      
-                                        <button className="workoutPages" disabled="true"> {this.currentWorkoutPage} </button>
-                                        &nbsp;&nbsp;&nbsp;
-                                        <NavLink key={value} disabled={(value + 1 == this.currentWorkoutPage)} 
-                                            onClick={() => this.nextWorkouts(value + 1)}><
-                                            img className="right-arrow" src={`/Gifs/right-arrow.png`}/>
-                                        </NavLink>
-                                        {/* <button 
-                                            className="workoutPages" 
-                                            type="button"
-                                            disabled={(value + 1 == this.currentWorkoutPage)}
-                                            key={value}
-                                        >
-                                            {this.currentWorkoutPage}
-                                        </button>
-                                        */}
-                                    </>
+                    <center>
+                        <div className="nav2">
+                            {
+                                <>
+                                    <img className="left-arrow" onClick={() => this.nextWorkouts(this.currentWorkoutPage - 1)} src={`/Gifs/left-arrow.png`} />
 
-                                )
-                            })
-                        }
-                    </div>
+                                    &nbsp;&nbsp;&nbsp;
+                                    <p className="workoutPages"> {this.currentWorkoutPage} </p>
+                                    &nbsp;&nbsp;&nbsp;
+
+                                    <img className="right-arrow" onClick={() => this.nextWorkouts(this.currentWorkoutPage + 1)} src={`/Gifs/right-arrow.png`} />
+                                </>
+                            }
+                        </div>
                         <br></br>
                         <br></br>
                         <br></br>
                         {
                             Object.keys(workouts || "").map((workout, i) => (
-                                
+
                                 <div className="card">
                                     <div className="card--badge">{workouts[workout].workoutType}</div>
-                                    <img 
-                                        src={`/Gifs/${workouts[workout].workoutType}.gif`} 
-                                        className="card--image" 
+                                    <img
+                                        src={`/Gifs/${workouts[workout].workoutType}.gif`}
+                                        className="card--image"
                                     />
                                     <p className="card--title"><a href={"/Workout?id=" + workouts[workout].id}>
-                                            {workouts[workout].title}
-                                        </a></p>
+                                        {workouts[workout].title}
+                                    </a></p>
                                     <p className="desc"> {workouts[workout].description} </p>
                                     <NavLink
-                                            end to={"/Workout?id=" + workouts[workout].id}
-                                            className="btn__steps"
+                                        end to={"/Workout?id=" + workouts[workout].id}
+                                        className="btn__steps"
                                     >Steps</NavLink>
                                 </div>
                             ))
@@ -177,7 +168,7 @@ class Workouts extends React.Component {
                 <center>
                     <div className="footer">
                         <ul className="footer--list">
-                            <li><p>&copy; 2022 Team MMM, Inc.</p></li>                         
+                            <li><p>&copy; 2022 Team MMM, Inc.</p></li>
                         </ul>
                     </div>
                 </center>
