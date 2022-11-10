@@ -120,6 +120,7 @@ nav .icon-burger{
   padding: 3px;
   top: 20px;
   cursor: pointer;
+  background-color: #a8a8a894;
 }
 
 nav .icon-burger:hover{
@@ -138,7 +139,8 @@ nav .icon-burger .line{
 @media (max-width: 500px) {
 
   nav .icon-burger{
-    padding-right: 8vw;
+    margin-left: -100%;
+    margin-right: 15%;
   }
 
   .nav--logo {

@@ -49,10 +49,11 @@ function MyWorkouts() {
     return (
         <div className="myworkouts">
                 
-            <div className="welcomeMessage">Welcome to Fit Happens, <div className = "typing">{name} <span className="wave">👋</span></div></div>
+            <center className="welcome"><div className = "typing">Welcome to Fit Happens<span className="wave">👋</span></div></center>
+            <center><h1 className="name">{name} </h1></center>
             <center>
                 <br></br>
-                <a href={"/AddWorkout"}><button type="button" className="addWorkoutBtn">Click here to add a personal workout!</button></a>
+                <a href={"/AddWorkout"}><button type="button" className="addWorkoutBtn">Add workout</button></a>
                 <br></br>
                 <br></br>
                 {
