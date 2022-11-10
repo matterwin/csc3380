@@ -124,9 +124,10 @@ a {
 	font-size: 20px;
 	box-shadow: 3px 3px 0px 0px;
 	margin: 5px;
+	cursor: default;
 }
 
-.workoutPages:hover{
+/*.workoutPages:hover{
 	transform: translateY(2px);
     box-shadow: 1px 1px 0px 0px;
     border-radius: 10px;
@@ -142,7 +143,7 @@ a {
 .workoutPages:checked {
 	background-color: #D77A61;
 	color: red;
-}
+}*/
 
 /*Vertical Sliding*/
 .slidingVertical{
@@ -573,4 +574,22 @@ button:focus {
 
 .back-arrow {
 	transform: scaleX(-1);
+}
+
+.left-arrow {
+	width: 50px;
+	margin-bottom: -20px
+}
+
+.right-arrow {
+	width: 50px;
+	margin-bottom: -20px
+}
+
+.right-arrow:hover, .left-arrow:hover {
+	transform: translateY(2px);
+}
+
+.left-arrow:hover {
+	transform: translateY(2px);
 }
