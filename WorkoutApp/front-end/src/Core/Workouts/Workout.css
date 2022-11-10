@@ -52,5 +52,6 @@
 
 .steps-box {
     background-color: #222;
+    border-top: 0.01em solid #fff;
 }
   

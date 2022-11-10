@@ -118,25 +118,37 @@ class Workouts extends React.Component {
 
                 <div className="preview">
                 <center>
-                        <br></br>
+                    <div className="nav2">
                         {
                             [...Array(parseInt(numWorkouts / this.workoutsSize) + 1) || []].map((key, value) => {
                                 return (
-                                    <>                                       
-                                        <button 
+                                    <>          
+                                        <NavLink key={value} disabled={(value + 1 == this.currentWorkoutPage)} 
+                                            onClick={() => this.nextWorkouts(value - 1)}>
+                                            <img className="left-arrow" src={`/Gifs/left-arrow.png`}/>
+                                        </NavLink>
+                                        &nbsp;&nbsp;&nbsp;                      
+                                        <button className="workoutPages" disabled="true"> {this.currentWorkoutPage} </button>
+                                        &nbsp;&nbsp;&nbsp;
+                                        <NavLink key={value} disabled={(value + 1 == this.currentWorkoutPage)} 
+                                            onClick={() => this.nextWorkouts(value + 1)}><
+                                            img className="right-arrow" src={`/Gifs/right-arrow.png`}/>
+                                        </NavLink>
+                                        {/* <button 
                                             className="workoutPages" 
                                             type="button"
                                             disabled={(value + 1 == this.currentWorkoutPage)}
                                             key={value}
-                                            onMouseUp={() => this.nextWorkouts(value + 1)}
                                         >
-                                            {value}
+                                            {this.currentWorkoutPage}
                                         </button>
+                                        */}
                                     </>
+
                                 )
                             })
                         }
-                        <br></br>
+                    </div>
                         <br></br>
                         <br></br>
                         <br></br>
