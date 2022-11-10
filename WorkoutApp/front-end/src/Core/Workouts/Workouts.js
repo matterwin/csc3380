@@ -130,13 +130,13 @@ class Workouts extends React.Component {
                         <div className="nav2">
                             {
                                 <>
-                                    <img className="left-arrow" onClick={() => this.nextWorkouts(this.currentWorkoutPage - 1)} src={`/Gifs/left-arrow.png`} />
+                                    <img className="left-arrow" hidden={this.currentWorkoutPage == 1} disabled={this.currentWorkoutPage == 1} onClick={() => this.nextWorkouts(this.currentWorkoutPage - 1)} src={`/Gifs/left-arrow.png`} />
 
                                     &nbsp;&nbsp;&nbsp;
                                     <p className="workoutPages"> {this.currentWorkoutPage} </p>
                                     &nbsp;&nbsp;&nbsp;
 
-                                    <img className="right-arrow" onClick={() => this.nextWorkouts(this.currentWorkoutPage + 1)} src={`/Gifs/right-arrow.png`} />
+                                    <img className="right-arrow" hidden={(this.currentWorkoutPage - 1) * this.workoutsSize == numWorkouts - 1} disabled={(this.currentWorkoutPage - 1) * this.workoutsSize == numWorkouts - 1} onClick={() => this.nextWorkouts(this.currentWorkoutPage + 1)} src={`/Gifs/right-arrow.png`} />
                                 </>
                             }
                         </div>
