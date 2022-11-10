@@ -49,22 +49,100 @@
 
   .addWorkoutBtn {
     padding: 5px;
-    border-radius: 10px;
+    padding-left: 95px;
+    padding-right: 95px;
+    border-radius: 5px;
     background-color: #D77A61;
-    color: black;
-    box-shadow: 10px 10px 0px 0px;
+    color: #fff;
     transition:transform 200ms cubic-bezier(0,0,0,0);
+    font-family: "Montserrat";
+    border-color: #fff;
+    box-shadow: none;
+    text-decoration: none;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
   }
 
   .addWorkoutBtn:hover {
     transform: translateY(2px);
-    box-shadow: 10px 8px 0px 0px;
     border-radius: 10px;
-    background-color: blanchedalmond;
-    color: black;
+    background-color: #fff;
+    color: #D77A61;
+    border-color: #D77A61;
     transition:transform 800ms cubic-bezier(.3,.7,.4,1.5);
+    box-shadow: none;
+  }
+
+  .addWorkoutBtn:active {
+    background-color: rgb(211, 211, 211);
+    border-color: #bb6c56;
   }
 
   .addWorkoutBtn, .welcomeMessage {
     font-size: 30px;
+  }
+
+  .addWorkoutBtn::after {
+    border-color: #fff;
+    background-color: transparent;
+  }
+
+  .addWorkoutBtn {
+    animation: bouncy 5s infinite linear;
+    position: relative;
+  }
+
+    @keyframes bouncy {
+      0%{top:0em}
+      40%{top:0em}
+      43%{top:-0.5em}
+      46%{top:0em}
+      48%{top:-0.2em}
+      50%{top:0em}
+      100%{top:0em;}
+    }
+
+  .name {
+    color: #D77A61;
+    font-family: "Montserrat";
+    animation: fadeIn 5s;
+    -webkit-animation: fadeIn 12s;
+    -moz-animation: fadeIn 8s;
+    -o-animation: fadeIn 8s;
+    -ms-animation: fadeIn 8s;
+  }
+
+  @keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  
+  @-moz-keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  
+  @-webkit-keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  
+  @-o-keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  
+  @-ms-keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
+  .name::after {
+    opacity: 100%;
+  }
+
+  .welcome {
+    color: #fff;
+    font-family: "Montserrat";
+    margin-bottom: -15px;
   }
