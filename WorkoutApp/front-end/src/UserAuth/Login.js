@@ -98,5 +98,4 @@ function Login() {
     </div>
   );
 }
-//<p className="copyright">© Copyright 2022 Team MMM. All Rights Reserved.</p>
 export default Login;

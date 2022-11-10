@@ -14,6 +14,7 @@
     -moz-animation: backgroundGradient 15s ease infinite;
     animation: backgroundGradient 15s ease infinite;
 	/*decide in class which is better*/
+	overflow: hidden;
 }
 
 .workout {
@@ -518,6 +519,8 @@ button:focus {
     text-overflow: ellipsis;
 	font-family: "Montserrat";
 	color:#fac9bb !important;
+	margin-right: 0px;
+	margin-left: 0px;
 }
 
 

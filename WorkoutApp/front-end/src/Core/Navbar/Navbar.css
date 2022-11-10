@@ -135,6 +135,17 @@ nav .icon-burger .line{
   transition: all .3s ease-in-out;
 }
 
+@media (max-width: 500px) {
+
+  nav .icon-burger{
+    padding-right: 8vw;
+  }
+
+  .nav--logo {
+    padding-right: -10px;
+  }
+}
+
 @media (max-width: 1220px) {
 
   nav .icon-burger{
