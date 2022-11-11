@@ -132,7 +132,7 @@ button:hover {
 }
 
 .login__container input {
-  margin-left: -52.5px;
+  margin-left: -52.5vw;
   margin-right: -52.5px;
 }
 
@@ -152,6 +152,9 @@ input:focus ~.passwordLabel {
   margin-top: -230px;
   margin-left: auto;
   margin-right: auto;
+  justify-content: center;
+  align-items: center;
+  margin-left: 1vw;
 }
 
 .signup--words {

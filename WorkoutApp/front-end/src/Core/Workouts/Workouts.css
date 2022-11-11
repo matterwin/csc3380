@@ -122,9 +122,9 @@ a {
 	border-radius: 10px;
 	background-color: #fff;
 	color: black;
-	font-size: 20px;
+	font-size: 25px;
 	box-shadow: 3px 3px 0px 0px;
-	margin: 5px;
+	margin: 8px;
 	cursor: default;
 }
 
@@ -690,12 +690,14 @@ button:focus {
 
 .left-arrow {
 	width: 50px;
-	margin-bottom: -20px
+	margin-bottom: -17px;
+	cursor: pointer;
 }
 
 .right-arrow {
 	width: 50px;
-	margin-bottom: -20px
+	margin-bottom: -17px;
+	cursor: pointer;
 }
 
 .right-arrow:hover,

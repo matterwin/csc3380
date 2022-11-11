@@ -127,16 +127,20 @@ class Workouts extends React.Component {
 
                 <div className="preview">
                     <center>
-                        <div className="nav2">
+                    <div className="nav2">
                             {
                                 <>
-                                    <img className="left-arrow" hidden={this.currentWorkoutPage == 1} disabled={this.currentWorkoutPage == 1} onClick={() => this.nextWorkouts(this.currentWorkoutPage - 1)} src={`/Gifs/left-arrow.png`} />
+                                    <img className="left-arrow" disabled={this.currentWorkoutPage == 1}
+                                    onClick={() => this.nextWorkouts(this.currentWorkoutPage - 1)} src={`/Gifs/left-arrow.png`} 
+                                    style={{ visibility: this.currentWorkoutPage == 1 ? "hidden" : "visible" }}/>
 
                                     &nbsp;&nbsp;&nbsp;
                                     <p className="workoutPages"> {this.currentWorkoutPage} </p>
                                     &nbsp;&nbsp;&nbsp;
 
-                                    <img className="right-arrow" hidden={(this.currentWorkoutPage - 1) * this.workoutsSize == numWorkouts - 1} disabled={(this.currentWorkoutPage - 1) * this.workoutsSize == numWorkouts - 1} onClick={() => this.nextWorkouts(this.currentWorkoutPage + 1)} src={`/Gifs/right-arrow.png`} />
+                                    <img className="right-arrow" disabled={(this.currentWorkoutPage - 1) * this.workoutsSize == numWorkouts - 1}
+                                     onClick={() => this.nextWorkouts(this.currentWorkoutPage + 1)} src={`/Gifs/right-arrow.png`} 
+                                     style={{ visibility: (this.currentWorkoutPage - 1) * this.workoutsSize == numWorkouts - 1 ? "hidden" : "visible" }}/>
                                 </>
                             }
                         </div>
