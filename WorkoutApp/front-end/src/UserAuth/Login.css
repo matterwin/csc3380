@@ -253,6 +253,4 @@ input:focus ~.passwordLabel {
   margin-top: -230px;
   justify-content: center;
   align-items: center;
-  margin-right: 1%;
-  margin-left: 15px;
 }

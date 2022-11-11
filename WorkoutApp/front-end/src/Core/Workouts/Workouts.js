@@ -58,12 +58,13 @@ class Workouts extends React.Component {
     nextWorkouts(numWorkout) {
         this.fetchNumWorkouts(`${launchsettings.SERVER_URL}Workouts/Count`);
 
-        console.log('----------------');
+       {/*} console.log('----------------');
         console.log("numWorkout:" + numWorkout);
         console.log("this.currentWorkoutPage:" + this.currentWorkoutPage);
         console.log("this.workoutSize:" + this.workoutsSize);
         console.log("this.state.numWorkouts:" + this.state.numWorkouts);
         console.log('----------------');
+        */}
 
         if (numWorkout < 1 || (numWorkout - 1) * this.workoutsSize >= this.state.numWorkouts) {
             this.numWorkout = this.currentWorkoutPage;
@@ -140,7 +141,7 @@ class Workouts extends React.Component {
 
                                     <img className="right-arrow" disabled={(this.currentWorkoutPage - 1) * this.workoutsSize == numWorkouts - 1}
                                      onClick={() => this.nextWorkouts(this.currentWorkoutPage + 1)} src={`/Gifs/right-arrow.png`} 
-                                     style={{ visibility: (this.currentWorkoutPage - 1) * this.workoutsSize == numWorkouts - 1 ? "hidden" : "visible" }}/>
+                                     style={{ visibility: ((this.currentWorkoutPage - 1) * this.workoutsSize == numWorkouts - 1) ? "hidden" : "visible" }}/>
                                 </>
                             }
                         </div>
