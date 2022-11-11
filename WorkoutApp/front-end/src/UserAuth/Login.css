@@ -148,14 +148,6 @@ input:focus ~.passwordLabel {
   margin-top: -20.5vh;
 }
 
-.log .buttons {
-  margin-top: -230px;
-  margin-left: auto;
-  margin-right: auto;
-  justify-content: center;
-  align-items: center;
-}
-
 .signup--words {
   top: 0%;
   color: #d8d3d8;
@@ -171,7 +163,6 @@ input:focus ~.passwordLabel {
   font-weight: 600;
   font-size: 90%;
   color: white;
-  margin-right: 1%;
   padding: 10px 51px;
   background-color: #d77a61;
   border-radius: 7px;
@@ -189,7 +180,6 @@ input:focus ~.passwordLabel {
   font-size: 90%;
   font-weight: 600;
   color: white;
-  margin-left: 1%;
   padding: 10px 51px;
   padding-right: 55px;
   background-color: #d77a61;
@@ -233,6 +223,10 @@ input:focus ~.passwordLabel {
   margin-top: 30px;
   font-size: 12px;
   bottom: 0;
+  margin-left: auto;
+  margin-right: auto;
+  align-content: center;
+  justify-content: center;
 }
 
 .login__btn__disabled {
@@ -253,4 +247,12 @@ input:focus ~.passwordLabel {
 
 .space--uptop {
   margin-bottom: -105px;
+}
+
+.log .buttons {
+  margin-top: -230px;
+  justify-content: center;
+  align-items: center;
+  margin-right: 1%;
+  margin-left: 15px;
 }
