@@ -154,7 +154,6 @@ input:focus ~.passwordLabel {
   margin-right: auto;
   justify-content: center;
   align-items: center;
-  margin-left: 1vw;
 }
 
 .signup--words {
