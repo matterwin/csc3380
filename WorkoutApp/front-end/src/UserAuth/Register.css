@@ -152,6 +152,10 @@ label {
   margin-top: -242px;
   margin-left: auto;
   margin-right: auto;
+  margin-left: auto;
+  margin-right: auto;
+  align-content: center;
+  justify-content: center;
 }
 
 .emailRegLabel, .passwordRegLabel, .fullNameLabel {
@@ -197,19 +201,19 @@ input:focus ~.emailRegLabel {
 }
 
 .reg .signup {
-  padding-left: 55px;
-  padding-right: 55px;
+  padding-left: 54px;
+  padding-right: 54px;
   margin-right: 0px;
 }
 
 .reg .home {
   padding-left: 55px;
   padding-right: 55px;
-  margin-left: 1%;
 }
 
 .reg .buttons {
   padding-top: 4px;
   justify-content: center;
   align-items: center;
+  margin-left: 15px;
 }
