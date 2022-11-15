@@ -4,6 +4,7 @@ using back_end.DTO.User;
 using back_end.DTO.Workout;
 using back_end.Repositories;
 using back_end.Repositories.IRepositories;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.Design;

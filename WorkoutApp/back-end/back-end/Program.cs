@@ -28,9 +28,10 @@ builder.Services.AddControllers().AddNewtonsoftJson(options =>
 // Add service to enable CORS
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("CorsPolicy", policy => policy.AllowAnyOrigin()
-                                                    .AllowAnyMethod()
-                                                    .AllowAnyHeader());
+    options.AddDefaultPolicy(policy => policy.SetIsOriginAllowed(origin => true)
+                                             .AllowCredentials()
+                                             .AllowAnyMethod()
+                                             .AllowAnyHeader());
 });
 
 // TODO:put this in its own file
@@ -53,9 +54,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseCors();
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
-app.UseCors("CorsPolicy");
 
 app.Run();

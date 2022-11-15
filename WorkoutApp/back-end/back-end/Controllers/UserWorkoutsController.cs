@@ -3,6 +3,7 @@ using back_end.Domain;
 using back_end.DTO.Workout;
 using back_end.Repositories;
 using back_end.Repositories.IRepositories;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.Design;
@@ -10,6 +11,7 @@ using System.Runtime.CompilerServices;
 
 namespace back_end.Controllers
 {
+    [EnableCors]
     [ApiController]
     [Route("[controller]")]
     public class UserWorkoutsController : ControllerBase
